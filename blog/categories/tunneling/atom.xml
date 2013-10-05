@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tunneling | Zigang Xiao]]></title>
+  <link href="http://blog.ivansiu.com/blog/categories/tunneling/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2013-10-05T15:40:09-05:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang Xiao (Ivan)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on SSH port forwarding]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/"/>
+    <updated>2013-05-09T21:43:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding</id>
+    <content type="html"><![CDATA[<h3>SSH Local Port Forwarding</h3>
+
+<p>Use <code>ssh -L</code> to bind a local port to a remote port</p>
+
+<h3>Dynamic Port Forwarding</h3>
+
+<p>Use <code>ssh -D</code> to dynamically bind a local port for forwarding. A SOCKS5 will be created. Example:</p>
+
+<pre><code>ssh -D 1080 user@remote-server.com
+</code></pre>
+
+<p>This binds to remote-server.com and uses local port 1080 for forwarding.</p>
+
+<p>Optionally use -C for data compression.</p>
+
+<p>The above command will log into the remote-server.com, use <code>-f</code> to put ssh to background, and use <code>-N</code> to not to execute a command. i.e.,</p>
+
+<pre><code>ssh -f -N -D 1080 user@remote-server.com
+</code></pre>
+
+<!-- more -->
+
+
+<h3>Usage Example</h3>
+
+<p>If the tool/app supports socks natively, use localhost:1080 in its setting. Example (curl)</p>
+
+<pre><code>curl --socks5 localhost http://icanhazip.com
+</code></pre>
+
+<p>If set up correctly, the IP returned will be the machine that is forwarding (remote-server.com)</p>
+
+<p>If not, use some socksify tool, for example, use dsocks in OSX:</p>
+
+<pre><code>dsocks.sh ssh another-server.com
+</code></pre>
+
+<p>You can see where you logon using <code>who | grep &lt;user-name&gt;</code>.</p>
+
+<h3>A Real World Scenario</h3>
+
+<p>Scenario: I want to connect to VNC server at peabody::5903, however, peabody only accepts connection from CSL LAN, while my Macbook is in IllinoisNet (wireless).</p>
+
+<p>Solution: use my office computer &lsquo;orange&rsquo; as a proxy. Use local port forwarding:</p>
+
+<pre><code>ssh -L 5903:peabody:5903 orange
+</code></pre>
+
+<p>This means, forward localhost:5903 via orange to peabody:5903
+So if I connect to the vnvserver at:</p>
+
+<pre><code>localhost :1 # port is 5901
+</code></pre>
+
+<p>I am forwarded to</p>
+
+<pre><code>peabody :3 # port is 5903
+</code></pre>
+
+<h3>More On Port Forwarding</h3>
+
+<p><a href="https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding">https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding</a></p>
+]]></content>
+  </entry>
+  
+</feed>

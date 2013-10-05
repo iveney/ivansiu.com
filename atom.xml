@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Zigang Xiao]]></title>
+  <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2013-10-05T15:40:09-05:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang Xiao (Ivan)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Network Flow: Ford-Fulkerson Method]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/10/03/network-flow-ford-fulkerson-method/"/>
+    <updated>2013-10-03T18:13:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/10/03/network-flow-ford-fulkerson-method</id>
+    <content type="html"><![CDATA[<p>Basic method (framework) is Ford-Fulkerson. It&rsquo;s called a &ldquo;method&rdquo; because it&rsquo;s
+general, there can be different implementation that yield different complexity.
+It looks like this:</p>
+
+<pre><code>Let F be an empty flow
+While there is augmenting path P from s to t
+    Augment F with P
+End while
+</code></pre>
+
+<p>The problem is how we find the augmenting path efficiently. A naive
+implementation is to use DFS to randomly pick a $s-t$ path and augment it.
+However, it has two problems:</p>
+
+<!-- more -->
+
+
+<ol>
+<li>The algorithm may not terminate, this happens when the capacity is
+irrational number (we can always scale rational to integer). When the
+capacity is irrational, the flow may fluctuate and never converge.</li>
+<li>Even when the capacity is integer, the algorithm may be too slow. The
+runtime depends on the size of flow $|F|$, which means if $|F|$ is large, it
+takes a long time to stop. To see this, note that DFS takes $|E|$ time, in the
+worst case, $F$ may grow by 1 at each iteration (since capacity is integer).
+Thus, the complexity is $O(|E||F|)$.</li>
+</ol>
+
+
+<p>To handle, this, Edmonds-Karp algorithm simply replaces the DFS as BFS, which
+finds a shortest each time (use unit length on edges in the residual graph).
+The major points are:</p>
+
+<ul>
+<li>The length shortest path is guaranteed to monotonically increase at each
+iteration. This can be proven by contradiction.</li>
+<li>The number of iterations are $O(|V||E|)$.
+
+<ul>
+<li>Each augmenting path (shortest path) can saturate one edge, and this edge
+will disappear from the residual graph. We call this edge &lsquo;critical&rsquo;.</li>
+<li>An edge $(u, v)$ becomes critical to the time when it next becomes
+critical, the distance to $u$ from the source increases by at least 2.</li>
+<li>Thus, the total number of critical edges during execution is $O(|V||E|)$.</li>
+<li>Each augmenting path contains at least one critical edge, thus $O(|V||E|)$.</li>
+</ul>
+</li>
+<li>The running time is thus $O(|V||E|^2)$ since each iteration we run a BFS
+which costs $O(|E|)$. This can be improved to $O(|V|^2|E|)$ with more
+efficient data structure (Dinic).</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installing a new car stereo]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/08/30/installing-a-new-car-stereo/"/>
+    <updated>2013-08-30T16:50:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/08/30/installing-a-new-car-stereo</id>
+    <content type="html"><![CDATA[<p>I did not realize until my car&rsquo;s radio&rsquo;s broken that, with less than a hundred bucks, you can buy a new Head Unit with nearly all functionality. Some note-worthy features include:</p>
+
+<ul>
+<li>iPod/iPhone support. Control the iphone directly from the panel.</li>
+<li>App support. This includes I-heart-radio, pandora, etc.</li>
+<li>Bluetooth Audio: stream music directly from a paired device. Even supports Pandora!</li>
+<li>Upgraded FM/AM support. Displays text from radio stations.</li>
+</ul>
+
+
+<p> <!-- more --></p>
+
+<p>Since I never used CD, I actually decided to buy a Digital Media Receiver: <a href="http://www.crutchfield.com/S-kT2jsjodqXG/p_105KDX250B/JVC-KD-X250BT.html">JVC KD-X250BT</a>. Since every car has a different wiring harness, we need to buy a compatible wiring harness. My car has a Double DIN design but the DMR is a single DIN one, so I actually need to buy a installation kit. The wiring setup is fun:</p>
+
+<p><img class="left" src="https://lh5.googleusercontent.com/-zOOgWaP5-W8/UiETJQhmUVI/AAAAAAAA6AM/jRAo6LHRlDU/s400/IMG_5341.jpg">
+<img class="right" src="https://lh4.googleusercontent.com/-n_QzAv5VgfQ/UiETKOBShuI/AAAAAAAA6AU/_F3-gN-NDio/s400/IMG_5342.jpg">
+<img class="left" src="https://lh5.googleusercontent.com/-p7tlzn7kbRc/UiETKzbUaCI/AAAAAAAA6Ac/37Dgx3cbUJM/s400/IMG_5344.jpg"></p>
+
+<p><img class="right" src="https://lh6.googleusercontent.com/-KJRCnhX64lg/UiETLxnhJKI/AAAAAAAA6Ak/qdqbEPUfAUI/s600/IMG_5345.JPG">
+<img src="https://lh5.googleusercontent.com/-h0tu6PrFzIk/UiETMWNKURI/AAAAAAAA6As/Zll5LFDkixM/s600/IMG_5346.JPG"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Roadtrip in America 2013]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/08/28/roadtrip-in-america-2013/"/>
+    <updated>2013-08-28T16:17:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/08/28/roadtrip-in-america-2013</id>
+    <content type="html"><![CDATA[<p>In this year, I did several crazy road trips, each trip has about 3k miles. Here&rsquo;re them.</p>
+
+<h1>Winter Trip</h1>
+
+<p>The first trip is a trip with my parents, where they flied to Chicago and I drove them to UIUC for a visit.
+We then flied to LA and rented a car to start our road trip. The whole trip was mainly in California, though
+we drove a bit east and visited Las Vegas and Grand canyon.</p>
+
+<p><img src="https://lh3.googleusercontent.com/-3XKmLgVuYw8/UlBRR-rXocI/AAAAAAAA6Qg/IIHynx2WdOQ/s800/Winter%2520trip.png"></p>
+
+<!-- more -->
+
+
+<h1>Route 66</h1>
+
+<p>I drove from Champaign all the way to Mountain View, with most of the part of <a href="https://en.wikipedia.org/wiki/U.S._Route_66">Route 66</a>.</p>
+
+<p><img src="https://lh5.googleusercontent.com/-fMUI4Zi2a68/UlBUCwGlIoI/AAAAAAAA6Q0/14KGATd9IHw/s800/Champaign%252C%2520IL%2520to%2520Mountain%2520View%252C%2520CA%2520-%2520Google%2520Maps.png"></p>
+
+<h1>I-80</h1>
+
+<p>After my internship in California, I drove back from Mountain View to Champaign.</p>
+
+<p><img src="https://lh6.googleusercontent.com/-QEnrQ49XzlQ/UlBQLfKAtTI/AAAAAAAA6QM/JBcEAGUNxiI/s800/Sunnyvale%252C%2520CA%2520to%2520Champaign%252C%2520IL%2520-%2520Google%2520Maps.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on SSH port forwarding]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/"/>
+    <updated>2013-05-09T21:43:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding</id>
+    <content type="html"><![CDATA[<h3>SSH Local Port Forwarding</h3>
+
+<p>Use <code>ssh -L</code> to bind a local port to a remote port</p>
+
+<h3>Dynamic Port Forwarding</h3>
+
+<p>Use <code>ssh -D</code> to dynamically bind a local port for forwarding. A SOCKS5 will be created. Example:</p>
+
+<pre><code>ssh -D 1080 user@remote-server.com
+</code></pre>
+
+<p>This binds to remote-server.com and uses local port 1080 for forwarding.</p>
+
+<p>Optionally use -C for data compression.</p>
+
+<p>The above command will log into the remote-server.com, use <code>-f</code> to put ssh to background, and use <code>-N</code> to not to execute a command. i.e.,</p>
+
+<pre><code>ssh -f -N -D 1080 user@remote-server.com
+</code></pre>
+
+<!-- more -->
+
+
+<h3>Usage Example</h3>
+
+<p>If the tool/app supports socks natively, use localhost:1080 in its setting. Example (curl)</p>
+
+<pre><code>curl --socks5 localhost http://icanhazip.com
+</code></pre>
+
+<p>If set up correctly, the IP returned will be the machine that is forwarding (remote-server.com)</p>
+
+<p>If not, use some socksify tool, for example, use dsocks in OSX:</p>
+
+<pre><code>dsocks.sh ssh another-server.com
+</code></pre>
+
+<p>You can see where you logon using <code>who | grep &lt;user-name&gt;</code>.</p>
+
+<h3>A Real World Scenario</h3>
+
+<p>Scenario: I want to connect to VNC server at peabody::5903, however, peabody only accepts connection from CSL LAN, while my Macbook is in IllinoisNet (wireless).</p>
+
+<p>Solution: use my office computer &lsquo;orange&rsquo; as a proxy. Use local port forwarding:</p>
+
+<pre><code>ssh -L 5903:peabody:5903 orange
+</code></pre>
+
+<p>This means, forward localhost:5903 via orange to peabody:5903
+So if I connect to the vnvserver at:</p>
+
+<pre><code>localhost :1 # port is 5901
+</code></pre>
+
+<p>I am forwarded to</p>
+
+<pre><code>peabody :3 # port is 5903
+</code></pre>
+
+<h3>More On Port Forwarding</h3>
+
+<p><a href="https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding">https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding</a></p>
+]]></content>
+  </entry>
+  
+</feed>
