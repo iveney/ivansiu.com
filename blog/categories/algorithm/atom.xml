@@ -4,7 +4,7 @@
   <title><![CDATA[Category: algorithm | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/algorithm/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2013-10-05T16:14:43-05:00</updated>
+  <updated>2013-10-07T18:09:55-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Network Flow: Push-relabel algorithm]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/10/07/network-flow-push-relabel-algorithm/"/>
+    <updated>2013-10-07T18:08:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/10/07/network-flow-push-relabel-algorithm</id>
+    <content type="html"><![CDATA[<p>According to CLRS: Many of the asymptotically fastest maximum-flow algorithms are push-relabel algorithms, and the fastest actual implementations of maximum-flow algorithms are based on the push-relabel method. Push-relabel methods also efficiently solve other flow problems, such as the minimum-cost flow problem.</p>
+
+<p>This algorithm has a very different flavor. The overall idea is to generate a &lsquo;preflow&rsquo; that may not satisfy the flow properties, and keep &lsquo;pushing&rsquo;) and &lsquo;elevating&rsquo; (relabelling) the vertices until we cannot do that. We then remove the &lsquo;excess&rsquo; from the preflow and obtain a valid flow, which is also a max flow. In particular, the in-flow may be larger than out-flow at a vertex. The amount of overflow is called &lsquo;excess&rsquo;.</p>
+
+<!-- more -->
+
+
+<p>The intuition behind is this: think of the vertices as platforms that have different height, where initially $S$ has $|V|$ height and all other vertices have 0 heights. The flow can only be pushed from higher vertices to lower vertices. Whenever we do not have any flow to push, we find some vertex  that has unsaturated out edge to its neighbor vertices to &lsquo;relabel&rsquo;, i.e., elevating its height such that we can continue to &lsquo;push&rsquo;. Thus, there are two operations &lsquo;push&rsquo; and &lsquo;relabel&rsquo; (and thus the name):</p>
+
+<pre><code>push: sending excess from u to v
+relabel: increase the height of u to min({v: neighbor of u})+1
+</code></pre>
+
+<p>The algorithm is as follows:</p>
+
+<pre><code>Initialize s.h = |V|, u.h = 0 for u != s. // u.h is the height of vertex u
+For all (s, u), push c(s, u). // saturate all outgoing edges from s.
+While there is vertex that can be pushed or relabel
+  do push or relabel
+End while
+return F.
+</code></pre>
+
+<p>The naive implementation has runtime $O(|V|^2 |E|)$, and can be improved to $O(|V|^3)$.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Network Flow: Ford-Fulkerson Method]]></title>
