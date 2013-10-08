@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2013-10-07T18:09:55-05:00</updated>
+  <updated>2013-10-07T19:15:32-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Graph Matching: Augmenting Path]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path/"/>
+    <updated>2013-10-07T18:47:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path</id>
+    <content type="html"><![CDATA[<h2>Introduction</h2>
+
+<p>Let $G=(V, E)$ be an undirected graph. Matching in $G$ is a subset of edges $M \subset E$ such that at most one edge is incident to each vertex in $V$.</p>
+
+<p>A vertex is <em>matched</em> is it is incident to some edge in $M$, otherwise it is called <em>free</em> or <em>exposed</em>.</p>
+
+<h2>Augmenting Paths</h2>
+
+<ul>
+<li>Alternating path: a path in which the edges belong alternatively to the matching and not to the matching</li>
+<li>Augmenting path: an alternating path that starts from and ends on exposed vertices</li>
+</ul>
+
+
+<p>Clearly, an augmenting path can be &lsquo;flipped&rsquo; to increase the matching size <strong>by one</strong>, i.e., just make free vertex matched and make matched vertex free in this path.</p>
+
+<p><strong>Berge&rsquo;s Theorem</strong>:  The matching M is maximum <strong>iff</strong> there is no augmenting path w.r.t. $M$. I personally think the proof is easy but quite powerful.</p>
+
+<p>Thus, we can immediately use the theorem to design an algorithm: find augmenting path iteratively until no more can be found. The problem is how we can find the augmenting path.</p>
+
+<!-- more -->
+
+
+<h2>Algorithm for bipartite graph</h2>
+
+<p>FIND-AUGMENTING-PATH($G=(V_1 \cup V_2, E), M$)</p>
+
+<ul>
+<li>$V&#8217;_1$ = a set of free vertices in $V_1$</li>
+<li>$V&#8217;_2$ = a set of free vertices in $V_2$</li>
+<li>Construct the directed graph $G_M = (V_1 \cup V_2, E_M)$
+
+<ul>
+<li>$E_M$ is a set of directed edges such that it includes all arcs from $V_1$ to $V_2$, and all matching arcs from $V_2$ to $V_1$</li>
+<li>i.e., $E_M = \{(v_1, v_2) : v_1, v_2 \in E \setminus M, v_1 \in V_1, v_2 \in V_2\} \cup \{(v_2, v_1) : v_1, v_2 \in M, v_1 \in V_1, v_2 \in V_2\}$</li>
+</ul>
+</li>
+<li>Find a simple path $p$ from $V&#8217;_1$ to $V&#8217;_2$ in $G_M$</li>
+</ul>
+
+
+<p>Note that the above graph $G_M$ is similar to the residual network in network flow. Apparently, $p$ starts from a free vertex in $V&#8217;_1$ and ends at another free vertex in $V&#8217;_2$, thus it is an augmenting path.</p>
+
+<h2>Complexity</h2>
+
+<p>The maximum size of matching is upper bounded by $|V|/2$, and each step, the matching size is incremented by one. Thus, the number of augmenting path found will be at most $O(|V|)$. At each step, it takes $O(|E|)$ to find a path. Thus the overall running time is $O(|V||E|)$.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Network Flow: Push-relabel algorithm]]></title>
