@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2013-10-07T19:15:32-05:00</updated>
+  <updated>2013-10-10T17:43:36-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,105 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Graph Matching: Hopcroft-Karp Algorithm]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/"/>
+    <updated>2013-10-08T15:59:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm</id>
+    <content type="html"><![CDATA[<h2>Overview</h2>
+
+<p>Hopcroft-Karp algorithm also utilizes the augmenting path. The difference
+between the <a href="http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path/">simple augmenting path algorithm</a> is, instead of searching
+augmenting path one by one, it looks for many paths in the same time. The paths found at each iteration are in fact <strong>vertex disjoint path</strong>.
+By doing so, the number of iterations can be cut down, since there cannot be too many disjoing paths.</p>
+
+<p>The major observation is that the length of augementing path grows at each step. Thus, if we keep finding a set of vertex disjoint augmenting paths,
+the algorithm is guaranteed to stop eventually and faster than finding the path one by one.</p>
+
+<!-- more -->
+
+
+<h2>Finding Maximal Set of Vertex Disjoint Paths</h2>
+
+<p>Let $G=(U \cup V, E)$ be the bipartite graph and $G_M$ be the directed graph w.r.t to matching $M$.
+The <strong>layered graph</strong> is contructed out of $G_M$, where the distance at a vertex $v$ is defined as the length of shortest path from some vertices in $U$.</p>
+
+<p>This can done by simply running a modified BFS on $G_M$: we start by enqueing all the free vertices $U&#8217;$ in $U$ and label them as 0 (distance),
+propagate and label until one or more free vertices in $V$ are reached. Let the label (distance) be $k$, and denote this graph as $L$.</p>
+
+<p>We can then run a modified DFS on $L$, starting from any of the vertices in $U&#8217;$. Whenever we reach a free vertices in $V$, we delete the path $p$
+from $L$, and repeat. It can be proven that all the paths found are shortest vertex disjoint paths of length $k$. This set of paths are the maximal set
+we are looking for.</p>
+
+<h2>Algorithm Outline</h2>
+
+<ul>
+<li>MAXIMAL-SET-OF-PATHS($G=(U \cup V, E), M$)
+
+<ul>
+<li>$P \gets \varnothing$</li>
+<li>$L \gets $ Run modified BFS on $G_M$</li>
+<li>$U&#8217; \gets $ free vertices in $U$</li>
+<li>for $u \in U&#8217;$
+
+<ul>
+<li>$p \gets $ PARTIAL-DFS($G, v, T$)</li>
+<li>if $p \neq \varnothing $
+
+<ul>
+<li>$P = P \cup p$</li>
+<li>Remove $p$ from $L$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>return $P$</li>
+</ul>
+</li>
+</ul>
+
+
+<hr />
+
+<ul>
+<li>HOPCROFT-KARP($G$)
+
+<ul>
+<li>$M \gets \varnothing$</li>
+<li>repeat
+
+<ul>
+<li>$P \gets $ MAXIMAL-SET-OF-PATHS($G, M$)</li>
+<li>if $P \neq \varnothing$
+
+<ul>
+<li>$M \gets M \oplus P$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>until $P = \varnothing$</li>
+<li>return $M$</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Analysis</h2>
+
+<p>It can be shown that the loop will be executed at most $O(\sqrt{|V|})$ times, and running the DFS and BFS requires $O(|E|)$ time.
+Thus the overall run time is $O(\sqrt{|V|} |E|)$.</p>
+
+<h2>Reference</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Hopcroft-Karp">Wikipedia article</a></li>
+<li><a href="http://www.dis.uniroma1.it/~sankowski/lecture2.pdf">Lecture note from Sapienza University of Rome</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Graph Matching: Augmenting Path]]></title>
