@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Notes on SSH port forwarding - Zigang Xiao</title>
+  <title>Understanding Page Components of Octopress: Using Foxslide as An Example - Zigang Xiao</title>
   <meta name="author" content="Zigang Xiao (Ivan)">
   <link rel="author" href="humans.txt">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -13,7 +13,7 @@
   
     
   
-  <meta name="description" content="SSH Local Port Forwarding Use ssh -L to bind a local port to a remote port Dynamic Port Forwarding Use ssh -D to dynamically bind a local port for &hellip;">
+  <meta name="description" content=" ">
   
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -21,20 +21,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/">
+  <link rel="canonical" href="http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">
   <link href="/favicon.png" rel="icon">
   <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Zigang Xiao" type="application/atom+xml">
   <meta name="og:type" content="website" />
   <meta name="og:site_name" content="Zigang Xiao" />
-  <meta name="og:title" content="Notes on SSH port forwarding" />
-  <meta name="og:description" content="SSH Local Port Forwarding Use ssh -L to bind a local port to a remote port Dynamic Port Forwarding Use ssh -D to dynamically bind a local port for &hellip;" />
-  <meta name="og:url" content="http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/"/>
-  <meta name="url" content="http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/">
+  <meta name="og:title" content="Understanding Page Components of Octopress: Using Foxslide as An Example" />
+  <meta name="og:description" content=" " />
+  <meta name="og:url" content="http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/"/>
+  <meta name="url" content="http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">
   
-  <meta name="subject" content="networkport forwardingproxysockssshtunneling"/>
-  <meta name="category" content="networkport forwardingproxysockssshtunneling"/>
+  <meta name="subject" content="octopress"/>
+  <meta name="category" content="octopress"/>
   
   <meta name="distribution" content="global">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -116,7 +116,7 @@ http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress
 
   <header>
     
-      <h1 class="entry-title">Notes on SSH Port Forwarding</h1>
+      <h1 class="entry-title">Understanding Page Components of Octopress: Using Foxslide as an Example</h1>
     
     
       <p class="meta">
@@ -141,13 +141,13 @@ http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress
   
 
 
-<time datetime="2013-05-09T21:43:00-05:00" pubdate data-updated="true">May 9<span>th</span>, 2013</time> - 
+<time datetime="2013-10-17T16:12:00-05:00" pubdate data-updated="true">Oct 17<span>th</span>, 2013</time> - 
         
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/network/'>network</a>, <a class='category' href='/blog/categories/port-forwarding/'>port forwarding</a>, <a class='category' href='/blog/categories/proxy/'>proxy</a>, <a class='category' href='/blog/categories/socks/'>socks</a>, <a class='category' href='/blog/categories/ssh/'>ssh</a>, <a class='category' href='/blog/categories/tunneling/'>tunneling</a>
+    <a class='category' href='/blog/categories/octopress/'>octopress</a>
   
 </span>
 
@@ -158,68 +158,7 @@ posted in
   </header>
 
 
-  <div class="entry-content"><h3>SSH Local Port Forwarding</h3>
-
-<p>Use <code>ssh -L</code> to bind a local port to a remote port</p>
-
-<h3>Dynamic Port Forwarding</h3>
-
-<p>Use <code>ssh -D</code> to dynamically bind a local port for forwarding. A SOCKS5 will be created. Example:</p>
-
-<pre><code>ssh -D 1080 user@remote-server.com
-</code></pre>
-
-<p>This binds to remote-server.com and uses local port 1080 for forwarding.</p>
-
-<p>Optionally use -C for data compression.</p>
-
-<p>The above command will log into the remote-server.com, use <code>-f</code> to put ssh to background, and use <code>-N</code> to not to execute a command. i.e.,</p>
-
-<pre><code>ssh -f -N -D 1080 user@remote-server.com
-</code></pre>
-
-<!-- more -->
-
-
-<h3>Usage Example</h3>
-
-<p>If the tool/app supports socks natively, use localhost:1080 in its setting. Example (curl)</p>
-
-<pre><code>curl --socks5 localhost http://icanhazip.com
-</code></pre>
-
-<p>If set up correctly, the IP returned will be the machine that is forwarding (remote-server.com)</p>
-
-<p>If not, use some socksify tool, for example, use dsocks in OSX:</p>
-
-<pre><code>dsocks.sh ssh another-server.com
-</code></pre>
-
-<p>You can see where you logon using <code>who | grep &lt;user-name&gt;</code>.</p>
-
-<h3>A Real World Scenario</h3>
-
-<p>Scenario: I want to connect to VNC server at peabody::5903, however, peabody only accepts connection from CSL LAN, while my Macbook is in IllinoisNet (wireless).</p>
-
-<p>Solution: use my office computer &lsquo;orange&rsquo; as a proxy. Use local port forwarding:</p>
-
-<pre><code>ssh -L 5903:peabody:5903 orange
-</code></pre>
-
-<p>This means, forward localhost:5903 via orange to peabody:5903
-So if I connect to the vnvserver at:</p>
-
-<pre><code>localhost :1 # port is 5901
-</code></pre>
-
-<p>I am forwarded to</p>
-
-<pre><code>peabody :3 # port is 5903
-</code></pre>
-
-<h3>More On Port Forwarding</h3>
-
-<p><a href="https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding">https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding</a></p>
+  <div class="entry-content"><p><img src="https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg"></p>
 </div>
 
 
@@ -246,13 +185,13 @@ So if I connect to the vnvserver at:</p>
   
 
 
-<time datetime="2013-05-09T21:43:00-05:00" pubdate data-updated="true">May 9<span>th</span>, 2013</time> - 
+<time datetime="2013-10-17T16:12:00-05:00" pubdate data-updated="true">Oct 17<span>th</span>, 2013</time> - 
       
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/network/'>network</a>, <a class='category' href='/blog/categories/port-forwarding/'>port forwarding</a>, <a class='category' href='/blog/categories/proxy/'>proxy</a>, <a class='category' href='/blog/categories/socks/'>socks</a>, <a class='category' href='/blog/categories/ssh/'>ssh</a>, <a class='category' href='/blog/categories/tunneling/'>tunneling</a>
+    <a class='category' href='/blog/categories/octopress/'>octopress</a>
   
 </span>
 
@@ -261,7 +200,7 @@ posted in
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/" data-via="iveney" data-counturl="http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/" data-via="iveney" data-counturl="http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/" >Tweet</a>
   
   
   
@@ -271,8 +210,8 @@ posted in
 
     
     
+      <a class="pull-left" href="/blog/2013/10/17/updating-octopress-theme/" title="Previous Post: Updating Octopress Theme">&laquo; Updating Octopress Theme</a>
     
-      <a class="pull-right" href="/blog/2013/08/28/roadtrips-in-us-2013/" title="Next Post: Roadtrip in America 2013">Roadtrip in America 2013 &raquo;</a>
     
   </footer>
 
@@ -385,8 +324,8 @@ posted in
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/';
-        var disqus_url = 'http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/';
+        var disqus_identifier = 'http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/';
+        var disqus_url = 'http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/';
         var disqus_script = 'embed.js';
       
     (function () {

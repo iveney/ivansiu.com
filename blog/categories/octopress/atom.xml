@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2013-10-17T14:58:24-05:00</updated>
+  <updated>2013-10-17T16:13:17-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Understanding Page Components of Octopress: Using Foxslide as An Example]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/"/>
+    <updated>2013-10-17T16:12:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example</id>
+    <content type="html"><![CDATA[<img src="https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg">
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Updating Octopress Theme]]></title>
@@ -25,6 +34,11 @@ rake update_source['theme name']
 ```
 
 Without the brackets, it defaults to `.themes/classic`.
+
+Caveats:
+
+- Do NOT use `rake install` to install the theme again, since it will overwrite the whole thing, including the files in `source/_include/custom` directory.
+- When working on the blog, anything outside of `source/_include/custom` should be considered the theme. Thus, do not make changes directly in `source`. Make changes to theme and update the theme to reflect the changes to the blog.
 ]]></content>
   </entry>
   

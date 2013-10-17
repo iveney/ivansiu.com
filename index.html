@@ -152,6 +152,64 @@ My hobbies include Guitar and Ballroom dancing. </p>
 
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as an Example</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-17T16:12:00-05:00" pubdate data-updated="true">Oct 17<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>octopress</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg"></p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/10/17/updating-octopress-theme/">Updating Octopress Theme</a></h1>
     
     
@@ -201,6 +259,14 @@ posted in
 
 
 <p>Without the brackets, it defaults to <code>.themes/classic</code>.</p>
+
+<p>Caveats:</p>
+
+<ul>
+<li>Do NOT use <code>rake install</code> to install the theme again, since it will overwrite the whole thing, including the files in <code>source/_include/custom</code> directory.</li>
+<li>When working on the blog, anything outside of <code>source/_include/custom</code> should be considered the theme. Thus, do not make changes directly in <code>source</code>. Make changes to theme and update the theme to reflect the changes to the blog.</li>
+</ul>
+
 </div>
   
   
@@ -427,81 +493,6 @@ posted in
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Network Flow: Ford-Fulkerson Method</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-03T18:13:00-05:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Basic method (framework) is Ford-Fulkerson. It&rsquo;s called a &ldquo;method&rdquo; because it&rsquo;s
-general, there can be different implementation that yield different complexity.
-It looks like this:</p>
-
-<pre><code>Let F be an empty flow
-While there is augmenting path P from s to t
-    Augment F with P
-End while
-</code></pre>
-
-<p>The problem is how we find the augmenting path efficiently. A naive
-implementation is to use DFS to randomly pick a $s-t$ path and augment it.
-However, it has two problems:</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -525,6 +516,10 @@ However, it has two problems:</p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
+        </li>
+      
+        <li>
           <a href="/blog/2013/10/17/updating-octopress-theme/">Updating Octopress Theme</a>
         </li>
       
@@ -540,10 +535,6 @@ However, it has two problems:</p>
           <a href="/blog/2013/10/07/network-flow-push-relabel-algorithm/">Network Flow: Push-relabel algorithm</a>
         </li>
       
-        <li>
-          <a href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Network Flow: Ford-Fulkerson Method</a>
-        </li>
-      
     </ul>
     <h2><a href="/blog/archives">archives</a></h2>
   </div>
@@ -552,13 +543,9 @@ However, it has two problems:</p>
 
   </div>
   <div class="span4">
-    
-<h2>twitter</h2>
-<a href="https://twitter.com/iveney" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @iveney</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="tweet" data-twitter-user="iveney">
-</div>
-
+    <h2>twitter</h2>
+<a class="twitter-timeline" href="https://twitter.com/iveney" data-widget-id="390943167203127296">Tweets by @iveney</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
   </div>
   <div class="span2">
