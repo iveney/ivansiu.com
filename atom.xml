@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2013-10-17T14:44:43-05:00</updated>
+  <updated>2013-10-17T14:58:24-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Updating Octopress Theme]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme/"/>
+    <updated>2013-10-17T14:54:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme</id>
+    <content type="html"><![CDATA[<p>The themes are stored in <code>.themes/&lt;name&gt;</code>, we can use the rake command to update either the source or style, as documented in the <a href="http://octopress.org/docs/updating/">office website</a>. However, the syntax should be more clear, i.e.,</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake update_source['theme name']</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Without the brackets, it defaults to <code>.themes/classic</code>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Graph Matching: Hopcroft-Karp Algorithm]]></title>

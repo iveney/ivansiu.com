@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: octopress | Zigang Xiao]]></title>
+  <link href="http://blog.ivansiu.com/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2013-10-17T14:58:24-05:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang Xiao (Ivan)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Updating Octopress Theme]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme/"/>
+    <updated>2013-10-17T14:54:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme</id>
+    <content type="html"><![CDATA[The themes are stored in `.themes/<name>`, we can use the rake command to update either the source or style, as documented in the [office website](http://octopress.org/docs/updating/). However, the syntax should be more clear, i.e.,
+
+```
+rake update_source['theme name']
+```
+
+Without the brackets, it defaults to `.themes/classic`.
+]]></content>
+  </entry>
+  
+</feed>
