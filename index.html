@@ -509,161 +509,13 @@ posted in
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/28/roadtrips-in-us-2013/">Roadtrip in America 2013</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-28T16:17:00-05:00" pubdate data-updated="true">Aug 28<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/travel/'>travel</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In this year, I did several crazy road trips, each trip has about 3k miles. Here&rsquo;re them.</p>
-
-<h1>Winter Trip</h1>
-
-<p>The first trip is a trip with my parents, where they flied to Chicago and I drove them to UIUC for a visit.
-We then flied to LA and rented a car to start our road trip. The whole trip was mainly in California, though
-we drove a bit east and visited Las Vegas and Grand canyon.</p>
-
-<p><img src="https://lh3.googleusercontent.com/-3XKmLgVuYw8/UlBRR-rXocI/AAAAAAAA6Qg/IIHynx2WdOQ/s800/Winter%2520trip.png"></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/08/28/roadtrips-in-us-2013/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/09/notes-on-ssh-port-forwarding/">Notes on SSH Port Forwarding</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-09T21:43:00-05:00" pubdate data-updated="true">May 9<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/network/'>network</a>, <a class='category' href='/blog/categories/port-forwarding/'>port forwarding</a>, <a class='category' href='/blog/categories/proxy/'>proxy</a>, <a class='category' href='/blog/categories/socks/'>socks</a>, <a class='category' href='/blog/categories/ssh/'>ssh</a>, <a class='category' href='/blog/categories/tunneling/'>tunneling</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>SSH Local Port Forwarding</h3>
-
-<p>Use <code>ssh -L</code> to bind a local port to a remote port</p>
-
-<h3>Dynamic Port Forwarding</h3>
-
-<p>Use <code>ssh -D</code> to dynamically bind a local port for forwarding. A SOCKS5 will be created. Example:</p>
-
-<pre><code>ssh -D 1080 user@remote-server.com
-</code></pre>
-
-<p>This binds to remote-server.com and uses local port 1080 for forwarding.</p>
-
-<p>Optionally use -C for data compression.</p>
-
-<p>The above command will log into the remote-server.com, use <code>-f</code> to put ssh to background, and use <code>-N</code> to not to execute a command. i.e.,</p>
-
-<pre><code>ssh -f -N -D 1080 user@remote-server.com
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/05/09/notes-on-ssh-port-forwarding/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
+          
+            <li class="previous">
+              <a href="/blog/page/2/">&larr; Older</a>
+            </li>
           
           
         </ul>
@@ -786,9 +638,9 @@ posted in
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
+  if (d.getElementById(id)) {return;}
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=327649807245065";
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 

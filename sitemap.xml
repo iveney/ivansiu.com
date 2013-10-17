@@ -2,38 +2,42 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/</loc>
-        <lastmod>2013-08-28T12:13:47-05:00</lastmod>
+        <lastmod>2013-10-17T14:44:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/08/28/roadtrips-in-us-2013/</loc>
-        <lastmod>2013-10-05T13:09:35-05:00</lastmod>
+        <lastmod>2013-10-17T14:44:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/08/30/installing-a-new-car-stereo/</loc>
-        <lastmod>2013-08-30T17:07:17-05:00</lastmod>
+        <lastmod>2013-10-17T14:44:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/10/03/network-flow-ford-fulkerson-method/</loc>
-        <lastmod>2013-10-05T13:10:13-05:00</lastmod>
+        <lastmod>2013-10-17T14:44:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/10/07/network-flow-push-relabel-algorithm/</loc>
-        <lastmod>2013-10-07T18:09:15-05:00</lastmod>
+        <lastmod>2013-10-17T14:44:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path/</loc>
-        <lastmod>2013-10-11T18:01:46-05:00</lastmod>
+        <lastmod>2013-10-17T14:44:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/</loc>
-        <lastmod>2013-10-10T17:43:11-05:00</lastmod>
+        <lastmod>2013-10-17T14:44:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/archives/</loc>
-        <lastmod>2013-10-11T18:01:46-05:00</lastmod>
+        <lastmod>2013-10-17T14:44:43-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.ivansiu.com/blog/categories/</loc>
+        <lastmod>2013-10-17T14:44:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/</loc>
-        <lastmod>2013-10-11T18:01:46-05:00</lastmod>
+        <lastmod>2013-10-17T14:44:43-05:00</lastmod>
     </url>
 </urlset>
