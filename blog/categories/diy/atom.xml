@@ -4,7 +4,7 @@
   <title><![CDATA[Category: DIY | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/diy/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2013-10-17T17:35:45-05:00</updated>
+  <updated>2013-11-08T22:40:41-06:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Saving $80 by Fixing MagSafe by Yourself]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/"/>
+    <updated>2013-11-08T22:06:00-06:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself</id>
+    <content type="html"><![CDATA[After four years of use, the wire on my MagSafe finally fray out. After searching a bit, I found that a new one costs $80!!
+My old memories came back: almost all accessories by Apple are rip-offs. See how low the ratings are:
+
+<img src="https://lh3.googleusercontent.com/-HbwCGT5IRfg/Un22iAWR3FI/AAAAAAAA6S8/kb8A295sneA/s800/Apple%252085W%2520MagSafe%2520Power%2520Adapter%2520%2528for%252015-%2520and%252017-inch%2520MacBook%2520Pro%2529%2520-%2520Apple%2520Store%2520%2528U.S.%2529.png">
+
+I know that this can be easily fixed if you know a little soldering and have courage: the adapter is working perfectly fine, it is just the wires.
+I decided to DIY. There are several pretty good articles on how to [open the MagSafe][open] and how to [solder it][solder].
+
+<!-- more -->
+
+The following are my workflows. The first step is to open it. You can see there are two wires, in fact in my case only the black wire is broken.
+I don't even need to solder.
+
+<img class="left" src="https://lh4.googleusercontent.com/-3YuxG4NzMls/Un23QYqlRvI/AAAAAAAA6TI/OHnqW_Mz3_M/s600/IMG_5533.jpg">
+<img class="right" src="https://lh6.googleusercontent.com/-4Vwfhl0a7U0/Un23UWD3pII/AAAAAAAA6TY/32jW30GJiHo/s600/IMG_5534.jpg">
+
+Okay, go ahead and twist them. Use insulating tapes to wrap them tight.
+
+<img src="https://lh4.googleusercontent.com/-rInGpQS3MPA/Un23Utgk5pI/AAAAAAAA6Tc/XbpbDy2m4yo/s600/IMG_5535.jpg">
+
+Finally, reassemble it and use more tapes, since the outside layer is cut out. More importantly, strong taping help to protect another fray.
+
+<img src="https://lh4.googleusercontent.com/-GNyM8TlkwIA/Un23ZUE9GBI/AAAAAAAA6Tk/VUI9YF7zK_Y/s600/IMG_5536.jpg">
+
+It looks a bit odd though, since the Apple product is supposed to be WHITE.
+Here's how I fix it. I don't have good tools available, so I just use whatever
+I have. I recalled that I have some Google stickers, and I just cut the white
+pieces out.
+
+<img src="https://lh5.googleusercontent.com/-0-qhNqp4ClA/Un23fZLy24I/AAAAAAAA6T4/7MTAsUReDLw/s600/IMG_5537.JPG">
+
+After more taping, it looks like better now. Maybe I should consider wrapping better things outside later.
+
+<img src="https://lh3.googleusercontent.com/-Ok8Zop2yeFY/Un23fsZ_1VI/AAAAAAAA6UU/njomi434w70/s600/IMG_5538.jpg">
+
+Hooray! Now it is working again! In fact, I am amazed that this piece of gadget has been working for four years, daily. It is still working just fine :)
+
+[open]: http://www.instructables.com/id/How-to-open-and-replace-the-MagSafe-cord-on-an-App/?ALLSTEPS
+[solder]: http://www.instructables.com/id/MacBook-Mag-Safe-Charger-Budget-Repair-Disas/
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Installing a new car stereo]]></title>
