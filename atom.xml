@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2013-11-08T22:40:41-06:00</updated>
+  <updated>2013-12-04T01:21:49-06:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,211 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[LaTeX Tips and Tricks Collection]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection/"/>
+    <updated>2013-12-03T15:18:00-06:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection</id>
+    <content type="html"><![CDATA[<p>This post summarizes some common useful tips in LaTeX editing.</p>
+
+<!-- more -->
+
+
+<h2>Figures</h2>
+
+<ul>
+<li><a href="http://www.howtotex.com/tips-tricks/vertical-alignment-of-subfigures/">Horizontal alignment of subfigures</a></li>
+<li><code>subfloat</code> in <code>subfig</code></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="c">% Style: Figure 1(a)</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="na">[subrefformat=parens,labelformat=parens]</span><span class="nb">{</span>subfig<span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">\subfloat</span><span class="na">[]</span><span class="nb">{</span>
+</span><span class='line'><span class="k">\includegraphics</span><span class="na">[height=\textheight]</span><span class="nb">{</span>example<span class="nb">}</span>
+</span><span class='line'><span class="k">\label</span><span class="nb">{</span>fig:example<span class="nb">}</span>
+</span><span class='line'><span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">\subref*</span><span class="nb">{</span>fig:example<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Bibliography</h2>
+
+<ul>
+<li><a href="http://tex.stackexchange.com/questions/12686/how-do-i-run-bibtex-after-using-the-output-directory-flag-with-pdflatex-when-f">How do I run bibtex after using the -output-directory flag with pdflatex, when files are included from subdirectories?</a></li>
+<li>biblatex simple usage</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="c">% unsrt, abbrev, last option means use unsrt in \cite[xxx,yyy,ccc]</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="na">[sorting=none,firstinits=true,sortcites=true]</span><span class="nb">{</span>biblatex<span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% add this in preamble</span>
+</span><span class='line'><span class="k">\bibliography</span><span class="nb">{</span>dsa-verification<span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% at the end</span>
+</span><span class='line'><span class="k">\printbibliography</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><a href="#bibitemsep">Item spacing</a></li>
+</ul>
+
+
+<h2>Graphics</h2>
+
+<ul>
+<li>Graphics path</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\graphicspath</span><span class="nb"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Use other file extensions:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\DeclareGraphicsExtensions</span><span class="nb">{</span>.pdf, .jpg, .png<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Table and Tabular</h2>
+
+<ul>
+<li>threeparttable: Use footnote in tabular</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="c">% inside tabular:</span>
+</span><span class='line'><span class="k">\tnote</span><span class="nb">{</span><span class="s">$</span><span class="nv">\dagger</span><span class="s">$</span><span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% after tabular</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>tablenotes<span class="nb">}</span>[para] <span class="c">% do not break line between items</span>
+</span><span class='line'><span class="k">\item</span> [<span class="s">$</span><span class="nv">\dagger</span><span class="s">$</span>] A foot note. <span class="c">% this reference to the item</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>tablenotes<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Theorem, Definition</h2>
+
+<ul>
+<li>New definition/theorem</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\newtheorem</span><span class="nb">{</span>definition<span class="nb">}{</span>Definition<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Useful packages:
+
+<ul>
+<li>ntheorem</li>
+<li>amsthm</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Packages</h2>
+
+<ul>
+<li>csvsimple: can automatically read csv and create tabular.</li>
+<li>algpseudocode: the most updated algorithm / code environment, need to sit inside
+with <code>algorithm</code> package.</li>
+<li>biblatex: provides better control for Bibliography.</li>
+<li>multirow: provides <code>\multirow</code> and <code>\multicolumn</code>.</li>
+<li>url: provides <code>\url</code>.</li>
+<li>xspace: prevent a command eating space.</li>
+<li>flushend: provides <code>\flushend</code>, balance two columns.</li>
+</ul>
+
+
+<h2>Controlling space</h2>
+
+<ul>
+<li>reduce space between float and text</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\textfloatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
+</span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\floatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
+</span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\intextsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>reduce bib item separation in biblatex<a name="bibitemsep"></a></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\setlength\bibitemsep</span><span class="nb">{</span>0.5<span class="k">\itemsep</span><span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>geometry: control the margins at top, bottom, left and right</li>
+<li>enumitem: control the spacing related to <code>enumerate</code> and <code>itemize</code>.</li>
+</ul>
+
+
+<h2>Commands and tools:</h2>
+
+<ul>
+<li>latexmk: automatically compile multiple times to resolve reference.</li>
+<li>biber: replacement for bibtex for <code>biblatex</code></li>
+<li>texdoc: use <code>texdoc &lt;package&gt;</code> to search for a manual.</li>
+</ul>
+
+
+<h2>IEEE</h2>
+
+<ul>
+<li>proof: use <code>\IEEEproof</code></li>
+<li>multiple equations: use <code>\IEEEeqnarray</code> or <code>array</code>.</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Saving $80 by Fixing MagSafe by Yourself]]></title>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: LaTeX | Zigang Xiao]]></title>
+  <link href="http://blog.ivansiu.com/blog/categories/latex/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2013-12-04T01:21:49-06:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang Xiao (Ivan)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[LaTeX Tips and Tricks Collection]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection/"/>
+    <updated>2013-12-03T15:18:00-06:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection</id>
+    <content type="html"><![CDATA[This post summarizes some common useful tips in LaTeX editing.
+
+<!-- more -->
+
+## Figures
+
+- [Horizontal alignment of subfigures](http://www.howtotex.com/tips-tricks/vertical-alignment-of-subfigures/)
+- `subfloat` in `subfig`
+``` latex
+% Style: Figure 1(a)
+\usepackage[subrefformat=parens,labelformat=parens]{subfig}
+
+\subfloat[]{
+\includegraphics[height=\textheight]{example}
+\label{fig:example}
+}
+
+\subref*{fig:example}
+```
+
+## Bibliography
+
+- [How do I run bibtex after using the -output-directory flag with pdflatex, when files are included from subdirectories?](http://tex.stackexchange.com/questions/12686/how-do-i-run-bibtex-after-using-the-output-directory-flag-with-pdflatex-when-f)
+- biblatex simple usage
+``` latex
+% unsrt, abbrev, last option means use unsrt in \cite[xxx,yyy,ccc]
+\usepackage[sorting=none,firstinits=true,sortcites=true]{biblatex}
+
+% add this in preamble
+\bibliography{dsa-verification}
+
+% at the end
+\printbibliography
+```
+- [Item spacing](#bibitemsep)
+
+## Graphics
+- Graphics path
+``` latex
+\graphicspath
+```
+- Use other file extensions:
+``` latex
+\DeclareGraphicsExtensions{.pdf, .jpg, .png}
+```
+
+## Table and Tabular
+- threeparttable: Use footnote in tabular
+``` latex
+% inside tabular:
+\tnote{$\dagger$}
+
+% after tabular
+\begin{tablenotes}[para] % do not break line between items
+\item [$\dagger$] A foot note. % this reference to the item
+\end{tablenotes}
+```
+
+## Theorem, Definition
+- New definition/theorem
+``` latex
+\newtheorem{definition}{Definition}
+```
+- Useful packages:
+    - ntheorem
+    - amsthm
+
+## Packages
+- csvsimple: can automatically read csv and create tabular.
+- algpseudocode: the most updated algorithm / code environment, need to sit inside
+  with `algorithm` package.
+- biblatex: provides better control for Bibliography.
+- multirow: provides `\multirow` and `\multicolumn`.
+- url: provides `\url`.
+- xspace: prevent a command eating space.
+- flushend: provides `\flushend`, balance two columns.
+
+## Controlling space
+- reduce space between float and text
+``` latex
+\setlength{\textfloatsep}{10pt plus 1.0pt minus 2.0pt}
+\setlength{\floatsep}{10pt plus 1.0pt minus 2.0pt}
+\setlength{\intextsep}{10pt plus 1.0pt minus 2.0pt}
+```
+- reduce bib item separation in biblatex<a name="bibitemsep"></a>
+``` latex
+\setlength\bibitemsep{0.5\itemsep}
+```
+- geometry: control the margins at top, bottom, left and right
+- enumitem: control the spacing related to `enumerate` and `itemize`.
+
+## Commands and tools:
+- latexmk: automatically compile multiple times to resolve reference.
+- biber: replacement for bibtex for `biblatex`
+- texdoc: use `texdoc <package>` to search for a manual.
+
+## IEEE
+- proof: use `\IEEEproof`
+- multiple equations: use `\IEEEeqnarray` or `array`.]]></content>
+  </entry>
+  
+</feed>
