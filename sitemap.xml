@@ -46,11 +46,17 @@
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection/</loc>
-        <lastmod>2013-12-04T01:21:49-06:00</lastmod>
+        <lastmod>2013-12-09T20:06:50-06:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/
+        </loc>
+        <lastmod>2013-12-05T02:11:35-06:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/archives/</loc>
-        <lastmod>2013-12-04T01:21:49-06:00</lastmod>
+        <lastmod>2013-12-09T20:06:50-06:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/categories/</loc>
@@ -58,6 +64,6 @@
     </url>
     <url>
         <loc>http://blog.ivansiu.com/</loc>
-        <lastmod>2013-12-04T01:21:49-06:00</lastmod>
+        <lastmod>2013-12-09T20:06:50-06:00</lastmod>
     </url>
 </urlset>

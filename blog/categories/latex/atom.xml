@@ -4,7 +4,7 @@
   <title><![CDATA[Category: LaTeX | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/latex/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2013-12-04T01:21:49-06:00</updated>
+  <updated>2013-12-09T20:06:51-06:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -85,6 +85,8 @@
     - ntheorem
     - amsthm
 
+## Fonts
+
 ## Packages
 - csvsimple: can automatically read csv and create tabular.
 - algpseudocode: the most updated algorithm / code environment, need to sit inside
@@ -109,6 +111,10 @@
 - geometry: control the margins at top, bottom, left and right
 - enumitem: control the spacing related to `enumerate` and `itemize`.
 
+- [LaTeX Tips n Tricks for Conference Papers](http://gurmeet.net/computer-science/latex-tips-n-tricks-for-conference-papers/)
+- [Latex: Squeezing the Vertical White Space](http://www.terminally-incoherent.com/blog/2007/09/19/latex-squeezing-the-vertical-white-space/)
+- [Squeezing Space in LaTeX](http://www.eng.cam.ac.uk/help/tpl/textprocessing/squeeze.html)
+
 ## Commands and tools:
 - latexmk: automatically compile multiple times to resolve reference.
 - biber: replacement for bibtex for `biblatex`
@@ -116,7 +122,11 @@
 
 ## IEEE
 - proof: use `\IEEEproof`
-- multiple equations: use `\IEEEeqnarray` or `array`.]]></content>
+- multiple equations: use `\IEEEeqnarray` or `array`.
+
+## Uncategorized
+- [Where do I place my own .sty files, to make them available to all my .tex files?](http://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-files-to-make-them-available-to-all-my-tex-files)
+- [Creating a central bibliography](http://tex.stackexchange.com/questions/38287/creating-a-central-bibliography)]]></content>
   </entry>
   
 </feed>

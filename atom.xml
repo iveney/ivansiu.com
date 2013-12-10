@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2013-12-04T01:21:49-06:00</updated>
+  <updated>2013-12-09T20:06:51-06:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Fix (ugly) Safari 7.0 not using local pac file]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/"/>
+    <updated>2013-12-05T02:03:43-06:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file</id>
+    <content type="html"><![CDATA[<p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all.
+Turns out because of sandboxing, it will not allow reading file from local.
+A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
+
+<p>However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apachectl start</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Also, place the pac file under <code>/Library/WebServer/Documents</code>, which is the default Document Root of Apache.</p>
+
+<p>Tom Fischer proposed <a href="https://discussions.apple.com/thread/3202499?start=30&amp;tstart=0">another way</a> to get around, however I don&rsquo;t think it a good idea to mess around the system files.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[LaTeX Tips and Tricks Collection]]></title>
@@ -153,6 +174,8 @@
 </ul>
 
 
+<h2>Fonts</h2>
+
 <h2>Packages</h2>
 
 <ul>
@@ -195,7 +218,10 @@ with <code>algorithm</code> package.</li>
 
 <ul>
 <li>geometry: control the margins at top, bottom, left and right</li>
-<li>enumitem: control the spacing related to <code>enumerate</code> and <code>itemize</code>.</li>
+<li><p>enumitem: control the spacing related to <code>enumerate</code> and <code>itemize</code>.</p></li>
+<li><p><a href="http://gurmeet.net/computer-science/latex-tips-n-tricks-for-conference-papers/">LaTeX Tips n Tricks for Conference Papers</a></p></li>
+<li><a href="http://www.terminally-incoherent.com/blog/2007/09/19/latex-squeezing-the-vertical-white-space/">Latex: Squeezing the Vertical White Space</a></li>
+<li><a href="http://www.eng.cam.ac.uk/help/tpl/textprocessing/squeeze.html">Squeezing Space in LaTeX</a></li>
 </ul>
 
 
@@ -213,6 +239,14 @@ with <code>algorithm</code> package.</li>
 <ul>
 <li>proof: use <code>\IEEEproof</code></li>
 <li>multiple equations: use <code>\IEEEeqnarray</code> or <code>array</code>.</li>
+</ul>
+
+
+<h2>Uncategorized</h2>
+
+<ul>
+<li><a href="http://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-files-to-make-them-available-to-all-my-tex-files">Where do I place my own .sty files, to make them available to all my .tex files?</a></li>
+<li><a href="http://tex.stackexchange.com/questions/38287/creating-a-central-bibliography">Creating a central bibliography</a></li>
 </ul>
 
 ]]></content>

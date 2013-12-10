@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: osx, | Zigang Xiao]]></title>
+  <link href="http://blog.ivansiu.com/blog/categories/osx/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2013-12-09T20:06:51-06:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang Xiao (Ivan)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fix (ugly) Safari 7.0 not using local pac file]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/"/>
+    <updated>2013-12-05T02:03:43-06:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file</id>
+    <content type="html"><![CDATA[I found that Safari in Mavericks is not using local `proxy.pac` at all.
+Turns out because of sandboxing, it will not allow reading file from local.
+A traditional solution is to turn on **Web Sharing**, and thus use HTTP to read the pac file such as `http://localhost/proxy.pac`.
+
+However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:
+
+```
+sudo apachectl start
+```
+
+Also, place the pac file under `/Library/WebServer/Documents`, which is the default Document Root of Apache.
+
+Tom Fischer proposed [another way](https://discussions.apple.com/thread/3202499?start=30&tstart=0) to get around, however I don't think it a good idea to mess around the system files.]]></content>
+  </entry>
+  
+</feed>

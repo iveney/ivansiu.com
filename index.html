@@ -112,6 +112,10 @@ My hobbies include Guitar and Ballroom dancing. </p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">Fix (ugly) Safari 7.0 not using local pac file</a>
+        </li>
+      
+        <li>
           <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
         </li>
       
@@ -125,10 +129,6 @@ My hobbies include Guitar and Ballroom dancing. </p>
       
         <li>
           <a href="/blog/2013/10/17/updating-octopress-theme/">Updating Octopress Theme</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/">Graph Matching: Hopcroft-Karp Algorithm</a>
         </li>
       
     </ul>
@@ -171,6 +171,76 @@ My hobbies include Guitar and Ballroom dancing. </p>
   <div class="container">
     <div class="row" id="post-container">
     
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">Fix (Ugly) Safari 7.0 Not Using Local Pac File</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-05T02:03:43-06:00" pubdate data-updated="true">Dec 5<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/networking/'>networking</a>, <a class='category' href='/blog/categories/osx/'>osx,</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all.
+Turns out because of sandboxing, it will not allow reading file from local.
+A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
+
+<p>However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apachectl start</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Also, place the pac file under <code>/Library/WebServer/Documents</code>, which is the default Document Root of Apache.</p>
+
+<p>Tom Fischer proposed <a href="https://discussions.apple.com/thread/3202499?start=30&amp;tstart=0">another way</a> to get around, however I don&rsquo;t think it a good idea to mess around the system files.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
     
     
       <article class="span4">
@@ -505,87 +575,6 @@ the algorithm is guaranteed to stop eventually and faster than finding the path 
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/07/graph-matching-augmenting-path/">Graph Matching: Augmenting Path</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-07T18:47:00-05:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Introduction</h2>
-
-<p>Let $G=(V, E)$ be an undirected graph. Matching in $G$ is a subset of edges $M \subseteq E$ such that at most one edge is incident to each vertex in $V$.</p>
-
-<p>A vertex is <em>matched</em> is it is incident to some edge in $M$, otherwise it is called <em>free</em> or <em>exposed</em>.</p>
-
-<h2>Augmenting Paths</h2>
-
-<ul>
-<li>Alternating path: a path in which the edges belong alternatively to the matching and not to the matching</li>
-<li>Augmenting path: an alternating path that starts from and ends on exposed vertices</li>
-</ul>
-
-
-<p>Clearly, an augmenting path can be &lsquo;flipped&rsquo; to increase the matching size <strong>by one</strong>, i.e., just make free vertex matched and make matched vertex free in this path.</p>
-
-<p><strong>Berge&rsquo;s Theorem</strong>:  The matching M is maximum <strong>iff</strong> there is no augmenting path w.r.t. $M$. I personally think the proof is easy but quite powerful.</p>
-
-<p>Thus, we can immediately use the theorem to design an algorithm: find augmenting path iteratively until no more can be found. The problem is how we can find the augmenting path.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/10/07/graph-matching-augmenting-path/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -610,6 +599,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">Fix (ugly) Safari 7.0 not using local pac file</a>
+        </li>
+      
+        <li>
           <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
         </li>
       
@@ -623,10 +616,6 @@ posted in
       
         <li>
           <a href="/blog/2013/10/17/updating-octopress-theme/">Updating Octopress Theme</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/">Graph Matching: Hopcroft-Karp Algorithm</a>
         </li>
       
     </ul>
