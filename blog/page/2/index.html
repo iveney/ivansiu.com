@@ -112,6 +112,10 @@ My hobbies include Guitar and Ballroom dancing. </p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
+        </li>
+      
+        <li>
           <a href="/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">Fix (ugly) Safari 7.0 not using local pac file</a>
         </li>
       
@@ -125,10 +129,6 @@ My hobbies include Guitar and Ballroom dancing. </p>
       
         <li>
           <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/17/updating-octopress-theme/">Updating Octopress Theme</a>
         </li>
       
     </ul>
@@ -171,6 +171,77 @@ My hobbies include Guitar and Ballroom dancing. </p>
   <div class="container">
     <div class="row" id="post-container">
     
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/">Graph Matching: Hopcroft-Karp Algorithm</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-08T15:59:00-05:00" pubdate data-updated="true">Oct 8<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Overview</h2>
+
+<p>Hopcroft-Karp algorithm also utilizes the augmenting path. The difference
+between the <a href="/blog/2013/10/07/graph-matching-augmenting-path/">simple augmenting path algorithm</a> is, instead of searching
+augmenting path one by one, it looks for many paths in the same time. The paths found at each iteration are in fact <strong>vertex disjoint path</strong>.
+By doing so, the number of iterations can be cut down, since there cannot be too many disjoing paths.</p>
+
+<p>The major observation is that the length of augementing path grows at each step. Thus, if we keep finding a set of vertex disjoint augmenting paths,
+the algorithm is guaranteed to stop eventually and faster than finding the path one by one.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
     
     
       <article class="span4">
@@ -535,90 +606,13 @@ we drove a bit east and visited Las Vegas and Grand canyon.</p>
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/09/notes-on-ssh-port-forwarding/">Notes on SSH Port Forwarding</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-09T21:43:00-05:00" pubdate data-updated="true">May 9<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/network/'>network</a>, <a class='category' href='/blog/categories/port-forwarding/'>port forwarding</a>, <a class='category' href='/blog/categories/proxy/'>proxy</a>, <a class='category' href='/blog/categories/socks/'>socks</a>, <a class='category' href='/blog/categories/ssh/'>ssh</a>, <a class='category' href='/blog/categories/tunneling/'>tunneling</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>SSH Local Port Forwarding</h3>
-
-<p>Use <code>ssh -L</code> to bind a local port to a remote port</p>
-
-<h3>Dynamic Port Forwarding</h3>
-
-<p>Use <code>ssh -D</code> to dynamically bind a local port for forwarding. A SOCKS5 will be created. Example:</p>
-
-<pre><code>ssh -D 1080 user@remote-server.com
-</code></pre>
-
-<p>This binds to remote-server.com and uses local port 1080 for forwarding.</p>
-
-<p>Optionally use -C for data compression.</p>
-
-<p>The above command will log into the remote-server.com, use <code>-f</code> to put ssh to background, and use <code>-N</code> to not to execute a command. i.e.,</p>
-
-<pre><code>ssh -f -N -D 1080 user@remote-server.com
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/05/09/notes-on-ssh-port-forwarding/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
+          
+            <li class="previous">
+              <a href="/blog/page/3/">&larr; Older</a>
+            </li>
           
           
             <li class="next">
@@ -640,6 +634,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
+        </li>
+      
+        <li>
           <a href="/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">Fix (ugly) Safari 7.0 not using local pac file</a>
         </li>
       
@@ -653,10 +651,6 @@ posted in
       
         <li>
           <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/17/updating-octopress-theme/">Updating Octopress Theme</a>
         </li>
       
     </ul>
@@ -710,7 +704,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Zigang Xiao</a>
-  - Copyright &copy; 2013 - Zigang Xiao (Ivan)
+  - Copyright &copy; 2014 - Zigang Xiao (Ivan)
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>
