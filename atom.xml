@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Zigang Xiao]]></title>
+  <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2014-05-01T17:44:53-05:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang Xiao (Ivan)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Send ctrl-a in tmux after rebinding to it]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/"/>
+    <updated>2014-05-01T17:14:46-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it</id>
+    <content type="html"><![CDATA[<figure>
+<img src="http://dl.dropboxusercontent.com/s/7l4vneadlcip8wd/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png" />
+</figure>
+<p>While <code>tmux</code> provides much better functionality than <code>screen</code>, most of us that work with tmux have been using <code>screen</code> for a long time, and it is more comfortable for us to use <code>ctrl-a</code> than the default <code>ctrl-b</code>, which is finger-strechy. Thus the first thing I will do after installing <code>tmux</code> is to rebind the prefix to <code>ctrl-a</code>. That gives us the most handy way of swapping last two windows by typing <code>ctrl-a ctrl-a</code>.</p>
+<!-- more -->
+
+<p>However, this comes for a price. That is, in a shell environment that is integrated with <code>readline</code>, <code>ctrl-a</code> is used to jump the begining of line. Now that it is mapped as prefix, we can no longer do that.</p>
+<p>Surprisingly, the solution is pretty simple. Just use <code>ctrl-a a</code> to send the prefix itself, and use <code>ctrl-a ctrl-a</code> to go to the last window. Specifically, add these two lines in <code>~/.tmux.conf</code>:</p>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span>~/.tmux.conf </span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">bind </span>a send-prefix
+</span><span class='line'><span class="nb">bind</span>-key C-a last-window
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+<p><a href="http://stackoverflow.com/questions/11557076/if-i-set-key-bind-of-c-b-to-c-a-in-tmux-how-can-i-move-the-cursor-to-the-beginni#comment15297769_11561128">via</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Source-highlight for matlab/octave]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/"/>
+    <updated>2014-05-01T01:59:40-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave</id>
+    <content type="html"><![CDATA[<figure>
+<img src="https://dl.dropboxusercontent.com/s/jqqno07xizfspkt/2014-05-01-source-highlight-for-matlab-slash-octave.png" />
+</figure>
+<p>I recently worked with Matlab a lot. When in console, sometimes I want to use <code>less</code> to quickly examine the file content, and I have already <a href="http://superuser.com/a/71593">set it up</a> such that it uses <a href="http://www.gnu.org/software/src-highlite/">source-highlight</a> to output colorful escape sequence to the console. However, source-highlight does not come with a syntax support for Matlab by default. Luckily, this <a href="http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html">post</a> (in Chinese) provides a solution.</p>
+<!-- more -->
+
+<p>First of all, install source-highlight using homebrew.</p>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install source-highlight</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+<p>Note that source-highlight depends on boost, and as of the date of this post, brew provides a precompiled library (bottle) for boost. However, the python support is compiled against the system python, so if you installed a custom one (say installed via homebrew) and use it by default, brew will compile the boost from source instead, which takes an extremely long time. To prevent this, we need to unlink it first, and link it back afterwards. That is,</p>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew unlink python
+</span><span class='line'>brew link python    <span class="c"># after installation</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+<p>Go to the following folder and create two files,</p>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> <span class="sb">`</span>brew --prefix <span class="nb">source</span>-highlight<span class="sb">`</span>/share/source-highlight
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span>matlab.style</span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="n">keyword</span> <span class="n">blue</span><span class="p">;</span>
+</span><span class='line'><span class="n">string</span> #<span class="n">a020f0</span><span class="p">;</span>
+</span><span class='line'><span class="n">comment</span> <span class="n">darkgreen</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span>matlab.lang</span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="n">keyword</span> <span class="p">=</span> &quot;<span class="k">break</span><span class="o">|</span><span class="k">case</span><span class="o">|</span><span class="k">catch</span><span class="o">|</span><span class="k">classdef</span><span class="o">|</span><span class="k">continue</span><span class="o">|</span><span class="k">else</span><span class="o">|</span><span class="k">elseif</span><span class="o">|</span><span class="k">end</span><span class="o">|</span><span class="k">for</span><span class="o">|</span><span class="k">function</span><span class="o">|</span><span class="k">global</span><span class="o">|</span><span class="k">if</span><span class="o">|</span><span class="k">otherwise</span><span class="o">|</span><span class="k">parfor</span><span class="o">|</span><span class="k">persistent</span><span class="o">|</span><span class="k">return</span><span class="o">|</span><span class="k">spmd</span><span class="o">|</span><span class="k">switch</span><span class="o">|</span><span class="k">try</span><span class="o">|</span><span class="k">while</span>&quot;
+</span><span class='line'><span class="n">comment</span> <span class="n">start</span> &quot;<span class="c">%&quot;</span>
+</span><span class='line'><span class="n">trans</span> <span class="p">=</span> <span class="s">&#39;[a-zA-Z0-9_.]\&#39;&#39;</span>
+</span><span class='line'><span class="s">string delim &quot;&#39;</span>&quot; &quot;<span class="s">&#39;&quot; escape &quot;&#39;&#39;</span><span class="err">&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+<p>Finally, edit <code>lang.map</code> to create a mapping for matlab file.</p>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span>lang.map</span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo</span> <span class="s1">&#39;m = matlab.lang&#39;</span> &gt;&gt; lang.map
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Batch remove photos in iPhone, batch convert videos and upload back]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/01/29/batch-remove-photos-in-iphone/"/>
+    <updated>2014-01-29T20:16:21-06:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/01/29/batch-remove-photos-in-iphone</id>
+    <content type="html"><![CDATA[<p>One of the problems that drives iOS user crazy is the user-unfriendly manipulation/syncing of photos in iOS. There are just no easy way to remove photos in batch (though you can delete the entire camera roll in the settings).</p>
+<!-- more -->
+
+<p>There are several ways to manipulate it, but really not enough:</p>
+<ol type="1">
+<li>use iPhoto/Aperture to import and delete. However, the photos must be imported first, I cannot just delete it. Ever since there is iCloud, importing becomes not that important.</li>
+<li>use iTunes to Sync. Same as above, ever since iCloud, no reason to sync again.</li>
+<li>the only way to use built-in tools to manipulate the camera roll is to use Image Capture utility. That way, one can select and delete photos. However, it still does not have custom filtering of photos and does not support albums.</li>
+</ol>
+<p>The workflow I adopted is a two-step approach: mark those I want to keep in the iPhone, delete all stuff using the 3rd method, then upload back.</p>
+<p>If you have some videos that occupy lots of space, you can convert them to lower quality. To do this, HandBrake is the excellent tool, which is open-sourced. However, it does not support batch change. Luckily, <a href="http://www.osomac.com/apps/osx/handbrake-batch/">HandBrakeBatch</a> by <a href="http://www.osomac.com">OSOMAC</a> can achieve this.</p>
+<p>To upload things back, <a href="http://rambax.com/simpletransfer.html">SimpleTransfer</a> can help, especially for videos, which cannot be put back into camera roll easily (I have no idea why apple restricts this). The lite version is free, but you can only upload one item at a time, and there are also some restrictions.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fix (ugly) Safari 7.0 not using local pac file]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/"/>
+    <updated>2013-12-05T02:03:43-06:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file</id>
+    <content type="html"><![CDATA[<p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all. Turns out because of sandboxing, it will not allow reading file from local. A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
+<p>However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:</p>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apachectl start</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+<p>Also, place the pac file under <code>/Library/WebServer/Documents</code>, which is the default Document Root of Apache.</p>
+<p>Tom Fischer proposed <a href="https://discussions.apple.com/thread/3202499?start=30&amp;tstart=0">another way</a> to get around, however I don’t think it a good idea to mess around the system files.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[LaTeX Tips and Tricks Collection]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection/"/>
+    <updated>2013-12-03T15:18:00-06:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection</id>
+    <content type="html"><![CDATA[<p>This post summarizes some common useful tips in LaTeX editing.</p>
+<!-- more -->
+
+<h2 id="figures">Figures</h2>
+<ul>
+<li><a href="http://www.howtotex.com/tips-tricks/vertical-alignment-of-subfigures/">Horizontal alignment of subfigures</a></li>
+<li><code>subfloat</code> in <code>subfig</code>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="c">% Style: Figure 1(a)</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="na">[subrefformat=parens,labelformat=parens]</span><span class="nb">{</span>subfig<span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">\subfloat</span><span class="na">[]</span><span class="nb">{</span>
+</span><span class='line'><span class="k">\includegraphics</span><span class="na">[height=\textheight]</span><span class="nb">{</span>example<span class="nb">}</span>
+</span><span class='line'><span class="k">\label</span><span class="nb">{</span>fig:example<span class="nb">}</span>
+</span><span class='line'><span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">\subref*</span><span class="nb">{</span>fig:example<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+</li>
+</ul>
+<h2 id="bibliography">Bibliography</h2>
+<ul>
+<li><a href="http://tex.stackexchange.com/questions/12686/how-do-i-run-bibtex-after-using-the-output-directory-flag-with-pdflatex-when-f">How do I run bibtex after using the -output-directory flag with pdflatex, when files are included from subdirectories?</a></li>
+<li>biblatex simple usage
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="c">% unsrt, abbrev, last option means use unsrt in \cite[xxx,yyy,ccc]</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="na">[sorting=none,firstinits=true,sortcites=true]</span><span class="nb">{</span>biblatex<span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% add this in preamble</span>
+</span><span class='line'><span class="k">\bibliography</span><span class="nb">{</span>dsa-verification<span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% at the end</span>
+</span><span class='line'><span class="k">\printbibliography</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div></li>
+<li><a href="#bibitemsep">Item spacing</a></li>
+</ul>
+<h2 id="graphics">Graphics</h2>
+<ul>
+<li>Graphics path
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\graphicspath</span><span class="nb"></span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div></li>
+<li>Use other file extensions:
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\DeclareGraphicsExtensions</span><span class="nb">{</span>.pdf, .jpg, .png<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+</li>
+</ul>
+<h2 id="table-and-tabular">Table and Tabular</h2>
+<ul>
+<li>threeparttable: Use footnote in tabular
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="c">% inside tabular:</span>
+</span><span class='line'><span class="k">\tnote</span><span class="nb">{</span><span class="s">$</span><span class="nv">\dagger</span><span class="s">$</span><span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% after tabular</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>tablenotes<span class="nb">}</span>[para] <span class="c">% do not break line between items</span>
+</span><span class='line'><span class="k">\item</span> [<span class="s">$</span><span class="nv">\dagger</span><span class="s">$</span>] A foot note. <span class="c">% this reference to the item</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>tablenotes<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+</li>
+</ul>
+<h2 id="theorem-definition">Theorem, Definition</h2>
+<ul>
+<li>New definition/theorem
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\newtheorem</span><span class="nb">{</span>definition<span class="nb">}{</span>Definition<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div></li>
+<li>Useful packages:
+<ul>
+<li>ntheorem</li>
+<li>amsthm</li>
+</ul></li>
+</ul>
+<h2 id="fonts">Fonts</h2>
+<h2 id="packages">Packages</h2>
+<ul>
+<li>csvsimple: can automatically read csv and create tabular.</li>
+<li>algpseudocode: the most updated algorithm / code environment, need to sit inside with <code>algorithm</code> package.</li>
+<li>biblatex: provides better control for Bibliography.</li>
+<li>multirow: provides <code>\multirow</code> and <code>\multicolumn</code>.</li>
+<li>url: provides <code>\url</code>.</li>
+<li>xspace: prevent a command eating space.</li>
+<li>flushend: provides <code>\flushend</code>, balance two columns.</li>
+</ul>
+<h2 id="controlling-space">Controlling space</h2>
+<ul>
+<li>reduce space between float and text
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\textfloatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
+</span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\floatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
+</span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\intextsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div></li>
+<li>reduce bib item separation in biblatex<a name="bibitemsep"></a>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\setlength\bibitemsep</span><span class="nb">{</span>0.5<span class="k">\itemsep</span><span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div></li>
+<li>geometry: control the margins at top, bottom, left and right</li>
+<li><p>enumitem: control the spacing related to <code>enumerate</code> and <code>itemize</code>.</p></li>
+<li><a href="http://gurmeet.net/computer-science/latex-tips-n-tricks-for-conference-papers/">LaTeX Tips n Tricks for Conference Papers</a></li>
+<li><a href="http://www.terminally-incoherent.com/blog/2007/09/19/latex-squeezing-the-vertical-white-space/">Latex: Squeezing the Vertical White Space</a></li>
+<li><p><a href="http://www.eng.cam.ac.uk/help/tpl/textprocessing/squeeze.html">Squeezing Space in LaTeX</a></p></li>
+</ul>
+<h2 id="commands-and-tools">Commands and tools:</h2>
+<ul>
+<li>latexmk: automatically compile multiple times to resolve reference.</li>
+<li>biber: replacement for bibtex for <code>biblatex</code></li>
+<li>texdoc: use <code>texdoc &lt;package&gt;</code> to search for a manual.</li>
+</ul>
+<h2 id="ieee">IEEE</h2>
+<ul>
+<li>proof: use <code>\IEEEproof</code></li>
+<li>multiple equations: use <code>\IEEEeqnarray</code> or <code>array</code>.</li>
+</ul>
+<h2 id="uncategorized">Uncategorized</h2>
+<ul>
+<li><a href="http://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-files-to-make-them-available-to-all-my-tex-files">Where do I place my own .sty files, to make them available to all my .tex files?</a></li>
+<li><a href="http://tex.stackexchange.com/questions/38287/creating-a-central-bibliography">Creating a central bibliography</a></li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Saving $80 by Fixing MagSafe by Yourself]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/"/>
+    <updated>2013-11-08T22:06:00-06:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself</id>
+    <content type="html"><![CDATA[<p>After four years of use, the wire on my MagSafe finally fray out. After searching a bit, I found that a new one costs $80!! My old memories came back: almost all accessories by Apple are rip-offs. See how low the ratings are:</p>
+<p><img src="https://lh3.googleusercontent.com/-HbwCGT5IRfg/Un22iAWR3FI/AAAAAAAA6S8/kb8A295sneA/s800/Apple%252085W%2520MagSafe%2520Power%2520Adapter%2520%2528for%252015-%2520and%252017-inch%2520MacBook%2520Pro%2529%2520-%2520Apple%2520Store%2520%2528U.S.%2529.png"></p>
+<p>I know that this can be easily fixed if you know a little soldering and have courage: the adapter is working perfectly fine, it is just the wires. I decided to DIY. There are several pretty good articles on how to <a href="http://www.instructables.com/id/How-to-open-and-replace-the-MagSafe-cord-on-an-App/?ALLSTEPS">open the MagSafe</a> and how to <a href="http://www.instructables.com/id/MacBook-Mag-Safe-Charger-Budget-Repair-Disas/">solder it</a>.</p>
+<!-- more -->
+
+<p>The following are my workflows. The first step is to open it. You can see there are two wires, in fact in my case only the black wire is broken. I don’t even need to solder.</p>
+<p><img src="https://lh4.googleusercontent.com/-3YuxG4NzMls/Un23QYqlRvI/AAAAAAAA6TI/OHnqW_Mz3_M/s600/IMG_5533.jpg"> <img src="https://lh6.googleusercontent.com/-4Vwfhl0a7U0/Un23UWD3pII/AAAAAAAA6TY/32jW30GJiHo/s600/IMG_5534.jpg"></p>
+<p>Okay, go ahead and twist them. Use insulating tapes to wrap them tight.</p>
+<p><img src="https://lh4.googleusercontent.com/-rInGpQS3MPA/Un23Utgk5pI/AAAAAAAA6Tc/XbpbDy2m4yo/s600/IMG_5535.jpg"></p>
+<p>Finally, reassemble it and use more tapes, since the outside layer is cut out. More importantly, strong taping help to protect another fray.</p>
+<p><img src="https://lh4.googleusercontent.com/-GNyM8TlkwIA/Un23ZUE9GBI/AAAAAAAA6Tk/VUI9YF7zK_Y/s600/IMG_5536.jpg"></p>
+<p>It looks a bit odd though, since the Apple product is supposed to be WHITE. Here’s how I fix it. I don’t have good tools available, so I just use whatever I have. I recalled that I have some Google stickers, and I just cut the white pieces out.</p>
+<p><img src="https://lh5.googleusercontent.com/-0-qhNqp4ClA/Un23fZLy24I/AAAAAAAA6T4/7MTAsUReDLw/s600/IMG_5537.JPG"></p>
+<p>After more taping, it looks like better now. Maybe I should consider wrapping better things outside later.</p>
+<p><img src="https://lh3.googleusercontent.com/-Ok8Zop2yeFY/Un23fsZ_1VI/AAAAAAAA6UU/njomi434w70/s600/IMG_5538.jpg"></p>
+<p>Hooray! Now it is working again! In fact, I am amazed that this piece of gadget has been working for four years, daily. It is still working just fine :)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Understanding Page Components of Octopress: Using Foxslide as An Example]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/"/>
+    <updated>2013-10-17T16:12:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example</id>
+    <content type="html"><![CDATA[<p><img src="https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Updating Octopress Theme]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme/"/>
+    <updated>2013-10-17T14:54:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme</id>
+    <content type="html"><![CDATA[<p>The themes are stored in <code>.themes/&lt;name&gt;</code>, we can use the rake command to update either the source or style, as documented in the <a href="http://octopress.org/docs/updating/">office website</a>. However, the syntax should be more clear, i.e.,</p>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake update_source['theme name']</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+<p>Without the brackets, it defaults to <code>.themes/classic</code>.</p>
+<p>Caveats:</p>
+<ul>
+<li>Do NOT use <code>rake install</code> to install the theme again, since it will overwrite the whole thing, including the files in <code>source/_include/custom</code> directory.</li>
+<li>When working on the blog, anything outside of <code>source/_include/custom</code> should be considered the theme. Thus, do not make changes directly in <code>source</code>. Make changes to theme and update the theme to reflect the changes to the blog.</li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Graph Matching: Hopcroft-Karp Algorithm]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/"/>
+    <updated>2013-10-08T15:59:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm</id>
+    <content type="html"><![CDATA[<h2 id="overview">Overview</h2>
+<p>Hopcroft-Karp algorithm also utilizes the augmenting path. The difference between the <a href="http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path/">simple augmenting path algorithm</a> is, instead of searching augmenting path one by one, it looks for many paths in the same time. The paths found at each iteration are in fact <strong>vertex disjoint path</strong>. By doing so, the number of iterations can be cut down, since there cannot be too many disjoing paths.</p>
+<p>The major observation is that the length of augementing path grows at each step. Thus, if we keep finding a set of vertex disjoint augmenting paths, the algorithm is guaranteed to stop eventually and faster than finding the path one by one.</p>
+<!-- more -->
+
+<h2 id="finding-maximal-set-of-vertex-disjoint-paths">Finding Maximal Set of Vertex Disjoint Paths</h2>
+<p>Let <span class="math">\(G=(U \cup V, E)\)</span> be the bipartite graph and <span class="math">\(G_M\)</span> be the directed graph w.r.t to matching <span class="math">\(M\)</span>. The <strong>layered graph</strong> is contructed out of <span class="math">\(G_M\)</span>, where the distance at a vertex <span class="math">\(v\)</span> is defined as the length of shortest path from some vertices in <span class="math">\(U\)</span>.</p>
+<p>This can done by simply running a modified BFS on <span class="math">\(G_M\)</span>: we start by enqueing all the free vertices <span class="math">\(U&#39;\)</span> in <span class="math">\(U\)</span> and label them as 0 (distance), propagate and label until one or more free vertices in <span class="math">\(V\)</span> are reached. Let the label (distance) be <span class="math">\(k\)</span>, and denote this graph as <span class="math">\(L\)</span>.</p>
+<p>We can then run a modified DFS on <span class="math">\(L\)</span>, starting from any of the vertices in <span class="math">\(U&#39;\)</span>. Whenever we reach a free vertices in <span class="math">\(V\)</span>, we delete the path <span class="math">\(p\)</span> from <span class="math">\(L\)</span>, and repeat. It can be proven that all the paths found are shortest vertex disjoint paths of length <span class="math">\(k\)</span>. This set of paths are the maximal set we are looking for.</p>
+<h2 id="algorithm-outline">Algorithm Outline</h2>
+<ul>
+<li>MAXIMAL-SET-OF-PATHS(<span class="math">\(G=(U \cup V, E), M\)</span>)
+<ul>
+<li><span class="math">\(P \gets \varnothing\)</span></li>
+<li><span class="math">\(L \gets \)</span> Run modified BFS on <span class="math">\(G_M\)</span></li>
+<li><span class="math">\(U&#39; \gets \)</span> free vertices in <span class="math">\(U\)</span></li>
+<li>for <span class="math">\(u \in U&#39;\)</span>
+<ul>
+<li><span class="math">\(p \gets \)</span> PARTIAL-DFS(<span class="math">\(G, v, T\)</span>)</li>
+<li>if <span class="math">\(p \neq \varnothing \)</span>
+<ul>
+<li><span class="math">\(P = P \cup p\)</span></li>
+<li>Remove <span class="math">\(p\)</span> from <span class="math">\(L\)</span></li>
+</ul></li>
+</ul></li>
+<li>return <span class="math">\(P\)</span></li>
+</ul></li>
+</ul>
+<hr />
+<ul>
+<li>HOPCROFT-KARP(<span class="math">\(G\)</span>)
+<ul>
+<li><span class="math">\(M \gets \varnothing\)</span></li>
+<li>repeat
+<ul>
+<li><span class="math">\(P \gets \)</span> MAXIMAL-SET-OF-PATHS(<span class="math">\(G, M\)</span>)</li>
+<li>if <span class="math">\(P \neq \varnothing\)</span>
+<ul>
+<li><span class="math">\(M \gets M \oplus P\)</span></li>
+</ul></li>
+</ul></li>
+<li>until <span class="math">\(P = \varnothing\)</span></li>
+<li>return <span class="math">\(M\)</span></li>
+</ul></li>
+</ul>
+<h2 id="analysis">Analysis</h2>
+<p>It can be shown that the loop will be executed at most <span class="math">\(O(\sqrt{|V|})\)</span> times, and running the DFS and BFS requires <span class="math">\(O(|E|)\)</span> time. Thus the overall run time is <span class="math">\(O(\sqrt{|V|} |E|)\)</span>.</p>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Hopcroft-Karp">Wikipedia article</a></li>
+<li><a href="http://www.dis.uniroma1.it/~sankowski/lecture2.pdf">Lecture note from Sapienza University of Rome</a></li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Graph Matching: Augmenting Path]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path/"/>
+    <updated>2013-10-07T18:47:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path</id>
+    <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
+<p>Let <span class="math">\(G=(V, E)\)</span> be an undirected graph. Matching in <span class="math">\(G\)</span> is a subset of edges <span class="math">\(M \subseteq E\)</span> such that at most one edge is incident to each vertex in <span class="math">\(V\)</span>.</p>
+<p>A vertex is <em>matched</em> is it is incident to some edge in <span class="math">\(M\)</span>, otherwise it is called <em>free</em> or <em>exposed</em>.</p>
+<h2 id="augmenting-paths">Augmenting Paths</h2>
+<ul>
+<li>Alternating path: a path in which the edges belong alternatively to the matching and not to the matching</li>
+<li>Augmenting path: an alternating path that starts from and ends on exposed vertices</li>
+</ul>
+<p>Clearly, an augmenting path can be ‘flipped’ to increase the matching size <strong>by one</strong>, i.e., just make free vertex matched and make matched vertex free in this path.</p>
+<p><strong>Berge’s Theorem</strong>: The matching M is maximum <strong>iff</strong> there is no augmenting path w.r.t. <span class="math">\(M\)</span>. I personally think the proof is easy but quite powerful.</p>
+<p>Thus, we can immediately use the theorem to design an algorithm: find augmenting path iteratively until no more can be found. The problem is how we can find the augmenting path.</p>
+<!-- more -->
+
+<h2 id="algorithm-for-bipartite-graph">Algorithm for bipartite graph</h2>
+<p>FIND-AUGMENTING-PATH(<span class="math">\(G=(V_1 \cup V_2, E), M\)</span>)</p>
+<ul>
+<li><span class="math">\(V&#39;_1\)</span> = a set of free vertices in <span class="math">\(V_1\)</span></li>
+<li><span class="math">\(V&#39;_2\)</span> = a set of free vertices in <span class="math">\(V_2\)</span></li>
+<li>Construct the directed graph <span class="math">\(G_M = (V_1 \cup V_2, E_M)\)</span>
+<ul>
+<li><span class="math">\(E_M\)</span> is a set of directed edges such that it includes all arcs from <span class="math">\(V_1\)</span> to <span class="math">\(V_2\)</span>, and all matching arcs from <span class="math">\(V_2\)</span> to <span class="math">\(V_1\)</span></li>
+<li>i.e., <span class="math">\(E_M = &#92;{(v_1, v_2) : v_1, v_2 \in E \setminus M, v_1 \in V_1, v_2 \in V_2&#92;} \cup &#92;{(v_2, v_1) : v_1, v_2 \in M, v_1 \in V_1, v_2 \in V_2&#92;}\)</span></li>
+</ul></li>
+<li>Find a simple path <span class="math">\(p\)</span> from <span class="math">\(V&#39;\_1\)</span> to <span class="math">\(V&#39;\_2\)</span> in <span class="math">\(G_M\)</span></li>
+</ul>
+<p>Note that the above graph <span class="math">\(G\_M\)</span> is similar to the residual network in network flow. Apparently, <span class="math">\(p\)</span> starts from a free vertex in <span class="math">\(V&#39;\_1\)</span> and ends at another free vertex in <span class="math">\(V&#39;\_2\)</span>, thus it is an augmenting path.</p>
+<h2 id="complexity">Complexity</h2>
+<p>The maximum size of matching is upper bounded by <span class="math">\(|V|/2\)</span>, and each step, the matching size is incremented by one. Thus, the number of augmenting path found will be at most <span class="math">\(O(|V|)\)</span>. At each step, it takes <span class="math">\(O(|E|)\)</span> to find a path. Thus the overall running time is <span class="math">\(O(|V||E|)\)</span>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Network Flow: Push-relabel algorithm]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/10/07/network-flow-push-relabel-algorithm/"/>
+    <updated>2013-10-07T18:08:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/10/07/network-flow-push-relabel-algorithm</id>
+    <content type="html"><![CDATA[<p>According to CLRS: Many of the asymptotically fastest maximum-flow algorithms are push-relabel algorithms, and the fastest actual implementations of maximum-flow algorithms are based on the push-relabel method. Push-relabel methods also efficiently solve other flow problems, such as the minimum-cost flow problem.</p>
+<p>This algorithm has a very different flavor. The overall idea is to generate a ‘preflow’ that may not satisfy the flow properties, and keep ‘pushing’) and ‘elevating’ (relabelling) the vertices until we cannot do that. We then remove the ‘excess’ from the preflow and obtain a valid flow, which is also a max flow. In particular, the in-flow may be larger than out-flow at a vertex. The amount of overflow is called ‘excess’.</p>
+<!-- more -->
+
+<p>The intuition behind is this: think of the vertices as platforms that have different height, where initially <span class="math">\(S\)</span> has <span class="math">\(|V|\)</span> height and all other vertices have 0 heights. The flow can only be pushed from higher vertices to lower vertices. Whenever we do not have any flow to push, we find some vertex that has unsaturated out edge to its neighbor vertices to ‘relabel’, i.e., elevating its height such that we can continue to ‘push’. Thus, there are two operations ‘push’ and ‘relabel’ (and thus the name):</p>
+<pre><code>push: sending excess from u to v
+relabel: increase the height of u to min({v: neighbor of u})+1</code></pre>
+<p>The algorithm is as follows:</p>
+<pre><code>Initialize s.h = |V|, u.h = 0 for u != s. // u.h is the height of vertex u
+For all (s, u), push c(s, u). // saturate all outgoing edges from s.
+While there is vertex that can be pushed or relabel
+  do push or relabel
+End while
+return F.</code></pre>
+<p>The naive implementation has runtime <span class="math">\(O(|V|^2 |E|)\)</span>, and can be improved to <span class="math">\(O(|V|^3)\)</span>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Network Flow: Ford-Fulkerson Method]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/10/03/network-flow-ford-fulkerson-method/"/>
+    <updated>2013-10-03T18:13:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/10/03/network-flow-ford-fulkerson-method</id>
+    <content type="html"><![CDATA[<p>Basic method (framework) is Ford-Fulkerson. It’s called a “method” because it’s general, there can be different implementation that yield different complexity. It looks like this:</p>
+<pre><code>Let F be an empty flow
+While there is augmenting path P from s to t
+    Augment F with P
+End while</code></pre>
+<p>The problem is how we find the augmenting path efficiently. A naive implementation is to use DFS to randomly pick a <span class="math">\(s-t\)</span> path and augment it. However, it has two problems:</p>
+<!-- more -->
+
+<ol type="1">
+<li>The algorithm may not terminate, this happens when the capacity is irrational number (we can always scale rational to integer). When the capacity is irrational, the flow may fluctuate and never converge.</li>
+<li>Even when the capacity is integer, the algorithm may be too slow. The runtime depends on the size of flow <span class="math">\(|F|\)</span>, which means if <span class="math">\(|F|\)</span> is large, it takes a long time to stop. To see this, note that DFS takes <span class="math">\(|E|\)</span> time, in the worst case, <span class="math">\(F\)</span> may grow by 1 at each iteration (since capacity is integer). Thus, the complexity is <span class="math">\(O(|E||F|)\)</span>.</li>
+</ol>
+<p>To handle, this, Edmonds-Karp algorithm simply replaces the DFS as BFS, which finds a shortest each time (use unit length on edges in the residual graph). The major points are:</p>
+<ul>
+<li>The length shortest path is guaranteed to monotonically increase at each iteration. This can be proven by contradiction.</li>
+<li>The number of iterations are <span class="math">\(O(|V||E|)\)</span>.</li>
+<li>Each augmenting path (shortest path) can saturate one edge, and this edge will disappear from the residual graph. We call this edge ‘critical’.<br /></li>
+<li>An edge <span class="math">\((u, v)\)</span> becomes critical to the time when it next becomes critical, the distance to <span class="math">\(u\)</span> from the source increases by at least 2.</li>
+<li>Thus, the total number of critical edges during execution is <span class="math">\(O(|V||E|)\)</span>.</li>
+<li>Each augmenting path contains at least one critical edge, thus <span class="math">\(O(|V||E|)\)</span>.</li>
+<li>The running time is thus <span class="math">\(O(|V||E|^2)\)</span> since each iteration we run a BFS which costs <span class="math">\(O(|E|)\)</span>. This can be improved to <span class="math">\(O(|V|^2|E|)\)</span> with more efficient data structure (Dinic).</li>
+</ul>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installing a new car stereo]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/08/30/installing-a-new-car-stereo/"/>
+    <updated>2013-08-30T16:50:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/08/30/installing-a-new-car-stereo</id>
+    <content type="html"><![CDATA[<p>I did not realize until my car’s radio’s broken that, with less than a hundred bucks, you can buy a new Head Unit with nearly all functionality. Some note-worthy features include:</p>
+<ul>
+<li>iPod/iPhone support. Control the iphone directly from the panel.</li>
+<li>App support. This includes I-heart-radio, pandora, etc.</li>
+<li>Bluetooth Audio: stream music directly from a paired device. Even supports Pandora!</li>
+<li>Upgraded FM/AM support. Displays text from radio stations.</li>
+</ul>
+<p><!-- more --></p>
+<p>Since I never used CD, I actually decided to buy a Digital Media Receiver: <a href="http://www.crutchfield.com/S-kT2jsjodqXG/p_105KDX250B/JVC-KD-X250BT.html">JVC KD-X250BT</a>. Since every car has a different wiring harness, we need to buy a compatible wiring harness. My car has a Double DIN design but the DMR is a single DIN one, so I actually need to buy a installation kit. The wiring setup is fun:</p>
+<p><img class="left" src="https://lh5.googleusercontent.com/-zOOgWaP5-W8/UiETJQhmUVI/AAAAAAAA6AM/jRAo6LHRlDU/s400/IMG_5341.jpg"> <img class="right" src="https://lh4.googleusercontent.com/-n_QzAv5VgfQ/UiETKOBShuI/AAAAAAAA6AU/_F3-gN-NDio/s400/IMG_5342.jpg"> <img class="left" src="https://lh5.googleusercontent.com/-p7tlzn7kbRc/UiETKzbUaCI/AAAAAAAA6Ac/37Dgx3cbUJM/s400/IMG_5344.jpg"></p>
+<p><img class="right" src="https://lh6.googleusercontent.com/-KJRCnhX64lg/UiETLxnhJKI/AAAAAAAA6Ak/qdqbEPUfAUI/s600/IMG_5345.JPG"> <img src="https://lh5.googleusercontent.com/-h0tu6PrFzIk/UiETMWNKURI/AAAAAAAA6As/Zll5LFDkixM/s600/IMG_5346.JPG"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Roadtrip in America 2013]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/08/28/roadtrips-in-us-2013/"/>
+    <updated>2013-08-28T16:17:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/08/28/roadtrips-in-us-2013</id>
+    <content type="html"><![CDATA[<p>In this year, I did several crazy road trips, each trip has about 3k miles. Here’re them.</p>
+<h1 id="winter-trip">Winter Trip</h1>
+<p>The first trip is a trip with my parents, where they flied to Chicago and I drove them to UIUC for a visit. We then flied to LA and rented a car to start our road trip. The whole trip was mainly in California, though we drove a bit east and visited Las Vegas and Grand canyon.</p>
+<p><img src="https://lh3.googleusercontent.com/-3XKmLgVuYw8/UlBRR-rXocI/AAAAAAAA6Qg/IIHynx2WdOQ/s800/Winter%2520trip.png"></p>
+<!-- more -->
+
+<h1 id="route-66">Route 66</h1>
+<p>I drove from Champaign all the way to Mountain View, with most of the part of <a href="https://en.wikipedia.org/wiki/U.S._Route_66">Route 66</a>.</p>
+<p><img src="https://lh5.googleusercontent.com/-fMUI4Zi2a68/UlBUCwGlIoI/AAAAAAAA6Q0/14KGATd9IHw/s800/Champaign%252C%2520IL%2520to%2520Mountain%2520View%252C%2520CA%2520-%2520Google%2520Maps.png"></p>
+<h1 id="i-80">I-80</h1>
+<p>After my internship in California, I drove back from Mountain View to Champaign.</p>
+<p><img src="https://lh6.googleusercontent.com/-QEnrQ49XzlQ/UlBQLfKAtTI/AAAAAAAA6QM/JBcEAGUNxiI/s800/Sunnyvale%252C%2520CA%2520to%2520Champaign%252C%2520IL%2520-%2520Google%2520Maps.png"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on SSH port forwarding]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/"/>
+    <updated>2013-05-09T21:43:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding</id>
+    <content type="html"><![CDATA[<h3 id="ssh-local-port-forwarding">SSH Local Port Forwarding</h3>
+<p>Use <code>ssh -L</code> to bind a local port to a remote port</p>
+<h3 id="dynamic-port-forwarding">Dynamic Port Forwarding</h3>
+<p>Use <code>ssh -D</code> to dynamically bind a local port for forwarding. A SOCKS5 will be created. Example:</p>
+<pre><code>ssh -D 1080 user@remote-server.com
+    </code></pre>
+<p>This binds to remote-server.com and uses local port 1080 for forwarding.</p>
+<p>Optionally use -C for data compression.</p>
+<p>The above command will log into the remote-server.com, use <code>-f</code> to put ssh to background, and use <code>-N</code> to not to execute a command. i.e.,</p>
+<pre><code>ssh -f -N -D 1080 user@remote-server.com</code></pre>
+<!-- more -->
+
+<h3 id="usage-example">Usage Example</h3>
+<p>If the tool/app supports socks natively, use localhost:1080 in its setting. Example (curl)</p>
+<pre><code>curl --socks5 localhost http://icanhazip.com
+    </code></pre>
+<p>If set up correctly, the IP returned will be the machine that is forwarding (remote-server.com)</p>
+<p>If not, use some socksify tool, for example, use dsocks in OSX:</p>
+<pre><code>dsocks.sh ssh another-server.com
+    </code></pre>
+<p>You can see where you logon using <code>who | grep &lt;user-name&gt;</code>.</p>
+<h3 id="a-real-world-scenario">A Real World Scenario</h3>
+<p>Scenario: I want to connect to VNC server at peabody::5903, however, peabody only accepts connection from CSL LAN, while my Macbook is in IllinoisNet (wireless).</p>
+<p>Solution: use my office computer ‘orange’ as a proxy. Use local port forwarding:</p>
+<pre><code>ssh -L 5903:peabody:5903 orange</code></pre>
+<p>This means, forward localhost:5903 via orange to peabody:5903 So if I connect to the vnvserver at:</p>
+<pre><code>localhost :1 # port is 5901</code></pre>
+<p>I am forwarded to</p>
+<pre><code>peabody :3 # port is 5903</code></pre>
+<h3 id="more-on-port-forwarding">More On Port Forwarding</h3>
+<p>https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding</p>
+]]></content>
+  </entry>
+  
+</feed>
