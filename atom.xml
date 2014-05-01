@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-01T02:23:46-05:00</updated>
+  <updated>2014-05-01T02:26:08-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -93,84 +93,6 @@
 </div>
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[What is Expectation Maximization]]></title>
-    <link href="http://blog.ivansiu.com/blog/2014/04/29/what-is-expectation-maximization/"/>
-    <updated>2014-04-29T03:48:29-05:00</updated>
-    <id>http://blog.ivansiu.com/blog/2014/04/29/what-is-expectation-maximization</id>
-    <content type="html"><![CDATA[<figure>
-<img src="https://dl.dropboxusercontent.com/s/9op7vrilafciuv9/EM.jpg" title="http://cse-wiki.unl.edu/wiki/index.php/Expectation_maximization" alt="Expectation Maximization" /><figcaption>Expectation Maximization</figcaption>
-</figure>
-<p>题注：借着最近 Deep Learning （深度学习）的势头，我决定写一系列相关的专题，大概会涉及到 Machine learning 的基本算法，Neural Network, Sparse Autoencoder, PCA, Probabilistic Graphical Model (PGM), Restrictive Boltzman Machine, MRF 等。 这里是专题第一篇，关于 Expectation-Maximization 算法。</p>
-<p>这篇文章是从我在知乎的<a href="http://zhi.hu/2KsQ">回答</a>进化而来的。Expectation-Maximization (EM) 是个很有用的算法，而它涉及到的理论知识也很深。我第一次遇见它是在 Computer Vision 课上面，用 <a href="http://en.wikipedia.org/wiki/Markov_random_field">Markov Random Field</a> (MRF) model 来解决 <a href="http://en.wikipedia.org/wiki/Graph_cuts_in_computer_vision">Graph Cut Segmentation</a> 问题。而 MRF 的 parameter estimation 就要用到 EM 算法。之后陆陆续续在很多地方都碰到，最常见的就要数 <a href="http://en.wikipedia.org/wiki/Gaussian_mixture_model">Gaussian Mixture Model</a> (GMM) 和 <a href="http://en.wikipedia.org/wiki/Hidden_Markov_model">Hidden Markov Model</a> (HMM) 了。这篇文章不求深入到最底层的理论，而是用我自己的话来总结一下 EM 算法。 主要参考文章有 <sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup>, <sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup>, <sup><a href="#fn3" class="footnoteRef" id="fnref3">3</a></sup>.</p>
-<p>注：由于我阅读的专业资料都是英文, 所以专业名词我都会用英语以求清晰、准确。</p>
-<!-- more -->
-
-<hr />
-<p>简单来说，EM 是用来找 Maximum Likelihood Estimate (MLE) of unknown parameters 的算法。一般来说 MLE 都是可以写出一个 Closed-form formula 然后直接找出未知参数，但是很多时候这个 formula 太复杂，或者因为 missing data 问题，我们没办法直接推倒出 Closed-form formula，就必须通过 EM 这个优化算法来迭代寻找最优参数。</p>
-<p>我们首先从 MLE 开始说起。</p>
-<h2 id="problem-of-maximum-likelihood-estimate">Problem of Maximum Likelihood Estimate</h2>
-<p>假设有随机变量 X，以及描述 X 的 parametric pdf <span class="math">\(P(X|\theta)\)</span>, 但参数 <span class="math">\(\theta\)</span> 是未知的。当我们有一组数据 <span class="math">\(\mathcal{D}=\{x_1, x_2, \ldots, x_n\}\)</span> 时, 标准方法就是用 Maximum Likelihood Estimate (MLE) 来估计 ，写作 <span class="math">\(MLE(\theta)\)</span>。 这是一个关于 <span class="math">\(\theta\)</span> 的函数。MLE() 可以看做寻找一个最优的 <span class="math">\(\theta^*\)</span> 使得给定这些数据的概率达到最大，所以会写成 <span class="math">\(\theta^* = \arg \max_\theta \Pi_i^n p(x_i|\theta)\)</span> ，一般来说加个 <span class="math">\(log\)</span> 变成求和比较方便（由于 log 是单调的，不改变 argmax）。于是我们有 log-likelihood <span class="math">\(L(\theta)=\sum_i^n \log p(x_i|\theta)\)</span>。我们要找 <span class="math">\(\theta^* = \arg \max_{\theta \in \Theta } L(\theta)\)</span>，<span class="math">\(\Theta\)</span> 是 <span class="math">\(\theta\)</span> 的取值范围。</p>
-<p>如果没有任何限制，那么问题就已经解决了。但是我们在数据采集过程中，可能遇到无法直接观测到 X 的问题。假设我们只能观测到 Y = T(X)，T 是一个关于 X 的函数，而我们不知道 T 是怎样的。一个例子： <span class="math">\(x\in R^24\)</span> 是一天24小时的气温，这个气温依赖于季节 <span class="math">\(\theta=\)</span>{summer, fall, winter, spring}，我们知道 <span class="math">\(p(x|\theta)\)</span>，并且想通过数据猜测现在是什么季节（<span class="math">\(\theta）。 这时假设我们只能观测到一个当天的平均气温 y = mean(x)，并且我们并不知道 Y 是 X 的 mean。这个时候，我们可以通过 \)</span>P(|)$ 来找 <span class="math">\(\theta^*\)</span>。但有些时候，如果 <span class="math">\(p(y|\theta)\)</span> 很复杂，我们无法得到一个 closed-form formula。 找^*的过程是一个函数优化的过程，经典的方法是找 gradient 然后用 gradient descent 来迭代求优。但可能这个解析式非常复杂，无法找到 gradient。 很多时候，我们可以把 X 看做 missing data，就能得出一个简洁的 likelihood function，从而利用 EM 进行求优。</p>
-<h2 id="expecatation-maximization">Expecatation Maximization</h2>
-<p>我们首先定义一些符号如下。</p>
-<table>
-<caption>符号列表</caption>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Y</td>
-<td style="text-align: left;">观测到的随机变量</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">y</td>
-<td style="text-align: left;">具体的观测数据</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Z</td>
-<td style="text-align: left;">Missing data 的随机变量</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">z</td>
-<td style="text-align: left;">具体的 missing data</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">X</td>
-<td style="text-align: left;">完整数据的随机变量</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">x</td>
-<td style="text-align: left;">具体的完整数据</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><span class="math">\(\theta\)</span></td>
-<td style="text-align: left;">要估计的参数</td>
-</tr>
-</tbody>
-</table>
-<p>假设我们观测到 y，而 z 是没有观测到的 missing data，而 x=(y, z) 是 complete data。那么可以使用 EM 来找关于完整数据的 MLE. EM 算法的大概思想是，假设我们有一个对 <span class="math">\(\theta\)</span> 的猜测，那么我们可以使用它来估算概率最高的完整数据（的期望），然后再利用得到的完整数据，推算出一个更好的 <span class="math">\(\theta\)</span>.</p>
-<p>EM 算法具体步骤如下：</p>
-<ul>
-<li><p>E-step: 假设我们已经有一个 的猜测，那么就可以用 算出 X 的概率分布 p(X|)。这是 E-step，是一个已知参数找具体概率分布的过程。这里可以算出一堆 P(X=1|^{(m)}) = 0.1, P(X=2|^{(m)}) = 0.3 … 之类的东西，^{(m)} 是第 m 次迭代对 的猜测。</p></li>
-<li><p>M-step: 问题是事实上我们不知道 X 是什么（missing），只是知道，给了一个 后 X 的分布会是这样的。所以这时相当于已知 X，求 ，也就是 MLE。不过之前求出来的其实只是 X 的概率分布，所以我们要 maximize 的是 X 的期望，这就是 M-step.</p></li>
-</ul>
-<p>上面这两步迭代至收敛，我们即得到 ^*，不过如果整个 function 不是 convex 的话，可能这个 只是一个 local optimum。</p>
-<p>那么 EM 为什么 work？直观来说，我们不是直接 maximize L() ，而是 maximize 它的一个 lower bound，这个 lower bound 可以看做是另外一个 function F，而 F 与 L 的 optimum 都是 ^<em>，并且它们都是在相同的区间 monotonicity 是相同的。那么如果我们能不停 improve 这个 lower bound，那么最终就会达到 ^</em>。如果你懂 A<em>-search，原理类似 A</em> predictor：If the predictor is a true lower bound function, then A* guarantee to find the optimum。</p>
-<p>说到这里，也许你还是很难知道 EM 具体是怎么应用的。没关系，接下来我会介绍 EM 两个最常用的应用。</p>
-<h2 id="example-gaussian-mixture-model-gmm">Example: Gaussian Mixture Model (GMM)</h2>
-<p>*A picture here *</p>
-<h2 id="example-hidden-markov-model-hmm">Example: Hidden Markov Model (HMM)</h2>
-<h2 id="参考文章">参考文章</h2>
-<section class="footnotes">
-<hr />
-<ol>
-<li id="fn1"><p><a href="https://www.ee.washington.edu/techsite/papers/documents/UWEETR-2010-0002.pdf">EM Demystified: An Expectation-Maximization Tutorial</a><a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p><a href="http://ai.stanford.edu/~chuongdo/papers/em_tutorial.pdf">What is the expectation maximization algorithm?</a><a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p><a href="http://melodi.ee.washington.edu/people/bilmes/mypapers/em.pdf">A Gentle Tutorial of the EM Algorithm and its Application to Parameter Estimation for Gaussian Mixture and Hidden Markov Models</a><a href="#fnref3">↩</a></p></li>
-</ol>
-</section>
 ]]></content>
   </entry>
   
