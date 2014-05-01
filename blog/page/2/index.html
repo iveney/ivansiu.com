@@ -112,6 +112,14 @@ My hobbies include Guitar and Ballroom dancing. </p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/04/29/what-is-expectation-maximization/">What is Expectation Maximization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
         </li>
       
@@ -121,14 +129,6 @@ My hobbies include Guitar and Ballroom dancing. </p>
       
         <li>
           <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
         </li>
       
     </ul>
@@ -178,6 +178,135 @@ My hobbies include Guitar and Ballroom dancing. </p>
 
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as an Example</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-17T16:12:00-05:00" pubdate data-updated="true">Oct 17<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>octopress</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg"></p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/10/17/updating-octopress-theme/">Updating Octopress Theme</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-17T14:54:00-05:00" pubdate data-updated="true">Oct 17<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>octopress</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The themes are stored in <code>.themes/&lt;name&gt;</code>, we can use the rake command to update either the source or style, as documented in the <a href="http://octopress.org/docs/updating/">office website</a>. However, the syntax should be more clear, i.e.,</p>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake update_source['theme name']</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+<p>Without the brackets, it defaults to <code>.themes/classic</code>.</p>
+<p>Caveats:</p>
+<ul>
+<li>Do NOT use <code>rake install</code> to install the theme again, since it will overwrite the whole thing, including the files in <code>source/_include/custom</code> directory.</li>
+<li>When working on the blog, anything outside of <code>source/_include/custom</code> should be considered the theme. Thus, do not make changes directly in <code>source</code>. Make changes to theme and update the theme to reflect the changes to the blog.</li>
+</ul>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/">Graph Matching: Hopcroft-Karp Algorithm</a></h1>
     
     
@@ -220,16 +349,9 @@ posted in
   </header>
 
 
-  <div class="entry-content"><h2>Overview</h2>
-
-<p>Hopcroft-Karp algorithm also utilizes the augmenting path. The difference
-between the <a href="/blog/2013/10/07/graph-matching-augmenting-path/">simple augmenting path algorithm</a> is, instead of searching
-augmenting path one by one, it looks for many paths in the same time. The paths found at each iteration are in fact <strong>vertex disjoint path</strong>.
-By doing so, the number of iterations can be cut down, since there cannot be too many disjoing paths.</p>
-
-<p>The major observation is that the length of augementing path grows at each step. Thus, if we keep finding a set of vertex disjoint augmenting paths,
-the algorithm is guaranteed to stop eventually and faster than finding the path one by one.</p>
-
+  <div class="entry-content"><h2 id="overview">Overview</h2>
+<p>Hopcroft-Karp algorithm also utilizes the augmenting path. The difference between the <a href="/blog/2013/10/07/graph-matching-augmenting-path/">simple augmenting path algorithm</a> is, instead of searching augmenting path one by one, it looks for many paths in the same time. The paths found at each iteration are in fact <strong>vertex disjoint path</strong>. By doing so, the number of iterations can be cut down, since there cannot be too many disjoing paths.</p>
+<p>The major observation is that the length of augementing path grows at each step. Thus, if we keep finding a set of vertex disjoint augmenting paths, the algorithm is guaranteed to stop eventually and faster than finding the path one by one.</p>
 </div>
   
   
@@ -291,26 +413,17 @@ posted in
   </header>
 
 
-  <div class="entry-content"><h2>Introduction</h2>
-
-<p>Let $G=(V, E)$ be an undirected graph. Matching in $G$ is a subset of edges $M \subseteq E$ such that at most one edge is incident to each vertex in $V$.</p>
-
-<p>A vertex is <em>matched</em> is it is incident to some edge in $M$, otherwise it is called <em>free</em> or <em>exposed</em>.</p>
-
-<h2>Augmenting Paths</h2>
-
+  <div class="entry-content"><h2 id="introduction">Introduction</h2>
+<p>Let <span class="math">\(G=(V, E)\)</span> be an undirected graph. Matching in <span class="math">\(G\)</span> is a subset of edges <span class="math">\(M \subseteq E\)</span> such that at most one edge is incident to each vertex in <span class="math">\(V\)</span>.</p>
+<p>A vertex is <em>matched</em> is it is incident to some edge in <span class="math">\(M\)</span>, otherwise it is called <em>free</em> or <em>exposed</em>.</p>
+<h2 id="augmenting-paths">Augmenting Paths</h2>
 <ul>
 <li>Alternating path: a path in which the edges belong alternatively to the matching and not to the matching</li>
 <li>Augmenting path: an alternating path that starts from and ends on exposed vertices</li>
 </ul>
-
-
-<p>Clearly, an augmenting path can be &lsquo;flipped&rsquo; to increase the matching size <strong>by one</strong>, i.e., just make free vertex matched and make matched vertex free in this path.</p>
-
-<p><strong>Berge&rsquo;s Theorem</strong>:  The matching M is maximum <strong>iff</strong> there is no augmenting path w.r.t. $M$. I personally think the proof is easy but quite powerful.</p>
-
+<p>Clearly, an augmenting path can be ‘flipped’ to increase the matching size <strong>by one</strong>, i.e., just make free vertex matched and make matched vertex free in this path.</p>
+<p><strong>Berge’s Theorem</strong>: The matching M is maximum <strong>iff</strong> there is no augmenting path w.r.t. <span class="math">\(M\)</span>. I personally think the proof is easy but quite powerful.</p>
 <p>Thus, we can immediately use the theorem to design an algorithm: find augmenting path iteratively until no more can be found. The problem is how we can find the augmenting path.</p>
-
 </div>
   
   
@@ -373,9 +486,7 @@ posted in
 
 
   <div class="entry-content"><p>According to CLRS: Many of the asymptotically fastest maximum-flow algorithms are push-relabel algorithms, and the fastest actual implementations of maximum-flow algorithms are based on the push-relabel method. Push-relabel methods also efficiently solve other flow problems, such as the minimum-cost flow problem.</p>
-
-<p>This algorithm has a very different flavor. The overall idea is to generate a &lsquo;preflow&rsquo; that may not satisfy the flow properties, and keep &lsquo;pushing&rsquo;) and &lsquo;elevating&rsquo; (relabelling) the vertices until we cannot do that. We then remove the &lsquo;excess&rsquo; from the preflow and obtain a valid flow, which is also a max flow. In particular, the in-flow may be larger than out-flow at a vertex. The amount of overflow is called &lsquo;excess&rsquo;.</p>
-
+<p>This algorithm has a very different flavor. The overall idea is to generate a ‘preflow’ that may not satisfy the flow properties, and keep ‘pushing’) and ‘elevating’ (relabelling) the vertices until we cannot do that. We then remove the ‘excess’ from the preflow and obtain a valid flow, which is also a max flow. In particular, the in-flow may be larger than out-flow at a vertex. The amount of overflow is called ‘excess’.</p>
 </div>
   
   
@@ -437,167 +548,17 @@ posted in
   </header>
 
 
-  <div class="entry-content"><p>Basic method (framework) is Ford-Fulkerson. It&rsquo;s called a &ldquo;method&rdquo; because it&rsquo;s
-general, there can be different implementation that yield different complexity.
-It looks like this:</p>
-
+  <div class="entry-content"><p>Basic method (framework) is Ford-Fulkerson. It’s called a “method” because it’s general, there can be different implementation that yield different complexity. It looks like this:</p>
 <pre><code>Let F be an empty flow
 While there is augmenting path P from s to t
     Augment F with P
-End while
-</code></pre>
-
-<p>The problem is how we find the augmenting path efficiently. A naive
-implementation is to use DFS to randomly pick a $s-t$ path and augment it.
-However, it has two problems:</p>
-
+End while</code></pre>
+<p>The problem is how we find the augmenting path efficiently. A naive implementation is to use DFS to randomly pick a <span class="math">\(s-t\)</span> path and augment it. However, it has two problems:</p>
 </div>
   
   
     <footer>
       <a rel="full-article" href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/30/installing-a-new-car-stereo/">Installing a New Car Stereo</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-30T16:50:00-05:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/diy/'>DIY</a>, <a class='category' href='/blog/categories/car/'>car</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I did not realize until my car&rsquo;s radio&rsquo;s broken that, with less than a hundred bucks, you can buy a new Head Unit with nearly all functionality. Some note-worthy features include:</p>
-
-<ul>
-<li>iPod/iPhone support. Control the iphone directly from the panel.</li>
-<li>App support. This includes I-heart-radio, pandora, etc.</li>
-<li>Bluetooth Audio: stream music directly from a paired device. Even supports Pandora!</li>
-<li>Upgraded FM/AM support. Displays text from radio stations.</li>
-</ul>
-
-
-<p> </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/08/30/installing-a-new-car-stereo/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/28/roadtrips-in-us-2013/">Roadtrip in America 2013</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-28T16:17:00-05:00" pubdate data-updated="true">Aug 28<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/travel/'>travel</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In this year, I did several crazy road trips, each trip has about 3k miles. Here&rsquo;re them.</p>
-
-<h1>Winter Trip</h1>
-
-<p>The first trip is a trip with my parents, where they flied to Chicago and I drove them to UIUC for a visit.
-We then flied to LA and rented a car to start our road trip. The whole trip was mainly in California, though
-we drove a bit east and visited Las Vegas and Grand canyon.</p>
-
-<p><img src="https://lh3.googleusercontent.com/-3XKmLgVuYw8/UlBRR-rXocI/AAAAAAAA6Qg/IIHynx2WdOQ/s800/Winter%2520trip.png"></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/08/28/roadtrips-in-us-2013/">Read on &rarr;</a>
     </footer>
   
 
@@ -634,6 +595,14 @@ we drove a bit east and visited Las Vegas and Grand canyon.</p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/04/29/what-is-expectation-maximization/">What is Expectation Maximization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
         </li>
       
@@ -643,14 +612,6 @@ we drove a bit east and visited Las Vegas and Grand canyon.</p>
       
         <li>
           <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
         </li>
       
     </ul>

@@ -162,19 +162,17 @@ posted in
 
 
   <div class="entry-content"><p>This post summarizes some common useful tips in LaTeX editing.</p>
-
 <!-- more -->
 
-
-<h2>Figures</h2>
-
+<h2 id="figures">Figures</h2>
 <ul>
 <li><a href="http://www.howtotex.com/tips-tricks/vertical-alignment-of-subfigures/">Horizontal alignment of subfigures</a></li>
-<li><code>subfloat</code> in <code>subfig</code></li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<li><code>subfloat</code> in <code>subfig</code>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -193,17 +191,19 @@ posted in
 </span><span class='line'>
 </span><span class='line'><span class="k">\subref*</span><span class="nb">{</span>fig:example<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Bibliography</h2>
-
+</notextile>
+</div>
+</li>
+</ul>
+<h2 id="bibliography">Bibliography</h2>
 <ul>
 <li><a href="http://tex.stackexchange.com/questions/12686/how-do-i-run-bibtex-after-using-the-output-directory-flag-with-pdflatex-when-f">How do I run bibtex after using the -output-directory flag with pdflatex, when files are included from subdirectories?</a></li>
-<li>biblatex simple usage</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<li>biblatex simple usage
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -220,43 +220,42 @@ posted in
 </span><span class='line'><span class="c">% at the end</span>
 </span><span class='line'><span class="k">\printbibliography</span>
 </span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
+</notextile>
+</div></li>
 <li><a href="#bibitemsep">Item spacing</a></li>
 </ul>
-
-
-<h2>Graphics</h2>
-
+<h2 id="graphics">Graphics</h2>
 <ul>
-<li>Graphics path</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<li>Graphics path
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\graphicspath</span><span class="nb"></span>
 </span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>Use other file extensions:</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</notextile>
+</div></li>
+<li>Use other file extensions:
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\DeclareGraphicsExtensions</span><span class="nb">{</span>.pdf, .jpg, .png<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Table and Tabular</h2>
-
-<ul>
-<li>threeparttable: Use footnote in tabular</li>
+</notextile>
+</div>
+</li>
 </ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<h2 id="table-and-tabular">Table and Tabular</h2>
+<ul>
+<li>threeparttable: Use footnote in tabular
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -271,106 +270,87 @@ posted in
 </span><span class='line'><span class="k">\item</span> [<span class="s">$</span><span class="nv">\dagger</span><span class="s">$</span>] A foot note. <span class="c">% this reference to the item</span>
 </span><span class='line'><span class="k">\end</span><span class="nb">{</span>tablenotes<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure>
-
-
-<h2>Theorem, Definition</h2>
-
-<ul>
-<li>New definition/theorem</li>
+</notextile>
+</div>
+</li>
 </ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<h2 id="theorem-definition">Theorem, Definition</h2>
+<ul>
+<li>New definition/theorem
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\newtheorem</span><span class="nb">{</span>definition<span class="nb">}{</span>Definition<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
+</notextile>
+</div></li>
 <li>Useful packages:
-
 <ul>
 <li>ntheorem</li>
 <li>amsthm</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-
-
-<h2>Fonts</h2>
-
-<h2>Packages</h2>
-
+<h2 id="fonts">Fonts</h2>
+<h2 id="packages">Packages</h2>
 <ul>
 <li>csvsimple: can automatically read csv and create tabular.</li>
-<li>algpseudocode: the most updated algorithm / code environment, need to sit inside
-with <code>algorithm</code> package.</li>
+<li>algpseudocode: the most updated algorithm / code environment, need to sit inside with <code>algorithm</code> package.</li>
 <li>biblatex: provides better control for Bibliography.</li>
 <li>multirow: provides <code>\multirow</code> and <code>\multicolumn</code>.</li>
 <li>url: provides <code>\url</code>.</li>
 <li>xspace: prevent a command eating space.</li>
 <li>flushend: provides <code>\flushend</code>, balance two columns.</li>
 </ul>
-
-
-<h2>Controlling space</h2>
-
+<h2 id="controlling-space">Controlling space</h2>
 <ul>
-<li>reduce space between float and text</li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<li>reduce space between float and text
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\textfloatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
 </span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\floatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
 </span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\intextsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>reduce bib item separation in biblatex<a name="bibitemsep"></a></li>
-</ul>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</notextile>
+</div></li>
+<li>reduce bib item separation in biblatex<a name="bibitemsep"></a>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\setlength\bibitemsep</span><span class="nb">{</span>0.5<span class="k">\itemsep</span><span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
+</notextile>
+</div></li>
 <li>geometry: control the margins at top, bottom, left and right</li>
 <li><p>enumitem: control the spacing related to <code>enumerate</code> and <code>itemize</code>.</p></li>
-<li><p><a href="http://gurmeet.net/computer-science/latex-tips-n-tricks-for-conference-papers/">LaTeX Tips n Tricks for Conference Papers</a></p></li>
+<li><a href="http://gurmeet.net/computer-science/latex-tips-n-tricks-for-conference-papers/">LaTeX Tips n Tricks for Conference Papers</a></li>
 <li><a href="http://www.terminally-incoherent.com/blog/2007/09/19/latex-squeezing-the-vertical-white-space/">Latex: Squeezing the Vertical White Space</a></li>
-<li><a href="http://www.eng.cam.ac.uk/help/tpl/textprocessing/squeeze.html">Squeezing Space in LaTeX</a></li>
+<li><p><a href="http://www.eng.cam.ac.uk/help/tpl/textprocessing/squeeze.html">Squeezing Space in LaTeX</a></p></li>
 </ul>
-
-
-<h2>Commands and tools:</h2>
-
+<h2 id="commands-and-tools">Commands and tools:</h2>
 <ul>
 <li>latexmk: automatically compile multiple times to resolve reference.</li>
 <li>biber: replacement for bibtex for <code>biblatex</code></li>
 <li>texdoc: use <code>texdoc &lt;package&gt;</code> to search for a manual.</li>
 </ul>
-
-
-<h2>IEEE</h2>
-
+<h2 id="ieee">IEEE</h2>
 <ul>
 <li>proof: use <code>\IEEEproof</code></li>
 <li>multiple equations: use <code>\IEEEeqnarray</code> or <code>array</code>.</li>
 </ul>
-
-
-<h2>Uncategorized</h2>
-
+<h2 id="uncategorized">Uncategorized</h2>
 <ul>
 <li><a href="http://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-files-to-make-them-available-to-all-my-tex-files">Where do I place my own .sty files, to make them available to all my .tex files?</a></li>
 <li><a href="http://tex.stackexchange.com/questions/38287/creating-a-central-bibliography">Creating a central bibliography</a></li>
 </ul>
-
 </div>
 
 
@@ -450,6 +430,14 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/04/29/what-is-expectation-maximization/">What is Expectation Maximization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
         </li>
       
@@ -459,14 +447,6 @@ posted in
       
         <li>
           <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
         </li>
       
     </ul>

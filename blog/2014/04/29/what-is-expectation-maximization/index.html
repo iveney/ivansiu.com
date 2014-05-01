@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>What is Expectation Maximization - Zigang Xiao</title>
+  <meta name="author" content="Zigang Xiao (Ivan)">
+  <link rel="author" href="humans.txt">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  
+    
+  
+  <meta name="description" content="Expectation Maximization 题注：借着最近 Deep Learning （深度学习）的势头，我决定写一系列相关的专题，大概会涉及到 Machine learning 的基本算法，Neural Network, Sparse Autoencoder, PCA, &hellip;">
+  
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.ivansiu.com/blog/2014/04/29/what-is-expectation-maximization/">
+  <link href="/favicon.png" rel="icon">
+  <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Zigang Xiao" type="application/atom+xml">
+  <meta name="og:type" content="website" />
+  <meta name="og:site_name" content="Zigang Xiao" />
+  <meta name="og:title" content="What is Expectation Maximization" />
+  <meta name="og:description" content="Expectation Maximization 题注：借着最近 Deep Learning （深度学习）的势头，我决定写一系列相关的专题，大概会涉及到 Machine learning 的基本算法，Neural Network, Sparse Autoencoder, PCA, &hellip;" />
+  <meta name="og:url" content="http://blog.ivansiu.com/blog/2014/04/29/what-is-expectation-maximization/"/>
+  <meta name="url" content="http://blog.ivansiu.com/blog/2014/04/29/what-is-expectation-maximization/">
+  
+  <meta name="subject" content="chinesemachine-learning"/>
+  <meta name="category" content="chinesemachine-learning"/>
+  
+  <meta name="distribution" content="global">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!-- MathJax -->
+<!-- see:
+
+http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/ 
+http://drz.ac/2013/01/03/blogging-with-math/
+http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress
+
+-->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<!-- Facebook OpenGraph -->
+<meta property="og:image" content="http://blog.ivansiu.com/favicon.png">
+
+  
+
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="/">Zigang Xiao</a>
+    <ul class="nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/archives">Archives</a></li>
+    </ul>
+        <ul class="nav">
+      <li><a href="/blog/categories">Categories</a></li>
+    </ul>
+
+    <ul class="nav" data-subscription="rss">
+      <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+      
+    </ul>
+      
+    <form class="navbar-form" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:blog.ivansiu.com" />
+        <input class="span2" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+      
+  </div>
+</div>
+</nav>
+  <div class="wrapper_single">
+    <div class="container">
+      <article class="span8 offset2" role="article">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title">What Is Expectation Maximization</h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-29T03:48:29-05:00" pubdate data-updated="true">Apr 29<span>th</span>, 2014</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/chinese/'>chinese</a>, <a class='category' href='/blog/categories/machine-learning/'>machine-learning</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure>
+<img src="https://dl.dropboxusercontent.com/s/9op7vrilafciuv9/EM.jpg" title="http://cse-wiki.unl.edu/wiki/index.php/Expectation_maximization" alt="Expectation Maximization" /><figcaption>Expectation Maximization</figcaption>
+</figure>
+<p>题注：借着最近 Deep Learning （深度学习）的势头，我决定写一系列相关的专题，大概会涉及到 Machine learning 的基本算法，Neural Network, Sparse Autoencoder, PCA, Probabilistic Graphical Model (PGM), Restrictive Boltzman Machine, MRF 等。 这里是专题第一篇，关于 Expectation-Maximization 算法。</p>
+<p>这篇文章是从我在知乎的<a href="http://zhi.hu/2KsQ">回答</a>进化而来的。Expectation-Maximization (EM) 是个很有用的算法，而它涉及到的理论知识也很深。我第一次遇见它是在 Computer Vision 课上面，用 <a href="http://en.wikipedia.org/wiki/Markov_random_field">Markov Random Field</a> (MRF) model 来解决 <a href="http://en.wikipedia.org/wiki/Graph_cuts_in_computer_vision">Graph Cut Segmentation</a> 问题。而 MRF 的 parameter estimation 就要用到 EM 算法。之后陆陆续续在很多地方都碰到，最常见的就要数 <a href="http://en.wikipedia.org/wiki/Gaussian_mixture_model">Gaussian Mixture Model</a> (GMM) 和 <a href="http://en.wikipedia.org/wiki/Hidden_Markov_model">Hidden Markov Model</a> (HMM) 了。这篇文章不求深入到最底层的理论，而是用我自己的话来总结一下 EM 算法。 主要参考文章有 <sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup>, <sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup>, <sup><a href="#fn3" class="footnoteRef" id="fnref3">3</a></sup>.</p>
+<p>注：由于我阅读的专业资料都是英文, 所以专业名词我都会用英语以求清晰、准确。</p>
+<!-- more -->
+
+<hr />
+<p>简单来说，EM 是用来找 Maximum Likelihood Estimate (MLE) of unknown parameters 的算法。一般来说 MLE 都是可以写出一个 Closed-form formula 然后直接找出未知参数，但是很多时候这个 formula 太复杂，或者因为 missing data 问题，我们没办法直接推倒出 Closed-form formula，就必须通过 EM 这个优化算法来迭代寻找最优参数。</p>
+<p>我们首先从 MLE 开始说起。</p>
+<h2 id="problem-of-maximum-likelihood-estimate">Problem of Maximum Likelihood Estimate</h2>
+<p>假设有随机变量 X，以及描述 X 的 parametric pdf <span class="math">\(P(X|\theta)\)</span>, 但参数 <span class="math">\(\theta\)</span> 是未知的。当我们有一组数据 <span class="math">\(\mathcal{D}=\{x_1, x_2, \ldots, x_n\}\)</span> 时, 标准方法就是用 Maximum Likelihood Estimate (MLE) 来估计 ，写作 <span class="math">\(MLE(\theta)\)</span>。 这是一个关于 <span class="math">\(\theta\)</span> 的函数。MLE() 可以看做寻找一个最优的 <span class="math">\(\theta^*\)</span> 使得给定这些数据的概率达到最大，所以会写成 <span class="math">\(\theta^* = \arg \max_\theta \Pi_i^n p(x_i|\theta)\)</span> ，一般来说加个 <span class="math">\(log\)</span> 变成求和比较方便（由于 log 是单调的，不改变 argmax）。于是我们有 log-likelihood <span class="math">\(L(\theta)=\sum_i^n \log p(x_i|\theta)\)</span>。我们要找 <span class="math">\(\theta^* = \arg \max_{\theta \in \Theta } L(\theta)\)</span>，<span class="math">\(\Theta\)</span> 是 <span class="math">\(\theta\)</span> 的取值范围。</p>
+<p>如果没有任何限制，那么问题就已经解决了。但是我们在数据采集过程中，可能遇到无法直接观测到 X 的问题。假设我们只能观测到 Y = T(X)，T 是一个关于 X 的函数，而我们不知道 T 是怎样的。一个例子： <span class="math">\(x\in R^24\)</span> 是一天24小时的气温，这个气温依赖于季节 <span class="math">\(\theta=\)</span>{summer, fall, winter, spring}，我们知道 <span class="math">\(p(x|\theta)\)</span>，并且想通过数据猜测现在是什么季节（<span class="math">\(\theta）。 这时假设我们只能观测到一个当天的平均气温 y = mean(x)，并且我们并不知道 Y 是 X 的 mean。这个时候，我们可以通过 \)</span>P(|)$ 来找 <span class="math">\(\theta^*\)</span>。但有些时候，如果 <span class="math">\(p(y|\theta)\)</span> 很复杂，我们无法得到一个 closed-form formula。 找^*的过程是一个函数优化的过程，经典的方法是找 gradient 然后用 gradient descent 来迭代求优。但可能这个解析式非常复杂，无法找到 gradient。 很多时候，我们可以把 X 看做 missing data，就能得出一个简洁的 likelihood function，从而利用 EM 进行求优。</p>
+<h2 id="expecatation-maximization">Expecatation Maximization</h2>
+<p>我们首先定义一些符号如下。</p>
+<table>
+<caption>符号列表</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Y</td>
+<td style="text-align: left;">观测到的随机变量</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">y</td>
+<td style="text-align: left;">具体的观测数据</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Z</td>
+<td style="text-align: left;">Missing data 的随机变量</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">z</td>
+<td style="text-align: left;">具体的 missing data</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">X</td>
+<td style="text-align: left;">完整数据的随机变量</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">x</td>
+<td style="text-align: left;">具体的完整数据</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math">\(\theta\)</span></td>
+<td style="text-align: left;">要估计的参数</td>
+</tr>
+</tbody>
+</table>
+<p>假设我们观测到 y，而 z 是没有观测到的 missing data，而 x=(y, z) 是 complete data。那么可以使用 EM 来找关于完整数据的 MLE. EM 算法的大概思想是，假设我们有一个对 <span class="math">\(\theta\)</span> 的猜测，那么我们可以使用它来估算概率最高的完整数据（的期望），然后再利用得到的完整数据，推算出一个更好的 <span class="math">\(\theta\)</span>.</p>
+<p>EM 算法具体步骤如下：</p>
+<ul>
+<li><p>E-step: 假设我们已经有一个 的猜测，那么就可以用 算出 X 的概率分布 p(X|)。这是 E-step，是一个已知参数找具体概率分布的过程。这里可以算出一堆 P(X=1|^{(m)}) = 0.1, P(X=2|^{(m)}) = 0.3 … 之类的东西，^{(m)} 是第 m 次迭代对 的猜测。</p></li>
+<li><p>M-step: 问题是事实上我们不知道 X 是什么（missing），只是知道，给了一个 后 X 的分布会是这样的。所以这时相当于已知 X，求 ，也就是 MLE。不过之前求出来的其实只是 X 的概率分布，所以我们要 maximize 的是 X 的期望，这就是 M-step.</p></li>
+</ul>
+<p>上面这两步迭代至收敛，我们即得到 ^*，不过如果整个 function 不是 convex 的话，可能这个 只是一个 local optimum。</p>
+<p>那么 EM 为什么 work？直观来说，我们不是直接 maximize L() ，而是 maximize 它的一个 lower bound，这个 lower bound 可以看做是另外一个 function F，而 F 与 L 的 optimum 都是 ^<em>，并且它们都是在相同的区间 monotonicity 是相同的。那么如果我们能不停 improve 这个 lower bound，那么最终就会达到 ^</em>。如果你懂 A<em>-search，原理类似 A</em> predictor：If the predictor is a true lower bound function, then A* guarantee to find the optimum。</p>
+<p>说到这里，也许你还是很难知道 EM 具体是怎么应用的。没关系，接下来我会介绍 EM 两个最常用的应用。</p>
+<h2 id="example-gaussian-mixture-model-gmm">Example: Gaussian Mixture Model (GMM)</h2>
+<p>*A picture here *</p>
+<h2 id="example-hidden-markov-model-hmm">Example: Hidden Markov Model (HMM)</h2>
+<h2 id="参考文章">参考文章</h2>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a href="https://www.ee.washington.edu/techsite/papers/documents/UWEETR-2010-0002.pdf">EM Demystified: An Expectation-Maximization Tutorial</a><a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p><a href="http://ai.stanford.edu/~chuongdo/papers/em_tutorial.pdf">What is the expectation maximization algorithm?</a><a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p><a href="http://melodi.ee.washington.edu/people/bilmes/mypapers/em.pdf">A Gentle Tutorial of the EM Algorithm and its Application to Parameter Estimation for Gaussian Mixture and Hidden Markov Models</a><a href="#fnref3">↩</a></p></li>
+</ol>
+</section>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-29T03:48:29-05:00" pubdate data-updated="true">Apr 29<span>th</span>, 2014</time> - 
+      
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/chinese/'>chinese</a>, <a class='category' href='/blog/categories/machine-learning/'>machine-learning</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.ivansiu.com/blog/2014/04/29/what-is-expectation-maximization/" data-via="iveney" data-counturl="http://blog.ivansiu.com/blog/2014/04/29/what-is-expectation-maximization/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-layout="button_count" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    
+      <a class="pull-left" href="/blog/2014/01/29/batch-remove-photos-in-iphone/" title="Previous Post: Batch remove photos in iPhone, batch convert videos and upload back">&laquo; Batch remove photos in iPhone, batch convert videos and upload back</a>
+    
+    
+      <a class="pull-right" href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/" title="Next Post: Source-highlight for matlab/octave">Source-highlight for matlab/octave &raquo;</a>
+    
+  </footer>
+
+</div>
+
+        
+          <div class="article-format">
+            <h1>Comments</h1>
+            <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+          </div>
+        
+      </article>
+    </div>
+  </div>
+  <div id="footer-widgets">
+  <div class="container">
+    <div class="row">
+<!--
+  <div class="span3">
+    <h2>recent posts</h2>
+    <ul class="recent_posts">
+      
+        <li>
+          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/04/29/what-is-expectation-maximization/">What is Expectation Maximization</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">Fix (ugly) Safari 7.0 not using local pac file</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
+        </li>
+      
+    </ul>
+    <h2><a href="/blog/archives">archives</a></h2>
+  </div>
+  <div class="span3">
+    
+
+  </div>
+  <div class="span4">
+    <h2>twitter</h2>
+<a class="twitter-timeline" href="https://twitter.com/iveney" data-widget-id="390943167203127296">Tweets by @iveney</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  </div>
+  <div class="span2">
+    <h2>found on</h2>
+
+<a href="https://github.com/iveney/" rel="tooltip" title="Github"><img class="social_icon" title="Github" alt="github icon" src="/images/glyphicons_381_github.png"></a>
+
+
+
+<a href="http://stackoverflow.com/users/577704/" rel="tooltip" title="Stack Overflow"><img class="social_icon" title="Stack Overflow" alt="stack overflow icon" src="/images/glyphicons_400_stack_overflow.png"></a>
+
+
+
+<a href="http://www.linkedin.com/in/zgxiao" rel="tooltip" title="Linkedin"><img class="social_icon" title="Linkedin" alt="Linkedin icon" src="/images/glyphicons_377_linked_in.png"></a>
+
+
+
+<a href="http://twitter.com/iveney" rel="tooltip" title="Twitter"><img class="social_icon" title="Twitter" alt="Twitter icon" src="/images/glyphicons_391_twitter_t.png"></a>
+
+
+
+
+
+
+
+
+
+<a href="https://ews.illinois.edu/~zxiao2" rel="tooltip" title="Professional"><img class="social_icon" title="Professional" alt="Professional icon" src="/images/glyphicons_003_user.png"></a>
+
+
+  </div>
+-->
+</div>
+
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-left">
+  <a href="/">Zigang Xiao</a>
+  - Copyright &copy; 2014 - Zigang Xiao (Ivan)
+</p>
+<p class="pull-right">
+  <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>
+  
+    <span>Designed by <a href="http://www.AdrianArtiles.com">Adrian Artiles</a>.</span>
+  
+</p>
+
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script>window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.7.2.min.js" type="text/javascript"><\/script>')</script>
+<script src="/javascripts/libs/bootstrap.min.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.tweet.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.instagram.js" type="text/javascript"></script>
+<script src="/javascripts/libs/jquery.masonry.min.js" type="text/javascript"></script>
+<script src="/javascripts/custom.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'iveney';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://blog.ivansiu.com/blog/2014/04/29/what-is-expectation-maximization/';
+        var disqus_url = 'http://blog.ivansiu.com/blog/2014/04/29/what-is-expectation-maximization/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>

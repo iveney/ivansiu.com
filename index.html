@@ -112,6 +112,14 @@ My hobbies include Guitar and Ballroom dancing. </p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/04/29/what-is-expectation-maximization/">What is Expectation Maximization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
         </li>
       
@@ -121,14 +129,6 @@ My hobbies include Guitar and Ballroom dancing. </p>
       
         <li>
           <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
         </li>
       
     </ul>
@@ -171,6 +171,138 @@ My hobbies include Guitar and Ballroom dancing. </p>
   <div class="container">
     <div class="row" id="post-container">
     
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for Matlab/octave</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-01T01:59:40-05:00" pubdate data-updated="true">May 1<span>st</span>, 2014</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/homebrew/'>homebrew</a>, <a class='category' href='/blog/categories/matlab/'>matlab</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure>
+<img src="https://dl.dropboxusercontent.com/s/jqqno07xizfspkt/2014-05-01-source-highlight-for-matlab-slash-octave.png" />
+</figure>
+<p>I recently worked with Matlab a lot. When in console, sometimes I want to use <code>less</code> to quickly examine the file content, and I have already <a href="http://superuser.com/a/71593">set it up</a> such that it uses <a href="http://www.gnu.org/software/src-highlite/">source-highlight</a> to output colorful escape sequence to the console. However, source-highlight does not come with a syntax support for Matlab by default. Luckily, this <a href="http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html">post</a> (in Chinese) provides a solution.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/29/what-is-expectation-maximization/">What Is Expectation Maximization</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-29T03:48:29-05:00" pubdate data-updated="true">Apr 29<span>th</span>, 2014</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/chinese/'>chinese</a>, <a class='category' href='/blog/categories/machine-learning/'>machine-learning</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure>
+<img src="https://dl.dropboxusercontent.com/s/9op7vrilafciuv9/EM.jpg" title="http://cse-wiki.unl.edu/wiki/index.php/Expectation_maximization" alt="Expectation Maximization" /><figcaption>Expectation Maximization</figcaption>
+</figure>
+<p>题注：借着最近 Deep Learning （深度学习）的势头，我决定写一系列相关的专题，大概会涉及到 Machine learning 的基本算法，Neural Network, Sparse Autoencoder, PCA, Probabilistic Graphical Model (PGM), Restrictive Boltzman Machine, MRF 等。 这里是专题第一篇，关于 Expectation-Maximization 算法。</p>
+<p>这篇文章是从我在知乎的<a href="http://zhi.hu/2KsQ">回答</a>进化而来的。Expectation-Maximization (EM) 是个很有用的算法，而它涉及到的理论知识也很深。我第一次遇见它是在 Computer Vision 课上面，用 <a href="http://en.wikipedia.org/wiki/Markov_random_field">Markov Random Field</a> (MRF) model 来解决 <a href="http://en.wikipedia.org/wiki/Graph_cuts_in_computer_vision">Graph Cut Segmentation</a> 问题。而 MRF 的 parameter estimation 就要用到 EM 算法。之后陆陆续续在很多地方都碰到，最常见的就要数 <a href="http://en.wikipedia.org/wiki/Gaussian_mixture_model">Gaussian Mixture Model</a> (GMM) 和 <a href="http://en.wikipedia.org/wiki/Hidden_Markov_model">Hidden Markov Model</a> (HMM) 了。这篇文章不求深入到最底层的理论，而是用我自己的话来总结一下 EM 算法。 主要参考文章有 <sup><a href="#fn1" class="footnoteRef" id="fnref1">1</a></sup>, <sup><a href="#fn2" class="footnoteRef" id="fnref2">2</a></sup>, <sup><a href="#fn3" class="footnoteRef" id="fnref3">3</a></sup>.</p>
+<p>注：由于我阅读的专业资料都是英文, 所以专业名词我都会用英语以求清晰、准确。</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/04/29/what-is-expectation-maximization/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
     
     
       <article class="span4">
@@ -221,7 +353,6 @@ posted in
 
 
   <div class="entry-content"><p>One of the problems that drives iOS user crazy is the user-unfriendly manipulation/syncing of photos in iOS. There are just no easy way to remove photos in batch (though you can delete the entire camera roll in the settings).</p>
-
 </div>
   
   
@@ -283,19 +414,17 @@ posted in
   </header>
 
 
-  <div class="entry-content"><p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all.
-Turns out because of sandboxing, it will not allow reading file from local.
-A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
-
+  <div class="entry-content"><p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all. Turns out because of sandboxing, it will not allow reading file from local. A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
 <p>However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:</p>
-
+<div class='bogus-wrapper'>
+<notextile>
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>sudo apachectl start</span></code></pre></td></tr></table></div></figure>
-
+</notextile>
+</div>
 
 <p>Also, place the pac file under <code>/Library/WebServer/Documents</code>, which is the default Document Root of Apache.</p>
-
-<p>Tom Fischer proposed <a href="https://discussions.apple.com/thread/3202499?start=30&amp;tstart=0">another way</a> to get around, however I don&rsquo;t think it a good idea to mess around the system files.</p>
+<p>Tom Fischer proposed <a href="https://discussions.apple.com/thread/3202499?start=30&amp;tstart=0">another way</a> to get around, however I don’t think it a good idea to mess around the system files.</p>
 </div>
   
   
@@ -354,7 +483,6 @@ posted in
 
 
   <div class="entry-content"><p>This post summarizes some common useful tips in LaTeX editing.</p>
-
 </div>
   
   
@@ -416,150 +544,15 @@ posted in
   </header>
 
 
-  <div class="entry-content"><p>After four years of use, the wire on my MagSafe finally fray out. After searching a bit, I found that a new one costs $80!!
-My old memories came back: almost all accessories by Apple are rip-offs. See how low the ratings are:</p>
-
+  <div class="entry-content"><p>After four years of use, the wire on my MagSafe finally fray out. After searching a bit, I found that a new one costs $80!! My old memories came back: almost all accessories by Apple are rip-offs. See how low the ratings are:</p>
 <p><img src="https://lh3.googleusercontent.com/-HbwCGT5IRfg/Un22iAWR3FI/AAAAAAAA6S8/kb8A295sneA/s800/Apple%252085W%2520MagSafe%2520Power%2520Adapter%2520%2528for%252015-%2520and%252017-inch%2520MacBook%2520Pro%2529%2520-%2520Apple%2520Store%2520%2528U.S.%2529.png"></p>
-
-<p>I know that this can be easily fixed if you know a little soldering and have courage: the adapter is working perfectly fine, it is just the wires.
-I decided to DIY. There are several pretty good articles on how to <a href="http://www.instructables.com/id/How-to-open-and-replace-the-MagSafe-cord-on-an-App/?ALLSTEPS">open the MagSafe</a> and how to <a href="http://www.instructables.com/id/MacBook-Mag-Safe-Charger-Budget-Repair-Disas/">solder it</a>.</p>
-
+<p>I know that this can be easily fixed if you know a little soldering and have courage: the adapter is working perfectly fine, it is just the wires. I decided to DIY. There are several pretty good articles on how to <a href="http://www.instructables.com/id/How-to-open-and-replace-the-MagSafe-cord-on-an-App/?ALLSTEPS">open the MagSafe</a> and how to <a href="http://www.instructables.com/id/MacBook-Mag-Safe-Charger-Budget-Repair-Disas/">solder it</a>.</p>
 </div>
   
   
     <footer>
       <a rel="full-article" href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Read on &rarr;</a>
     </footer>
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as an Example</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-17T16:12:00-05:00" pubdate data-updated="true">Oct 17<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/octopress/'>octopress</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg"></p>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/17/updating-octopress-theme/">Updating Octopress Theme</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-17T14:54:00-05:00" pubdate data-updated="true">Oct 17<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/octopress/'>octopress</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The themes are stored in <code>.themes/&lt;name&gt;</code>, we can use the rake command to update either the source or style, as documented in the <a href="http://octopress.org/docs/updating/">office website</a>. However, the syntax should be more clear, i.e.,</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake update_source['theme name']</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Without the brackets, it defaults to <code>.themes/classic</code>.</p>
-
-<p>Caveats:</p>
-
-<ul>
-<li>Do NOT use <code>rake install</code> to install the theme again, since it will overwrite the whole thing, including the files in <code>source/_include/custom</code> directory.</li>
-<li>When working on the blog, anything outside of <code>source/_include/custom</code> should be considered the theme. Thus, do not make changes directly in <code>source</code>. Make changes to theme and update the theme to reflect the changes to the blog.</li>
-</ul>
-
-</div>
-  
   
 
 
@@ -591,6 +584,14 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/04/29/what-is-expectation-maximization/">What is Expectation Maximization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
         </li>
       
@@ -600,14 +601,6 @@ posted in
       
         <li>
           <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
         </li>
       
     </ul>

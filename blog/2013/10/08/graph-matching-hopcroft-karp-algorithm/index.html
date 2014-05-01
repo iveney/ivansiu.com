@@ -13,8 +13,8 @@
   
     
   
-  <meta name="description" content="Overview Hopcroft-Karp algorithm also utilizes the augmenting path. The difference
-between the simple augmenting path algorithm is, instead of &hellip;">
+  <meta name="description" content="Overview
+Hopcroft-Karp algorithm also utilizes the augmenting path. The difference between the simple augmenting path algorithm is, instead of &hellip;">
   
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -30,8 +30,8 @@ between the simple augmenting path algorithm is, instead of &hellip;">
   <meta name="og:type" content="website" />
   <meta name="og:site_name" content="Zigang Xiao" />
   <meta name="og:title" content="Graph Matching: Hopcroft-Karp Algorithm" />
-  <meta name="og:description" content="Overview Hopcroft-Karp algorithm also utilizes the augmenting path. The difference
-between the simple augmenting path algorithm is, instead of &hellip;" />
+  <meta name="og:description" content="Overview
+Hopcroft-Karp algorithm also utilizes the augmenting path. The difference between the simple augmenting path algorithm is, instead of &hellip;" />
   <meta name="og:url" content="http://blog.ivansiu.com/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/"/>
   <meta name="url" content="http://blog.ivansiu.com/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/">
   
@@ -163,97 +163,58 @@ posted in
   </header>
 
 
-  <div class="entry-content"><h2>Overview</h2>
-
-<p>Hopcroft-Karp algorithm also utilizes the augmenting path. The difference
-between the <a href="/blog/2013/10/07/graph-matching-augmenting-path/">simple augmenting path algorithm</a> is, instead of searching
-augmenting path one by one, it looks for many paths in the same time. The paths found at each iteration are in fact <strong>vertex disjoint path</strong>.
-By doing so, the number of iterations can be cut down, since there cannot be too many disjoing paths.</p>
-
-<p>The major observation is that the length of augementing path grows at each step. Thus, if we keep finding a set of vertex disjoint augmenting paths,
-the algorithm is guaranteed to stop eventually and faster than finding the path one by one.</p>
-
+  <div class="entry-content"><h2 id="overview">Overview</h2>
+<p>Hopcroft-Karp algorithm also utilizes the augmenting path. The difference between the <a href="/blog/2013/10/07/graph-matching-augmenting-path/">simple augmenting path algorithm</a> is, instead of searching augmenting path one by one, it looks for many paths in the same time. The paths found at each iteration are in fact <strong>vertex disjoint path</strong>. By doing so, the number of iterations can be cut down, since there cannot be too many disjoing paths.</p>
+<p>The major observation is that the length of augementing path grows at each step. Thus, if we keep finding a set of vertex disjoint augmenting paths, the algorithm is guaranteed to stop eventually and faster than finding the path one by one.</p>
 <!-- more -->
 
-
-<h2>Finding Maximal Set of Vertex Disjoint Paths</h2>
-
-<p>Let $G=(U \cup V, E)$ be the bipartite graph and $G_M$ be the directed graph w.r.t to matching $M$.
-The <strong>layered graph</strong> is contructed out of $G_M$, where the distance at a vertex $v$ is defined as the length of shortest path from some vertices in $U$.</p>
-
-<p>This can done by simply running a modified BFS on $G_M$: we start by enqueing all the free vertices $U&#8217;$ in $U$ and label them as 0 (distance),
-propagate and label until one or more free vertices in $V$ are reached. Let the label (distance) be $k$, and denote this graph as $L$.</p>
-
-<p>We can then run a modified DFS on $L$, starting from any of the vertices in $U&#8217;$. Whenever we reach a free vertices in $V$, we delete the path $p$
-from $L$, and repeat. It can be proven that all the paths found are shortest vertex disjoint paths of length $k$. This set of paths are the maximal set
-we are looking for.</p>
-
-<h2>Algorithm Outline</h2>
-
+<h2 id="finding-maximal-set-of-vertex-disjoint-paths">Finding Maximal Set of Vertex Disjoint Paths</h2>
+<p>Let <span class="math">\(G=(U \cup V, E)\)</span> be the bipartite graph and <span class="math">\(G_M\)</span> be the directed graph w.r.t to matching <span class="math">\(M\)</span>. The <strong>layered graph</strong> is contructed out of <span class="math">\(G_M\)</span>, where the distance at a vertex <span class="math">\(v\)</span> is defined as the length of shortest path from some vertices in <span class="math">\(U\)</span>.</p>
+<p>This can done by simply running a modified BFS on <span class="math">\(G_M\)</span>: we start by enqueing all the free vertices <span class="math">\(U&#39;\)</span> in <span class="math">\(U\)</span> and label them as 0 (distance), propagate and label until one or more free vertices in <span class="math">\(V\)</span> are reached. Let the label (distance) be <span class="math">\(k\)</span>, and denote this graph as <span class="math">\(L\)</span>.</p>
+<p>We can then run a modified DFS on <span class="math">\(L\)</span>, starting from any of the vertices in <span class="math">\(U&#39;\)</span>. Whenever we reach a free vertices in <span class="math">\(V\)</span>, we delete the path <span class="math">\(p\)</span> from <span class="math">\(L\)</span>, and repeat. It can be proven that all the paths found are shortest vertex disjoint paths of length <span class="math">\(k\)</span>. This set of paths are the maximal set we are looking for.</p>
+<h2 id="algorithm-outline">Algorithm Outline</h2>
 <ul>
-<li>MAXIMAL-SET-OF-PATHS($G=(U \cup V, E), M$)
-
+<li>MAXIMAL-SET-OF-PATHS(<span class="math">\(G=(U \cup V, E), M\)</span>)
 <ul>
-<li>$P \gets \varnothing$</li>
-<li>$L \gets $ Run modified BFS on $G_M$</li>
-<li>$U&#8217; \gets $ free vertices in $U$</li>
-<li>for $u \in U&#8217;$
-
+<li><span class="math">\(P \gets \varnothing\)</span></li>
+<li><span class="math">\(L \gets \)</span> Run modified BFS on <span class="math">\(G_M\)</span></li>
+<li><span class="math">\(U&#39; \gets \)</span> free vertices in <span class="math">\(U\)</span></li>
+<li>for <span class="math">\(u \in U&#39;\)</span>
 <ul>
-<li>$p \gets $ PARTIAL-DFS($G, v, T$)</li>
-<li>if $p \neq \varnothing $
-
+<li><span class="math">\(p \gets \)</span> PARTIAL-DFS(<span class="math">\(G, v, T\)</span>)</li>
+<li>if <span class="math">\(p \neq \varnothing \)</span>
 <ul>
-<li>$P = P \cup p$</li>
-<li>Remove $p$ from $L$</li>
+<li><span class="math">\(P = P \cup p\)</span></li>
+<li>Remove <span class="math">\(p\)</span> from <span class="math">\(L\)</span></li>
+</ul></li>
+</ul></li>
+<li>return <span class="math">\(P\)</span></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-</li>
-<li>return $P$</li>
-</ul>
-</li>
-</ul>
-
-
 <hr />
-
 <ul>
-<li>HOPCROFT-KARP($G$)
-
+<li>HOPCROFT-KARP(<span class="math">\(G\)</span>)
 <ul>
-<li>$M \gets \varnothing$</li>
+<li><span class="math">\(M \gets \varnothing\)</span></li>
 <li>repeat
-
 <ul>
-<li>$P \gets $ MAXIMAL-SET-OF-PATHS($G, M$)</li>
-<li>if $P \neq \varnothing$
-
+<li><span class="math">\(P \gets \)</span> MAXIMAL-SET-OF-PATHS(<span class="math">\(G, M\)</span>)</li>
+<li>if <span class="math">\(P \neq \varnothing\)</span>
 <ul>
-<li>$M \gets M \oplus P$</li>
+<li><span class="math">\(M \gets M \oplus P\)</span></li>
+</ul></li>
+</ul></li>
+<li>until <span class="math">\(P = \varnothing\)</span></li>
+<li>return <span class="math">\(M\)</span></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-</li>
-<li>until $P = \varnothing$</li>
-<li>return $M$</li>
-</ul>
-</li>
-</ul>
-
-
-<h2>Analysis</h2>
-
-<p>It can be shown that the loop will be executed at most $O(\sqrt{|V|})$ times, and running the DFS and BFS requires $O(|E|)$ time.
-Thus the overall run time is $O(\sqrt{|V|} |E|)$.</p>
-
-<h2>Reference</h2>
-
+<h2 id="analysis">Analysis</h2>
+<p>It can be shown that the loop will be executed at most <span class="math">\(O(\sqrt{|V|})\)</span> times, and running the DFS and BFS requires <span class="math">\(O(|E|)\)</span> time. Thus the overall run time is <span class="math">\(O(\sqrt{|V|} |E|)\)</span>.</p>
+<h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Hopcroft-Karp">Wikipedia article</a></li>
 <li><a href="http://www.dis.uniroma1.it/~sankowski/lecture2.pdf">Lecture note from Sapienza University of Rome</a></li>
 </ul>
-
 </div>
 
 
@@ -333,6 +294,14 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/04/29/what-is-expectation-maximization/">What is Expectation Maximization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
         </li>
       
@@ -342,14 +311,6 @@ posted in
       
         <li>
           <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
         </li>
       
     </ul>

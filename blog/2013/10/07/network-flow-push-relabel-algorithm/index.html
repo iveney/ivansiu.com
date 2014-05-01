@@ -162,29 +162,20 @@ posted in
 
 
   <div class="entry-content"><p>According to CLRS: Many of the asymptotically fastest maximum-flow algorithms are push-relabel algorithms, and the fastest actual implementations of maximum-flow algorithms are based on the push-relabel method. Push-relabel methods also efficiently solve other flow problems, such as the minimum-cost flow problem.</p>
-
-<p>This algorithm has a very different flavor. The overall idea is to generate a &lsquo;preflow&rsquo; that may not satisfy the flow properties, and keep &lsquo;pushing&rsquo;) and &lsquo;elevating&rsquo; (relabelling) the vertices until we cannot do that. We then remove the &lsquo;excess&rsquo; from the preflow and obtain a valid flow, which is also a max flow. In particular, the in-flow may be larger than out-flow at a vertex. The amount of overflow is called &lsquo;excess&rsquo;.</p>
-
+<p>This algorithm has a very different flavor. The overall idea is to generate a ‘preflow’ that may not satisfy the flow properties, and keep ‘pushing’) and ‘elevating’ (relabelling) the vertices until we cannot do that. We then remove the ‘excess’ from the preflow and obtain a valid flow, which is also a max flow. In particular, the in-flow may be larger than out-flow at a vertex. The amount of overflow is called ‘excess’.</p>
 <!-- more -->
 
-
-<p>The intuition behind is this: think of the vertices as platforms that have different height, where initially $S$ has $|V|$ height and all other vertices have 0 heights. The flow can only be pushed from higher vertices to lower vertices. Whenever we do not have any flow to push, we find some vertex  that has unsaturated out edge to its neighbor vertices to &lsquo;relabel&rsquo;, i.e., elevating its height such that we can continue to &lsquo;push&rsquo;. Thus, there are two operations &lsquo;push&rsquo; and &lsquo;relabel&rsquo; (and thus the name):</p>
-
+<p>The intuition behind is this: think of the vertices as platforms that have different height, where initially <span class="math">\(S\)</span> has <span class="math">\(|V|\)</span> height and all other vertices have 0 heights. The flow can only be pushed from higher vertices to lower vertices. Whenever we do not have any flow to push, we find some vertex that has unsaturated out edge to its neighbor vertices to ‘relabel’, i.e., elevating its height such that we can continue to ‘push’. Thus, there are two operations ‘push’ and ‘relabel’ (and thus the name):</p>
 <pre><code>push: sending excess from u to v
-relabel: increase the height of u to min({v: neighbor of u})+1
-</code></pre>
-
+relabel: increase the height of u to min({v: neighbor of u})+1</code></pre>
 <p>The algorithm is as follows:</p>
-
 <pre><code>Initialize s.h = |V|, u.h = 0 for u != s. // u.h is the height of vertex u
 For all (s, u), push c(s, u). // saturate all outgoing edges from s.
 While there is vertex that can be pushed or relabel
   do push or relabel
 End while
-return F.
-</code></pre>
-
-<p>The naive implementation has runtime $O(|V|^2 |E|)$, and can be improved to $O(|V|^3)$.</p>
+return F.</code></pre>
+<p>The naive implementation has runtime <span class="math">\(O(|V|^2 |E|)\)</span>, and can be improved to <span class="math">\(O(|V|^3)\)</span>.</p>
 </div>
 
 
@@ -264,6 +255,14 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/04/29/what-is-expectation-maximization/">What is Expectation Maximization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
         </li>
       
@@ -273,14 +272,6 @@ posted in
       
         <li>
           <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
         </li>
       
     </ul>

@@ -162,20 +162,19 @@ posted in
 
 
   <div class="entry-content"><p>The themes are stored in <code>.themes/&lt;name&gt;</code>, we can use the rake command to update either the source or style, as documented in the <a href="http://octopress.org/docs/updating/">office website</a>. However, the syntax should be more clear, i.e.,</p>
-
+<div class='bogus-wrapper'>
+<notextile>
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>rake update_source['theme name']</span></code></pre></td></tr></table></div></figure>
-
+</notextile>
+</div>
 
 <p>Without the brackets, it defaults to <code>.themes/classic</code>.</p>
-
 <p>Caveats:</p>
-
 <ul>
 <li>Do NOT use <code>rake install</code> to install the theme again, since it will overwrite the whole thing, including the files in <code>source/_include/custom</code> directory.</li>
 <li>When working on the blog, anything outside of <code>source/_include/custom</code> should be considered the theme. Thus, do not make changes directly in <code>source</code>. Make changes to theme and update the theme to reflect the changes to the blog.</li>
 </ul>
-
 </div>
 
 
@@ -255,6 +254,14 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/04/29/what-is-expectation-maximization/">What is Expectation Maximization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
         </li>
       
@@ -264,14 +271,6 @@ posted in
       
         <li>
           <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
         </li>
       
     </ul>

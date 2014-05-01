@@ -112,6 +112,14 @@ My hobbies include Guitar and Ballroom dancing. </p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/04/29/what-is-expectation-maximization/">What is Expectation Maximization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
         </li>
       
@@ -121,14 +129,6 @@ My hobbies include Guitar and Ballroom dancing. </p>
       
         <li>
           <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
         </li>
       
     </ul>
@@ -178,6 +178,139 @@ My hobbies include Guitar and Ballroom dancing. </p>
 
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/08/30/installing-a-new-car-stereo/">Installing a New Car Stereo</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-30T16:50:00-05:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/diy/'>DIY</a>, <a class='category' href='/blog/categories/car/'>car</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I did not realize until my car’s radio’s broken that, with less than a hundred bucks, you can buy a new Head Unit with nearly all functionality. Some note-worthy features include:</p>
+<ul>
+<li>iPod/iPhone support. Control the iphone directly from the panel.</li>
+<li>App support. This includes I-heart-radio, pandora, etc.</li>
+<li>Bluetooth Audio: stream music directly from a paired device. Even supports Pandora!</li>
+<li>Upgraded FM/AM support. Displays text from radio stations.</li>
+</ul>
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/08/30/installing-a-new-car-stereo/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/28/roadtrips-in-us-2013/">Roadtrip in America 2013</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-28T16:17:00-05:00" pubdate data-updated="true">Aug 28<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/travel/'>travel</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In this year, I did several crazy road trips, each trip has about 3k miles. Here’re them.</p>
+<h1 id="winter-trip">Winter Trip</h1>
+<p>The first trip is a trip with my parents, where they flied to Chicago and I drove them to UIUC for a visit. We then flied to LA and rented a car to start our road trip. The whole trip was mainly in California, though we drove a bit east and visited Las Vegas and Grand canyon.</p>
+<p><img src="https://lh3.googleusercontent.com/-3XKmLgVuYw8/UlBRR-rXocI/AAAAAAAA6Qg/IIHynx2WdOQ/s800/Winter%2520trip.png"></p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/08/28/roadtrips-in-us-2013/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/05/09/notes-on-ssh-port-forwarding/">Notes on SSH Port Forwarding</a></h1>
     
     
@@ -220,26 +353,16 @@ posted in
   </header>
 
 
-  <div class="entry-content"><h3>SSH Local Port Forwarding</h3>
-
+  <div class="entry-content"><h3 id="ssh-local-port-forwarding">SSH Local Port Forwarding</h3>
 <p>Use <code>ssh -L</code> to bind a local port to a remote port</p>
-
-<h3>Dynamic Port Forwarding</h3>
-
+<h3 id="dynamic-port-forwarding">Dynamic Port Forwarding</h3>
 <p>Use <code>ssh -D</code> to dynamically bind a local port for forwarding. A SOCKS5 will be created. Example:</p>
-
 <pre><code>ssh -D 1080 user@remote-server.com
-</code></pre>
-
+    </code></pre>
 <p>This binds to remote-server.com and uses local port 1080 for forwarding.</p>
-
 <p>Optionally use -C for data compression.</p>
-
 <p>The above command will log into the remote-server.com, use <code>-f</code> to put ssh to background, and use <code>-N</code> to not to execute a command. i.e.,</p>
-
-<pre><code>ssh -f -N -D 1080 user@remote-server.com
-</code></pre>
-
+<pre><code>ssh -f -N -D 1080 user@remote-server.com</code></pre>
 </div>
   
   
@@ -277,6 +400,14 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/04/29/what-is-expectation-maximization/">What is Expectation Maximization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
         </li>
       
@@ -286,14 +417,6 @@ posted in
       
         <li>
           <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
         </li>
       
     </ul>

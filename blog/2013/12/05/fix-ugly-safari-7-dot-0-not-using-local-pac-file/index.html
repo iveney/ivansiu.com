@@ -13,9 +13,7 @@
   
     
   
-  <meta name="description" content="I found that Safari in Mavericks is not using local proxy.pac at all.
-Turns out because of sandboxing, it will not allow reading file from local.
-A &hellip;">
+  <meta name="description" content="I found that Safari in Mavericks is not using local proxy.pac at all. Turns out because of sandboxing, it will not allow reading file from local. A &hellip;">
   
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -31,9 +29,7 @@ A &hellip;">
   <meta name="og:type" content="website" />
   <meta name="og:site_name" content="Zigang Xiao" />
   <meta name="og:title" content="Fix (ugly) Safari 7.0 not using local pac file" />
-  <meta name="og:description" content="I found that Safari in Mavericks is not using local proxy.pac at all.
-Turns out because of sandboxing, it will not allow reading file from local.
-A &hellip;" />
+  <meta name="og:description" content="I found that Safari in Mavericks is not using local proxy.pac at all. Turns out because of sandboxing, it will not allow reading file from local. A &hellip;" />
   <meta name="og:url" content="http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/"/>
   <meta name="url" content="http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">
   
@@ -165,19 +161,17 @@ posted in
   </header>
 
 
-  <div class="entry-content"><p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all.
-Turns out because of sandboxing, it will not allow reading file from local.
-A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
-
+  <div class="entry-content"><p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all. Turns out because of sandboxing, it will not allow reading file from local. A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
 <p>However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:</p>
-
+<div class='bogus-wrapper'>
+<notextile>
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>sudo apachectl start</span></code></pre></td></tr></table></div></figure>
-
+</notextile>
+</div>
 
 <p>Also, place the pac file under <code>/Library/WebServer/Documents</code>, which is the default Document Root of Apache.</p>
-
-<p>Tom Fischer proposed <a href="https://discussions.apple.com/thread/3202499?start=30&amp;tstart=0">another way</a> to get around, however I don&rsquo;t think it a good idea to mess around the system files.</p>
+<p>Tom Fischer proposed <a href="https://discussions.apple.com/thread/3202499?start=30&amp;tstart=0">another way</a> to get around, however I don’t think it a good idea to mess around the system files.</p>
 </div>
 
 
@@ -257,6 +251,14 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/04/29/what-is-expectation-maximization/">What is Expectation Maximization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
         </li>
       
@@ -266,14 +268,6 @@ posted in
       
         <li>
           <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as An Example</a>
         </li>
       
     </ul>
