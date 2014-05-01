@@ -4,7 +4,7 @@
   <title><![CDATA[Category: car | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/car/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-01T02:34:28-05:00</updated>
+  <updated>2014-05-01T17:43:31-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -29,12 +29,12 @@
 
 Since I never used CD, I actually decided to buy a Digital Media Receiver: [JVC KD-X250BT](http://www.crutchfield.com/S-kT2jsjodqXG/p_105KDX250B/JVC-KD-X250BT.html). Since every car has a different wiring harness, we need to buy a compatible wiring harness. My car has a Double DIN design but the DMR is a single DIN one, so I actually need to buy a installation kit. The wiring setup is fun:
 
-<img class="left" src="https://lh5.googleusercontent.com/-zOOgWaP5-W8/UiETJQhmUVI/AAAAAAAA6AM/jRAo6LHRlDU/s400/IMG_5341.jpg">
-<img class="right" src="https://lh4.googleusercontent.com/-n_QzAv5VgfQ/UiETKOBShuI/AAAAAAAA6AU/_F3-gN-NDio/s400/IMG_5342.jpg">
-<img class="left" src="https://lh5.googleusercontent.com/-p7tlzn7kbRc/UiETKzbUaCI/AAAAAAAA6Ac/37Dgx3cbUJM/s400/IMG_5344.jpg">
+{% img left https://lh5.googleusercontent.com/-zOOgWaP5-W8/UiETJQhmUVI/AAAAAAAA6AM/jRAo6LHRlDU/s400/IMG_5341.jpg %}
+{% img right https://lh4.googleusercontent.com/-n_QzAv5VgfQ/UiETKOBShuI/AAAAAAAA6AU/_F3-gN-NDio/s400/IMG_5342.jpg %}
+{% img left https://lh5.googleusercontent.com/-p7tlzn7kbRc/UiETKzbUaCI/AAAAAAAA6Ac/37Dgx3cbUJM/s400/IMG_5344.jpg %}
 
-<img class="right" src="https://lh6.googleusercontent.com/-KJRCnhX64lg/UiETLxnhJKI/AAAAAAAA6Ak/qdqbEPUfAUI/s600/IMG_5345.JPG">
-<img src="https://lh5.googleusercontent.com/-h0tu6PrFzIk/UiETMWNKURI/AAAAAAAA6As/Zll5LFDkixM/s600/IMG_5346.JPG">
+{% img right https://lh6.googleusercontent.com/-KJRCnhX64lg/UiETLxnhJKI/AAAAAAAA6Ak/qdqbEPUfAUI/s600/IMG_5345.JPG %}
+{% img https://lh5.googleusercontent.com/-h0tu6PrFzIk/UiETMWNKURI/AAAAAAAA6As/Zll5LFDkixM/s600/IMG_5346.JPG %}
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: homebrew | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/homebrew/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-01T02:34:28-05:00</updated>
+  <updated>2014-05-01T17:43:31-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -44,14 +44,14 @@ takes an extremely long time.  To prevent this, we need to unlink it first,
 and link it back afterwards. That is,
 
 
-```
+``` bash
 brew unlink python
 brew link python    # after installation
 ```
 
 Go to the following folder and create two files,
-
-```
+ 
+``` bash
 cd `brew --prefix source-highlight`/share/source-highlight
 ```
 
@@ -71,7 +71,7 @@ string delim "'" "'" escape "''"
 
 Finally, edit `lang.map` to create a mapping for matlab file.
 
-```
+``` bash lang.map
 echo 'm = matlab.lang' >> lang.map
 ```]]></content>
   </entry>

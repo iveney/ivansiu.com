@@ -4,7 +4,7 @@
   <title><![CDATA[Category: travel | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/travel/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-01T02:34:28-05:00</updated>
+  <updated>2014-05-01T17:43:31-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -25,19 +25,19 @@ The first trip is a trip with my parents, where they flied to Chicago and I drov
 We then flied to LA and rented a car to start our road trip. The whole trip was mainly in California, though
 we drove a bit east and visited Las Vegas and Grand canyon.
 
-<img src="https://lh3.googleusercontent.com/-3XKmLgVuYw8/UlBRR-rXocI/AAAAAAAA6Qg/IIHynx2WdOQ/s800/Winter%2520trip.png">
+{% img https://lh3.googleusercontent.com/-3XKmLgVuYw8/UlBRR-rXocI/AAAAAAAA6Qg/IIHynx2WdOQ/s800/Winter%2520trip.png %}
 
 <!-- more -->
 
 # Route 66
 I drove from Champaign all the way to Mountain View, with most of the part of [Route 66](https://en.wikipedia.org/wiki/U.S._Route_66).
 
-<img src="https://lh5.googleusercontent.com/-fMUI4Zi2a68/UlBUCwGlIoI/AAAAAAAA6Q0/14KGATd9IHw/s800/Champaign%252C%2520IL%2520to%2520Mountain%2520View%252C%2520CA%2520-%2520Google%2520Maps.png">
+{% img https://lh5.googleusercontent.com/-fMUI4Zi2a68/UlBUCwGlIoI/AAAAAAAA6Q0/14KGATd9IHw/s800/Champaign%252C%2520IL%2520to%2520Mountain%2520View%252C%2520CA%2520-%2520Google%2520Maps.png %}
 
 # I-80
 After my internship in California, I drove back from Mountain View to Champaign.
 
-<img src="https://lh6.googleusercontent.com/-QEnrQ49XzlQ/UlBQLfKAtTI/AAAAAAAA6QM/JBcEAGUNxiI/s800/Sunnyvale%252C%2520CA%2520to%2520Champaign%252C%2520IL%2520-%2520Google%2520Maps.png">
+{% img https://lh6.googleusercontent.com/-QEnrQ49XzlQ/UlBQLfKAtTI/AAAAAAAA6QM/JBcEAGUNxiI/s800/Sunnyvale%252C%2520CA%2520to%2520Champaign%252C%2520IL%2520-%2520Google%2520Maps.png %}
 ]]></content>
   </entry>
   

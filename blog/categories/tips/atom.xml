@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tips | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/tips/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-01T02:34:28-05:00</updated>
+  <updated>2014-05-01T17:43:31-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Send ctrl-a in tmux after rebinding to it]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/"/>
+    <updated>2014-05-01T17:14:46-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it</id>
+    <content type="html"><![CDATA[![](http://dl.dropboxusercontent.com/s/7l4vneadlcip8wd/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png)
+
+While `tmux` provides much better functionality than `screen`,
+most of us that work with tmux have been using `screen` for a long time,
+and it is more comfortable for us to use `ctrl-a` than the default `ctrl-b`,
+which is finger-strechy. Thus the first thing I will do after installing `tmux`
+is to rebind the prefix to `ctrl-a`. That gives us the most handy way of
+swapping last two windows by typing `ctrl-a ctrl-a`.
+
+<!-- more -->
+
+However, this comes for a price. That is, in a shell environment that
+is integrated with `readline`, `ctrl-a` is used to jump the begining of line.
+Now that it is mapped as prefix, we can no longer do that.
+
+Surprisingly, the solution is pretty simple. Just use `ctrl-a a` to
+send the prefix itself, and use `ctrl-a ctrl-a` to go to the last window.
+Specifically, add these two lines in `~/.tmux.conf`:
+
+``` conf 
+bind a send-prefix
+bind-key C-a last-window
+```
+
+[via](http://stackoverflow.com/questions/11557076/if-i-set-key-bind-of-c-b-to-c-a-in-tmux-how-can-i-move-the-cursor-to-the-beginni#comment15297769_11561128).]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Source-highlight for matlab/octave]]></title>
@@ -44,14 +76,14 @@ takes an extremely long time.  To prevent this, we need to unlink it first,
 and link it back afterwards. That is,
 
 
-```
+``` bash
 brew unlink python
 brew link python    # after installation
 ```
 
 Go to the following folder and create two files,
-
-```
+ 
+``` bash
 cd `brew --prefix source-highlight`/share/source-highlight
 ```
 
@@ -71,7 +103,7 @@ string delim "'" "'" escape "''"
 
 Finally, edit `lang.map` to create a mapping for matlab file.
 
-```
+``` bash lang.map
 echo 'm = matlab.lang' >> lang.map
 ```]]></content>
   </entry>
