@@ -112,6 +112,10 @@ My hobbies include Guitar and Ballroom dancing. </p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">OS X: get full path of file using realpath</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Send ctrl-a in tmux after rebinding to it</a>
         </li>
       
@@ -125,10 +129,6 @@ My hobbies include Guitar and Ballroom dancing. </p>
       
         <li>
           <a href="/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">Fix (ugly) Safari 7.0 not using local pac file</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
         </li>
       
     </ul>
@@ -171,6 +171,82 @@ My hobbies include Guitar and Ballroom dancing. </p>
   <div class="container">
     <div class="row" id="post-container">
     
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">OS X: Get Full Path of File Using Realpath</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-01T18:25:56-05:00" pubdate data-updated="true">May 1<span>st</span>, 2014</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/osx/'>osx</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span>Demonstrate of realpath</span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>➜  /Applications  realpath iBooks.app
+</span><span class='line'>/Applications/iBooks.app
+</span><span class='line'>➜  /Applications
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+<p><code>realpath</code> is a command line utility that is included in most UNIX distributions but not Mac OS X. Thanks to <a href="https://github.com/harto">Stuart Campbell</a>, a minimal implementation is provided <a href="https://github.com/harto/realpath-osx">here</a>, and my <a href="https://github.com/iveney/realpath-osx">fork</a>.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
     
     
       <article class="span4">
@@ -288,7 +364,7 @@ posted in
   <div class="entry-content"><figure>
 <img src="https://dl.dropboxusercontent.com/s/jqqno07xizfspkt/2014-05-01-source-highlight-for-matlab-slash-octave.png" />
 </figure>
-<p>I recently worked with Matlab a lot. When in console, sometimes I want to use <code>less</code> to quickly examine the file content, and I have already <a href="http://superuser.com/a/71593">set it up</a> such that it uses <a href="http://www.gnu.org/software/src-highlite/">source-highlight</a> to output colorful escape sequence to the console. However, source-highlight does not come with a syntax support for Matlab by default. Luckily, this <a href="http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html">post</a> (in Chinese) provides a solution.</p>
+<p>I recently worked with Matlab a lot. When in console, sometimes I want to use <code>less</code> to quickly examine the file content, and I have already <a href="http://superuser.com/a/71593">set it up</a> such that it uses <a href="http://www.gnu.org/software/src-highlite/">source-highlight</a> to output colorful escape sequence to the console. However, source-highlight does not come with a syntax support for Matlab by default. Luckily, this <a href="http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html">post</a> and <a href="http://blog.sina.com.cn/s/blog_4513dde60101kpmr.html">this</a> (in Chinese) provides a solution.</p>
 </div>
   
   
@@ -494,70 +570,6 @@ posted in
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-08T22:06:00-06:00" pubdate data-updated="true">Nov 8<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/diy/'>DIY</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After four years of use, the wire on my MagSafe finally fray out. After searching a bit, I found that a new one costs $80!! My old memories came back: almost all accessories by Apple are rip-offs. See how low the ratings are:</p>
-<p><img src="https://lh3.googleusercontent.com/-HbwCGT5IRfg/Un22iAWR3FI/AAAAAAAA6S8/kb8A295sneA/s800/Apple%252085W%2520MagSafe%2520Power%2520Adapter%2520%2528for%252015-%2520and%252017-inch%2520MacBook%2520Pro%2529%2520-%2520Apple%2520Store%2520%2528U.S.%2529.png"></p>
-<p>I know that this can be easily fixed if you know a little soldering and have courage: the adapter is working perfectly fine, it is just the wires. I decided to DIY. There are several pretty good articles on how to <a href="http://www.instructables.com/id/How-to-open-and-replace-the-MagSafe-cord-on-an-App/?ALLSTEPS">open the MagSafe</a> and how to <a href="http://www.instructables.com/id/MacBook-Mag-Safe-Charger-Budget-Repair-Disas/">solder it</a>.</p>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -582,6 +594,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">OS X: get full path of file using realpath</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Send ctrl-a in tmux after rebinding to it</a>
         </li>
       
@@ -595,10 +611,6 @@ posted in
       
         <li>
           <a href="/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">Fix (ugly) Safari 7.0 not using local pac file</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
         </li>
       
     </ul>

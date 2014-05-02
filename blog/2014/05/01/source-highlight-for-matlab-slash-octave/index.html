@@ -164,7 +164,7 @@ posted in
   <div class="entry-content"><figure>
 <img src="https://dl.dropboxusercontent.com/s/jqqno07xizfspkt/2014-05-01-source-highlight-for-matlab-slash-octave.png" />
 </figure>
-<p>I recently worked with Matlab a lot. When in console, sometimes I want to use <code>less</code> to quickly examine the file content, and I have already <a href="http://superuser.com/a/71593">set it up</a> such that it uses <a href="http://www.gnu.org/software/src-highlite/">source-highlight</a> to output colorful escape sequence to the console. However, source-highlight does not come with a syntax support for Matlab by default. Luckily, this <a href="http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html">post</a> (in Chinese) provides a solution.</p>
+<p>I recently worked with Matlab a lot. When in console, sometimes I want to use <code>less</code> to quickly examine the file content, and I have already <a href="http://superuser.com/a/71593">set it up</a> such that it uses <a href="http://www.gnu.org/software/src-highlite/">source-highlight</a> to output colorful escape sequence to the console. However, source-highlight does not come with a syntax support for Matlab by default. Luckily, this <a href="http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html">post</a> and <a href="http://blog.sina.com.cn/s/blog_4513dde60101kpmr.html">this</a> (in Chinese) provides a solution.</p>
 <!-- more -->
 
 <p>First of all, install source-highlight using homebrew.</p>
@@ -206,9 +206,9 @@ posted in
 </figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="n">keyword</span> <span class="n">blue</span><span class="p">;</span>
-</span><span class='line'><span class="n">string</span> #<span class="n">a020f0</span><span class="p">;</span>
-</span><span class='line'><span class="n">comment</span> <span class="n">darkgreen</span><span class="p">;</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="err">keyword</span> <span class="err">blue</span><span class="c1">;</span>
+</span><span class='line'><span class="err">string</span> <span class="c1">#a020f0;</span>
+</span><span class='line'><span class="err">comment</span> <span class="err">darkgreen</span><span class="c1">;</span>
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
@@ -222,10 +222,32 @@ posted in
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="n">keyword</span> <span class="p">=</span> &quot;<span class="k">break</span><span class="o">|</span><span class="k">case</span><span class="o">|</span><span class="k">catch</span><span class="o">|</span><span class="k">classdef</span><span class="o">|</span><span class="k">continue</span><span class="o">|</span><span class="k">else</span><span class="o">|</span><span class="k">elseif</span><span class="o">|</span><span class="k">end</span><span class="o">|</span><span class="k">for</span><span class="o">|</span><span class="k">function</span><span class="o">|</span><span class="k">global</span><span class="o">|</span><span class="k">if</span><span class="o">|</span><span class="k">otherwise</span><span class="o">|</span><span class="k">parfor</span><span class="o">|</span><span class="k">persistent</span><span class="o">|</span><span class="k">return</span><span class="o">|</span><span class="k">spmd</span><span class="o">|</span><span class="k">switch</span><span class="o">|</span><span class="k">try</span><span class="o">|</span><span class="k">while</span>&quot;
-</span><span class='line'><span class="n">comment</span> <span class="n">start</span> &quot;<span class="c">%&quot;</span>
-</span><span class='line'><span class="n">trans</span> <span class="p">=</span> <span class="s">&#39;[a-zA-Z0-9_.]\&#39;&#39;</span>
-</span><span class='line'><span class="s">string delim &quot;&#39;</span>&quot; &quot;<span class="s">&#39;&quot; escape &quot;&#39;&#39;</span><span class="err">&quot;</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="na">keyword</span> <span class="o">=</span> <span class="s">&quot;break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">keyword</span> <span class="o">=</span> <span class="s">&#39;^\s*(break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while)(?=\s)&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">include</span> <span class="err">&quot;function.lang&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">state command start &#39;^\s*[a-zA-Z][\w]*(?</span><span class="o">=</span><span class="s">\s)(?!\s+\.?[*/+-:]\s+\w)(?!\s+=)&#39; begin</span>
+</span><span class='line'><span class="s">        comment start &quot;%&quot;</span>
+</span><span class='line'><span class="s">        string delim &#39;[[:blank:]]&#39; &#39;[^%;]*&#39;</span>
+</span><span class='line'><span class="err">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">comment</span> <span class="err">delim</span> <span class="err">&quot;%{&quot;</span> <span class="err">&quot;%}&quot;</span> <span class="err">multiline</span> <span class="err">nested</span>
+</span><span class='line'><span class="err">comment</span> <span class="err">start</span> <span class="err">&quot;%&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">string</span> <span class="err">delim</span> <span class="err">&#39;(?&lt;![\w.])\&#39;&#39;</span> <span class="err">&quot;&#39;&quot;</span> <span class="err">escape</span> <span class="err">&quot;&#39;&#39;&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
@@ -321,6 +343,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">OS X: get full path of file using realpath</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Send ctrl-a in tmux after rebinding to it</a>
         </li>
       
@@ -334,10 +360,6 @@ posted in
       
         <li>
           <a href="/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">Fix (ugly) Safari 7.0 not using local pac file</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
         </li>
       
     </ul>

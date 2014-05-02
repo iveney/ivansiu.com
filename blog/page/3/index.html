@@ -112,6 +112,10 @@ My hobbies include Guitar and Ballroom dancing. </p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">OS X: get full path of file using realpath</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Send ctrl-a in tmux after rebinding to it</a>
         </li>
       
@@ -125,10 +129,6 @@ My hobbies include Guitar and Ballroom dancing. </p>
       
         <li>
           <a href="/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">Fix (ugly) Safari 7.0 not using local pac file</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
         </li>
       
     </ul>
@@ -171,6 +171,73 @@ My hobbies include Guitar and Ballroom dancing. </p>
   <div class="container">
     <div class="row" id="post-container">
     
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Network Flow: Ford-Fulkerson Method</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-03T18:13:00-05:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Basic method (framework) is Ford-Fulkerson. It’s called a “method” because it’s general, there can be different implementation that yield different complexity. It looks like this:</p>
+<pre><code>Let F be an empty flow
+While there is augmenting path P from s to t
+    Augment F with P
+End while</code></pre>
+<p>The problem is how we find the augmenting path efficiently. A naive implementation is to use DFS to randomly pick a <span class="math">\(s-t\)</span> path and augment it. However, it has two problems:</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
     
     
       <article class="span4">
@@ -342,7 +409,7 @@ posted in
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/network/'>network</a>, <a class='category' href='/blog/categories/port-forwarding/'>port forwarding</a>, <a class='category' href='/blog/categories/proxy/'>proxy</a>, <a class='category' href='/blog/categories/socks/'>socks</a>, <a class='category' href='/blog/categories/ssh/'>ssh</a>, <a class='category' href='/blog/categories/tunneling/'>tunneling</a>
+    <a class='category' href='/blog/categories/networking/'>networking</a>, <a class='category' href='/blog/categories/proxy/'>proxy</a>, <a class='category' href='/blog/categories/socks/'>socks</a>
   
 </span>
 
@@ -400,6 +467,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">OS X: get full path of file using realpath</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Send ctrl-a in tmux after rebinding to it</a>
         </li>
       
@@ -413,10 +484,6 @@ posted in
       
         <li>
           <a href="/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">Fix (ugly) Safari 7.0 not using local pac file</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a>
         </li>
       
     </ul>

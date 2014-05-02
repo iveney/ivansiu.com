@@ -4,7 +4,7 @@
   <title><![CDATA[Category: osx | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/osx/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-01T17:50:48-05:00</updated>
+  <updated>2014-05-02T13:06:44-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OS X: get full path of file using realpath]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/"/>
+    <updated>2014-05-01T18:25:56-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath</id>
+    <content type="html"><![CDATA[``` bash Demonstrate of realpath
+➜  /Applications  realpath iBooks.app
+/Applications/iBooks.app
+➜  /Applications
+```
+
+`realpath` is a command line utility that is 
+included in most UNIX distributions but not Mac OS X.
+Thanks to [Stuart Campbell](https://github.com/harto),
+a minimal implementation is provided 
+[here](https://github.com/harto/realpath-osx), and my 
+[fork](https://github.com/iveney/realpath-osx).
+
+<!-- more -->
+
+If you use `homebrew`, you can tap my 
+[repo](https://github.com/iveney/homebrew-mocha), and install it using
+homebrew.
+
+``` bash
+brew tap iveney/mocha
+brew install realpath
+```
+
+Viola! Now you can get the full path of file in console. A nice thing
+I often use is to chain it with `pbcopy` to copy the full path to 
+the OS X clipboard.]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fix (ugly) Safari 7.0 not using local pac file]]></title>

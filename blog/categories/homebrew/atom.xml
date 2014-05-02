@@ -4,7 +4,7 @@
   <title><![CDATA[Category: homebrew | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/homebrew/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-01T17:50:48-05:00</updated>
+  <updated>2014-05-02T13:06:44-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -21,11 +21,15 @@
     <content type="html"><![CDATA[![](https://dl.dropboxusercontent.com/s/jqqno07xizfspkt/2014-05-01-source-highlight-for-matlab-slash-octave.png)
 
 I recently worked with Matlab a lot. When in console, sometimes I want to use
-`less` to quickly examine the file content, and I have already [set it up](http://superuser.com/a/71593)
+`less` to quickly examine the file content, and I have already 
+[set it up](http://superuser.com/a/71593)
 such that it uses [source-highlight](http://www.gnu.org/software/src-highlite/)
 to output colorful escape sequence to the console.
 However, source-highlight does not come with a syntax support for Matlab
-by default. Luckily, this [post](http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html) (in Chinese) provides a solution.
+by default. Luckily, this
+[post](http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html) and 
+[this](http://blog.sina.com.cn/s/blog_4513dde60101kpmr.html) (in Chinese) 
+provides a solution.
 
 <!-- more -->
 
@@ -55,18 +59,29 @@ Go to the following folder and create two files,
 cd `brew --prefix source-highlight`/share/source-highlight
 ```
 
-``` matlab matlab.style
+``` ini matlab.style
 keyword blue;
 string #a020f0;
 comment darkgreen;
 ```
 
 
-``` matlab matlab.lang
+``` ini matlab.lang
 keyword = "break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while"
+
+keyword = '^\s*(break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while)(?=\s)'
+
+include "function.lang"
+
+state command start '^\s*[a-zA-Z][\w]*(?=\s)(?!\s+\.?[*/+-:]\s+\w)(?!\s+=)' begin
+        comment start "%"
+        string delim '[[:blank:]]' '[^%;]*'
+end
+
+comment delim "%{" "%}" multiline nested
 comment start "%"
-trans = '[a-zA-Z0-9_.]\''
-string delim "'" "'" escape "''"
+
+string delim '(?<![\w.])\'' "'" escape "''"
 ```
 
 Finally, edit `lang.map` to create a mapping for matlab file.

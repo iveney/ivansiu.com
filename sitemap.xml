@@ -2,7 +2,7 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/</loc>
-        <lastmod>2013-12-03T23:59:46-06:00</lastmod>
+        <lastmod>2014-05-01T17:54:26-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/08/28/roadtrips-in-us-2013/</loc>
@@ -62,7 +62,7 @@
         <loc>
             http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/
         </loc>
-        <lastmod>2014-05-01T02:37:37-05:00</lastmod>
+        <lastmod>2014-05-01T20:00:28-05:00</lastmod>
     </url>
     <url>
         <loc>
@@ -71,8 +71,14 @@
         <lastmod>2014-05-01T17:44:47-05:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/
+        </loc>
+        <lastmod>2014-05-02T13:06:22-05:00</lastmod>
+    </url>
+    <url>
         <loc>http://blog.ivansiu.com/blog/archives/</loc>
-        <lastmod>2014-05-01T17:50:35-05:00</lastmod>
+        <lastmod>2014-05-02T13:06:22-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/categories/</loc>
@@ -88,6 +94,6 @@
     </url>
     <url>
         <loc>http://blog.ivansiu.com/</loc>
-        <lastmod>2014-05-01T17:50:35-05:00</lastmod>
+        <lastmod>2014-05-02T13:06:22-05:00</lastmod>
     </url>
 </urlset>
