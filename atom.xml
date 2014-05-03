@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-02T13:06:44-05:00</updated>
+  <updated>2014-05-03T18:01:52-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OS X: reveal file in console]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console/"/>
+    <updated>2014-05-01T19:58:20-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console</id>
+    <content type="html"><![CDATA[<figure>
+<img src="http://dl.dropboxusercontent.com/s/o5fmnalf2k20bxq/2014-05-01-os-x-reveal-file-in-console.png" />
+</figure>
+<p>One of the neat things you can do in OS X is to reveal a file in Finder.app from some other applications. Turns out lots of the time, we also want to do that in the terminal. The following script helps you with that:</p>
+<!-- more -->
+
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span>reveal</span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="c">#!/usr/bin/osascript</span>
+</span><span class='line'><span class="k">on</span> <span class="nb">run</span> <span class="nv">args</span>
+</span><span class='line'>  <span class="k">set</span> <span class="nv">fullpath</span> <span class="k">to</span> <span class="nb">do shell script</span> <span class="s2">&quot;realpath &quot;</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nb">quoted form</span> <span class="k">of</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">of</span> <span class="nv">args</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">set</span> <span class="nv">theFile</span> <span class="k">to</span> <span class="nv">POSIX</span> <span class="nv">file</span> <span class="nv">fullpath</span>
+</span><span class='line'>  <span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
+</span><span class='line'>      <span class="nv">reveal</span> <span class="nv">theFile</span>
+</span><span class='line'>      <span class="nb">activate</span>
+</span><span class='line'>  <span class="k">end</span> <span class="k">tell</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+<p>Note:</p>
+<ol type="1">
+<li>You should put this into a directory in your search path. I recommend in <code>~/bin</code>. Also remember to <code>chmod +x</code>.</li>
+<li>The above requires another script <code>realpath</code>, which returns the fullpath of a file. You can find it <a href="http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">here</a>.</li>
+</ol>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OS X: get full path of file using realpath]]></title>
