@@ -112,6 +112,10 @@ My hobbies include Guitar and Ballroom dancing. </p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/02/debugging-applescript-print-to-a-file/">Debugging AppleScript: print to a file</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/01/os-x-reveal-file-in-console/">OS X: reveal file in console</a>
         </li>
       
@@ -125,10 +129,6 @@ My hobbies include Guitar and Ballroom dancing. </p>
       
         <li>
           <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
         </li>
       
     </ul>
@@ -171,132 +171,6 @@ My hobbies include Guitar and Ballroom dancing. </p>
   <div class="container">
     <div class="row" id="post-container">
     
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-03T15:18:00-06:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/latex/'>LaTeX</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This post summarizes some common useful tips in LaTeX editing.</p>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/12/03/latex-tips-and-tricks-collection/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-08T22:06:00-06:00" pubdate data-updated="true">Nov 8<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/diy/'>DIY</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After four years of use, the wire on my MagSafe finally fray out. After searching a bit, I found that a new one costs $80!! My old memories came back: almost all accessories by Apple are rip-offs. See how low the ratings are:</p>
-<p><img src="https://lh3.googleusercontent.com/-HbwCGT5IRfg/Un22iAWR3FI/AAAAAAAA6S8/kb8A295sneA/s800/Apple%252085W%2520MagSafe%2520Power%2520Adapter%2520%2528for%252015-%2520and%252017-inch%2520MacBook%2520Pro%2529%2520-%2520Apple%2520Store%2520%2528U.S.%2529.png"></p>
-<p>I know that this can be easily fixed if you know a little soldering and have courage: the adapter is working perfectly fine, it is just the wires. I decided to DIY. There are several pretty good articles on how to <a href="http://www.instructables.com/id/How-to-open-and-replace-the-MagSafe-cord-on-an-App/?ALLSTEPS">open the MagSafe</a> and how to <a href="http://www.instructables.com/id/MacBook-Mag-Safe-Charger-Budget-Repair-Disas/">solder it</a>.</p>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
     
     
       <article class="span4">
@@ -563,13 +437,343 @@ posted in
 
       </article>
     
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/10/07/network-flow-push-relabel-algorithm/">Network Flow: Push-relabel Algorithm</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-07T18:08:00-05:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>According to CLRS: Many of the asymptotically fastest maximum-flow algorithms are push-relabel algorithms, and the fastest actual implementations of maximum-flow algorithms are based on the push-relabel method. Push-relabel methods also efficiently solve other flow problems, such as the minimum-cost flow problem.</p>
+<p>This algorithm has a very different flavor. The overall idea is to generate a ‘preflow’ that may not satisfy the flow properties, and keep ‘pushing’) and ‘elevating’ (relabelling) the vertices until we cannot do that. We then remove the ‘excess’ from the preflow and obtain a valid flow, which is also a max flow. In particular, the in-flow may be larger than out-flow at a vertex. The amount of overflow is called ‘excess’.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/10/07/network-flow-push-relabel-algorithm/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Network Flow: Ford-Fulkerson Method</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-03T18:13:00-05:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Basic method (framework) is Ford-Fulkerson. It’s called a “method” because it’s general, there can be different implementation that yield different complexity. It looks like this:</p>
+<pre><code>Let F be an empty flow
+While there is augmenting path P from s to t
+    Augment F with P
+End while</code></pre>
+<p>The problem is how we find the augmenting path efficiently. A naive implementation is to use DFS to randomly pick a <span class="math">\(s-t\)</span> path and augment it. However, it has two problems:</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/30/installing-a-new-car-stereo/">Installing a New Car Stereo</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-30T16:50:00-05:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/diy/'>DIY</a>, <a class='category' href='/blog/categories/car/'>car</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I did not realize until my car’s radio’s broken that, with less than a hundred bucks, you can buy a new Head Unit with nearly all functionality. Some note-worthy features include:</p>
+<ul>
+<li>iPod/iPhone support. Control the iphone directly from the panel.</li>
+<li>App support. This includes I-heart-radio, pandora, etc.</li>
+<li>Bluetooth Audio: stream music directly from a paired device. Even supports Pandora!</li>
+<li>Upgraded FM/AM support. Displays text from radio stations.</li>
+</ul>
+<p></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/08/30/installing-a-new-car-stereo/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/28/roadtrips-in-us-2013/">Roadtrip in America 2013</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-28T16:17:00-05:00" pubdate data-updated="true">Aug 28<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/travel/'>travel</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In this year, I did several crazy road trips, each trip has about 3k miles. Here’re them.</p>
+<h1 id="winter-trip">Winter Trip</h1>
+<p>The first trip is a trip with my parents, where they flied to Chicago and I drove them to UIUC for a visit. We then flied to LA and rented a car to start our road trip. The whole trip was mainly in California, though we drove a bit east and visited Las Vegas and Grand canyon.</p>
+<p><img src="https://lh3.googleusercontent.com/-3XKmLgVuYw8/UlBRR-rXocI/AAAAAAAA6Qg/IIHynx2WdOQ/s800/Winter%2520trip.png"></p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/08/28/roadtrips-in-us-2013/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/09/notes-on-ssh-port-forwarding/">Notes on SSH Port Forwarding</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-09T21:43:00-05:00" pubdate data-updated="true">May 9<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/networking/'>networking</a>, <a class='category' href='/blog/categories/proxy/'>proxy</a>, <a class='category' href='/blog/categories/socks/'>socks</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3 id="ssh-local-port-forwarding">SSH Local Port Forwarding</h3>
+<p>Use <code>ssh -L</code> to bind a local port to a remote port</p>
+<h3 id="dynamic-port-forwarding">Dynamic Port Forwarding</h3>
+<p>Use <code>ssh -D</code> to dynamically bind a local port for forwarding. A SOCKS5 will be created. Example:</p>
+<pre><code>ssh -D 1080 user@remote-server.com
+    </code></pre>
+<p>This binds to remote-server.com and uses local port 1080 for forwarding.</p>
+<p>Optionally use -C for data compression.</p>
+<p>The above command will log into the remote-server.com, use <code>-f</code> to put ssh to background, and use <code>-N</code> to not to execute a command. i.e.,</p>
+<pre><code>ssh -f -N -D 1080 user@remote-server.com</code></pre>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/05/09/notes-on-ssh-port-forwarding/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
     </div>
       <div class="row">
         <ul class="pager">
-          
-            <li class="previous">
-              <a href="/blog/page/3/">&larr; Older</a>
-            </li>
           
           
             <li class="next">
@@ -591,6 +795,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/02/debugging-applescript-print-to-a-file/">Debugging AppleScript: print to a file</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/01/os-x-reveal-file-in-console/">OS X: reveal file in console</a>
         </li>
       
@@ -604,10 +812,6 @@ posted in
       
         <li>
           <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch remove photos in iPhone, batch convert videos and upload back</a>
         </li>
       
     </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-03T18:01:52-05:00</updated>
+  <updated>2014-05-04T15:34:09-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,48 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Debugging AppleScript: print to a file]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file/"/>
+    <updated>2014-05-02T16:26:50-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file</id>
+    <content type="html"><![CDATA[<p>Debugging AppleScript is easy when you work with the script editor, simply use <code>log</code> to print out anything in the console. However, after you compiled it to an app, this cannot work anymore.</p>
+<p>I find there are several ways to do it in this <a href="http://stackoverflow.com/questions/2749863/applescript-editor-write-message-to-the-result-window">thread</a>. The <a href="http://stackoverflow.com/a/21309748/577704">two approaches</a> that work best for me are:</p>
+<!-- more -->
+
+<ol type="1">
+<li>Use <code>logger</code> to log to the syslog. E.g.,</li>
+</ol>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;logger -t &#39;AS DEBUG&#39; &quot;</span> <span class="o">&amp;</span> <span class="nv">myObj</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+<p>However, I don’t know why sometimes this is not logged. So I will use the following:</p>
+<ol start="2" type="1">
+<li>Echo to file</li>
+</ol>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;echo &quot;</span> <span class="o">&amp;</span> <span class="nb">quoted form</span> <span class="k">of</span> <span class="p">(</span><span class="nv">myObj</span> <span class="k">as </span><span class="nc">string</span><span class="p">)</span> <span class="o">&amp;</span> <span class="se">¬</span>
+</span><span class='line'>    <span class="s2">&quot; &gt;&gt; ~/Desktop/as_debug.txt&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OS X: reveal file in console]]></title>
