@@ -43,14 +43,17 @@
 
 http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/ 
 http://drz.ac/2013/01/03/blogging-with-math/
+http://drz.ac/javascripts/MathJaxLocal.js
 http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress
 http://docs.mathjax.org/en/latest/configuration.html
 
 -->
 
 <script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,http://blog.ivansiu.com/javascripts/MathJaxLocal.js">
+	src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
+
+<script type="text/javascript" src="/javascripts/MathJaxLocal.js"></script>
 
 <!-- Facebook OpenGraph -->
 <meta property="og:image" content="http://blog.ivansiu.com/favicon.png">
@@ -96,7 +99,7 @@ My hobbies include Guitar and Ballroom dancing. </p>
     <ul class="recent_posts">
       
         <li>
-          <a href="/blog/2014/05/14/a-comparison-of-least-square/">A Comparison of Least Square</a>
+          <a href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">A Comparison of Least Square, L2-regularization and L1-regularization</a>
         </li>
       
         <li>
@@ -162,7 +165,7 @@ My hobbies include Guitar and Ballroom dancing. </p>
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/05/14/a-comparison-of-least-square/">A Comparison of Least Square</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">A Comparison of Least Square, L2-regularization and L1-regularization</a></h1>
     
     
       <p class="meta">
@@ -187,13 +190,13 @@ My hobbies include Guitar and Ballroom dancing. </p>
   
 
 
-<time datetime="2014-05-14T21:30:03-05:00" pubdate data-updated="true">May 14<span>th</span>, 2014</time> - 
+<time datetime="2014-05-14T21:32:38-05:00" pubdate data-updated="true">May 14<span>th</span>, 2014</time> - 
         
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/learning/'>Learning</a>, <a class='category' href='/blog/categories/machine/'>Machine</a>
+    <a class='category' href='/blog/categories/machine-learning/'>Machine Learning</a>
   
 </span>
 
@@ -204,13 +207,17 @@ posted in
   </header>
 
 
-  <div class="entry-content"><p>Ordinary Least Square (OLS),</p>
-<p>Consider the following linear system:</p>
-<div class="references">
-
-</div>
+  <div class="entry-content"><figure>
+<img src="https://dl.dropboxusercontent.com/s/q5rmynullrtelcz/coef.png" alt="Recovered Coefficients by Different Methods" /><figcaption>Recovered Coefficients by Different Methods</figcaption>
+</figure>
+<h1 id="problem-setting">Problem Setting</h1>
+<p>Ordinary Least Square (OLS), L2-regularization and L1-regularization are all techniques of finding solutions in a linear system. However, they serve for different purposes. Recently, L1-regularization gains much attention due to its ability in finding sparse solutions. This post demonstrates this by comparing OLS, L2 and L1 regularization.</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -769,7 +776,7 @@ posted in
     <ul class="recent_posts">
       
         <li>
-          <a href="/blog/2014/05/14/a-comparison-of-least-square/">A Comparison of Least Square</a>
+          <a href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">A Comparison of Least Square, L2-regularization and L1-regularization</a>
         </li>
       
         <li>

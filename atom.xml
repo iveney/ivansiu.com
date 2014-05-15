@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-14T22:11:58-05:00</updated>
+  <updated>2014-05-15T00:45:09-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -14,12 +14,176 @@
 
   
   <entry>
-    <title type="html"><![CDATA[A Comparison of Least Square]]></title>
-    <link href="http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square/"/>
-    <updated>2014-05-14T21:30:03-05:00</updated>
-    <id>http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square</id>
-    <content type="html"><![CDATA[<p>Ordinary Least Square (OLS),</p>
+    <title type="html"><![CDATA[A Comparison of Least Square, L2-regularization and L1-regularization]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/"/>
+    <updated>2014-05-14T21:32:38-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization</id>
+    <content type="html"><![CDATA[<figure>
+<img src="https://dl.dropboxusercontent.com/s/q5rmynullrtelcz/coef.png" alt="Recovered Coefficients by Different Methods" /><figcaption>Recovered Coefficients by Different Methods</figcaption>
+</figure>
+<h1 id="problem-setting">Problem Setting</h1>
+<p>Ordinary Least Square (OLS), L2-regularization and L1-regularization are all techniques of finding solutions in a linear system. However, they serve for different purposes. Recently, L1-regularization gains much attention due to its ability in finding sparse solutions. This post demonstrates this by comparing OLS, L2 and L1 regularization.</p>
+<!-- more -->
+
 <p>Consider the following linear system:</p>
+<p><span class="math">\[Ax = y\]</span></p>
+<p>where <span class="math">\(A \in \reals^{m \times n}\)</span>, <span class="math">\(m\)</span> is the number of rows (observations) and <span class="math">\(n\)</span> is the number of columns (variable dimension), <span class="math">\(x\)</span> is the variable coefficients and <span class="math">\(y\)</span> is the response. There are three cases to consider:</p>
+<ol type="1">
+<li><span class="math">\(m=n\)</span>. This is the common-seen case. If <span class="math">\(A\)</span> is not degenerate, the solution is unique.</li>
+<li><span class="math">\(m&gt;n\)</span>. This is called <em>over-determined linear system</em>. There is usually <em>no</em> solutions, but an <em>approximation</em> can be easily found by minimizing the <em>residue cost</em> <span class="math">\(\norm{Ax-y}^2_2\)</span> using least square methods, and it has a nice closed-form solution <span class="math">\(x_{ls}=(A^T A)^{-1} A^T y\)</span>. In L2-regularization, we add a penalize term to minimize the 2-norm of the coefficients. Thus, the objective becomes: <span class="math">\[\min_x \norm{Ax-y}^2_2 + \alpha \norm{x}_2\]</span> where <span class="math">\(\alpha\)</span> is a weight to decide the importance of the regularization.</li>
+<li><span class="math">\(m&lt;n\)</span>. This is called <em>under-determined linear system</em>. There is usually no solution or infinite solutions. This is where it get interesting: when we have some prior knowledge in the solution structure, such as sparsity, we can have a ‘metric’ to find a better solution among a whole bunch. The objective is thus: <span class="math">\[\min_x \norm{Ax-y}^2_2 + \alpha \norm{x}_1\]</span> The optimization technique for the above problem is called <a href="http://www-stat.stanford.edu/~tibs/lasso.html">lasso</a>, and there is an advanced version called <a href="http://en.wikipedia.org/wiki/Elastic_net_regularization">elastic net</a>, which <a href="http://scikit-learn.org/stable/modules/linear_model.html#elastic-net">combines the L2 and L1 regularization together</a>, hoping to get the advantages of both: L1 regularization finds sparse solution but introduces a large Mean Square Error (MSE) error, while L2 is better at minimizing MSE.</li>
+</ol>
+<h2 id="an-example">An Example</h2>
+<p>In the following, we show their performances by solving a simple case.</p>
+<div class="bogus-wrapper">
+<notextile>
+<figure class='code'><figcaption>
+<span>regression_ex.m</span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% Compare Ordinary Least square (no regularization), L2-reguarlized (Ridge),</span>
+</span><span class='line'><span class="c">% L1-regualarized (Lasso) regression in finding the sparse coefficient</span>
+</span><span class='line'><span class="c">% in a underdetermined linear system</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rng</span><span class="p">(</span>0<span class="p">);</span>  <span class="c">% for reproducibility</span>
+</span><span class='line'><span class="n">m</span> <span class="p">=</span> 50<span class="p">;</span>  <span class="c">% num samples</span>
+</span><span class='line'><span class="n">n</span> <span class="p">=</span> 200<span class="p">;</span> <span class="c">% num variables, note that n &gt; m</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">A</span> <span class="p">=</span> <span class="nb">rand</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+</span><span class='line'><span class="n">x</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> 1<span class="p">);</span>
+</span><span class='line'><span class="n">nz</span> <span class="p">=</span> 10<span class="p">;</span> <span class="c">% 10 non-zeros variables (sparse)</span>
+</span><span class='line'><span class="n">nz_idx</span> <span class="p">=</span> <span class="n">randperm</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+</span><span class='line'><span class="n">x</span><span class="p">(</span><span class="n">nz_idx</span><span class="p">(</span>1<span class="p">:</span><span class="n">nz</span><span class="p">))</span> <span class="p">=</span> 3 <span class="o">*</span> <span class="nb">rand</span><span class="p">(</span><span class="n">nz</span><span class="p">,</span> 1<span class="p">);</span>
+</span><span class='line'><span class="n">y</span> <span class="p">=</span> <span class="n">A</span><span class="o">*</span><span class="n">x</span><span class="p">;</span>
+</span><span class='line'><span class="n">y</span> <span class="p">=</span> <span class="n">y</span> <span class="o">+</span> 0<span class="p">.</span>05 <span class="o">*</span> <span class="nb">rand</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> 1<span class="p">);</span> <span class="c">% add some noise</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% plot original x</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span>2<span class="p">,</span> 2<span class="p">,</span> 1<span class="p">);</span>
+</span><span class='line'><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span> <span class="n">tight</span><span class="p">;</span>
+</span><span class='line'><span class="n">title</span><span class="p">(</span><span class="s">&#39;Original coefficients&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% OLS</span>
+</span><span class='line'><span class="n">x_ols</span> <span class="p">=</span> <span class="n">A</span> <span class="o">\</span> <span class="n">y</span><span class="p">;</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span>2<span class="p">,</span> 2<span class="p">,</span> 2<span class="p">);</span>
+</span><span class='line'><span class="n">bar</span><span class="p">(</span><span class="n">x_ols</span><span class="p">),</span> <span class="n">axis</span> <span class="n">tight</span><span class="p">;</span>
+</span><span class='line'><span class="n">title</span><span class="p">(</span><span class="s">&#39;Ordinary Least Square&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">y_ols</span> <span class="p">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">x_ols</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% L2 (Ridge) </span>
+</span><span class='line'><span class="n">x_l2</span> <span class="p">=</span> <span class="n">ridge</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> 1<span class="n">e</span><span class="o">-</span>5<span class="p">,</span> 0<span class="p">);</span>  <span class="c">% last parameter = 00 to generate intercept term</span>
+</span><span class='line'><span class="n">b_l2</span> <span class="p">=</span> <span class="n">x_l2</span><span class="p">(</span>1<span class="p">);</span>
+</span><span class='line'><span class="n">x_l2</span> <span class="p">=</span> <span class="n">x_l2</span><span class="p">(</span>2<span class="p">:</span><span class="k">end</span><span class="p">);</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span>2<span class="p">,</span> 2<span class="p">,</span> 3<span class="p">);</span>
+</span><span class='line'><span class="n">bar</span><span class="p">(</span><span class="n">x_l2</span><span class="p">),</span> <span class="n">axis</span> <span class="n">tight</span><span class="p">;</span>
+</span><span class='line'><span class="n">title</span><span class="p">(</span><span class="s">&#39;L2 Regularization&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">y_l2</span> <span class="p">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">x_l2</span> <span class="o">+</span> <span class="n">b_l2</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% L1 (Lasso)</span>
+</span><span class='line'><span class="p">[</span><span class="n">x_l1</span><span class="p">,</span> <span class="n">fitinfo</span><span class="p">]</span> <span class="p">=</span> <span class="n">lasso</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;Lambda&#39;</span><span class="p">,</span> 0<span class="p">.</span>1<span class="p">);</span>
+</span><span class='line'><span class="n">b_l1</span> <span class="p">=</span> <span class="n">fitinfo</span><span class="p">.</span><span class="n">Intercept</span><span class="p">(</span>1<span class="p">);</span>
+</span><span class='line'><span class="n">y_l1</span> <span class="p">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">x_l1</span> <span class="o">+</span> <span class="n">b_l1</span><span class="p">;</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span>2<span class="p">,</span> 2<span class="p">,</span> 4<span class="p">);</span>
+</span><span class='line'><span class="n">bar</span><span class="p">(</span><span class="n">x_l1</span><span class="p">),</span> <span class="n">axis</span> <span class="n">tight</span><span class="p">;</span>
+</span><span class='line'><span class="n">title</span><span class="p">(</span><span class="s">&#39;L1 Regularization&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% L1 (Elastic Net)</span>
+</span><span class='line'><span class="p">[</span><span class="n">x_en</span><span class="p">,</span> <span class="n">fitinfo_en</span><span class="p">]</span> <span class="p">=</span> <span class="n">lasso</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;Lambda&#39;</span><span class="p">,</span> 0<span class="p">.</span>1<span class="p">,</span> <span class="s">&#39;Alpha&#39;</span><span class="p">,</span> 0<span class="p">.</span>7<span class="p">);</span>
+</span><span class='line'><span class="n">b_en</span> <span class="p">=</span> <span class="n">fitinfo_en</span><span class="p">.</span><span class="n">Intercept</span><span class="p">(</span>1<span class="p">);</span>
+</span><span class='line'><span class="n">y_en</span> <span class="p">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">x_en</span> <span class="o">+</span> <span class="n">b_en</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">MSE_y</span> <span class="p">=</span> <span class="p">[</span><span class="n">mse</span><span class="p">(</span><span class="n">y_ols</span><span class="o">-</span><span class="n">y</span><span class="p">),</span> <span class="n">mse</span><span class="p">(</span><span class="n">y_l2</span><span class="o">-</span><span class="n">y</span><span class="p">),</span> <span class="n">mse</span><span class="p">(</span><span class="n">y_l1</span><span class="o">-</span><span class="n">y</span><span class="p">),</span> <span class="n">mse</span><span class="p">(</span><span class="n">y_en</span><span class="o">-</span><span class="n">y</span><span class="p">)];</span>
+</span><span class='line'><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Mean square error: &#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">fprintf</span><span class="p">(</span><span class="s">&#39;%g    &#39;</span><span class="p">,</span> <span class="n">MSE_y</span><span class="p">);</span> <span class="n">fprintf</span><span class="p">(</span><span class="s">&#39;\n\n&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% Plot the recovered coefficients</span>
+</span><span class='line'><span class="n">figure</span><span class="p">,</span> <span class="n">hold</span> <span class="n">on</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x_l1</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x_en</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;g--&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Lasso Coef&#39;</span><span class="p">,</span> <span class="s">&#39;Elastic Net coef&#39;</span><span class="p">,</span> <span class="s">&#39;Original Coef&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+<p>Output:</p>
+<div class="bogus-wrapper">
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="n">Mean</span> <span class="n">square</span> <span class="n">error</span><span class="p">:</span>
+</span><span class='line'>1<span class="p">.</span>81793<span class="n">e</span><span class="o">-</span>29    7<span class="p">.</span>93494<span class="n">e</span><span class="o">-</span>15    0<span class="p">.</span>0975002    0<span class="p">.</span>0641214
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+<p>The above code snippets generates an under-determined matrix <span class="math">\(A\)</span>, and a sparse coefficients which has 200 variables but only 10 of them are non-zeros. Noises are added to the responses. We then run the proposed three methods to try to recover the coefficients. It then generates two plots:</p>
+<ol type="1">
+<li>The first plot is as shown in the top. As we can see, OLS does a very bad job, though the MSE is minimized to zero. L2-regularization do find some of the sparks, but there are also lots of non-zeros introduced. Finally, L1-regularization finds most of the non-zeros correctly and resembles the original coefficients most.</li>
+<li>The second plot shows how similar the recovered coefficients by lasso and elastic nets resemble the original coefficients. As we can see, both of them can recover most parts, while elastic nets contain some small ‘noise’. However, elastic net yields a slightly better MSE than lasso.</li>
+</ol>
+<figure>
+<img src="https://dl.dropboxusercontent.com/s/es13x4chzfygqlh/plot.png" alt="Plot of Coefficients" /><figcaption>Plot of Coefficients</figcaption>
+</figure>
+<h2 id="probing-further">Probing Further</h2>
+<p>Scikit has some excellent examples on regualarization <a href="http://scikit-learn.org/stable/modules/linear_model.html">1</a>, <a href="http://scikit-learn.org/stable/auto_examples/linear_model/plot_lasso_and_elasticnet.html">2</a>. Quora has an excellent <a href="http://www.quora.com/Machine-Learning/What-is-the-difference-between-L1-and-L2-regularization">discussion</a> on L2 vs L1 regualarization. I found the top three answers very useful in understanding deeper, especially from the <em>Bayesian regularization paradigm</em> perspective by thinking the regularization as MAP (Maximum A Posteriori) that adds a Laplacian (L1) or Gaussian (L2) prior to the original objective.</p>
 <div class="references">
 
 </div>

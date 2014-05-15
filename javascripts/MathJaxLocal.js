@@ -10,6 +10,7 @@ MathJax.Hub.Config({
 		TagSide: "left",
 		Macros: {
 			reals: ['\\mathbb{R}'],
+			norm: ['\\left\\lVert#1\\right\\rVert', 1],
 		}
 	}
 });
@@ -21,4 +22,4 @@ MathJax.Hub.Queue(function() {
 	}
 });
 
-MathJax.Ajax.loadComplete("http://blog.ivansiu.com/javascripts/MathJaxLocal.js");
+MathJax.Ajax.loadComplete("/javascripts/MathJaxLocal.js");
