@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-15T01:03:39-05:00</updated>
+  <updated>2014-05-15T16:29:56-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -19,7 +19,7 @@
     <updated>2014-05-14T21:32:38-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization</id>
     <content type="html"><![CDATA[<figure>
-<img src="https://dl.dropboxusercontent.com/s/q5rmynullrtelcz/coef.png" alt="Recovered Coefficients by Different Methods" /><figcaption>Recovered Coefficients by Different Methods</figcaption>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/coef.png" alt="Recovered Coefficients by Different Methods" /><figcaption>Recovered Coefficients by Different Methods</figcaption>
 </figure>
 <h1 id="problem-setting">Problem Setting</h1>
 <p>Ordinary Least Square (OLS), L2-regularization and L1-regularization are all techniques of finding solutions in a linear system. However, they serve for different purposes. Recently, L1-regularization gains much attention due to its ability in finding sparse solutions. This post demonstrates this by comparing OLS, L2 and L1 regularization.</p>
@@ -180,7 +180,7 @@
 <li>The second plot shows how similar the recovered coefficients by lasso and elastic nets resemble the original coefficients. As we can see, both of them can recover most parts, while elastic nets contain some small ‘noise’. However, elastic net yields a slightly better MSE than lasso.</li>
 </ol>
 <figure>
-<img src="https://dl.dropboxusercontent.com/s/es13x4chzfygqlh/plot.png" alt="Plot of Coefficients" /><figcaption>Plot of Coefficients</figcaption>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/plot.png" alt="Plot of Coefficients" /><figcaption>Plot of Coefficients</figcaption>
 </figure>
 <h2 id="probing-further">Probing Further</h2>
 <p>Scikit has some excellent examples on regualarization (<a href="http://scikit-learn.org/stable/modules/linear_model.html">1</a>, <a href="http://scikit-learn.org/stable/auto_examples/linear_model/plot_lasso_and_elasticnet.html">2</a>). Quora has an excellent <a href="http://www.quora.com/Machine-Learning/What-is-the-difference-between-L1-and-L2-regularization">discussion</a> on L2 vs L1 regualarization. I found the top three answers very useful in understanding deeper, especially from the <em>Bayesian regularization paradigm</em> perspective by thinking the regularization as MAP (Maximum A Posteriori) that adds a Laplacian (L1) or Gaussian (L2) prior to the original objective.</p>
@@ -238,7 +238,7 @@
     <updated>2014-05-01T19:58:20-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console</id>
     <content type="html"><![CDATA[<figure>
-<img src="http://dl.dropboxusercontent.com/s/o5fmnalf2k20bxq/2014-05-01-os-x-reveal-file-in-console.png" />
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-os-x-reveal-file-in-console.png" />
 </figure>
 <p>One of the neat things you can do in OS X is to reveal a file in Finder.app from some other applications. Turns out lots of the time, we also want to do that in the terminal. The following script helps you with that:</p>
 <!-- more -->
@@ -326,7 +326,7 @@
     <updated>2014-05-01T17:14:46-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it</id>
     <content type="html"><![CDATA[<figure>
-<img src="http://dl.dropboxusercontent.com/s/7l4vneadlcip8wd/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png" />
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png" />
 </figure>
 <p>While <code>tmux</code> provides much better functionality than <code>screen</code>, most of us that work with tmux have been using <code>screen</code> for a long time, and it is more comfortable for us to use <code>ctrl-a</code> than the default <code>ctrl-b</code>, which is finger-strechy. Thus the first thing I will do after installing <code>tmux</code> is to rebind the prefix to <code>ctrl-a</code>. That gives us the most handy way of swapping last two windows by typing <code>ctrl-a ctrl-a</code>.</p>
 <!-- more -->
@@ -357,7 +357,7 @@
     <updated>2014-05-01T01:59:40-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave</id>
     <content type="html"><![CDATA[<figure>
-<img src="https://dl.dropboxusercontent.com/s/jqqno07xizfspkt/2014-05-01-source-highlight-for-matlab-slash-octave.png" />
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-source-highlight-for-matlab-slash-octave.png" />
 </figure>
 <p>I recently worked with Matlab a lot. When in console, sometimes I want to use <code>less</code> to quickly examine the file content, and I have already <a href="http://superuser.com/a/71593">set it up</a> such that it uses <a href="http://www.gnu.org/software/src-highlite/">source-highlight</a> to output colorful escape sequence to the console. However, source-highlight does not come with a syntax support for Matlab by default. Luckily, this <a href="http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html">post</a> and <a href="http://blog.sina.com.cn/s/blog_4513dde60101kpmr.html">this</a> (in Chinese) provides a solution.</p>
 <!-- more -->

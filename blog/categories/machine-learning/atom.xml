@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Machine Learning | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/machine-learning/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-15T01:03:39-05:00</updated>
+  <updated>2014-05-15T16:29:56-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -158,8 +158,8 @@ excellent [discussion] on L2 vs L1 regualarization. I found the top three answer
 very useful in understanding deeper, especially from the *Bayesian regularization paradigm* perspective by thinking the regularization as MAP (Maximum A Posteriori)
 that adds a Laplacian (L1) or Gaussian (L2) prior to the original objective.
 
-[coef]: https://dl.dropboxusercontent.com/s/q5rmynullrtelcz/coef.png
-[plot]: https://dl.dropboxusercontent.com/s/es13x4chzfygqlh/plot.png
+[coef]: https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/coef.png
+[plot]: https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/plot.png
 [lasso]: http://www-stat.stanford.edu/~tibs/lasso.html
 [elastic net]: http://en.wikipedia.org/wiki/Elastic_net_regularization
 [combination]: http://scikit-learn.org/stable/modules/linear_model.html#elastic-net

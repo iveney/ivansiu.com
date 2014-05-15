@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tmux | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/tmux/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-15T01:03:39-05:00</updated>
+  <updated>2014-05-15T16:29:56-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/"/>
     <updated>2014-05-01T17:14:46-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it</id>
-    <content type="html"><![CDATA[![](http://dl.dropboxusercontent.com/s/7l4vneadlcip8wd/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png)
+    <content type="html"><![CDATA[![](https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png)
 
 While `tmux` provides much better functionality than `screen`,
 most of us that work with tmux have been using `screen` for a long time,
