@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-15T00:47:38-05:00</updated>
+  <updated>2014-05-15T01:03:39-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -705,20 +705,37 @@
     <updated>2013-11-08T22:06:00-06:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself</id>
     <content type="html"><![CDATA[<p>After four years of use, the wire on my MagSafe finally fray out. After searching a bit, I found that a new one costs $80!! My old memories came back: almost all accessories by Apple are rip-offs. See how low the ratings are:</p>
-<p><img src="https://lh3.googleusercontent.com/-HbwCGT5IRfg/Un22iAWR3FI/AAAAAAAA6S8/kb8A295sneA/s800/Apple%252085W%2520MagSafe%2520Power%2520Adapter%2520%2528for%252015-%2520and%252017-inch%2520MacBook%2520Pro%2529%2520-%2520Apple%2520Store%2520%2528U.S.%2529.png"></p>
+<figure>
+<img src="https://lh3.googleusercontent.com/-HbwCGT5IRfg/Un22iAWR3FI/AAAAAAAA6S8/kb8A295sneA/s800/Apple%252085W%2520MagSafe%2520Power%2520Adapter%2520%2528for%252015-%2520and%252017-inch%2520MacBook%2520Pro%2529%2520-%2520Apple%2520Store%2520%2528U.S.%2529.png" />
+</figure>
 <p>I know that this can be easily fixed if you know a little soldering and have courage: the adapter is working perfectly fine, it is just the wires. I decided to DIY. There are several pretty good articles on how to <a href="http://www.instructables.com/id/How-to-open-and-replace-the-MagSafe-cord-on-an-App/?ALLSTEPS">open the MagSafe</a> and how to <a href="http://www.instructables.com/id/MacBook-Mag-Safe-Charger-Budget-Repair-Disas/">solder it</a>.</p>
 <!-- more -->
 
 <p>The following are my workflows. The first step is to open it. You can see there are two wires, in fact in my case only the black wire is broken. I don’t even need to solder.</p>
-<p><img src="https://lh4.googleusercontent.com/-3YuxG4NzMls/Un23QYqlRvI/AAAAAAAA6TI/OHnqW_Mz3_M/s600/IMG_5533.jpg"> <img src="https://lh6.googleusercontent.com/-4Vwfhl0a7U0/Un23UWD3pII/AAAAAAAA6TY/32jW30GJiHo/s600/IMG_5534.jpg"></p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://lh4.googleusercontent.com/-3YuxG4NzMls/Un23QYqlRvI/AAAAAAAA6TI/OHnqW_Mz3_M/s600/IMG_5533.jpg" /></td>
+<td style="text-align: center;"><img src="https://lh6.googleusercontent.com/-4Vwfhl0a7U0/Un23UWD3pII/AAAAAAAA6TY/32jW30GJiHo/s600/IMG_5534.jpg" /></td>
+</tr>
+</tbody>
+</table>
 <p>Okay, go ahead and twist them. Use insulating tapes to wrap them tight.</p>
-<p><img src="https://lh4.googleusercontent.com/-rInGpQS3MPA/Un23Utgk5pI/AAAAAAAA6Tc/XbpbDy2m4yo/s600/IMG_5535.jpg"></p>
+<figure>
+<img src="https://lh4.googleusercontent.com/-rInGpQS3MPA/Un23Utgk5pI/AAAAAAAA6Tc/XbpbDy2m4yo/s600/IMG_5535.jpg" />
+</figure>
 <p>Finally, reassemble it and use more tapes, since the outside layer is cut out. More importantly, strong taping help to protect another fray.</p>
-<p><img src="https://lh4.googleusercontent.com/-GNyM8TlkwIA/Un23ZUE9GBI/AAAAAAAA6Tk/VUI9YF7zK_Y/s600/IMG_5536.jpg"></p>
+<figure>
+<img src="https://lh4.googleusercontent.com/-GNyM8TlkwIA/Un23ZUE9GBI/AAAAAAAA6Tk/VUI9YF7zK_Y/s600/IMG_5536.jpg" />
+</figure>
 <p>It looks a bit odd though, since the Apple product is supposed to be WHITE. Here’s how I fix it. I don’t have good tools available, so I just use whatever I have. I recalled that I have some Google stickers, and I just cut the white pieces out.</p>
-<p><img src="https://lh5.googleusercontent.com/-0-qhNqp4ClA/Un23fZLy24I/AAAAAAAA6T4/7MTAsUReDLw/s600/IMG_5537.JPG"></p>
+<figure>
+<img src="https://lh5.googleusercontent.com/-0-qhNqp4ClA/Un23fZLy24I/AAAAAAAA6T4/7MTAsUReDLw/s600/IMG_5537.JPG" />
+</figure>
 <p>After more taping, it looks like better now. Maybe I should consider wrapping better things outside later.</p>
-<p><img src="https://lh3.googleusercontent.com/-Ok8Zop2yeFY/Un23fsZ_1VI/AAAAAAAA6UU/njomi434w70/s600/IMG_5538.jpg"></p>
+<figure>
+<img src="https://lh3.googleusercontent.com/-Ok8Zop2yeFY/Un23fsZ_1VI/AAAAAAAA6UU/njomi434w70/s600/IMG_5538.jpg" />
+</figure>
 <p>Hooray! Now it is working again! In fact, I am amazed that this piece of gadget has been working for four years, daily. It is still working just fine :)</p>
 <div class="references">
 
@@ -731,7 +748,9 @@
     <link href="http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/"/>
     <updated>2013-10-17T16:12:00-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example</id>
-    <content type="html"><![CDATA[<p><img src="https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg"></p>
+    <content type="html"><![CDATA[<figure>
+<img src="https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg" />
+</figure>
 <div class="references">
 
 </div>
@@ -953,15 +972,21 @@ End while</code></pre>
     <content type="html"><![CDATA[<p>In this year, I did several crazy road trips, each trip has about 3k miles. Here’re them.</p>
 <h1 id="winter-trip">Winter Trip</h1>
 <p>The first trip is a trip with my parents, where they flied to Chicago and I drove them to UIUC for a visit. We then flied to LA and rented a car to start our road trip. The whole trip was mainly in California, though we drove a bit east and visited Las Vegas and Grand canyon.</p>
-<p><img src="https://lh3.googleusercontent.com/-3XKmLgVuYw8/UlBRR-rXocI/AAAAAAAA6Qg/IIHynx2WdOQ/s800/Winter%2520trip.png"></p>
+<figure>
+<img src="https://lh3.googleusercontent.com/-3XKmLgVuYw8/UlBRR-rXocI/AAAAAAAA6Qg/IIHynx2WdOQ/s800/Winter%2520trip.png" alt="Around the West Coast" /><figcaption>Around the West Coast</figcaption>
+</figure>
 <!-- more -->
 
 <h1 id="route-66">Route 66</h1>
 <p>I drove from Champaign all the way to Mountain View, with most of the part of <a href="https://en.wikipedia.org/wiki/U.S._Route_66">Route 66</a>.</p>
-<p><img src="https://lh5.googleusercontent.com/-fMUI4Zi2a68/UlBUCwGlIoI/AAAAAAAA6Q0/14KGATd9IHw/s800/Champaign%252C%2520IL%2520to%2520Mountain%2520View%252C%2520CA%2520-%2520Google%2520Maps.png"></p>
+<figure>
+<img src="https://lh5.googleusercontent.com/-fMUI4Zi2a68/UlBUCwGlIoI/AAAAAAAA6Q0/14KGATd9IHw/s800/Champaign%252C%2520IL%2520to%2520Mountain%2520View%252C%2520CA%2520-%2520Google%2520Maps.png" alt="The Good Old Route 66" /><figcaption>The Good Old Route 66</figcaption>
+</figure>
 <h1 id="i-80">I-80</h1>
 <p>After my internship in California, I drove back from Mountain View to Champaign.</p>
-<p><img src="https://lh6.googleusercontent.com/-QEnrQ49XzlQ/UlBQLfKAtTI/AAAAAAAA6QM/JBcEAGUNxiI/s800/Sunnyvale%252C%2520CA%2520to%2520Champaign%252C%2520IL%2520-%2520Google%2520Maps.png"></p>
+<figure>
+<img src="https://lh6.googleusercontent.com/-QEnrQ49XzlQ/UlBQLfKAtTI/AAAAAAAA6QM/JBcEAGUNxiI/s800/Sunnyvale%252C%2520CA%2520to%2520Champaign%252C%2520IL%2520-%2520Google%2520Maps.png" alt="I-80 Back to Champaign" /><figcaption>I-80 Back to Champaign</figcaption>
+</figure>
 <div class="references">
 
 </div>
