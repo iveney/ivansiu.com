@@ -41,42 +41,19 @@ Let \(G=(V, E)\) be an undirected graph. Matching in \(G\) is a subset of edges 
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
 <!-- MathJax -->
 <!-- see:
 
 http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/ 
 http://drz.ac/2013/01/03/blogging-with-math/
 http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress
+http://docs.mathjax.org/en/latest/configuration.html
 
 -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
 
 <script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,http://blog.ivansiu.com/javascripts/MathJaxLocal.js">
 </script>
 
 <!-- Facebook OpenGraph -->
@@ -198,6 +175,9 @@ posted in
 <p>Note that the above graph <span class="math">\(G\_M\)</span> is similar to the residual network in network flow. Apparently, <span class="math">\(p\)</span> starts from a free vertex in <span class="math">\(V&#39;\_1\)</span> and ends at another free vertex in <span class="math">\(V&#39;\_2\)</span>, thus it is an augmenting path.</p>
 <h2 id="complexity">Complexity</h2>
 <p>The maximum size of matching is upper bounded by <span class="math">\(|V|/2\)</span>, and each step, the matching size is incremented by one. Thus, the number of augmenting path found will be at most <span class="math">\(O(|V|)\)</span>. At each step, it takes <span class="math">\(O(|E|)\)</span> to find a path. Thus the overall running time is <span class="math">\(O(|V||E|)\)</span>.</p>
+<div class="references">
+
+</div>
 </div>
 
 
@@ -277,6 +257,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/14/a-comparison-of-least-square/">A Comparison of Least Square</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/02/debugging-applescript-print-to-a-file/">Debugging AppleScript: print to a file</a>
         </li>
       
@@ -290,10 +274,6 @@ posted in
       
         <li>
           <a href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Send ctrl-a in tmux after rebinding to it</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
         </li>
       
     </ul>

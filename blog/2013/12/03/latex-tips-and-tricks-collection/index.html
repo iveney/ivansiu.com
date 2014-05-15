@@ -39,42 +39,19 @@
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
 <!-- MathJax -->
 <!-- see:
 
 http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/ 
 http://drz.ac/2013/01/03/blogging-with-math/
 http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress
+http://docs.mathjax.org/en/latest/configuration.html
 
 -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
 
 <script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,http://blog.ivansiu.com/javascripts/MathJaxLocal.js">
 </script>
 
 <!-- Facebook OpenGraph -->
@@ -175,7 +152,7 @@ posted in
 <ul>
 <li><a href="http://www.howtotex.com/tips-tricks/vertical-alignment-of-subfigures/">Horizontal alignment of subfigures</a></li>
 <li><code>subfloat</code> in <code>subfig</code>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -199,14 +176,13 @@ posted in
 </span><span class='line'><span class="k">\subref*</span><span class="nb">{</span>fig:example<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
-</div>
-</li>
+</div></li>
 </ul>
 <h2 id="bibliography">Bibliography</h2>
 <ul>
 <li><a href="http://tex.stackexchange.com/questions/12686/how-do-i-run-bibtex-after-using-the-output-directory-flag-with-pdflatex-when-f">How do I run bibtex after using the -output-directory flag with pdflatex, when files are included from subdirectories?</a></li>
 <li>biblatex simple usage
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -234,7 +210,7 @@ posted in
 <h2 id="graphics">Graphics</h2>
 <ul>
 <li>Graphics path
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -244,7 +220,7 @@ posted in
 </notextile>
 </div></li>
 <li>Use other file extensions:
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -252,13 +228,12 @@ posted in
 </pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\DeclareGraphicsExtensions</span><span class="nb">{</span>.pdf, .jpg, .png<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
-</div>
-</li>
+</div></li>
 </ul>
 <h2 id="table-and-tabular">Table and Tabular</h2>
 <ul>
 <li>threeparttable: Use footnote in tabular
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -278,13 +253,12 @@ posted in
 </span><span class='line'><span class="k">\end</span><span class="nb">{</span>tablenotes<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
-</div>
-</li>
+</div></li>
 </ul>
 <h2 id="theorem-definition">Theorem, Definition</h2>
 <ul>
 <li>New definition/theorem
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -313,7 +287,7 @@ posted in
 <h2 id="controlling-space">Controlling space</h2>
 <ul>
 <li>reduce space between float and text
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -327,7 +301,7 @@ posted in
 </notextile>
 </div></li>
 <li>reduce bib item separation in biblatex<a name="bibitemsep"></a>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -358,6 +332,9 @@ posted in
 <li><a href="http://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-files-to-make-them-available-to-all-my-tex-files">Where do I place my own .sty files, to make them available to all my .tex files?</a></li>
 <li><a href="http://tex.stackexchange.com/questions/38287/creating-a-central-bibliography">Creating a central bibliography</a></li>
 </ul>
+<div class="references">
+
+</div>
 </div>
 
 
@@ -437,6 +414,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/14/a-comparison-of-least-square/">A Comparison of Least Square</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/02/debugging-applescript-print-to-a-file/">Debugging AppleScript: print to a file</a>
         </li>
       
@@ -450,10 +431,6 @@ posted in
       
         <li>
           <a href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Send ctrl-a in tmux after rebinding to it</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
         </li>
       
     </ul>

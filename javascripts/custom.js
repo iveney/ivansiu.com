@@ -86,4 +86,8 @@ $(function(){
     });
   });
 
+  // hack for foxslide gist
+  $('.file-data').addClass('highlight');
+  $('table.lines.highlight').removeClass('highlight')
+  
 });

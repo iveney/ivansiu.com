@@ -39,42 +39,19 @@
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
 <!-- MathJax -->
 <!-- see:
 
 http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/ 
 http://drz.ac/2013/01/03/blogging-with-math/
 http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress
+http://docs.mathjax.org/en/latest/configuration.html
 
 -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
 
 <script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,http://blog.ivansiu.com/javascripts/MathJaxLocal.js">
 </script>
 
 <!-- Facebook OpenGraph -->
@@ -179,6 +156,9 @@ posted in
 <p>Since I never used CD, I actually decided to buy a Digital Media Receiver: <a href="http://www.crutchfield.com/S-kT2jsjodqXG/p_105KDX250B/JVC-KD-X250BT.html">JVC KD-X250BT</a>. Since every car has a different wiring harness, we need to buy a compatible wiring harness. My car has a Double DIN design but the DMR is a single DIN one, so I actually need to buy a installation kit. The wiring setup is fun:</p>
 <p><img class="left" src="https://lh5.googleusercontent.com/-zOOgWaP5-W8/UiETJQhmUVI/AAAAAAAA6AM/jRAo6LHRlDU/s400/IMG_5341.jpg"> <img class="right" src="https://lh4.googleusercontent.com/-n_QzAv5VgfQ/UiETKOBShuI/AAAAAAAA6AU/_F3-gN-NDio/s400/IMG_5342.jpg"> <img class="left" src="https://lh5.googleusercontent.com/-p7tlzn7kbRc/UiETKzbUaCI/AAAAAAAA6Ac/37Dgx3cbUJM/s400/IMG_5344.jpg"></p>
 <p><img class="right" src="https://lh6.googleusercontent.com/-KJRCnhX64lg/UiETLxnhJKI/AAAAAAAA6Ak/qdqbEPUfAUI/s600/IMG_5345.JPG"> <img src="https://lh5.googleusercontent.com/-h0tu6PrFzIk/UiETMWNKURI/AAAAAAAA6As/Zll5LFDkixM/s600/IMG_5346.JPG"></p>
+<div class="references">
+
+</div>
 </div>
 
 
@@ -258,6 +238,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/14/a-comparison-of-least-square/">A Comparison of Least Square</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/02/debugging-applescript-print-to-a-file/">Debugging AppleScript: print to a file</a>
         </li>
       
@@ -271,10 +255,6 @@ posted in
       
         <li>
           <a href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Send ctrl-a in tmux after rebinding to it</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
         </li>
       
     </ul>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Learning | Zigang Xiao]]></title>
+  <link href="http://blog.ivansiu.com/blog/categories/learning/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2014-05-14T22:11:58-05:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang Xiao (Ivan)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A Comparison of Least Square]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square/"/>
+    <updated>2014-05-14T21:30:03-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square</id>
+    <content type="html"><![CDATA[Ordinary Least Square (OLS), 
+
+Consider the following linear system:
+
+]]></content>
+  </entry>
+  
+</feed>

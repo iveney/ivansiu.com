@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-05T22:04:18-05:00</updated>
+  <updated>2014-05-14T22:11:58-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[A Comparison of Least Square]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square/"/>
+    <updated>2014-05-14T21:30:03-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square</id>
+    <content type="html"><![CDATA[<p>Ordinary Least Square (OLS),</p>
+<p>Consider the following linear system:</p>
+<div class="references">
+
+</div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Debugging AppleScript: print to a file]]></title>
@@ -25,7 +38,7 @@
 <ol type="1">
 <li>Use <code>logger</code> to log to the syslog. E.g.,</li>
 </ol>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -34,12 +47,11 @@
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
-
 <p>However, I don’t know why sometimes this is not logged. So I will use the following:</p>
 <ol start="2" type="1">
 <li>Echo to file</li>
 </ol>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -50,8 +62,9 @@
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
+<div class="references">
 
-
+</div>
 ]]></content>
   </entry>
   
@@ -97,6 +110,9 @@
 <li>You should put this into a directory in your search path. I recommend in <code>~/bin</code>. Also remember to <code>chmod +x</code>.</li>
 <li>The above requires another script <code>realpath</code>, which returns the fullpath of a file. You can find it <a href="http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">here</a>.</li>
 </ol>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -105,7 +121,7 @@
     <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/"/>
     <updated>2014-05-01T18:25:56-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath</id>
-    <content type="html"><![CDATA[<div class='bogus-wrapper'>
+    <content type="html"><![CDATA[<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span>Demonstrate of realpath</span>
@@ -118,12 +134,11 @@
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
-
 <p><code>realpath</code> is a command line utility that is included in most UNIX distributions but not Mac OS X. Thanks to <a href="https://github.com/harto">Stuart Campbell</a>, a minimal implementation is provided <a href="https://github.com/harto/realpath-osx">here</a>, and my <a href="https://github.com/iveney/realpath-osx">fork</a>.</p>
 <!-- more -->
 
 <p>If you use <code>homebrew</code>, you can tap my <a href="https://github.com/iveney/homebrew-mocha">repo</a>, and install it using homebrew.</p>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -134,8 +149,10 @@
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
-
 <p>Viola! Now you can get the full path of file in console. A nice thing I often use is to chain it with <code>pbcopy</code> to copy the full path to the OS X clipboard.</p>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -152,7 +169,7 @@
 
 <p>However, this comes for a price. That is, in a shell environment that is integrated with <code>readline</code>, <code>ctrl-a</code> is used to jump the begining of line. Now that it is mapped as prefix, we can no longer do that.</p>
 <p>Surprisingly, the solution is pretty simple. Just use <code>ctrl-a a</code> to send the prefix itself, and use <code>ctrl-a ctrl-a</code> to go to the last window. Specifically, add these two lines in <code>~/.tmux.conf</code>:</p>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span>~/.tmux.conf </span>
@@ -163,8 +180,10 @@
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
-
 <p><a href="http://stackoverflow.com/questions/11557076/if-i-set-key-bind-of-c-b-to-c-a-in-tmux-how-can-i-move-the-cursor-to-the-beginni#comment15297769_11561128">via</a>.</p>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -180,15 +199,14 @@
 <!-- more -->
 
 <p>First of all, install source-highlight using homebrew.</p>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>brew install source-highlight</span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
-
 <p>Note that source-highlight depends on boost, and as of the date of this post, brew provides a precompiled library (bottle) for boost. However, the python support is compiled against the system python, so if you installed a custom one (say installed via homebrew) and use it by default, brew will compile the boost from source instead, which takes an extremely long time. To prevent this, we need to unlink it first, and link it back afterwards. That is,</p>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -199,9 +217,8 @@
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
-
 <p>Go to the following folder and create two files,</p>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -210,8 +227,7 @@
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
-
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span>matlab.style</span>
@@ -224,9 +240,7 @@
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
-
-
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span>matlab.lang</span>
@@ -263,9 +277,8 @@
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
-
 <p>Finally, edit <code>lang.map</code> to create a mapping for matlab file.</p>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span>lang.map</span>
@@ -274,8 +287,9 @@
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
+<div class="references">
 
-
+</div>
 ]]></content>
   </entry>
   
@@ -296,6 +310,9 @@
 <p>The workflow I adopted is a two-step approach: mark those I want to keep in the iPhone, delete all stuff using the 3rd method, then upload back.</p>
 <p>If you have some videos that occupy lots of space, you can convert them to lower quality. To do this, HandBrake is the excellent tool, which is open-sourced. However, it does not support batch change. Luckily, <a href="http://www.osomac.com/apps/osx/handbrake-batch/">HandBrakeBatch</a> by <a href="http://www.osomac.com">OSOMAC</a> can achieve this.</p>
 <p>To upload things back, <a href="http://rambax.com/simpletransfer.html">SimpleTransfer</a> can help, especially for videos, which cannot be put back into camera roll easily (I have no idea why apple restricts this). The lite version is free, but you can only upload one item at a time, and there are also some restrictions.</p>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -306,15 +323,17 @@
     <id>http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file</id>
     <content type="html"><![CDATA[<p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all. Turns out because of sandboxing, it will not allow reading file from local. A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
 <p>However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:</p>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>sudo apachectl start</span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
-
 <p>Also, place the pac file under <code>/Library/WebServer/Documents</code>, which is the default Document Root of Apache.</p>
 <p>Tom Fischer proposed <a href="https://discussions.apple.com/thread/3202499?start=30&amp;tstart=0">another way</a> to get around, however I don’t think it a good idea to mess around the system files.</p>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -330,7 +349,7 @@
 <ul>
 <li><a href="http://www.howtotex.com/tips-tricks/vertical-alignment-of-subfigures/">Horizontal alignment of subfigures</a></li>
 <li><code>subfloat</code> in <code>subfig</code>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -354,14 +373,13 @@
 </span><span class='line'><span class="k">\subref*</span><span class="nb">{</span>fig:example<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
-</div>
-</li>
+</div></li>
 </ul>
 <h2 id="bibliography">Bibliography</h2>
 <ul>
 <li><a href="http://tex.stackexchange.com/questions/12686/how-do-i-run-bibtex-after-using-the-output-directory-flag-with-pdflatex-when-f">How do I run bibtex after using the -output-directory flag with pdflatex, when files are included from subdirectories?</a></li>
 <li>biblatex simple usage
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -389,7 +407,7 @@
 <h2 id="graphics">Graphics</h2>
 <ul>
 <li>Graphics path
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -399,7 +417,7 @@
 </notextile>
 </div></li>
 <li>Use other file extensions:
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -407,13 +425,12 @@
 </pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\DeclareGraphicsExtensions</span><span class="nb">{</span>.pdf, .jpg, .png<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
-</div>
-</li>
+</div></li>
 </ul>
 <h2 id="table-and-tabular">Table and Tabular</h2>
 <ul>
 <li>threeparttable: Use footnote in tabular
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -433,13 +450,12 @@
 </span><span class='line'><span class="k">\end</span><span class="nb">{</span>tablenotes<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
-</div>
-</li>
+</div></li>
 </ul>
 <h2 id="theorem-definition">Theorem, Definition</h2>
 <ul>
 <li>New definition/theorem
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -468,7 +484,7 @@
 <h2 id="controlling-space">Controlling space</h2>
 <ul>
 <li>reduce space between float and text
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -482,7 +498,7 @@
 </notextile>
 </div></li>
 <li>reduce bib item separation in biblatex<a name="bibitemsep"></a>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
@@ -513,6 +529,9 @@
 <li><a href="http://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-files-to-make-them-available-to-all-my-tex-files">Where do I place my own .sty files, to make them available to all my .tex files?</a></li>
 <li><a href="http://tex.stackexchange.com/questions/38287/creating-a-central-bibliography">Creating a central bibliography</a></li>
 </ul>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -537,6 +556,9 @@
 <p>After more taping, it looks like better now. Maybe I should consider wrapping better things outside later.</p>
 <p><img src="https://lh3.googleusercontent.com/-Ok8Zop2yeFY/Un23fsZ_1VI/AAAAAAAA6UU/njomi434w70/s600/IMG_5538.jpg"></p>
 <p>Hooray! Now it is working again! In fact, I am amazed that this piece of gadget has been working for four years, daily. It is still working just fine :)</p>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -546,6 +568,9 @@
     <updated>2013-10-17T16:12:00-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example</id>
     <content type="html"><![CDATA[<p><img src="https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg"></p>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -555,19 +580,21 @@
     <updated>2013-10-17T14:54:00-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme</id>
     <content type="html"><![CDATA[<p>The themes are stored in <code>.themes/&lt;name&gt;</code>, we can use the rake command to update either the source or style, as documented in the <a href="http://octopress.org/docs/updating/">office website</a>. However, the syntax should be more clear, i.e.,</p>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>rake update_source['theme name']</span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
-
 <p>Without the brackets, it defaults to <code>.themes/classic</code>.</p>
 <p>Caveats:</p>
 <ul>
 <li>Do NOT use <code>rake install</code> to install the theme again, since it will overwrite the whole thing, including the files in <code>source/_include/custom</code> directory.</li>
 <li>When working on the blog, anything outside of <code>source/_include/custom</code> should be considered the theme. Thus, do not make changes directly in <code>source</code>. Make changes to theme and update the theme to reflect the changes to the blog.</li>
 </ul>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -628,6 +655,9 @@
 <li><a href="https://en.wikipedia.org/wiki/Hopcroft-Karp">Wikipedia article</a></li>
 <li><a href="http://www.dis.uniroma1.it/~sankowski/lecture2.pdf">Lecture note from Sapienza University of Rome</a></li>
 </ul>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -664,6 +694,9 @@
 <p>Note that the above graph <span class="math">\(G\_M\)</span> is similar to the residual network in network flow. Apparently, <span class="math">\(p\)</span> starts from a free vertex in <span class="math">\(V&#39;\_1\)</span> and ends at another free vertex in <span class="math">\(V&#39;\_2\)</span>, thus it is an augmenting path.</p>
 <h2 id="complexity">Complexity</h2>
 <p>The maximum size of matching is upper bounded by <span class="math">\(|V|/2\)</span>, and each step, the matching size is incremented by one. Thus, the number of augmenting path found will be at most <span class="math">\(O(|V|)\)</span>. At each step, it takes <span class="math">\(O(|E|)\)</span> to find a path. Thus the overall running time is <span class="math">\(O(|V||E|)\)</span>.</p>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -687,6 +720,9 @@ While there is vertex that can be pushed or relabel
 End while
 return F.</code></pre>
 <p>The naive implementation has runtime <span class="math">\(O(|V|^2 |E|)\)</span>, and can be improved to <span class="math">\(O(|V|^3)\)</span>.</p>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -717,6 +753,9 @@ End while</code></pre>
 <li>Each augmenting path contains at least one critical edge, thus <span class="math">\(O(|V||E|)\)</span>.</li>
 <li>The running time is thus <span class="math">\(O(|V||E|^2)\)</span> since each iteration we run a BFS which costs <span class="math">\(O(|E|)\)</span>. This can be improved to <span class="math">\(O(|V|^2|E|)\)</span> with more efficient data structure (Dinic).</li>
 </ul>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -736,6 +775,9 @@ End while</code></pre>
 <p>Since I never used CD, I actually decided to buy a Digital Media Receiver: <a href="http://www.crutchfield.com/S-kT2jsjodqXG/p_105KDX250B/JVC-KD-X250BT.html">JVC KD-X250BT</a>. Since every car has a different wiring harness, we need to buy a compatible wiring harness. My car has a Double DIN design but the DMR is a single DIN one, so I actually need to buy a installation kit. The wiring setup is fun:</p>
 <p><img class="left" src="https://lh5.googleusercontent.com/-zOOgWaP5-W8/UiETJQhmUVI/AAAAAAAA6AM/jRAo6LHRlDU/s400/IMG_5341.jpg"> <img class="right" src="https://lh4.googleusercontent.com/-n_QzAv5VgfQ/UiETKOBShuI/AAAAAAAA6AU/_F3-gN-NDio/s400/IMG_5342.jpg"> <img class="left" src="https://lh5.googleusercontent.com/-p7tlzn7kbRc/UiETKzbUaCI/AAAAAAAA6Ac/37Dgx3cbUJM/s400/IMG_5344.jpg"></p>
 <p><img class="right" src="https://lh6.googleusercontent.com/-KJRCnhX64lg/UiETLxnhJKI/AAAAAAAA6Ak/qdqbEPUfAUI/s600/IMG_5345.JPG"> <img src="https://lh5.googleusercontent.com/-h0tu6PrFzIk/UiETMWNKURI/AAAAAAAA6As/Zll5LFDkixM/s600/IMG_5346.JPG"></p>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -756,6 +798,9 @@ End while</code></pre>
 <h1 id="i-80">I-80</h1>
 <p>After my internship in California, I drove back from Mountain View to Champaign.</p>
 <p><img src="https://lh6.googleusercontent.com/-QEnrQ49XzlQ/UlBQLfKAtTI/AAAAAAAA6QM/JBcEAGUNxiI/s800/Sunnyvale%252C%2520CA%2520to%2520Champaign%252C%2520IL%2520-%2520Google%2520Maps.png"></p>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   
@@ -795,6 +840,9 @@ End while</code></pre>
 <pre><code>peabody :3 # port is 5903</code></pre>
 <h3 id="more-on-port-forwarding">More On Port Forwarding</h3>
 <p>https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding</p>
+<div class="references">
+
+</div>
 ]]></content>
   </entry>
   

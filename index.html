@@ -37,42 +37,19 @@
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
 <!-- MathJax -->
 <!-- see:
 
 http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/ 
 http://drz.ac/2013/01/03/blogging-with-math/
 http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress
+http://docs.mathjax.org/en/latest/configuration.html
 
 -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
 
 <script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,http://blog.ivansiu.com/javascripts/MathJaxLocal.js">
 </script>
 
 <!-- Facebook OpenGraph -->
@@ -119,6 +96,10 @@ My hobbies include Guitar and Ballroom dancing. </p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/14/a-comparison-of-least-square/">A Comparison of Least Square</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/02/debugging-applescript-print-to-a-file/">Debugging AppleScript: print to a file</a>
         </li>
       
@@ -132,10 +113,6 @@ My hobbies include Guitar and Ballroom dancing. </p>
       
         <li>
           <a href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Send ctrl-a in tmux after rebinding to it</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
         </li>
       
     </ul>
@@ -178,6 +155,68 @@ My hobbies include Guitar and Ballroom dancing. </p>
   <div class="container">
     <div class="row" id="post-container">
     
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/14/a-comparison-of-least-square/">A Comparison of Least Square</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-14T21:30:03-05:00" pubdate data-updated="true">May 14<span>th</span>, 2014</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/learning/'>Learning</a>, <a class='category' href='/blog/categories/machine/'>Machine</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ordinary Least Square (OLS),</p>
+<p>Consider the following linear system:</p>
+<div class="references">
+
+</div>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
     
     
       <article class="span4">
@@ -355,7 +394,7 @@ posted in
   </header>
 
 
-  <div class="entry-content"><div class='bogus-wrapper'>
+  <div class="entry-content"><div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span>Demonstrate of realpath</span>
@@ -368,7 +407,6 @@ posted in
 </span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
-
 <p><code>realpath</code> is a command line utility that is included in most UNIX distributions but not Mac OS X. Thanks to <a href="https://github.com/harto">Stuart Campbell</a>, a minimal implementation is provided <a href="https://github.com/harto/realpath-osx">here</a>, and my <a href="https://github.com/iveney/realpath-osx">fork</a>.</p>
 </div>
   
@@ -625,15 +663,17 @@ posted in
 
   <div class="entry-content"><p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all. Turns out because of sandboxing, it will not allow reading file from local. A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
 <p>However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:</p>
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>sudo apachectl start</span></code></pre></td></tr></table></div></figure>
 </notextile>
 </div>
-
 <p>Also, place the pac file under <code>/Library/WebServer/Documents</code>, which is the default Document Root of Apache.</p>
 <p>Tom Fischer proposed <a href="https://discussions.apple.com/thread/3202499?start=30&amp;tstart=0">another way</a> to get around, however I don’t think it a good idea to mess around the system files.</p>
+<div class="references">
+
+</div>
 </div>
   
   
@@ -705,70 +745,6 @@ posted in
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-08T22:06:00-06:00" pubdate data-updated="true">Nov 8<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/diy/'>DIY</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After four years of use, the wire on my MagSafe finally fray out. After searching a bit, I found that a new one costs $80!! My old memories came back: almost all accessories by Apple are rip-offs. See how low the ratings are:</p>
-<p><img src="https://lh3.googleusercontent.com/-HbwCGT5IRfg/Un22iAWR3FI/AAAAAAAA6S8/kb8A295sneA/s800/Apple%252085W%2520MagSafe%2520Power%2520Adapter%2520%2528for%252015-%2520and%252017-inch%2520MacBook%2520Pro%2529%2520-%2520Apple%2520Store%2520%2528U.S.%2529.png"></p>
-<p>I know that this can be easily fixed if you know a little soldering and have courage: the adapter is working perfectly fine, it is just the wires. I decided to DIY. There are several pretty good articles on how to <a href="http://www.instructables.com/id/How-to-open-and-replace-the-MagSafe-cord-on-an-App/?ALLSTEPS">open the MagSafe</a> and how to <a href="http://www.instructables.com/id/MacBook-Mag-Safe-Charger-Budget-Repair-Disas/">solder it</a>.</p>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -793,6 +769,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/14/a-comparison-of-least-square/">A Comparison of Least Square</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/02/debugging-applescript-print-to-a-file/">Debugging AppleScript: print to a file</a>
         </li>
       
@@ -806,10 +786,6 @@ posted in
       
         <li>
           <a href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Send ctrl-a in tmux after rebinding to it</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for matlab/octave</a>
         </li>
       
     </ul>
