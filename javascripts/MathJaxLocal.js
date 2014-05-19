@@ -11,6 +11,8 @@ MathJax.Hub.Config({
 		Macros: {
 			reals: ['\\mathbb{R}'],
 			norm: ['\\left\\lVert#1\\right\\rVert', 1],
+			given: ['\\:#1\\vert\\:', 1],
+			data: ['\\mathcal{D}'],
 		}
 	}
 });
