@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Machine Learning | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/machine-learning/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-21T22:14:07-05:00</updated>
+  <updated>2014-05-22T17:38:19-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -82,8 +82,8 @@ $$G(I)_{ij} = \sqrt{(Gx(I)_{ij})^2 + (Gy(I)_{ij})^2}$$
 The following shows `Gx`, `Gy` and `G` of the phantom image:
 
 -----------------  -----------------  -----------------
-  ![phantom_gx]      ![phantom_gy]      ![phantom_gI]  
-    `gx(I)`             `Gy(I)`             `G(I)`
+  ![phantom_gx]\     ![phantom_gy]\     ![phantom_gI]\ 
+    `Gx(I)`             `Gy(I)`             `G(I)`
 -----------------  -----------------  -----------------
 
 The *total variation* `TV(I)` of an image is just the sum of 
