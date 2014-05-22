@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-19T00:02:48-05:00</updated>
+  <updated>2014-05-21T22:14:07-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,152 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sparse Gradient Image Reconstruction via L1-minimization]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/"/>
+    <updated>2014-05-19T15:12:36-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization</id>
+    <content type="html"><![CDATA[<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_orig.png" alt="phantom_orig" /></td>
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_backproj.png" alt="phantom_backproj" /></td>
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_tv.png" alt="phantom_tv" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Original</td>
+<td style="text-align: center;">Minimum Energy Reconstruction</td>
+<td style="text-align: center;">Sparse Reconstruction</td>
+</tr>
+</tbody>
+</table>
+<h2 id="introduction">Introduction</h2>
+<p>This is a follow up of the L1-minimization series. The previous two posts are:</p>
+<ol type="1">
+<li><a href="http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">A Comparison of Least Square, L2-regularization and L1-regularization</a></li>
+<li><a href="http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">Sparse Signal Reconstruction via L1-minimization</a> <!-- more --></li>
+</ol>
+<p>We have explored using L1-minimization technique to <a href="http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">recover a sparse signal</a>. The example shows a 1D example. This post demonsrates on a 2D example, where the image is viewed as a signal. This makes sense as we can perform 2D Fourier Transform in the image, where the basis are a combination of <em>horizontal</em> and <em>vertical</em> waves. For a complete introduction to FFT on images, refer to <a href="http://www.cs.unm.edu/~brayer/vision/fourier.html">this tutorial</a>. Notice that similar to 1D signal, we do not measure the image directly in time domain, but we do it in the frequency domain. Concretely, say <span class="math">\(x\)</span> is the 2D image collapsed to 1D, and <span class="math">\(A \in \reals^{k\times n}\)</span> is the measurement matrix, <span class="math">\(b\)</span> is the observation, we then have <span class="math">\(Ax=b\)</span>. Usually we will require <span class="math">\(k = n\)</span> to obtain an exact solution for <span class="math">\(x\)</span> given <span class="math">\(A\)</span> and <span class="math">\(b\)</span>. Now, if we use FFT and obtain the frequency coefficients as <span class="math">\(\hat{x}\)</span>, we can also perform similar measurements <span class="math">\(\hat{A} \hat{x} = \hat{b}\)</span>, and the requirement <span class="math">\(k = n\)</span> is the same. In other words, the required samples (the information) is <em>the same</em>. By using the inverse fourier transform, we can convert <span class="math">\(\hat{x}\)</span> back to <span class="math">\(x\)</span>. The only difference is that the measurement <span class="math">\(\hat{A}\)</span> is taken in frequency (Fourier) domain. As we can see later, we can utilize sparse information to reduce <span class="math">\(k\)</span>.</p>
+<h2 id="image-gradients-and-total-variation">Image Gradients and Total Variation</h2>
+<p>We first introduct the concept of image gradients. For any 2D real image <code>I</code>, if we think about each row as a signal, we can then view the ‘difference’ between adjacent pixels as (horizontal) gradient <code>Gx(I)</code>, this makes sense since a sharpe change denotes an edge. Similary, we can define the vertical gradient <code>Gy(I)</code> for columns. Thus, we have</p>
+<p><span class="math">\[Gx(I) = \begin{cases}
+I_{i+1, j} - I_{ij} &amp; i &lt; n &#92;&#92; 0 &amp; i = n
+\end{cases}
+\qquad
+Gy(I) = \begin{cases}
+I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
+\end{cases}\]</span></p>
+<p>where the image size is <span class="math">\(n\times n\)</span>.</p>
+<p>Collectively, the image gradient <code>G(I)</code> is defined as the magnitude (2-norm) of both components:</p>
+<p><span class="math">\[G(I)_{ij} = \sqrt{(Gx(I)_{ij})^2 + (Gy(I)_{ij})^2}\]</span></p>
+<p>The following shows <code>Gx</code>, <code>Gy</code> and <code>G</code> of the phantom image:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gx.png" alt="phantom_gx" /></td>
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gy.png" alt="phantom_gy" /></td>
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gI.png" alt="phantom_gI" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>gx(I)</code></td>
+<td style="text-align: center;"><code>Gy(I)</code></td>
+<td style="text-align: center;"><code>G(I)</code></td>
+</tr>
+</tbody>
+</table>
+<p>The <em>total variation</em> <code>TV(I)</code> of an image is just the sum of this discrete gradient at every point.</p>
+<p><span class="math">\[TV(I)= \norm{G(I)}_1 = \sum_{i,j} G(I)_{ij}\]</span></p>
+<p>We notice that <span class="math">\(TV(I)\)</span> is just the <em>L1-norm</em> of <span class="math">\(G(I)\)</span>, which leads us to the following: if we have an image that is sparse in its image gradients, we can exploit that and use our L1-minimization trick.</p>
+<h2 id="sparse-gradient-image-reconstruction">Sparse Gradient Image Reconstruction</h2>
+<p>The ratio of non-zero elements in <code>Gx</code>, <code>Gy</code> and <code>G</code> of the phantom image is <code>0.0711</code>, <code>0.0634</code> and <code>0.0769</code>, respectively. These ratios are really small - and we consider the gradient as <em>sparse</em>.</p>
+<p>Let <span class="math">\(F: \reals^{n\times n} -to \complex^{n\times n}\)</span> be the FFT operator, and <span class="math">\(F I\)</span> be the Fourier transform taken on image I. Define a set <span class="math">\(\Omega\)</span> as the <span class="math">\(k\)</span> two-dimensional frequencies chosen according to some sampling pattern from the <span class="math">\(n \times n\)</span>. We further define <span class="math">\(F_\Omega I: \reals^{n \times n} \to \complex^k\)</span> as the <span class="math">\(k\)</span> observation taken from the fourier transform of image I. We can then solve the following optimization problem to recover <span class="math">\(I\)</span>:</p>
+<p><span class="math">\[\min_I \norm{F_\Omega I - b}^2_2\]</span></p>
+<p>where <span class="math">\(F_\Omega\)</span> can be view as the measurement matrix, <span class="math">\(b\)</span> is the observation, and we want to find <span class="math">\(I\)</span> such that the <em>reconstruction cost</em> (energy) is minimized.</p>
+<p>However, the above does not quite work. As we can see in the following images, the <em>L2-minimization</em> does a poor job, either for a random measurement or a radial measurement <span class="citation" data-cites="candes2006robust">[4]</span> in Fourier domain.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/measurement_random.png" alt="M rand" /></td>
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_rand_bp.png" alt="phantom rand bp" /></td>
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_rand_tv.png" alt="phantom rand tv" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Random measurement</td>
+<td style="text-align: center;">L2-minimization</td>
+<td style="text-align: center;">L1-minimization</td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/measurement_radial.png" alt="M radial" /></td>
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_backproj.png" alt="phantom_backproj" /></td>
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_tv.png" alt="phantom_tv" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Radial measurement</td>
+<td style="text-align: center;">L2-minimization</td>
+<td style="text-align: center;">L1-minimization</td>
+</tr>
+</tbody>
+</table>
+<p>To utilize the sparse information, we add a L1-regularization term to the above objective function, which yields the following:</p>
+<p><span class="math">\[(TV_1) \quad \min_I \norm{F_\Omega I - b}^2_2 + \lambda TV(I)\]</span></p>
+<p>Without surprise, optimizing the above gives us a <em>perfect</em> reconstruction of the original image. It is shown that if there exists a piecewise constant I with sufficiently few edges (i.e., <span class="math">\(G(I)_{ij}\)</span> is nonzero for only a small number of indices i, j), then <span class="math">\((TV_1)\)</span> will recover I exactly.</p>
+<p>A heavily commented code example is available in my <a href="https://github.com/iveney/l1min/blob/master/image_recovery_l1.m">github repository</a>. Leave a comment if you have any question.</p>
+<h2 id="probing-further">Probing Further</h2>
+<p>Now, take a look at another example <code>cameraman</code>, which has the following gradients (intensity rescaled using matlab’s <code>imagesc</code>.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman.png" alt="cameraman" /></td>
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_grad.png" alt="cameraman_grad" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Cameraman</td>
+<td style="text-align: center;">Gradient</td>
+</tr>
+</tbody>
+</table>
+<p>The following shows the reconstructions (left two are using random measurements, right two are using radial measurements).</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_rand_bp.png" alt="cameraman_rand_bp" /></td>
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_rand_tv.png" alt="cameraman_rand_tv" /></td>
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_bp.png" alt="cameraman_bp" /></td>
+<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_tv.png" alt="cameraman_tv" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Rand (L2)</td>
+<td style="text-align: center;">Rand (L1)</td>
+<td style="text-align: center;">Radial (L2)</td>
+<td style="text-align: center;">Radial (L1)</td>
+</tr>
+</tbody>
+</table>
+<p>As we can see, the results are not as good. In fact, the non-zero ratio of its gradient is 0.9928, which is not sparse at all. However, if we plot the histogram of gradients, we will find that most of the gradient magnitudes are small:</p>
+<figure>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/camera_mag_hist.png" alt="Gradient Histogram" /><figcaption>Gradient Histogram</figcaption>
+</figure>
+<p>In particular, most of them are smaller than 200, which means the number of ‘changes’ that are larger than 200 is small. In fact, the ratio of gradient &gt; 200 is only <em>0.0964</em>! Thus, there are two possible ways to discard these information and get a ‘compressed’ image that is sparse in gradients:</p>
+<ol type="1">
+<li>Use mean-shift algorithm to segment the regions such that they have the same color intensities. K-means or quantization should achieve a similar result, though might not as good as mean-shift.</li>
+<li>Use image filtering to smooth the image, which can effectively average colors and discard high frequency information.</li>
+</ol>
+<p><em>I’ll leave these conjectures for furture implementation. For those intereted, please try them yourself and let me know your results. If you have any thoughts, do not hesitate to leave a comment.</em></p>
+<h2 id="references">References</h2>
+<p>For interested readers, the following references will be helpful.</p>
+<div class="references">
+<p>[1] E. Candes and J. Romberg, “l1-magic: Recovery of sparse signals via convex programming,” vol. 4, 2005.</p>
+<p>[2] J. S. Hesthaven, K. Chowdhary, E. Walsh, and others, “Sparse gradient image reconstruction from incomplete fourier measurements and prior edge information,” <em>IEEE TRANSACTIONS ON IMAGE PROCESSING</em>, 2012.</p>
+<p>[3] J. K. Pant, W.-S. Lu, and A. Antoniou, “A new algorithm for compressive sensing based on total-variation norm,” in <em>Circuits and systems (iSCAS), 2013 iEEE international symposium on</em>, 2013, pp. 1352–1355.</p>
+<p>[4] E. J. Cand<span>è</span>s, J. Romberg, and T. Tao, “Robust uncertainty principles: Exact signal reconstruction from highly incomplete frequency information,” <em>Information Theory, IEEE Transactions on</em>, vol. 52, no. 2, pp. 489–509, 2006.</p>
+</div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sparse Signal Reconstruction via L1-minimization]]></title>
@@ -27,9 +173,13 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="p">.</span>5<span class="o">*</span><span class="nb">sin</span><span class="p">(</span>3<span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(.</span>1<span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="nb">sin</span><span class="p">(</span>1<span class="p">.</span>3<span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="p">.</span>7<span class="o">*</span><span class="nb">sin</span><span class="p">(.</span>5<span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span>2<span class="p">.</span>3<span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>With <em>discrete consine transform</em> (DCT), we can easily find the coefficients of corresponding sinusoid components. The above example’s coefficients (in frequency domain) and signal in time domain are shown in the post figure.</p>
@@ -40,7 +190,9 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -76,7 +228,9 @@
 </span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span>2<span class="p">);</span>
 </span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
 </span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Original signal in time domain&#39;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>Let’s assume that we have a device that can sample from the frequency domain. To do this, we create a <em>random measurement matrix</em> to obtain the samples. We use 80 samples here. Note that we normalize the measurement matrix to have orthonormal basis, i.e., the norm of each row is 1, and the dot product of different row is 0.</p>
@@ -84,7 +238,9 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -98,7 +254,9 @@
 </span><span class='line'>
 </span><span class='line'><span class="c">% observations</span>
 </span><span class='line'><span class="n">b</span><span class="p">=</span><span class="n">A</span><span class="o">*</span><span class="n">coef</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>We first try a least-square approach, which boils down to inverse the matrix and obtain <span class="math">\(\hat{x}=A^{-1} b\)</span>. Note that as A is not square, we are using its <em>pseudo-inverse</em> here. Furthermore, as A is othornormal, its transpose is the same as pseudo-inverse.</p>
@@ -106,7 +264,9 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -128,7 +288,9 @@
 </span><span class='line'><span class="n">plot</span><span class="p">(</span>1<span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">,</span> 1<span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">xlim</span><span class="p">([</span>0 <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Minimum energy recovery - signal&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Recovered&#39;</span><span class="p">,</span> <span class="s">&#39;Original&#39;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>As we can see, there are lots of non-zeros in the coefficients, and the recovered signal is very different from the original signal.</p>
@@ -137,7 +299,9 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -165,7 +329,9 @@
 </span><span class='line'><span class="n">plot</span><span class="p">(</span>1<span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> 1<span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">xlim</span><span class="p">([</span>0 <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;L1 recovery - signal&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Recovered&#39;</span><span class="p">,</span> <span class="s">&#39;Original&#39;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>The above shows that L1-minimization successfully recovered the original signal. A complete code snippet can be found <a href="https://gist.github.com/842145ae48381a5a8dca">here</a>.</p>
@@ -207,7 +373,9 @@
 <notextile>
 <figure class='code'><figcaption>
 <span>regression_ex.m</span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -327,7 +495,9 @@
 </span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x_en</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;g--&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Lasso Coef&#39;</span><span class="p">,</span> <span class="s">&#39;Elastic Net coef&#39;</span><span class="p">,</span> <span class="s">&#39;Original Coef&#39;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>Output:</p>
@@ -335,11 +505,15 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="n">Mean</span> <span class="n">square</span> <span class="n">error</span><span class="p">:</span>
 </span><span class='line'>1<span class="p">.</span>81793<span class="n">e</span><span class="o">-</span>29    7<span class="p">.</span>93494<span class="n">e</span><span class="o">-</span>15    0<span class="p">.</span>0975002    0<span class="p">.</span>0641214
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>The above code snippets generates an under-determined matrix <span class="math">\(A\)</span>, and a sparse coefficients which has 200 variables but only 10 of them are non-zeros. Noises are added to the responses. We then run the proposed three methods to try to recover the coefficients. It then generates two plots:</p>
@@ -374,9 +548,13 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;logger -t &#39;AS DEBUG&#39; &quot;</span> <span class="o">&amp;</span> <span class="nv">myObj</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>However, I don’t know why sometimes this is not logged. So I will use the following:</p>
@@ -387,11 +565,15 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;echo &quot;</span> <span class="o">&amp;</span> <span class="nb">quoted form</span> <span class="k">of</span> <span class="p">(</span><span class="nv">myObj</span> <span class="k">as </span><span class="nc">string</span><span class="p">)</span> <span class="o">&amp;</span> <span class="se">¬</span>
 </span><span class='line'>    <span class="s2">&quot; &gt;&gt; ~/Desktop/as_debug.txt&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <div class="references">
@@ -411,11 +593,13 @@
 <p>One of the neat things you can do in OS X is to reveal a file in Finder.app from some other applications. Turns out lots of the time, we also want to do that in the terminal. The following script helps you with that:</p>
 <!-- more -->
 
-<div class='bogus-wrapper'>
+<div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span>reveal</span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -433,10 +617,11 @@
 </span><span class='line'>      <span class="nb">activate</span>
 </span><span class='line'>  <span class="k">end</span> <span class="k">tell</span>
 </span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
-
 <p>Note:</p>
 <ol type="1">
 <li>You should put this into a directory in your search path. I recommend in <code>~/bin</code>. Also remember to <code>chmod +x</code>.</li>
@@ -457,13 +642,17 @@
 <notextile>
 <figure class='code'><figcaption>
 <span>Demonstrate of realpath</span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>➜  /Applications  realpath iBooks.app
 </span><span class='line'>/Applications/iBooks.app
 </span><span class='line'>➜  /Applications
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p><code>realpath</code> is a command line utility that is included in most UNIX distributions but not Mac OS X. Thanks to <a href="https://github.com/harto">Stuart Campbell</a>, a minimal implementation is provided <a href="https://github.com/harto/realpath-osx">here</a>, and my <a href="https://github.com/iveney/realpath-osx">fork</a>.</p>
@@ -474,11 +663,15 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>brew tap iveney/mocha
 </span><span class='line'>brew install realpath
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>Viola! Now you can get the full path of file in console. A nice thing I often use is to chain it with <code>pbcopy</code> to copy the full path to the OS X clipboard.</p>
@@ -505,11 +698,15 @@
 <notextile>
 <figure class='code'><figcaption>
 <span>~/.tmux.conf </span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">bind </span>a send-prefix
 </span><span class='line'><span class="nb">bind</span>-key C-a last-window
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p><a href="http://stackoverflow.com/questions/11557076/if-i-set-key-bind-of-c-b-to-c-a-in-tmux-how-can-i-move-the-cursor-to-the-beginni#comment15297769_11561128">via</a>.</p>
@@ -533,8 +730,12 @@
 <p>First of all, install source-highlight using homebrew.</p>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install source-highlight</span></code></pre></td></tr></table></div></figure>
+<figure class='code'>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install source-highlight</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>Note that source-highlight depends on boost, and as of the date of this post, brew provides a precompiled library (bottle) for boost. However, the python support is compiled against the system python, so if you installed a custom one (say installed via homebrew) and use it by default, brew will compile the boost from source instead, which takes an extremely long time. To prevent this, we need to unlink it first, and link it back afterwards. That is,</p>
@@ -542,11 +743,15 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>brew unlink python
 </span><span class='line'>brew link python    <span class="c"># after installation</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>Go to the following folder and create two files,</p>
@@ -554,29 +759,39 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> <span class="sb">`</span>brew --prefix <span class="nb">source</span>-highlight<span class="sb">`</span>/share/source-highlight
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span>matlab.style</span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="err">keyword</span> <span class="err">blue</span><span class="c1">;</span>
 </span><span class='line'><span class="err">string</span> <span class="c1">#a020f0;</span>
 </span><span class='line'><span class="err">comment</span> <span class="err">darkgreen</span><span class="c1">;</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <div class="bogus-wrapper">
 <notextile>
 <figure class='code'><figcaption>
 <span>matlab.lang</span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -606,7 +821,9 @@
 </span><span class='line'><span class="err">comment</span> <span class="err">start</span> <span class="err">&quot;%&quot;</span>
 </span><span class='line'>
 </span><span class='line'><span class="err">string</span> <span class="err">delim</span> <span class="err">&#39;(?&lt;![\w.])\&#39;&#39;</span> <span class="err">&quot;&#39;&quot;</span> <span class="err">escape</span> <span class="err">&quot;&#39;&#39;&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>Finally, edit <code>lang.map</code> to create a mapping for matlab file.</p>
@@ -614,9 +831,13 @@
 <notextile>
 <figure class='code'><figcaption>
 <span>lang.map</span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo</span> <span class="s1">&#39;m = matlab.lang&#39;</span> &gt;&gt; lang.map
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <div class="references">
@@ -657,8 +878,12 @@
 <p>However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:</p>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apachectl start</span></code></pre></td></tr></table></div></figure>
+<figure class='code'>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apachectl start</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>Also, place the pac file under <code>/Library/WebServer/Documents</code>, which is the default Document Root of Apache.</p>
@@ -685,7 +910,9 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -703,7 +930,9 @@
 </span><span class='line'><span class="nb">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">\subref*</span><span class="nb">{</span>fig:example<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div></li>
 </ul>
@@ -715,7 +944,9 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -731,7 +962,9 @@
 </span><span class='line'>
 </span><span class='line'><span class="c">% at the end</span>
 </span><span class='line'><span class="k">\printbibliography</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div></li>
 <li><a href="#bibitemsep">Item spacing</a></li>
@@ -743,9 +976,13 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\graphicspath</span><span class="nb"></span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div></li>
 <li>Use other file extensions:
@@ -753,9 +990,13 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\DeclareGraphicsExtensions</span><span class="nb">{</span>.pdf, .jpg, .png<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div></li>
 </ul>
@@ -766,7 +1007,9 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -780,7 +1023,9 @@
 </span><span class='line'><span class="k">\begin</span><span class="nb">{</span>tablenotes<span class="nb">}</span>[para] <span class="c">% do not break line between items</span>
 </span><span class='line'><span class="k">\item</span> [<span class="s">$</span><span class="nv">\dagger</span><span class="s">$</span>] A foot note. <span class="c">% this reference to the item</span>
 </span><span class='line'><span class="k">\end</span><span class="nb">{</span>tablenotes<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div></li>
 </ul>
@@ -791,9 +1036,13 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\newtheorem</span><span class="nb">{</span>definition<span class="nb">}{</span>Definition<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div></li>
 <li>Useful packages:
@@ -820,13 +1069,17 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\textfloatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
 </span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\floatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
 </span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\intextsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div></li>
 <li>reduce bib item separation in biblatex<a name="bibitemsep"></a>
@@ -834,9 +1087,13 @@
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\setlength\bibitemsep</span><span class="nb">{</span>0.5<span class="k">\itemsep</span><span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div></li>
 <li>geometry: control the margins at top, bottom, left and right</li>
@@ -933,8 +1190,12 @@
     <content type="html"><![CDATA[<p>The themes are stored in <code>.themes/&lt;name&gt;</code>, we can use the rake command to update either the source or style, as documented in the <a href="http://octopress.org/docs/updating/">office website</a>. However, the syntax should be more clear, i.e.,</p>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake update_source['theme name']</span></code></pre></td></tr></table></div></figure>
+<figure class='code'>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake update_source['theme name']</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>Without the brackets, it defaults to <code>.themes/classic</code>.</p>
@@ -1155,48 +1416,6 @@ End while</code></pre>
 <figure>
 <img src="https://lh6.googleusercontent.com/-QEnrQ49XzlQ/UlBQLfKAtTI/AAAAAAAA6QM/JBcEAGUNxiI/s800/Sunnyvale%252C%2520CA%2520to%2520Champaign%252C%2520IL%2520-%2520Google%2520Maps.png" alt="I-80 Back to Champaign" /><figcaption>I-80 Back to Champaign</figcaption>
 </figure>
-<div class="references">
-
-</div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Notes on SSH port forwarding]]></title>
-    <link href="http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/"/>
-    <updated>2013-05-09T21:43:00-05:00</updated>
-    <id>http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding</id>
-    <content type="html"><![CDATA[<h3 id="ssh-local-port-forwarding">SSH Local Port Forwarding</h3>
-<p>Use <code>ssh -L</code> to bind a local port to a remote port</p>
-<h3 id="dynamic-port-forwarding">Dynamic Port Forwarding</h3>
-<p>Use <code>ssh -D</code> to dynamically bind a local port for forwarding. A SOCKS5 will be created. Example:</p>
-<pre><code>ssh -D 1080 user@remote-server.com
-    </code></pre>
-<p>This binds to remote-server.com and uses local port 1080 for forwarding.</p>
-<p>Optionally use -C for data compression.</p>
-<p>The above command will log into the remote-server.com, use <code>-f</code> to put ssh to background, and use <code>-N</code> to not to execute a command. i.e.,</p>
-<pre><code>ssh -f -N -D 1080 user@remote-server.com</code></pre>
-<!-- more -->
-
-<h3 id="usage-example">Usage Example</h3>
-<p>If the tool/app supports socks natively, use localhost:1080 in its setting. Example (curl)</p>
-<pre><code>curl --socks5 localhost http://icanhazip.com
-    </code></pre>
-<p>If set up correctly, the IP returned will be the machine that is forwarding (remote-server.com)</p>
-<p>If not, use some socksify tool, for example, use dsocks in OSX:</p>
-<pre><code>dsocks.sh ssh another-server.com
-    </code></pre>
-<p>You can see where you logon using <code>who | grep &lt;user-name&gt;</code>.</p>
-<h3 id="a-real-world-scenario">A Real World Scenario</h3>
-<p>Scenario: I want to connect to VNC server at peabody::5903, however, peabody only accepts connection from CSL LAN, while my Macbook is in IllinoisNet (wireless).</p>
-<p>Solution: use my office computer ‘orange’ as a proxy. Use local port forwarding:</p>
-<pre><code>ssh -L 5903:peabody:5903 orange</code></pre>
-<p>This means, forward localhost:5903 via orange to peabody:5903 So if I connect to the vnvserver at:</p>
-<pre><code>localhost :1 # port is 5901</code></pre>
-<p>I am forwarded to</p>
-<pre><code>peabody :3 # port is 5903</code></pre>
-<h3 id="more-on-port-forwarding">More On Port Forwarding</h3>
-<p>https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding</p>
 <div class="references">
 
 </div>

@@ -157,9 +157,13 @@ posted in
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="p">.</span>5<span class="o">*</span><span class="nb">sin</span><span class="p">(</span>3<span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(.</span>1<span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="nb">sin</span><span class="p">(</span>1<span class="p">.</span>3<span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="p">.</span>7<span class="o">*</span><span class="nb">sin</span><span class="p">(.</span>5<span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span>2<span class="p">.</span>3<span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>With <em>discrete consine transform</em> (DCT), we can easily find the coefficients of corresponding sinusoid components. The above example’s coefficients (in frequency domain) and signal in time domain are shown in the post figure.</p>
@@ -170,7 +174,9 @@ posted in
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -206,7 +212,9 @@ posted in
 </span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span>2<span class="p">);</span>
 </span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
 </span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Original signal in time domain&#39;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>Let’s assume that we have a device that can sample from the frequency domain. To do this, we create a <em>random measurement matrix</em> to obtain the samples. We use 80 samples here. Note that we normalize the measurement matrix to have orthonormal basis, i.e., the norm of each row is 1, and the dot product of different row is 0.</p>
@@ -214,7 +222,9 @@ posted in
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -228,7 +238,9 @@ posted in
 </span><span class='line'>
 </span><span class='line'><span class="c">% observations</span>
 </span><span class='line'><span class="n">b</span><span class="p">=</span><span class="n">A</span><span class="o">*</span><span class="n">coef</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>We first try a least-square approach, which boils down to inverse the matrix and obtain <span class="math">\(\hat{x}=A^{-1} b\)</span>. Note that as A is not square, we are using its <em>pseudo-inverse</em> here. Furthermore, as A is othornormal, its transpose is the same as pseudo-inverse.</p>
@@ -236,7 +248,9 @@ posted in
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -258,7 +272,9 @@ posted in
 </span><span class='line'><span class="n">plot</span><span class="p">(</span>1<span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">,</span> 1<span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">xlim</span><span class="p">([</span>0 <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Minimum energy recovery - signal&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Recovered&#39;</span><span class="p">,</span> <span class="s">&#39;Original&#39;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>As we can see, there are lots of non-zeros in the coefficients, and the recovered signal is very different from the original signal.</p>
@@ -267,7 +283,9 @@ posted in
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -295,7 +313,9 @@ posted in
 </span><span class='line'><span class="n">plot</span><span class="p">(</span>1<span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> 1<span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">xlim</span><span class="p">([</span>0 <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;L1 recovery - signal&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Recovered&#39;</span><span class="p">,</span> <span class="s">&#39;Original&#39;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>The above shows that L1-minimization successfully recovered the original signal. A complete code snippet can be found <a href="https://gist.github.com/842145ae48381a5a8dca">here</a>.</p>
@@ -362,6 +382,8 @@ posted in
       <a class="pull-left" href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/" title="Previous Post: A Comparison of Least Square, L2-regularization and L1-regularization">&laquo; A Comparison of Least Square, L2-regularization and L1-regularization</a>
     
     
+      <a class="pull-right" href="/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/" title="Next Post: Sparse Gradient Image Reconstruction via L1-minimization">Sparse Gradient Image Reconstruction via L1-minimization &raquo;</a>
+    
   </footer>
 
 </div>
@@ -385,6 +407,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/">Sparse Gradient Image Reconstruction via L1-minimization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">Sparse Signal Reconstruction via L1-minimization</a>
         </li>
       
@@ -398,10 +424,6 @@ posted in
       
         <li>
           <a href="/blog/2014/05/01/os-x-reveal-file-in-console/">OS X: reveal file in console</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">OS X: get full path of file using realpath</a>
         </li>
       
     </ul>

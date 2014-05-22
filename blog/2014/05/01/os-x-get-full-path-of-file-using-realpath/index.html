@@ -13,8 +13,7 @@
   
     
   
-  <meta name="description" content="Demonstrate of realpath
-1
+  <meta name="description" content="Demonstrate of realpath 1
 2
 3
 ➜ /Applications realpath iBooks.app
@@ -34,8 +33,7 @@
   <meta name="og:type" content="website" />
   <meta name="og:site_name" content="Zigang Xiao" />
   <meta name="og:title" content="OS X: get full path of file using realpath" />
-  <meta name="og:description" content="Demonstrate of realpath
-1
+  <meta name="og:description" content="Demonstrate of realpath 1
 2
 3
 ➜ /Applications realpath iBooks.app
@@ -164,13 +162,17 @@ posted in
 <notextile>
 <figure class='code'><figcaption>
 <span>Demonstrate of realpath</span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>➜  /Applications  realpath iBooks.app
 </span><span class='line'>/Applications/iBooks.app
 </span><span class='line'>➜  /Applications
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p><code>realpath</code> is a command line utility that is included in most UNIX distributions but not Mac OS X. Thanks to <a href="https://github.com/harto">Stuart Campbell</a>, a minimal implementation is provided <a href="https://github.com/harto/realpath-osx">here</a>, and my <a href="https://github.com/iveney/realpath-osx">fork</a>.</p>
@@ -181,11 +183,15 @@ posted in
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>brew tap iveney/mocha
 </span><span class='line'>brew install realpath
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>Viola! Now you can get the full path of file in console. A nice thing I often use is to chain it with <code>pbcopy</code> to copy the full path to the OS X clipboard.</p>
@@ -271,6 +277,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/">Sparse Gradient Image Reconstruction via L1-minimization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">Sparse Signal Reconstruction via L1-minimization</a>
         </li>
       
@@ -284,10 +294,6 @@ posted in
       
         <li>
           <a href="/blog/2014/05/01/os-x-reveal-file-in-console/">OS X: reveal file in console</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">OS X: get full path of file using realpath</a>
         </li>
       
     </ul>

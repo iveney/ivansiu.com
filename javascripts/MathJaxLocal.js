@@ -10,6 +10,7 @@ MathJax.Hub.Config({
 		TagSide: "left",
 		Macros: {
 			reals: ['\\mathbb{R}'],
+			complex: ['\\mathbb{C}'],
 			norm: ['\\left\\lVert#1\\right\\rVert', 1],
 			given: ['\\:#1\\vert\\:', 1],
 			data: ['\\mathcal{D}'],

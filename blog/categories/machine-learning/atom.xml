@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Machine Learning | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/machine-learning/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-19T00:02:48-05:00</updated>
+  <updated>2014-05-21T22:14:07-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,206 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sparse Gradient Image Reconstruction via L1-minimization]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/"/>
+    <updated>2014-05-19T15:12:36-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization</id>
+    <content type="html"><![CDATA[---
+nocite: 
+  '@candes2005l1, @hesthavensparse, @pant2013new, @candes2006robust'
+---
+
+
+--------------------  -------------------------------  -------------------------
+  ![phantom_orig]\      ![phantom_backproj]\              ![phantom_tv]\ 
+    Original           Minimum Energy Reconstruction     Sparse Reconstruction
+--------------------  -------------------------------  -------------------------
+
+## Introduction
+
+This is a follow up of the L1-minimization series. The previous two posts are:
+
+1. [A Comparison of Least Square, L2-regularization and L1-regularization][L2 vs L1]
+2. [Sparse Signal Reconstruction via L1-minimization][Sparse Signal 1D]
+<!-- more -->
+
+We have explored using L1-minimization technique to 
+[recover a sparse signal][Sparse Signal 1D]. 
+The example shows a 1D example. This post demonsrates  on a 2D example, where
+the image is viewed as a signal. This makes sense as we can perform 2D Fourier
+Transform in the image, where the basis are a combination of *horizontal* and
+*vertical* waves. For a complete introduction to FFT on images, refer to 
+[this tutorial][FFT 2D]. Notice that similar to 1D signal, we do not measure
+the image directly in time domain, but we do it in the frequency domain.
+Concretely, say $x$ is the 2D image collapsed to 1D, and $A \in \reals^{k\times n}$ 
+is the measurement matrix, $b$ is the observation, we then have $Ax=b$. 
+Usually we will require $k = n$ to obtain an exact solution for $x$ given $A$ 
+and $b$. Now, if we use FFT and obtain the frequency coefficients as $\hat{x}$,
+we can also perform similar measurements $\hat{A} \hat{x} = \hat{b}$,
+and the requirement $k = n$ is the same. In other words, the required samples 
+(the information) is *the same*. By using the inverse fourier transform,
+we can convert $\hat{x}$ back to $x$. The only difference is that the measurement
+$\hat{A}$ is taken in frequency (Fourier) domain. As we can see later, we can
+utilize sparse information to reduce $k$.
+
+## Image Gradients and Total Variation
+
+We first introduct the concept of image gradients. For any 2D real image `I`, if
+we think about each row as a signal, we can then view the 'difference' between
+adjacent pixels as (horizontal) gradient `Gx(I)`, this makes sense since a
+sharpe change denotes an edge. Similary, we can define the vertical gradient
+`Gy(I)` for columns. Thus, we have
+
+$$Gx(I) = \begin{cases}
+I_{i+1, j} - I_{ij} & i < n \\\\ 0 & i = n
+\end{cases}
+\qquad
+Gy(I) = \begin{cases}
+I_{i, j+1} - I_{ij} & j < n \\\\ 0 & j = n
+\end{cases}$$
+
+where the image size is $n\times n$.
+
+Collectively, the image gradient `G(I)` is defined as the
+magnitude (2-norm) of both components:
+
+$$G(I)_{ij} = \sqrt{(Gx(I)_{ij})^2 + (Gy(I)_{ij})^2}$$
+
+The following shows `Gx`, `Gy` and `G` of the phantom image:
+
+-----------------  -----------------  -----------------
+  ![phantom_gx]      ![phantom_gy]      ![phantom_gI]  
+    `gx(I)`             `Gy(I)`             `G(I)`
+-----------------  -----------------  -----------------
+
+The *total variation* `TV(I)` of an image is just the sum of 
+this discrete gradient at every point.
+
+$$TV(I)= \norm{G(I)}_1 = \sum_{i,j} G(I)_{ij}$$
+
+We notice that $TV(I)$ is just the *L1-norm* of $G(I)$,
+which leads us to the following: if we have an image that is sparse in
+its image gradients, we can exploit that and use our L1-minimization trick.
+
+## Sparse Gradient Image Reconstruction
+
+The ratio of non-zero elements in `Gx`, `Gy` and `G` of the phantom image
+is `0.0711`, `0.0634` and `0.0769`, respectively. These ratios are really 
+small - and we consider the gradient as *sparse*.
+
+Let $F: \reals^{n\times n} -to \complex^{n\times n}$ be the FFT operator, 
+and $F I$ be the Fourier transform taken on image I.
+Define a set $\Omega$ as the $k$ two-dimensional frequencies chosen
+according to some sampling pattern from the $n \times n$.
+We further define $F_\Omega I: \reals^{n \times n} \to \complex^k$ as the 
+$k$ observation taken from the fourier transform of image I.
+We can then solve the following optimization problem to recover $I$:
+
+$$\min_I \norm{F_\Omega I - b}^2_2$$
+
+where $F_\Omega$ can be view as the measurement matrix, $b$ is the observation,
+and we want to find $I$ such that the *reconstruction cost* (energy) is
+minimized.  
+
+However, the above does not quite work. As we can see in the following images,
+the *L2-minimization* does a poor job, either for a random measurement or
+a radial measurement [@candes2006robust] in Fourier domain.
+
+--------------------  ---------------------  --------------------
+  ![M rand]            ![phantom rand bp]     ![phantom rand tv]
+ Random measurement     L2-minimization        L1-minimization
+--------------------  ---------------------  --------------------
+
+--------------------  ---------------------  --------------------
+  ![M radial]          ![phantom_backproj]     ![phantom_tv]
+ Radial measurement     L2-minimization       L1-minimization
+--------------------  ---------------------  --------------------
+
+
+To utilize the sparse information, we add a L1-regularization term 
+to the above objective function, which yields the following:
+
+$$(TV_1) \quad \min_I \norm{F_\Omega I - b}^2_2 + \lambda TV(I)$$
+
+Without surprise, optimizing the above gives us a *perfect* reconstruction
+of the original image. 
+It is shown that if there exists a piecewise constant I with sufficiently 
+few edges (i.e., $G(I)_{ij}$ is nonzero for only a small number of indices i, j), 
+then $(TV_1)$ will recover I exactly.
+
+A heavily commented code example is available in my [github repository][code].
+Leave a comment if you have any question.
+
+## Probing Further
+
+Now, take a look at another example `cameraman`, which has the following
+gradients (intensity rescaled using matlab's `imagesc`.
+
+------------------  --------------------
+  ![cameraman]       ![cameraman_grad]
+    Cameraman             Gradient
+------------------  --------------------
+
+The following shows the reconstructions (left two are using random measurements,
+right two are using radial measurements).
+
+----------------------  ----------------------  -----------------  -----------------
+ ![cameraman_rand_bp]    ![cameraman_rand_tv]    ![cameraman_bp]    ![cameraman_tv]
+      Rand (L2)             Rand (L1)              Radial (L2)        Radial (L1)
+----------------------  ----------------------  -----------------  -----------------
+
+As we can see, the results are not as good. In fact, the non-zero ratio of its
+gradient is 0.9928, which is not sparse at all. However, if we plot the histogram
+of gradients, we will find that most of the gradient magnitudes are small:
+
+![Gradient Histogram][camera_mag_hist]
+
+In particular, most of them are smaller than 200, which means the number of
+'changes' that are larger than 200 is small. In fact, the ratio of
+gradient > 200 is only *0.0964*! Thus, there are two possible ways to 
+discard these information and get a 'compressed' image that is
+sparse in gradients:
+
+1. Use mean-shift algorithm to segment the regions such that they have the
+same color intensities. K-means or quantization should achieve a similar 
+result, though might not as good as mean-shift.
+2. Use image filtering to smooth the image, which can effectively average colors
+and discard high frequency information.
+
+*I'll leave these conjectures for furture implementation. For those
+intereted, please try them yourself and let me know your results.
+If you have any thoughts, do not hesitate to leave a comment.*
+
+## References
+
+For interested readers, the following references will be helpful.
+
+[FFT 2D]: http://www.cs.unm.edu/~brayer/vision/fourier.html
+[phantom_orig]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_orig.png
+[phantom_backproj]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_backproj.png
+[phantom_tv]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_tv.png
+[phantom_gx]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gx.png
+[phantom_gy]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gy.png
+[phantom_gI]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gI.png
+[M rand]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/measurement_random.png
+[M radial]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/measurement_radial.png
+[phantom rand bp]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_rand_bp.png
+[phantom rand tv]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_rand_tv.png
+[cameraman]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman.png
+[cameraman_grad]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_grad.png
+[cameraman_bp]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_bp.png
+[cameraman_tv]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_tv.png
+[cameraman_rand_bp]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_rand_bp.png
+[cameraman_rand_tv]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_rand_tv.png
+[camera_mag_hist]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/camera_mag_hist.png
+[code]: https://github.com/iveney/l1min/blob/master/image_recovery_l1.m
+
+[L2 vs L1]: /blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/
+[Sparse Signal 1D]: /blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sparse Signal Reconstruction via L1-minimization]]></title>

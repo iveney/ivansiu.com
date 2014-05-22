@@ -171,7 +171,9 @@ posted in
 <notextile>
 <figure class='code'><figcaption>
 <span>regression_ex.m</span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -291,7 +293,9 @@ posted in
 </span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x_en</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;g--&#39;</span><span class="p">);</span>
 </span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Lasso Coef&#39;</span><span class="p">,</span> <span class="s">&#39;Elastic Net coef&#39;</span><span class="p">,</span> <span class="s">&#39;Original Coef&#39;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>Output:</p>
@@ -299,11 +303,15 @@ posted in
 <notextile>
 <figure class='code'><figcaption>
 <span></span>
-</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="n">Mean</span> <span class="n">square</span> <span class="n">error</span><span class="p">:</span>
 </span><span class='line'>1<span class="p">.</span>81793<span class="n">e</span><span class="o">-</span>29    7<span class="p">.</span>93494<span class="n">e</span><span class="o">-</span>15    0<span class="p">.</span>0975002    0<span class="p">.</span>0641214
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table>
+</div>
+</figure>
 </notextile>
 </div>
 <p>The above code snippets generates an under-determined matrix <span class="math">\(A\)</span>, and a sparse coefficients which has 200 variables but only 10 of them are non-zeros. Noises are added to the responses. We then run the proposed three methods to try to recover the coefficients. It then generates two plots:</p>
@@ -398,6 +406,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/">Sparse Gradient Image Reconstruction via L1-minimization</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">Sparse Signal Reconstruction via L1-minimization</a>
         </li>
       
@@ -411,10 +423,6 @@ posted in
       
         <li>
           <a href="/blog/2014/05/01/os-x-reveal-file-in-console/">OS X: reveal file in console</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">OS X: get full path of file using realpath</a>
         </li>
       
     </ul>
