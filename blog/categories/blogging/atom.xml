@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: octopress | Zigang Xiao]]></title>
-  <link href="http://blog.ivansiu.com/blog/categories/octopress/atom.xml" rel="self"/>
+  <title><![CDATA[Category: blogging | Zigang Xiao]]></title>
+  <link href="http://blog.ivansiu.com/blog/categories/blogging/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
   <updated>2014-05-22T22:31:02-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
@@ -204,34 +204,6 @@ Please leave your comments.*
 [Sublime Text]: http://www.sublimetext.com
 [pow]: http://pow.cx
 [pow for alfred]: http://tombeynon.github.io/alfred-pow/]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Understanding Page Components of Octopress: Using Foxslide as An Example]]></title>
-    <link href="http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/"/>
-    <updated>2013-10-17T16:12:00-05:00</updated>
-    <id>http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example</id>
-    <content type="html"><![CDATA[![](https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg)]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Updating Octopress Theme]]></title>
-    <link href="http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme/"/>
-    <updated>2013-10-17T14:54:00-05:00</updated>
-    <id>http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme</id>
-    <content type="html"><![CDATA[The themes are stored in `.themes/<name>`, we can use the rake command to update either the source or style, as documented in the [office website](http://octopress.org/docs/updating/). However, the syntax should be more clear, i.e.,
-
-```
-rake update_source['theme name']
-```
-
-Without the brackets, it defaults to `.themes/classic`.
-
-Caveats:
-
-- Do NOT use `rake install` to install the theme again, since it will overwrite the whole thing, including the files in `source/_include/custom` directory.
-- When working on the blog, anything outside of `source/_include/custom` should be considered the theme. Thus, do not make changes directly in `source`. Make changes to theme and update the theme to reflect the changes to the blog.
-]]></content>
   </entry>
   
 </feed>
