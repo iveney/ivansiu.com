@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-22T22:31:02-05:00</updated>
+  <updated>2014-05-28T01:00:21-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -14,9 +14,78 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Fix Mid 2009 MBP RAM not recognized issue]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/"/>
+    <updated>2014-05-28T23:30:56-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue</id>
+    <content type="html"><![CDATA[<figure>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/mbp09-ram-theory.png" alt="Possible cause of unrecoganized RAM" /><figcaption>Possible cause of unrecoganized RAM</figcaption>
+</figure>
+<p>A few days ago, I encountered an issue which seems to be common among mid-2009 MBPs: one of the RAM (in slot 1) is not recognized anymore. Or, sometimes it is recognized, but after sleep and wake up, the computer freezes and impossible to recover but force power off.</p>
+<!-- more -->
+
+<p>It turns out this is a common issue in this model. See the discussion in this <a href="https://discussions.apple.com/message/25788934?ac_cid=tw123456#25788934">thread</a> and this <a href="https://discussions.apple.com/thread/4263981?start=30&amp;tstart=0">thread</a>.</p>
+<p>As I suggested in <a href="https://discussions.apple.com/message/24868689#24868689">my reply</a>, this may due to a RAM slot degradation. My guess is, the RAM slot cannot align the RAM to a correct contact positions any more. Precisely, see the post image above. Notice that the two clips on the left and right are used to hold the rams in a horizontal position, otherwise they will bend upwards. I took a close look at those clips and found that the plastic wore out and cannot hold them as original. I don’t have great ways to fix them, so I just cropped some papers and insert them between the RAMs and the back edges on the body, hoping they can help tucking the RAMs.</p>
+<p>As I am fixing it, I accidentally broke the left holder. So I have to customized a plastic holder and stuck it with the logic board to hold the inner ram (slot 1).</p>
+<figure>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/cracked-holder.jpg" />
+</figure>
+<p>To verify my theory, I then taped a padding at the corresponding RAM position in the back cover:</p>
+<figure>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/padding.jpg" />
+</figure>
+<p>And they look like the following before I close:</p>
+<figure>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/padding-ram.jpg" />
+</figure>
+<p>Note that you have to screw it real tight to create the pressure such that the RAM is aligned. That said, there will be a ‘bump’ at that position, and will easily cause scratch. So I use an apple sticker to cover my ass:</p>
+<figure>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/sticker.jpg" />
+</figure>
+<p>This method worked for me, well, at 99% of the time. Sometimes after sleep, the MBP still won’t wake up. I notice that this usually due to running the MBP for a long time, and it’s hot inside. Nevertheless, this is the best solution I can come up with by now. <em>If you have any other cheap solution that does not require replacing the logic board, please let me know in the comments.</em></p>
+<p>Finally, Zach Clawson created a <a href="https://people.cam.cornell.edu/~zc227/extras/mid2009mbp_RAM.html">dedicated page</a> for this issue, which lists lots of reference and provides explanation to it. Make sure you check it out if you have encountered similar issue.</p>
+<hr />
+<p>There are other common issues for this model, and they can be easily fixed. See my following posts:</p>
+<ul>
+<li><a href="http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Fix frayed Magsafe cable</a></li>
+<li><a href="http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/">Replace faulty SATA cable</a></li>
+</ul>
+<p><em>If you have similar experience, do not hesitate to let me know. If you find my instruction helpful, leave a comment and share it!</em></p>
+<div class="references">
+
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Replacing SATA cable in Mid 2009 MBP]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/"/>
+    <updated>2014-05-28T00:15:08-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp</id>
+    <content type="html"><![CDATA[<figure>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/sata-cable.jpg" alt="Replacing MBP cable" /><figcaption>Replacing MBP cable</figcaption>
+</figure>
+<p>Recently, my mid 2009 MBP (Model A1278) fails to recognize the hard drive. My first bet was another disk failure on me, but it was not the case. I took down the hard drive and put it to a mobile hard drive case and it can be read smoothly.</p>
+<!-- more -->
+
+<p>It turns out that it is due to the SATA cable fault, which is a notorious problem for mid 2009 MBP model. See the threads and discussions <a href="http://forums.macrumors.com/showthread.php?t=1031577">here</a>, <a href="http://www.ifixit.com/Answers/View/36360/Internal+hard+drive+disk+not+recognized">here</a>, <a href="http://www.ifixit.com/Answers/View/43072/Hard+Drive+not+recognized+by+system+during+boot+or+install">here</a> and <a href="https://discussions.apple.com/message/25454809#25454809">here</a>.</p>
+<p>Luckily, the solution is simple, just go ahead and purchase a <a href="http://www.ifixit.com/MacBook-Parts/MacBook-Pro-13-Inch-Unibody-Hard-Drive-Cable/IF163-013#productDescription">replacement cable</a> and replace it. iFixit has a very detailed <a href="http://www.ifixit.com/Guide/MacBook+Pro+13-Inch+Unibody+Mid+2009+Hard+Drive+Cable+Replacement/1340">illustrated document</a> on the procedures. However, Amazon has a <a href="cable%20amazon">cheaper option</a>, and it works fine for me. I didn’t test the infra-red though, since I never and not plan to use it.</p>
+<p>There are other common issues for this model, and they can be easily fixed. See my following posts:</p>
+<ul>
+<li><a href="http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Fix frayed Magsafe cable</a></li>
+<li><a href="http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/">Fix unrecognized RAM</a></li>
+</ul>
+<p><em>If you have similar experience, do not hesitate to let me know. If you find my instruction helpful, leave a comment and share it!</em></p>
+<div class="references">
+
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[My Octopress Blogging Flow]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow/"/>
-    <updated>2014-05-22T22:38:07-05:00</updated>
+    <updated>2014-05-22T20:38:07-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/sublime-marked.png" alt="Writing in Sublime Text and previewing in Marked" /><figcaption>Writing in Sublime Text and previewing in Marked</figcaption>
@@ -179,7 +248,7 @@
   <entry>
     <title type="html"><![CDATA[Sparse Gradient Image Reconstruction via L1-minimization]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/"/>
-    <updated>2014-05-19T15:12:36-05:00</updated>
+    <updated>2014-05-19T13:12:36-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization</id>
     <content type="html"><![CDATA[<table>
 <tbody>
@@ -325,7 +394,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Sparse Signal Reconstruction via L1-minimization]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/"/>
-    <updated>2014-05-18T22:13:08-05:00</updated>
+    <updated>2014-05-18T20:13:08-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization</id>
     <content type="html"><![CDATA[<p><a href="https://dl.dropboxusercontent.com/u/3315210/blog/l1/sparse_signal_reconstruction.png"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/sparse_signal_reconstruction.png" alt="Sparse Signal Reconstruction Results" /></a></p>
 <p>This is a follow-up of the <a href="http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">previous post</a> on applications of L1 minimization.</p>
@@ -513,7 +582,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[A Comparison of Least Square, L2-regularization and L1-regularization]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/"/>
-    <updated>2014-05-14T21:32:38-05:00</updated>
+    <updated>2014-05-14T19:32:38-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/coef.png" alt="Recovered Coefficients by Different Methods" /><figcaption>Recovered Coefficients by Different Methods</figcaption>
@@ -698,7 +767,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Debugging AppleScript: print to a file]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file/"/>
-    <updated>2014-05-02T16:26:50-05:00</updated>
+    <updated>2014-05-02T14:26:50-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file</id>
     <content type="html"><![CDATA[<p>Debugging AppleScript is easy when you work with the script editor, simply use <code>log</code> to print out anything in the console. However, after you compiled it to an app, this cannot work anymore.</p>
 <p>I find there are several ways to do it in this <a href="http://stackoverflow.com/questions/2749863/applescript-editor-write-message-to-the-result-window">thread</a>. The <a href="http://stackoverflow.com/a/21309748/577704">two approaches</a> that work best for me are:</p>
@@ -748,7 +817,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[OS X: reveal file in console]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console/"/>
-    <updated>2014-05-01T19:58:20-05:00</updated>
+    <updated>2014-05-01T17:58:20-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-os-x-reveal-file-in-console.png" />
@@ -799,7 +868,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[OS X: get full path of file using realpath]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/"/>
-    <updated>2014-05-01T18:25:56-05:00</updated>
+    <updated>2014-05-01T16:25:56-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath</id>
     <content type="html"><![CDATA[<div class="bogus-wrapper">
 <notextile>
@@ -847,7 +916,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Send ctrl-a in tmux after rebinding to it]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/"/>
-    <updated>2014-05-01T17:14:46-05:00</updated>
+    <updated>2014-05-01T15:14:46-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png" />
@@ -881,9 +950,9 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   
   <entry>
     <title type="html"><![CDATA[Source-highlight for matlab/octave]]></title>
-    <link href="http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/"/>
-    <updated>2014-05-01T01:59:40-05:00</updated>
-    <id>http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave</id>
+    <link href="http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave/"/>
+    <updated>2014-04-30T23:59:40-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-source-highlight-for-matlab-slash-octave.png" />
 </figure>
@@ -1012,7 +1081,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Batch remove photos in iPhone, batch convert videos and upload back]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/01/29/batch-remove-photos-in-iphone/"/>
-    <updated>2014-01-29T20:16:21-06:00</updated>
+    <updated>2014-01-29T18:16:21-08:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/01/29/batch-remove-photos-in-iphone</id>
     <content type="html"><![CDATA[<p>One of the problems that drives iOS user crazy is the user-unfriendly manipulation/syncing of photos in iOS. There are just no easy way to remove photos in batch (though you can delete the entire camera roll in the settings).</p>
 <!-- more -->
@@ -1035,7 +1104,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Fix (ugly) Safari 7.0 not using local pac file]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/"/>
-    <updated>2013-12-05T02:03:43-06:00</updated>
+    <updated>2013-12-05T00:03:43-08:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file</id>
     <content type="html"><![CDATA[<p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all. Turns out because of sandboxing, it will not allow reading file from local. A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
 <p>However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:</p>
@@ -1060,7 +1129,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[LaTeX Tips and Tricks Collection]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection/"/>
-    <updated>2013-12-03T15:18:00-06:00</updated>
+    <updated>2013-12-03T15:18:00-08:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection</id>
     <content type="html"><![CDATA[<p>This post summarizes some common useful tips in LaTeX editing.</p>
 <!-- more -->
@@ -1290,7 +1359,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Saving $80 by Fixing MagSafe by Yourself]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/"/>
-    <updated>2013-11-08T22:06:00-06:00</updated>
+    <updated>2013-11-08T22:06:00-08:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself</id>
     <content type="html"><![CDATA[<p>After four years of use, the wire on my MagSafe finally fray out. After searching a bit, I found that a new one costs $80!! My old memories came back: almost all accessories by Apple are rip-offs. See how low the ratings are:</p>
 <figure>
@@ -1325,6 +1394,12 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
 <img src="https://lh3.googleusercontent.com/-Ok8Zop2yeFY/Un23fsZ_1VI/AAAAAAAA6UU/njomi434w70/s600/IMG_5538.jpg" />
 </figure>
 <p>Hooray! Now it is working again! In fact, I am amazed that this piece of gadget has been working for four years, daily. It is still working just fine :)</p>
+<p>There are other common issues for this model, and they can be easily fixed. See my following posts:</p>
+<ul>
+<li><a href="http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/">Replace faulty SATA cable</a></li>
+<li><a href="http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/">Fix unrecognized RAM</a></li>
+</ul>
+<p><em>If you have similar experience, do not hesitate to let me know. If you find my instruction helpful, leave a comment and share it!</em></p>
 <div class="references">
 
 </div>
@@ -1334,7 +1409,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Understanding Page Components of Octopress: Using Foxslide as An Example]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/"/>
-    <updated>2013-10-17T16:12:00-05:00</updated>
+    <updated>2013-10-17T16:12:00-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg" />
@@ -1348,7 +1423,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Updating Octopress Theme]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme/"/>
-    <updated>2013-10-17T14:54:00-05:00</updated>
+    <updated>2013-10-17T14:54:00-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme</id>
     <content type="html"><![CDATA[<p>The themes are stored in <code>.themes/&lt;name&gt;</code>, we can use the rake command to update either the source or style, as documented in the <a href="http://octopress.org/docs/updating/">office website</a>. However, the syntax should be more clear, i.e.,</p>
 <div class="bogus-wrapper">
@@ -1376,7 +1451,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Graph Matching: Hopcroft-Karp Algorithm]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/"/>
-    <updated>2013-10-08T15:59:00-05:00</updated>
+    <updated>2013-10-08T15:59:00-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm</id>
     <content type="html"><![CDATA[<h2 id="overview">Overview</h2>
 <p>Hopcroft-Karp algorithm also utilizes the augmenting path. The difference between the <a href="http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path/">simple augmenting path algorithm</a> is, instead of searching augmenting path one by one, it looks for many paths in the same time. The paths found at each iteration are in fact <strong>vertex disjoint path</strong>. By doing so, the number of iterations can be cut down, since there cannot be too many disjoing paths.</p>
@@ -1439,7 +1514,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Graph Matching: Augmenting Path]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path/"/>
-    <updated>2013-10-07T18:47:00-05:00</updated>
+    <updated>2013-10-07T18:47:00-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path</id>
     <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>Let <span class="math">\(G=(V, E)\)</span> be an undirected graph. Matching in <span class="math">\(G\)</span> is a subset of edges <span class="math">\(M \subseteq E\)</span> such that at most one edge is incident to each vertex in <span class="math">\(V\)</span>.</p>
@@ -1478,7 +1553,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Network Flow: Push-relabel algorithm]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/10/07/network-flow-push-relabel-algorithm/"/>
-    <updated>2013-10-07T18:08:00-05:00</updated>
+    <updated>2013-10-07T18:08:00-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/07/network-flow-push-relabel-algorithm</id>
     <content type="html"><![CDATA[<p>According to CLRS: Many of the asymptotically fastest maximum-flow algorithms are push-relabel algorithms, and the fastest actual implementations of maximum-flow algorithms are based on the push-relabel method. Push-relabel methods also efficiently solve other flow problems, such as the minimum-cost flow problem.</p>
 <p>This algorithm has a very different flavor. The overall idea is to generate a ‘preflow’ that may not satisfy the flow properties, and keep ‘pushing’) and ‘elevating’ (relabelling) the vertices until we cannot do that. We then remove the ‘excess’ from the preflow and obtain a valid flow, which is also a max flow. In particular, the in-flow may be larger than out-flow at a vertex. The amount of overflow is called ‘excess’.</p>
@@ -1495,61 +1570,6 @@ While there is vertex that can be pushed or relabel
 End while
 return F.</code></pre>
 <p>The naive implementation has runtime <span class="math">\(O(|V|^2 |E|)\)</span>, and can be improved to <span class="math">\(O(|V|^3)\)</span>.</p>
-<div class="references">
-
-</div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Network Flow: Ford-Fulkerson Method]]></title>
-    <link href="http://blog.ivansiu.com/blog/2013/10/03/network-flow-ford-fulkerson-method/"/>
-    <updated>2013-10-03T18:13:00-05:00</updated>
-    <id>http://blog.ivansiu.com/blog/2013/10/03/network-flow-ford-fulkerson-method</id>
-    <content type="html"><![CDATA[<p>Basic method (framework) is Ford-Fulkerson. It’s called a “method” because it’s general, there can be different implementation that yield different complexity. It looks like this:</p>
-<pre><code>Let F be an empty flow
-While there is augmenting path P from s to t
-    Augment F with P
-End while</code></pre>
-<p>The problem is how we find the augmenting path efficiently. A naive implementation is to use DFS to randomly pick a <span class="math">\(s-t\)</span> path and augment it. However, it has two problems:</p>
-<!-- more -->
-
-<ol type="1">
-<li>The algorithm may not terminate, this happens when the capacity is irrational number (we can always scale rational to integer). When the capacity is irrational, the flow may fluctuate and never converge.</li>
-<li>Even when the capacity is integer, the algorithm may be too slow. The runtime depends on the size of flow <span class="math">\(|F|\)</span>, which means if <span class="math">\(|F|\)</span> is large, it takes a long time to stop. To see this, note that DFS takes <span class="math">\(|E|\)</span> time, in the worst case, <span class="math">\(F\)</span> may grow by 1 at each iteration (since capacity is integer). Thus, the complexity is <span class="math">\(O(|E||F|)\)</span>.</li>
-</ol>
-<p>To handle, this, Edmonds-Karp algorithm simply replaces the DFS as BFS, which finds a shortest each time (use unit length on edges in the residual graph). The major points are:</p>
-<ul>
-<li>The length shortest path is guaranteed to monotonically increase at each iteration. This can be proven by contradiction.</li>
-<li>The number of iterations are <span class="math">\(O(|V||E|)\)</span>.</li>
-<li>Each augmenting path (shortest path) can saturate one edge, and this edge will disappear from the residual graph. We call this edge ‘critical’.<br /></li>
-<li>An edge <span class="math">\((u, v)\)</span> becomes critical to the time when it next becomes critical, the distance to <span class="math">\(u\)</span> from the source increases by at least 2.</li>
-<li>Thus, the total number of critical edges during execution is <span class="math">\(O(|V||E|)\)</span>.</li>
-<li>Each augmenting path contains at least one critical edge, thus <span class="math">\(O(|V||E|)\)</span>.</li>
-<li>The running time is thus <span class="math">\(O(|V||E|^2)\)</span> since each iteration we run a BFS which costs <span class="math">\(O(|E|)\)</span>. This can be improved to <span class="math">\(O(|V|^2|E|)\)</span> with more efficient data structure (Dinic).</li>
-</ul>
-<div class="references">
-
-</div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Installing a new car stereo]]></title>
-    <link href="http://blog.ivansiu.com/blog/2013/08/30/installing-a-new-car-stereo/"/>
-    <updated>2013-08-30T16:50:00-05:00</updated>
-    <id>http://blog.ivansiu.com/blog/2013/08/30/installing-a-new-car-stereo</id>
-    <content type="html"><![CDATA[<p>I did not realize until my car’s radio’s broken that, with less than a hundred bucks, you can buy a new Head Unit with nearly all functionality. Some note-worthy features include:</p>
-<ul>
-<li>iPod/iPhone support. Control the iphone directly from the panel.</li>
-<li>App support. This includes I-heart-radio, pandora, etc.</li>
-<li>Bluetooth Audio: stream music directly from a paired device. Even supports Pandora!</li>
-<li>Upgraded FM/AM support. Displays text from radio stations.</li>
-</ul>
-<p><!-- more --></p>
-<p>Since I never used CD, I actually decided to buy a Digital Media Receiver: <a href="http://www.crutchfield.com/S-kT2jsjodqXG/p_105KDX250B/JVC-KD-X250BT.html">JVC KD-X250BT</a>. Since every car has a different wiring harness, we need to buy a compatible wiring harness. My car has a Double DIN design but the DMR is a single DIN one, so I actually need to buy a installation kit. The wiring setup is fun:</p>
-<p><img class="left" src="https://lh5.googleusercontent.com/-zOOgWaP5-W8/UiETJQhmUVI/AAAAAAAA6AM/jRAo6LHRlDU/s400/IMG_5341.jpg"> <img class="right" src="https://lh4.googleusercontent.com/-n_QzAv5VgfQ/UiETKOBShuI/AAAAAAAA6AU/_F3-gN-NDio/s400/IMG_5342.jpg"> <img class="left" src="https://lh5.googleusercontent.com/-p7tlzn7kbRc/UiETKzbUaCI/AAAAAAAA6Ac/37Dgx3cbUJM/s400/IMG_5344.jpg"></p>
-<p><img class="right" src="https://lh6.googleusercontent.com/-KJRCnhX64lg/UiETLxnhJKI/AAAAAAAA6Ak/qdqbEPUfAUI/s600/IMG_5345.JPG"> <img src="https://lh5.googleusercontent.com/-h0tu6PrFzIk/UiETMWNKURI/AAAAAAAA6As/Zll5LFDkixM/s600/IMG_5346.JPG"></p>
 <div class="references">
 
 </div>

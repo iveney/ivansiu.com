@@ -4,7 +4,7 @@
   <title><![CDATA[Category: networking | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/networking/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-22T22:31:02-05:00</updated>
+  <updated>2014-05-28T01:00:21-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Fix (ugly) Safari 7.0 not using local pac file]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/"/>
-    <updated>2013-12-05T02:03:43-06:00</updated>
+    <updated>2013-12-05T00:03:43-08:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file</id>
     <content type="html"><![CDATA[I found that Safari in Mavericks is not using local `proxy.pac` at all.
 Turns out because of sandboxing, it will not allow reading file from local.
@@ -36,7 +36,7 @@ Tom Fischer proposed [another way](https://discussions.apple.com/thread/3202499?
   <entry>
     <title type="html"><![CDATA[Notes on SSH port forwarding]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/"/>
-    <updated>2013-05-09T21:43:00-05:00</updated>
+    <updated>2013-05-09T21:43:00-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding</id>
     <content type="html"><![CDATA[### SSH Local Port Forwarding
 

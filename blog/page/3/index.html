@@ -99,6 +99,14 @@ My hobbies include Guitar and Ballroom dancing. </p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/">Fix Mid 2009 MBP RAM not recognized issue</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/">Replacing SATA cable in Mid 2009 MBP</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/22/my-octopress-blogging-flow/">My Octopress Blogging Flow</a>
         </li>
       
@@ -108,14 +116,6 @@ My hobbies include Guitar and Ballroom dancing. </p>
       
         <li>
           <a href="/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">Sparse Signal Reconstruction via L1-minimization</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">A Comparison of Least Square, L2-regularization and L1-regularization</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/05/02/debugging-applescript-print-to-a-file/">Debugging AppleScript: print to a file</a>
         </li>
       
     </ul>
@@ -165,6 +165,141 @@ My hobbies include Guitar and Ballroom dancing. </p>
 
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/10/07/graph-matching-augmenting-path/">Graph Matching: Augmenting Path</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-07T18:47:00-07:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="introduction">Introduction</h2>
+<p>Let <span class="math">\(G=(V, E)\)</span> be an undirected graph. Matching in <span class="math">\(G\)</span> is a subset of edges <span class="math">\(M \subseteq E\)</span> such that at most one edge is incident to each vertex in <span class="math">\(V\)</span>.</p>
+<p>A vertex is <em>matched</em> is it is incident to some edge in <span class="math">\(M\)</span>, otherwise it is called <em>free</em> or <em>exposed</em>.</p>
+<h2 id="augmenting-paths">Augmenting Paths</h2>
+<ul>
+<li>Alternating path: a path in which the edges belong alternatively to the matching and not to the matching</li>
+<li>Augmenting path: an alternating path that starts from and ends on exposed vertices</li>
+</ul>
+<p>Clearly, an augmenting path can be ‘flipped’ to increase the matching size <strong>by one</strong>, i.e., just make free vertex matched and make matched vertex free in this path.</p>
+<p><strong>Berge’s Theorem</strong>: The matching M is maximum <strong>iff</strong> there is no augmenting path w.r.t. <span class="math">\(M\)</span>. I personally think the proof is easy but quite powerful.</p>
+<p>Thus, we can immediately use the theorem to design an algorithm: find augmenting path iteratively until no more can be found. The problem is how we can find the augmenting path.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/10/07/graph-matching-augmenting-path/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/10/07/network-flow-push-relabel-algorithm/">Network Flow: Push-relabel Algorithm</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-07T18:08:00-07:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>According to CLRS: Many of the asymptotically fastest maximum-flow algorithms are push-relabel algorithms, and the fastest actual implementations of maximum-flow algorithms are based on the push-relabel method. Push-relabel methods also efficiently solve other flow problems, such as the minimum-cost flow problem.</p>
+<p>This algorithm has a very different flavor. The overall idea is to generate a ‘preflow’ that may not satisfy the flow properties, and keep ‘pushing’) and ‘elevating’ (relabelling) the vertices until we cannot do that. We then remove the ‘excess’ from the preflow and obtain a valid flow, which is also a max flow. In particular, the in-flow may be larger than out-flow at a vertex. The amount of overflow is called ‘excess’.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/10/07/network-flow-push-relabel-algorithm/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Network Flow: Ford-Fulkerson Method</a></h1>
     
     
@@ -190,7 +325,7 @@ My hobbies include Guitar and Ballroom dancing. </p>
   
 
 
-<time datetime="2013-10-03T18:13:00-05:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2013</time> - 
+<time datetime="2013-10-03T18:13:00-07:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2013</time> - 
         
 
 posted in
@@ -257,7 +392,7 @@ End while</code></pre>
   
 
 
-<time datetime="2013-08-30T16:50:00-05:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time> - 
+<time datetime="2013-08-30T16:50:00-07:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time> - 
         
 
 posted in
@@ -325,7 +460,7 @@ posted in
   
 
 
-<time datetime="2013-08-28T16:17:00-05:00" pubdate data-updated="true">Aug 28<span>th</span>, 2013</time> - 
+<time datetime="2013-08-28T16:17:00-07:00" pubdate data-updated="true">Aug 28<span>th</span>, 2013</time> - 
         
 
 posted in
@@ -392,7 +527,7 @@ posted in
   
 
 
-<time datetime="2013-05-09T21:43:00-05:00" pubdate data-updated="true">May 9<span>th</span>, 2013</time> - 
+<time datetime="2013-05-09T21:43:00-07:00" pubdate data-updated="true">May 9<span>th</span>, 2013</time> - 
         
 
 posted in
@@ -456,6 +591,14 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/">Fix Mid 2009 MBP RAM not recognized issue</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/">Replacing SATA cable in Mid 2009 MBP</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/05/22/my-octopress-blogging-flow/">My Octopress Blogging Flow</a>
         </li>
       
@@ -465,14 +608,6 @@ posted in
       
         <li>
           <a href="/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">Sparse Signal Reconstruction via L1-minimization</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">A Comparison of Least Square, L2-regularization and L1-regularization</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/05/02/debugging-applescript-print-to-a-file/">Debugging AppleScript: print to a file</a>
         </li>
       
     </ul>

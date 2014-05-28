@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Machine Learning | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/machine-learning/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-22T22:31:02-05:00</updated>
+  <updated>2014-05-28T01:00:21-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Sparse Gradient Image Reconstruction via L1-minimization]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/"/>
-    <updated>2014-05-19T15:12:36-05:00</updated>
+    <updated>2014-05-19T13:12:36-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization</id>
     <content type="html"><![CDATA[---
 nocite: 
@@ -216,7 +216,7 @@ For interested readers, the following references will be helpful.
   <entry>
     <title type="html"><![CDATA[Sparse Signal Reconstruction via L1-minimization]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/"/>
-    <updated>2014-05-18T22:13:08-05:00</updated>
+    <updated>2014-05-18T20:13:08-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization</id>
     <content type="html"><![CDATA[[![Sparse Signal Reconstruction Results]][Sparse Signal Reconstruction Results]
 
@@ -345,7 +345,7 @@ A complete code snippet can be found [here][gist].
   <entry>
     <title type="html"><![CDATA[A Comparison of Least Square, L2-regularization and L1-regularization]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/"/>
-    <updated>2014-05-14T21:32:38-05:00</updated>
+    <updated>2014-05-14T19:32:38-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization</id>
     <content type="html"><![CDATA[![Recovered Coefficients by Different Methods][coef]
 
