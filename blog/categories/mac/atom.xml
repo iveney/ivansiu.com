@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-28T01:00:21-07:00</updated>
+  <updated>2014-05-28T01:02:57-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -28,7 +28,11 @@ impossible to recover but force power off.
 <!-- more -->
 
 It turns out this is a common issue in this model. See the discussion in
-this [thread](https://discussions.apple.com/message/25788934?ac_cid=tw123456#25788934) and this [thread](https://discussions.apple.com/thread/4263981?start=30&tstart=0).
+this [thread](https://discussions.apple.com/message/25788934?ac_cid=tw123456#25788934) and this [thread](https://discussions.apple.com/thread/4263981?start=30&tstart=0). In the following, I am going to
+present my temporary fix for this problem. 
+For those of you that still want to stick to the old MBP, the fix shall last for
+a while. But I do recomend you backup all the files and prepare to migrate some
+day soon.
 
 As I suggested in [my reply](https://discussions.apple.com/message/24868689#24868689), this may due to
 a RAM slot degradation. My guess is, the RAM slot cannot align the RAM to a
