@@ -12,8 +12,9 @@ MathJax.Hub.Config({
 			reals: ['\\mathbb{R}'],
 			complex: ['\\mathbb{C}'],
 			norm: ['\\left\\lVert#1\\right\\rVert', 1],
-			given: ['\\:#1\\vert\\:', 1],
+			given: ['\\mathbin{\\vert}'],
 			data: ['\\mathcal{D}'],
+			argmax: ['\\mathop{\\arg\\,\\max}\\limits'],
 		}
 	}
 });

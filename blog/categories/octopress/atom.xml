@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-28T01:22:40-07:00</updated>
+  <updated>2014-09-28T22:00:49-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[My Octopress Blogging Flow]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow/"/>
-    <updated>2014-05-22T20:38:07-07:00</updated>
+    <updated>2014-05-22T22:38:07-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow</id>
     <content type="html"><![CDATA[![Writing in Sublime Text and previewing in Marked](https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/sublime-marked.png)
 
@@ -209,7 +209,7 @@ Please leave your comments.*
   <entry>
     <title type="html"><![CDATA[Understanding Page Components of Octopress: Using Foxslide as An Example]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/"/>
-    <updated>2013-10-17T16:12:00-07:00</updated>
+    <updated>2013-10-17T16:12:00-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example</id>
     <content type="html"><![CDATA[![](https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg)]]></content>
   </entry>
@@ -217,7 +217,7 @@ Please leave your comments.*
   <entry>
     <title type="html"><![CDATA[Updating Octopress Theme]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme/"/>
-    <updated>2013-10-17T14:54:00-07:00</updated>
+    <updated>2013-10-17T14:54:00-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme</id>
     <content type="html"><![CDATA[The themes are stored in `.themes/<name>`, we can use the rake command to update either the source or style, as documented in the [office website](http://octopress.org/docs/updating/). However, the syntax should be more clear, i.e.,
 

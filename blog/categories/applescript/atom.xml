@@ -4,7 +4,7 @@
   <title><![CDATA[Category: AppleScript | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/applescript/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-28T01:22:40-07:00</updated>
+  <updated>2014-09-28T22:00:49-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Debugging AppleScript: print to a file]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file/"/>
-    <updated>2014-05-02T14:26:50-07:00</updated>
+    <updated>2014-05-02T16:26:50-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file</id>
     <content type="html"><![CDATA[Debugging AppleScript is easy when you work with the script editor,
 simply use `log` to print out anything in the console.

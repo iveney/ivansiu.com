@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tips | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/tips/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-28T01:22:40-07:00</updated>
+  <updated>2014-09-28T22:00:49-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[OS X: reveal file in console]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console/"/>
-    <updated>2014-05-01T17:58:20-07:00</updated>
+    <updated>2014-05-01T19:58:20-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console</id>
     <content type="html"><![CDATA[![](https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-os-x-reveal-file-in-console.png)
 
@@ -50,7 +50,7 @@ fullpath of a file. You can find it
   <entry>
     <title type="html"><![CDATA[OS X: get full path of file using realpath]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/"/>
-    <updated>2014-05-01T16:25:56-07:00</updated>
+    <updated>2014-05-01T18:25:56-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath</id>
     <content type="html"><![CDATA[``` bash Demonstrate of realpath
 ➜  /Applications  realpath iBooks.app
@@ -84,7 +84,7 @@ the OS X clipboard.]]></content>
   <entry>
     <title type="html"><![CDATA[Send ctrl-a in tmux after rebinding to it]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/"/>
-    <updated>2014-05-01T15:14:46-07:00</updated>
+    <updated>2014-05-01T17:14:46-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it</id>
     <content type="html"><![CDATA[![](https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png)
 
@@ -115,9 +115,9 @@ bind-key C-a last-window
   
   <entry>
     <title type="html"><![CDATA[Source-highlight for matlab/octave]]></title>
-    <link href="http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave/"/>
-    <updated>2014-04-30T23:59:40-07:00</updated>
-    <id>http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave</id>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/"/>
+    <updated>2014-05-01T01:59:40-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave</id>
     <content type="html"><![CDATA[![](https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-source-highlight-for-matlab-slash-octave.png)
 
 I recently worked with Matlab a lot. When in console, sometimes I want to use

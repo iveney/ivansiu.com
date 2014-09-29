@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-28T01:22:40-07:00</updated>
+  <updated>2014-09-28T22:00:49-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -14,9 +14,93 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood/"/>
+    <updated>2014-09-24T15:41:44-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood</id>
+    <content type="html"><![CDATA[<p>Let <span class="math">\(\data\)</span> be a set of data generated from some distribution parameterized by <span class="math">\(\theta\)</span>. We want to <em>estimate</em> the unknown parameter <span class="math">\(\theta\)</span>. What we can do?</p>
+<p>Essentially, we want to find a most likely value of <span class="math">\(\theta\)</span> given <span class="math">\(\data\)</span>, that is <span class="math">\(\arg \max P(\theta | \data)\)</span>. According to Bayes Rule, we have</p>
+<p><span class="math">\[
+P(\theta \given \data) = \frac{P(\data \given \theta)P(\theta)}{P(\data)}
+\]</span></p>
+<p>and the terms have the following meanings:</p>
+<ul>
+<li><span class="math">\(P(\theta \given \data)\)</span>: Posterior</li>
+<li><span class="math">\(P(\data \given \theta)\)</span>: Likelihood</li>
+<li><span class="math">\(P(\theta)\)</span>: Prior</li>
+<li><span class="math">\(P(\data)\)</span>: Evidence</li>
+</ul>
+<!-- more -->
+
+<h2 id="maximum-likelihood-estimation-mle">Maximum Likelihood Estimation (MLE)</h2>
+<p>An easy way out is to use the MLE method. We want to find a <span class="math">\(\theta\)</span> the <em>best explains</em> the data. That is, we maximize <span class="math">\(P(\data \given \theta)\)</span>. Denote such a value as <span class="math">\(\hat{\theta}_{ML}\)</span>. We have</p>
+<p><span class="math">\[
+\hat{\theta}_{ML} = \argmax_\theta P(\data \given \theta) = 
+\argmax_\theta P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta )
+\]</span></p>
+<p>Note that the above <span class="math">\(P\)</span> is a joint distribution over the data. We usually assume the observations are <em>independent</em>. Thus, we have</p>
+<p><span class="math">\[
+P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) = 
+\prod_{i=1}^{N} P(\mathbf{x}_i \given \theta )
+\]</span></p>
+<p>We usually use logarithm to simplify the computation, as logarithm is monotonically increasing. Thus, we write:</p>
+<p><span class="math">\[
+\mathcal{L}(\data \given \theta) = \sum_{i=1}^N \log P(\mathbf{x}_i \given \theta )
+\]</span></p>
+<p>Finally, we seek for the ML solution:</p>
+<p><span class="math">\[
+\hat{\theta}_{ML} = \argmax_\theta \mathcal{L}(\data \given \theta)
+\]</span></p>
+<p>If we know the distribution <span class="math">\(P\)</span>, we can usually solve the above by setting derivative of <span class="math">\(\theta\)</span> to 0 and solve for <span class="math">\(\theta\)</span>, that is,</p>
+<p><span class="math">\[
+\frac{\partial L}{\partial \theta} = 0
+\]</span></p>
+<h2 id="maximum-a-posteriori-map">Maximum A Posteriori (MAP)</h2>
+<p>In MAP, we maximize <span class="math">\(P(\theta \given \data)\)</span> directly. Denote the MAP hypothesis as <span class="math">\(\hat{\theta}_{MAP}\)</span>, we have:</p>
+<p><span class="math">\[\begin{array}{rl}
+\hat{\theta}_{MAP} = &amp; \argmax_\theta P(\theta \given \data) &#92;&#92;
+ = &amp; \argmax_\theta \frac{P(\data \given \theta)P(\theta)}{P(\data)} &#92;&#92;
+ = &amp; \argmax_\theta P(\data \given \theta)P(\theta)
+\end{array}\]</span></p>
+<p>Note that the last step is due to the evidence (data) <span class="math">\(\data\)</span> is constant, and thus can be omitted in <span class="math">\(\argmax\)</span>.</p>
+<p>At this step, we notice that the only difference between <span class="math">\(\hat{\theta}_{ML}\)</span> and <span class="math">\(\hat{\theta}_{MAP}\)</span> is the prior term <span class="math">\(P(\theta)\)</span>. Another way to interpret is that we consider <span class="math">\(MAP\)</span> is more general than <span class="math">\(MLE\)</span>, as if we assume all the possible <span class="math">\(\theta\)</span> are equally probable a priori, e.g., they have the same prior probability, or <em>uniform prior</em>, we can effectively remove <span class="math">\(P(\theta)\)</span> from the MAP formula, and it looks like exactly the same as MLE.</p>
+<p>Finally, if the independent observation holds, again we can use logarithm and expand <span class="math">\(\hat{\theta}_{MAP}\)</span> as:</p>
+<p><span class="math">\[
+\begin{array}{rl}
+\hat{\theta}_{MAP} = &amp; \argmax_\theta L(\data \given \theta) &#92;&#92;
+ = &amp; \argmax_\theta \sum_{i=1}^{N} \log P(\mathbf{x}_i \given \theta ) + \log P(\theta)
+\end{array}
+\]</span></p>
+<p>The extra prior term has the effect that we are essentially ‘pulling’ the <span class="math">\(\theta\)</span> distribution towards prior value. This makes sense as we are putting our domain knowledge as <em>prior</em> and intuitively the estimation is biased towards the <em>prior</em> value.</p>
+<h2 id="naive-bayes-classifier">Naive Bayes Classifier</h2>
+<p>Assume that we are given a set of data <span class="math">\(\data\)</span>, where each example <span class="math">\(\mathbf{x_j}=(a_1, a_2, \ldots, a_n)\)</span>, which can be viewed as <em>conjunctions of attributes values</em>. <span class="math">\(v_j \in V\)</span> is the corresponding class value. Using MAP, we can classify an example <span class="math">\(\mathbf{x}\)</span> as:</p>
+<p><span class="math">\[v_{MAP}=\argmax_{v_j\in V} P(v_j \given a_1, \ldots, a_n)\]</span></p>
+<p>The problem is that it is hard to find a joint distribution for <span class="math">\(P(\mathbf{x} \given \theta)\)</span>. If we use the data to estimate the distribution, we typically don’t have enough data for each attribute. In other words, the data we have is very sparse compared to the whole distribution space.</p>
+<p>Naive bayes makes the assumption that each attribute is <em>conditionally independent</em> given the target class <span class="math">\(v_j\)</span>, that is,</p>
+<p><span class="math">\[P(a_1, \ldots, a_n \given v_j) = \prod_{i=1}^n P(a_i \given v_j)\]</span></p>
+<p>which can be easily estimated from the data. Thus, we have the following naive bayes classifier:</p>
+<p><span class="math">\[v_{NB} = \argmax_{v_j \in V} P(v_j) \prod_{i=1}^n P(a_i \given v_j)\]</span></p>
+<p>Note that the learning of naive bayes simply involves in estimating <span class="math">\(P(a_i \given v_j)\)</span> and <span class="math">\(P(v_j)\)</span> based on the frequencies in the training data.</p>
+<p>Normally the conditional independence assumption does not hold, but naive bayes performs well even if so. More importantly, <strong>when conditional independence is satisfied, Naive Bayes corresponds to MAP classification.</strong></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>MLE, MAP and Naive Bayes are all connected. While MLE and MAP are parameter estimation methods that returns a single value of the paramter being estimated, NB is a classifier that predicts the probability of the class that an example belongs to. We also have the following insightes:</p>
+<ul>
+<li>Given the data, MLE considers the paramter to be a constant and estimates a value that provide maximum support for the data.</li>
+<li>MLE does not allow us to ‘inject’ our beliefs about the likely values for the parameter (prior) in the estimation process.</li>
+<li>MAP allows the fact that the paramter can take values from a prior (non-uniform) distribution that express our prior beliefs regarding the paramters.</li>
+<li>MAP returns paramter value where the probability is highest given data.</li>
+<li>Again, both MLE and MAP returns a single and specific value for the paramter. By contrast, <em>bayesian estimation</em> computes the full posterior distribution <span class="math">\(P(\theta \given \data)\)</span>.</li>
+</ul>
+<div class="references">
+
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Fix Mid 2009 MBP RAM not recognized issue]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/"/>
-    <updated>2014-05-28T23:30:56-07:00</updated>
+    <updated>2014-05-28T23:30:56-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/mbp09-ram-theory.png" alt="Possible cause of unrecoganized RAM" /><figcaption>Possible cause of unrecoganized RAM</figcaption>
@@ -60,7 +144,7 @@
   <entry>
     <title type="html"><![CDATA[Replacing SATA cable in Mid 2009 MBP]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/"/>
-    <updated>2014-05-28T00:15:08-07:00</updated>
+    <updated>2014-05-28T02:15:08-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/sata-cable.jpg" alt="Replacing MBP cable" /><figcaption>Replacing MBP cable</figcaption>
@@ -85,7 +169,7 @@
   <entry>
     <title type="html"><![CDATA[My Octopress Blogging Flow]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow/"/>
-    <updated>2014-05-22T20:38:07-07:00</updated>
+    <updated>2014-05-22T22:38:07-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/sublime-marked.png" alt="Writing in Sublime Text and previewing in Marked" /><figcaption>Writing in Sublime Text and previewing in Marked</figcaption>
@@ -248,7 +332,7 @@
   <entry>
     <title type="html"><![CDATA[Sparse Gradient Image Reconstruction via L1-minimization]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/"/>
-    <updated>2014-05-19T13:12:36-07:00</updated>
+    <updated>2014-05-19T15:12:36-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization</id>
     <content type="html"><![CDATA[<table>
 <tbody>
@@ -394,7 +478,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Sparse Signal Reconstruction via L1-minimization]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/"/>
-    <updated>2014-05-18T20:13:08-07:00</updated>
+    <updated>2014-05-18T22:13:08-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization</id>
     <content type="html"><![CDATA[<p><a href="https://dl.dropboxusercontent.com/u/3315210/blog/l1/sparse_signal_reconstruction.png"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/sparse_signal_reconstruction.png" alt="Sparse Signal Reconstruction Results" /></a></p>
 <p>This is a follow-up of the <a href="http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">previous post</a> on applications of L1 minimization.</p>
@@ -582,7 +666,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[A Comparison of Least Square, L2-regularization and L1-regularization]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/"/>
-    <updated>2014-05-14T19:32:38-07:00</updated>
+    <updated>2014-05-14T21:32:38-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/coef.png" alt="Recovered Coefficients by Different Methods" /><figcaption>Recovered Coefficients by Different Methods</figcaption>
@@ -767,7 +851,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Debugging AppleScript: print to a file]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file/"/>
-    <updated>2014-05-02T14:26:50-07:00</updated>
+    <updated>2014-05-02T16:26:50-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file</id>
     <content type="html"><![CDATA[<p>Debugging AppleScript is easy when you work with the script editor, simply use <code>log</code> to print out anything in the console. However, after you compiled it to an app, this cannot work anymore.</p>
 <p>I find there are several ways to do it in this <a href="http://stackoverflow.com/questions/2749863/applescript-editor-write-message-to-the-result-window">thread</a>. The <a href="http://stackoverflow.com/a/21309748/577704">two approaches</a> that work best for me are:</p>
@@ -817,7 +901,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[OS X: reveal file in console]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console/"/>
-    <updated>2014-05-01T17:58:20-07:00</updated>
+    <updated>2014-05-01T19:58:20-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-os-x-reveal-file-in-console.png" />
@@ -868,7 +952,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[OS X: get full path of file using realpath]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/"/>
-    <updated>2014-05-01T16:25:56-07:00</updated>
+    <updated>2014-05-01T18:25:56-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath</id>
     <content type="html"><![CDATA[<div class="bogus-wrapper">
 <notextile>
@@ -916,7 +1000,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Send ctrl-a in tmux after rebinding to it]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/"/>
-    <updated>2014-05-01T15:14:46-07:00</updated>
+    <updated>2014-05-01T17:14:46-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png" />
@@ -950,9 +1034,9 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   
   <entry>
     <title type="html"><![CDATA[Source-highlight for matlab/octave]]></title>
-    <link href="http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave/"/>
-    <updated>2014-04-30T23:59:40-07:00</updated>
-    <id>http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave</id>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/"/>
+    <updated>2014-05-01T01:59:40-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-source-highlight-for-matlab-slash-octave.png" />
 </figure>
@@ -1081,7 +1165,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Batch remove photos in iPhone, batch convert videos and upload back]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/01/29/batch-remove-photos-in-iphone/"/>
-    <updated>2014-01-29T18:16:21-08:00</updated>
+    <updated>2014-01-29T20:16:21-06:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/01/29/batch-remove-photos-in-iphone</id>
     <content type="html"><![CDATA[<p>One of the problems that drives iOS user crazy is the user-unfriendly manipulation/syncing of photos in iOS. There are just no easy way to remove photos in batch (though you can delete the entire camera roll in the settings).</p>
 <!-- more -->
@@ -1104,7 +1188,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Fix (ugly) Safari 7.0 not using local pac file]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/"/>
-    <updated>2013-12-05T00:03:43-08:00</updated>
+    <updated>2013-12-05T02:03:43-06:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file</id>
     <content type="html"><![CDATA[<p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all. Turns out because of sandboxing, it will not allow reading file from local. A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
 <p>However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:</p>
@@ -1129,7 +1213,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[LaTeX Tips and Tricks Collection]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection/"/>
-    <updated>2013-12-03T15:18:00-08:00</updated>
+    <updated>2013-12-03T15:18:00-06:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection</id>
     <content type="html"><![CDATA[<p>This post summarizes some common useful tips in LaTeX editing.</p>
 <!-- more -->
@@ -1359,7 +1443,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Saving $80 by Fixing MagSafe by Yourself]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/"/>
-    <updated>2013-11-08T22:06:00-08:00</updated>
+    <updated>2013-11-08T22:06:00-06:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself</id>
     <content type="html"><![CDATA[<p>After four years of use, the wire on my MagSafe finally fray out. After searching a bit, I found that a new one costs $80!! My old memories came back: almost all accessories by Apple are rip-offs. See how low the ratings are:</p>
 <figure>
@@ -1409,7 +1493,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Understanding Page Components of Octopress: Using Foxslide as An Example]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/"/>
-    <updated>2013-10-17T16:12:00-07:00</updated>
+    <updated>2013-10-17T16:12:00-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example</id>
     <content type="html"><![CDATA[<figure>
 <img src="https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg" />
@@ -1423,7 +1507,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Updating Octopress Theme]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme/"/>
-    <updated>2013-10-17T14:54:00-07:00</updated>
+    <updated>2013-10-17T14:54:00-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme</id>
     <content type="html"><![CDATA[<p>The themes are stored in <code>.themes/&lt;name&gt;</code>, we can use the rake command to update either the source or style, as documented in the <a href="http://octopress.org/docs/updating/">office website</a>. However, the syntax should be more clear, i.e.,</p>
 <div class="bogus-wrapper">
@@ -1451,7 +1535,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Graph Matching: Hopcroft-Karp Algorithm]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/"/>
-    <updated>2013-10-08T15:59:00-07:00</updated>
+    <updated>2013-10-08T15:59:00-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm</id>
     <content type="html"><![CDATA[<h2 id="overview">Overview</h2>
 <p>Hopcroft-Karp algorithm also utilizes the augmenting path. The difference between the <a href="http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path/">simple augmenting path algorithm</a> is, instead of searching augmenting path one by one, it looks for many paths in the same time. The paths found at each iteration are in fact <strong>vertex disjoint path</strong>. By doing so, the number of iterations can be cut down, since there cannot be too many disjoing paths.</p>
@@ -1514,7 +1598,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
   <entry>
     <title type="html"><![CDATA[Graph Matching: Augmenting Path]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path/"/>
-    <updated>2013-10-07T18:47:00-07:00</updated>
+    <updated>2013-10-07T18:47:00-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path</id>
     <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>Let <span class="math">\(G=(V, E)\)</span> be an undirected graph. Matching in <span class="math">\(G\)</span> is a subset of edges <span class="math">\(M \subseteq E\)</span> such that at most one edge is incident to each vertex in <span class="math">\(V\)</span>.</p>
@@ -1544,32 +1628,6 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
 <p>Note that the above graph <span class="math">\(G\_M\)</span> is similar to the residual network in network flow. Apparently, <span class="math">\(p\)</span> starts from a free vertex in <span class="math">\(V&#39;\_1\)</span> and ends at another free vertex in <span class="math">\(V&#39;\_2\)</span>, thus it is an augmenting path.</p>
 <h2 id="complexity">Complexity</h2>
 <p>The maximum size of matching is upper bounded by <span class="math">\(|V|/2\)</span>, and each step, the matching size is incremented by one. Thus, the number of augmenting path found will be at most <span class="math">\(O(|V|)\)</span>. At each step, it takes <span class="math">\(O(|E|)\)</span> to find a path. Thus the overall running time is <span class="math">\(O(|V||E|)\)</span>.</p>
-<div class="references">
-
-</div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Network Flow: Push-relabel algorithm]]></title>
-    <link href="http://blog.ivansiu.com/blog/2013/10/07/network-flow-push-relabel-algorithm/"/>
-    <updated>2013-10-07T18:08:00-07:00</updated>
-    <id>http://blog.ivansiu.com/blog/2013/10/07/network-flow-push-relabel-algorithm</id>
-    <content type="html"><![CDATA[<p>According to CLRS: Many of the asymptotically fastest maximum-flow algorithms are push-relabel algorithms, and the fastest actual implementations of maximum-flow algorithms are based on the push-relabel method. Push-relabel methods also efficiently solve other flow problems, such as the minimum-cost flow problem.</p>
-<p>This algorithm has a very different flavor. The overall idea is to generate a ‘preflow’ that may not satisfy the flow properties, and keep ‘pushing’) and ‘elevating’ (relabelling) the vertices until we cannot do that. We then remove the ‘excess’ from the preflow and obtain a valid flow, which is also a max flow. In particular, the in-flow may be larger than out-flow at a vertex. The amount of overflow is called ‘excess’.</p>
-<!-- more -->
-
-<p>The intuition behind is this: think of the vertices as platforms that have different height, where initially <span class="math">\(S\)</span> has <span class="math">\(|V|\)</span> height and all other vertices have 0 heights. The flow can only be pushed from higher vertices to lower vertices. Whenever we do not have any flow to push, we find some vertex that has unsaturated out edge to its neighbor vertices to ‘relabel’, i.e., elevating its height such that we can continue to ‘push’. Thus, there are two operations ‘push’ and ‘relabel’ (and thus the name):</p>
-<pre><code>push: sending excess from u to v
-relabel: increase the height of u to min({v: neighbor of u})+1</code></pre>
-<p>The algorithm is as follows:</p>
-<pre><code>Initialize s.h = |V|, u.h = 0 for u != s. // u.h is the height of vertex u
-For all (s, u), push c(s, u). // saturate all outgoing edges from s.
-While there is vertex that can be pushed or relabel
-  do push or relabel
-End while
-return F.</code></pre>
-<p>The naive implementation has runtime <span class="math">\(O(|V|^2 |E|)\)</span>, and can be improved to <span class="math">\(O(|V|^3)\)</span>.</p>
 <div class="references">
 
 </div>

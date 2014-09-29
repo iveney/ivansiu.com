@@ -2,138 +2,142 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/</loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/08/28/roadtrips-in-us-2013/</loc>
-        <lastmod>2014-05-14T23:01:28-07:00</lastmod>
+        <lastmod>2014-05-15T01:01:28-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/08/30/installing-a-new-car-stereo/</loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/10/03/network-flow-ford-fulkerson-method/</loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/10/07/network-flow-push-relabel-algorithm/</loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/10/07/graph-matching-augmenting-path/</loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/</loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme/</loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/
         </loc>
-        <lastmod>2014-05-14T23:02:34-07:00</lastmod>
+        <lastmod>2014-05-15T01:02:34-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/
         </loc>
-        <lastmod>2014-05-28T00:34:57-07:00</lastmod>
+        <lastmod>2014-05-28T02:34:57-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection/</loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/
         </loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2014/01/29/batch-remove-photos-in-iphone/</loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>
-            http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave/
+            http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/
         </loc>
-        <lastmod>2014-05-15T14:25:53-07:00</lastmod>
+        <lastmod>2014-05-15T16:25:53-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/
         </loc>
-        <lastmod>2014-05-15T14:28:15-07:00</lastmod>
+        <lastmod>2014-05-15T16:28:15-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/
         </loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console/</loc>
-        <lastmod>2014-05-15T14:27:59-07:00</lastmod>
+        <lastmod>2014-05-15T16:27:59-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file/</loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/
         </loc>
-        <lastmod>2014-05-15T14:27:34-07:00</lastmod>
+        <lastmod>2014-05-15T16:27:34-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/
         </loc>
-        <lastmod>2014-05-18T21:59:59-07:00</lastmod>
+        <lastmod>2014-05-18T23:59:59-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/
         </loc>
-        <lastmod>2014-05-22T15:31:11-07:00</lastmod>
+        <lastmod>2014-05-22T17:31:11-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow/</loc>
-        <lastmod>2014-05-22T20:29:31-07:00</lastmod>
+        <lastmod>2014-05-22T22:29:31-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/</loc>
-        <lastmod>2014-05-28T00:32:25-07:00</lastmod>
+        <lastmod>2014-05-28T02:32:25-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/
         </loc>
-        <lastmod>2014-05-28T01:02:28-07:00</lastmod>
+        <lastmod>2014-09-24T15:54:17-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood/</loc>
+        <lastmod>2014-09-24T23:55:30-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/archives/</loc>
-        <lastmod>2014-05-28T01:02:28-07:00</lastmod>
+        <lastmod>2014-09-24T23:55:30-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/categories/</loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/chinese-music.html</loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/blog/classical-music/</loc>
-        <lastmod>2014-05-12T13:23:37-07:00</lastmod>
+        <lastmod>2014-05-12T15:23:37-05:00</lastmod>
     </url>
     <url>
         <loc>http://blog.ivansiu.com/</loc>
-        <lastmod>2014-05-28T01:02:28-07:00</lastmod>
+        <lastmod>2014-09-24T23:55:30-05:00</lastmod>
     </url>
 </urlset>

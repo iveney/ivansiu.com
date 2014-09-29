@@ -4,7 +4,7 @@
   <title><![CDATA[Category: osx | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/osx/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-05-28T01:22:40-07:00</updated>
+  <updated>2014-09-28T22:00:49-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[OS X: reveal file in console]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console/"/>
-    <updated>2014-05-01T17:58:20-07:00</updated>
+    <updated>2014-05-01T19:58:20-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console</id>
     <content type="html"><![CDATA[![](https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-os-x-reveal-file-in-console.png)
 
@@ -50,7 +50,7 @@ fullpath of a file. You can find it
   <entry>
     <title type="html"><![CDATA[OS X: get full path of file using realpath]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/"/>
-    <updated>2014-05-01T16:25:56-07:00</updated>
+    <updated>2014-05-01T18:25:56-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath</id>
     <content type="html"><![CDATA[``` bash Demonstrate of realpath
 ➜  /Applications  realpath iBooks.app
@@ -84,7 +84,7 @@ the OS X clipboard.]]></content>
   <entry>
     <title type="html"><![CDATA[Fix (ugly) Safari 7.0 not using local pac file]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/"/>
-    <updated>2013-12-05T00:03:43-08:00</updated>
+    <updated>2013-12-05T02:03:43-06:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file</id>
     <content type="html"><![CDATA[I found that Safari in Mavericks is not using local `proxy.pac` at all.
 Turns out because of sandboxing, it will not allow reading file from local.
