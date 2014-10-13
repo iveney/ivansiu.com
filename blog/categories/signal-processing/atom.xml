@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Signal Processing | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/signal-processing/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-09-28T22:00:49-05:00</updated>
+  <updated>2014-10-13T11:19:40-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -101,7 +101,7 @@ The ratio of non-zero elements in `Gx`, `Gy` and `G` of the phantom image
 is `0.0711`, `0.0634` and `0.0769`, respectively. These ratios are really 
 small - and we consider the gradient as *sparse*.
 
-Let $F: \reals^{n\times n} -to \complex^{n\times n}$ be the FFT operator, 
+Let $F: \reals^{n\times n} \to \complex^{n\times n}$ be the FFT operator, 
 and $F I$ be the Fourier transform taken on image I.
 Define a set $\Omega$ as the $k$ two-dimensional frequencies chosen
 according to some sampling pattern from the $n \times n$.

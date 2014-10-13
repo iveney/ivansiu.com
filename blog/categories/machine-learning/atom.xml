@@ -4,7 +4,7 @@
   <title><![CDATA[Category: machine learning | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/machine-learning/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2014-09-28T22:00:49-05:00</updated>
+  <updated>2014-10-13T11:19:40-05:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -159,7 +159,18 @@ a value that provide maximum support for the data.
 - MAP returns paramter value where the probability is highest given data.
 - Again, both MLE and MAP returns a single and specific value for the paramter.
 By contrast, *bayesian estimation* computes the full posterior distribution
-$P(\theta \given \data)$.]]></content>
+$P(\theta \given \data)$.
+
+
+## Thoughts
+
+After reading this [article], I have the following interpretation:
+
+- The Maximum Likelihood approach can be roughly regarded as traditional "frequentist" thinking.
+- The MAP approach is a direct applicatin of Bayes Theorem. Thus, it can be regarded as a "bayesian" way of thinking.
+
+
+[article]: http://www.behind-the-enemy-lines.com/2008/01/are-you-bayesian-or-frequentist-or.html]]></content>
   </entry>
   
 </feed>

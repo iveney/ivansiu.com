@@ -207,7 +207,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n &#92;&#92; 0 &amp; j = n
 <p>We notice that <span class="math">\(TV(I)\)</span> is just the <em>L1-norm</em> of <span class="math">\(G(I)\)</span>, which leads us to the following: if we have an image that is sparse in its image gradients, we can exploit that and use our L1-minimization trick.</p>
 <h2 id="sparse-gradient-image-reconstruction">Sparse Gradient Image Reconstruction</h2>
 <p>The ratio of non-zero elements in <code>Gx</code>, <code>Gy</code> and <code>G</code> of the phantom image is <code>0.0711</code>, <code>0.0634</code> and <code>0.0769</code>, respectively. These ratios are really small - and we consider the gradient as <em>sparse</em>.</p>
-<p>Let <span class="math">\(F: \reals^{n\times n} -to \complex^{n\times n}\)</span> be the FFT operator, and <span class="math">\(F I\)</span> be the Fourier transform taken on image I. Define a set <span class="math">\(\Omega\)</span> as the <span class="math">\(k\)</span> two-dimensional frequencies chosen according to some sampling pattern from the <span class="math">\(n \times n\)</span>. We further define <span class="math">\(F_\Omega I: \reals^{n \times n} \to \complex^k\)</span> as the <span class="math">\(k\)</span> observation taken from the fourier transform of image I. We can then solve the following optimization problem to recover <span class="math">\(I\)</span>:</p>
+<p>Let <span class="math">\(F: \reals^{n\times n} \to \complex^{n\times n}\)</span> be the FFT operator, and <span class="math">\(F I\)</span> be the Fourier transform taken on image I. Define a set <span class="math">\(\Omega\)</span> as the <span class="math">\(k\)</span> two-dimensional frequencies chosen according to some sampling pattern from the <span class="math">\(n \times n\)</span>. We further define <span class="math">\(F_\Omega I: \reals^{n \times n} \to \complex^k\)</span> as the <span class="math">\(k\)</span> observation taken from the fourier transform of image I. We can then solve the following optimization problem to recover <span class="math">\(I\)</span>:</p>
 <p><span class="math">\[\min_I \norm{F_\Omega I - b}^2_2\]</span></p>
 <p>where <span class="math">\(F_\Omega\)</span> can be view as the measurement matrix, <span class="math">\(b\)</span> is the observation, and we want to find <span class="math">\(I\)</span> such that the <em>reconstruction cost</em> (energy) is minimized.</p>
 <p>However, the above does not quite work. As we can see in the following images, the <em>L2-minimization</em> does a poor job, either for a random measurement or a radial measurement <span class="citation" data-cites="candes2006robust">[4]</span> in Fourier domain.</p>
@@ -371,6 +371,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">精英主义与投票考试</a>
+        </li>
+      
+        <li>
           <a href="/blog/2014/09/24/notes-on-maximum-likelihood/">Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes</a>
         </li>
       
@@ -384,10 +388,6 @@ posted in
       
         <li>
           <a href="/blog/2014/05/22/my-octopress-blogging-flow/">My Octopress Blogging Flow</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/">Sparse Gradient Image Reconstruction via L1-minimization</a>
         </li>
       
     </ul>
