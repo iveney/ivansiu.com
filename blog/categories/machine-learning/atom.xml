@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: machine learning | Zigang Xiao]]></title>
+  <link href="http://blog.ivansiu.com/blog/categories/machine-learning/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2015-05-22T17:32:50-05:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang Xiao (Ivan)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood/"/>
+    <updated>2014-09-24T15:41:44-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood</id>
+    <content type="html"><![CDATA[Let $\data$ be a set of data generated from some distribution parameterized by
+$\theta$. We want to *estimate* the unknown parameter $\theta$. What we can do?
+
+Essentially, we want to find a most likely value of $\theta$ given $\data$,
+that is $\arg \max P(\theta | \data)$. According to Bayes Rule, we have
+
+$$
+P(\theta \given \data) = \frac{P(\data \given \theta)P(\theta)}{P(\data)}
+$$
+
+and the terms have the following meanings:
+
+- $P(\theta \given \data)$: Posterior
+- $P(\data \given \theta)$: Likelihood
+- $P(\theta)$: Prior
+- $P(\data)$: Evidence
+
+<!-- more -->
+
+## Maximum Likelihood Estimation (MLE)
+
+An easy way out is to use the MLE method.
+We want to find a $\theta$ the *best explains* the data. 
+That is, we maximize $P(\data \given \theta)$.
+Denote such a value as $\hat{\theta}_{ML}$. We have 
+
+$$
+\hat{\theta}_{ML} = \argmax_\theta P(\data \given \theta) = 
+\argmax_\theta P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta )
+$$
+
+Note that the above $P$ is a joint distribution over the data.
+We usually assume the observations are *independent*. Thus, we have
+
+$$
+P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) = 
+\prod_{i=1}^{N} P(\mathbf{x}_i \given \theta )
+$$
+
+We usually use logarithm to simplify the computation, as 
+logarithm is monotonically increasing. Thus, we write:
+
+$$
+\mathcal{L}(\data \given \theta) = \sum_{i=1}^N \log P(\mathbf{x}_i \given \theta )
+$$
+
+Finally, we seek for the ML solution:
+
+$$
+\hat{\theta}_{ML} = \argmax_\theta \mathcal{L}(\data \given \theta)
+$$
+
+If we know the distribution $P$, we can usually solve the above by 
+setting derivative of $\theta$ to 0 and solve for $\theta$, that is,
+
+$$
+\frac{\partial L}{\partial \theta} = 0
+$$
+
+## Maximum A Posteriori (MAP)
+
+In MAP, we maximize $P(\theta \given \data)$ directly. Denote the MAP hypothesis 
+as $\hat{\theta}_{MAP}$, we have:
+
+$$\begin{array}{rl}
+\hat{\theta}_{MAP} = & \argmax_\theta P(\theta \given \data) \\\\
+ = & \argmax_\theta \frac{P(\data \given \theta)P(\theta)}{P(\data)} \\\\
+ = & \argmax_\theta P(\data \given \theta)P(\theta)
+\end{array}$$
+
+Note that the last step is due to the evidence (data) $\data$ is constant, and
+thus can be omitted in $\argmax$.
+
+At this step, we notice that the only difference between $\hat{\theta}_{ML}$ and
+$\hat{\theta}_{MAP}$ is the prior term $P(\theta)$. Another way to interpret
+is that we consider $MAP$ is more general than $MLE$, as if we assume all
+the possible $\theta$ are equally probable a priori, e.g., they have the same
+prior probability, or *uniform prior*, we can effectively remove $P(\theta)$
+from the MAP formula, and it looks like exactly the same as MLE.
+
+Finally, if the independent observation holds, again we can use logarithm and
+expand $\hat{\theta}_{MAP}$ as:
+
+$$
+\begin{array}{rl}
+\hat{\theta}_{MAP} = & \argmax_\theta L(\data \given \theta) \\\\
+ = & \argmax_\theta \sum_{i=1}^{N} \log P(\mathbf{x}_i \given \theta ) + \log P(\theta)
+\end{array}
+$$
+
+The extra prior term has the effect that we are essentially 'pulling' the
+$\theta$ distribution towards prior value. This makes sense as we are 
+putting our domain knowledge as *prior* and intuitively the estimation is
+biased towards the *prior* value.
+
+## Naive Bayes Classifier
+
+Assume that we are given a set of data $\data$, where each example
+$\mathbf{x_j}=(a_1, a_2, \ldots, a_n)$,  which can be viewed as *conjunctions of
+attributes values*. $v_j \in V$ is the corresponding class value. Using MAP, we
+can classify an example $\mathbf{x}$ as:
+
+$$v_{MAP}=\argmax_{v_j\in V} P(v_j \given a_1, \ldots, a_n)$$
+
+The problem is that it is hard to find a joint distribution for  $P(\mathbf{x}
+\given \theta)$. If we use the data to estimate the distribution, we typically
+don't have enough data for each attribute. In other words, the  data we have is
+very sparse compared to the whole distribution space.
+
+Naive bayes makes the assumption that each
+attribute is *conditionally independent* given the target class $v_j$, that is,
+
+$$P(a_1, \ldots, a_n \given v_j) = \prod_{i=1}^n P(a_i \given v_j)$$
+
+which can be easily estimated from the data.
+Thus, we have the following naive bayes classifier:
+
+$$v_{NB} = \argmax_{v_j \in V} P(v_j) \prod_{i=1}^n P(a_i \given v_j)$$
+
+Note that the learning of naive bayes simply involves in estimating
+$P(a_i \given v_j)$ and $P(v_j)$ based on the frequencies in the training data.
+
+Normally the conditional independence assumption does not hold, but naive bayes
+performs well even if so. 
+More importantly, **when conditional independence is satisfied, Naive Bayes corresponds to MAP classification.**
+
+## Conclusion
+
+MLE, MAP and Naive Bayes are all connected. While MLE and MAP are parameter
+estimation methods that returns a single value of the paramter being estimated,
+NB is a classifier that predicts the probability of the class that an example
+belongs to. We also have the following insightes:
+
+- Given the data, MLE considers the paramter to be a constant and estimates
+a value that provide maximum support for the data.
+- MLE does not allow us to 'inject' our beliefs about the likely values for the parameter (prior) in the estimation process.
+- MAP allows the fact that the paramter can take values from a prior
+(non-uniform) distribution that express our prior beliefs regarding the paramters.
+- MAP returns paramter value where the probability is highest given data.
+- Again, both MLE and MAP returns a single and specific value for the paramter.
+By contrast, *bayesian estimation* computes the full posterior distribution
+$P(\theta \given \data)$.
+
+
+## Thoughts
+
+After reading this [article], I have the following interpretation:
+
+- The Maximum Likelihood approach can be roughly regarded as traditional "frequentist" thinking.
+- The MAP approach is a direct applicatin of Bayes Theorem. Thus, it can be regarded as a "bayesian" way of thinking.
+
+
+[article]: http://www.behind-the-enemy-lines.com/2008/01/are-you-bayesian-or-frequentist-or.html]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sparse Image Reconstruction via L1-minimization]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/"/>
+    <updated>2014-05-19T15:12:36-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization</id>
+    <content type="html"><![CDATA[---
+nocite: 
+  '@candes2005l1, @hesthavensparse, @pant2013new, @candes2006robust'
+---
+
+
+--------------------  -------------------------------  -------------------------
+  ![phantom_orig]\      ![phantom_backproj]\              ![phantom_tv]\ 
+    Original           Minimum Energy Reconstruction     Sparse Reconstruction
+--------------------  -------------------------------  -------------------------
+
+## Introduction
+
+This is a follow up of the L1-minimization series. The previous two posts are:
+
+1. [A Comparison of Least Square, L2-regularization and L1-regularization][L2 vs L1]
+2. [Sparse Signal Reconstruction via L1-minimization][Sparse Signal 1D]
+<!-- more -->
+
+We have explored using L1-minimization technique to 
+[recover a sparse signal][Sparse Signal 1D]. 
+The example shows a 1D example. This post demonsrates  on a 2D example, where
+the image is viewed as a signal. This makes sense as we can perform 2D Fourier
+Transform in the image, where the basis are a combination of *horizontal* and
+*vertical* waves. For a complete introduction to FFT on images, refer to 
+[this tutorial][FFT 2D]. Notice that similar to 1D signal, we do not measure
+the image directly in time domain, but we do it in the frequency domain.
+Concretely, say $x$ is the 2D image collapsed to 1D, and $A \in \reals^{k\times n}$ 
+is the measurement matrix, $b$ is the observation, we then have $Ax=b$. 
+Usually we will require $k = n$ to obtain an exact solution for $x$ given $A$ 
+and $b$. Now, if we use FFT and obtain the frequency coefficients as $\hat{x}$,
+we can also perform similar measurements $\hat{A} \hat{x} = \hat{b}$,
+and the requirement $k = n$ is the same. In other words, the required samples 
+(the information) is *the same*. By using the inverse fourier transform,
+we can convert $\hat{x}$ back to $x$. The only difference is that the measurement
+$\hat{A}$ is taken in frequency (Fourier) domain. As we can see later, we can
+utilize sparse information to reduce $k$.
+
+## Image Gradients and Total Variation
+
+We first introduct the concept of image gradients. For any 2D real image `I`, if
+we think about each row as a signal, we can then view the 'difference' between
+adjacent pixels as (horizontal) gradient `Gx(I)`, this makes sense since a
+sharpe change denotes an edge. Similary, we can define the vertical gradient
+`Gy(I)` for columns. Thus, we have
+
+$$Gx(I) = \begin{cases}
+I_{i+1, j} - I_{ij} & i < n \\\\ 0 & i = n
+\end{cases}
+\qquad
+Gy(I) = \begin{cases}
+I_{i, j+1} - I_{ij} & j < n \\\\ 0 & j = n
+\end{cases}$$
+
+where the image size is $n\times n$.
+
+Collectively, the image gradient `G(I)` is defined as the
+magnitude (2-norm) of both components:
+
+$$G(I)_{ij} = \sqrt{(Gx(I)_{ij})^2 + (Gy(I)_{ij})^2}$$
+
+The following shows `Gx`, `Gy` and `G` of the phantom image:
+
+-----------------  -----------------  -----------------
+  ![phantom_gx]\     ![phantom_gy]\     ![phantom_gI]\ 
+    `Gx(I)`             `Gy(I)`             `G(I)`
+-----------------  -----------------  -----------------
+
+The *total variation* `TV(I)` of an image is just the sum of 
+this discrete gradient at every point.
+
+$$TV(I)= \norm{G(I)}_1 = \sum_{i,j} G(I)_{ij}$$
+
+We notice that $TV(I)$ is just the *L1-norm* of $G(I)$,
+which leads us to the following: if we have an image that is sparse in
+its image gradients, we can exploit that and use our L1-minimization trick.
+
+## Sparse Gradient Image Reconstruction
+
+The ratio of non-zero elements in `Gx`, `Gy` and `G` of the phantom image
+is `0.0711`, `0.0634` and `0.0769`, respectively. These ratios are really 
+small - and we consider the gradient as *sparse*.
+
+Let $F: \reals^{n\times n} \to \complex^{n\times n}$ be the FFT operator, 
+and $F I$ be the Fourier transform taken on image I.
+Define a set $\Omega$ as the $k$ two-dimensional frequencies chosen
+according to some sampling pattern from the $n \times n$.
+We further define $F_\Omega I: \reals^{n \times n} \to \complex^k$ as the 
+$k$ observation taken from the fourier transform of image I.
+We can then solve the following optimization problem to recover $I$:
+
+$$\min_I \norm{F_\Omega I - b}^2_2$$
+
+where $F_\Omega$ can be view as the measurement matrix, $b$ is the observation,
+and we want to find $I$ such that the *reconstruction cost* (energy) is
+minimized.  
+
+However, the above does not quite work. As we can see in the following images,
+the *L2-minimization* does a poor job, either for a random measurement or
+a radial measurement [@candes2006robust] in Fourier domain.
+
+--------------------  ---------------------  --------------------
+  ![M rand]            ![phantom rand bp]     ![phantom rand tv]
+ Random measurement     L2-minimization        L1-minimization
+--------------------  ---------------------  --------------------
+
+--------------------  ---------------------  --------------------
+  ![M radial]          ![phantom_backproj]     ![phantom_tv]
+ Radial measurement     L2-minimization       L1-minimization
+--------------------  ---------------------  --------------------
+
+
+To utilize the sparse information, we add a L1-regularization term 
+to the above objective function, which yields the following:
+
+$$(TV_1) \quad \min_I \norm{F_\Omega I - b}^2_2 + \lambda TV(I)$$
+
+Without surprise, optimizing the above gives us a *perfect* reconstruction
+of the original image. 
+It is shown that if there exists a piecewise constant I with sufficiently 
+few edges (i.e., $G(I)_{ij}$ is nonzero for only a small number of indices i, j), 
+then $(TV_1)$ will recover I exactly.
+
+A heavily commented code example is available in my [github repository][code].
+Leave a comment if you have any question.
+
+## Probing Further
+
+Now, take a look at another example `cameraman`, which has the following
+gradients (intensity rescaled using matlab's `imagesc`.
+
+------------------  --------------------
+  ![cameraman]       ![cameraman_grad]
+    Cameraman             Gradient
+------------------  --------------------
+
+The following shows the reconstructions (left two are using random measurements,
+right two are using radial measurements).
+
+----------------------  ----------------------  -----------------  -----------------
+ ![cameraman_rand_bp]    ![cameraman_rand_tv]    ![cameraman_bp]    ![cameraman_tv]
+      Rand (L2)             Rand (L1)              Radial (L2)        Radial (L1)
+----------------------  ----------------------  -----------------  -----------------
+
+As we can see, the results are not as good. In fact, the non-zero ratio of its
+gradient is 0.9928, which is not sparse at all. However, if we plot the histogram
+of gradients, we will find that most of the gradient magnitudes are small:
+
+![Gradient Histogram][camera_mag_hist]
+
+In particular, most of them are smaller than 200, which means the number of
+'changes' that are larger than 200 is small. In fact, the ratio of
+gradient > 200 is only *0.0964*! Thus, there are two possible ways to 
+discard these information and get a 'compressed' image that is
+sparse in gradients:
+
+1. Use mean-shift algorithm to segment the regions such that they have the
+same color intensities. K-means or quantization should achieve a similar 
+result, though might not as good as mean-shift.
+2. Use image filtering to smooth the image, which can effectively average colors
+and discard high frequency information.
+
+*I'll leave these conjectures for furture implementation. For those
+intereted, please try them yourself and let me know your results.
+If you have any thoughts, do not hesitate to leave a comment.*
+
+## References
+
+For interested readers, the following references will be helpful.
+
+[FFT 2D]: http://www.cs.unm.edu/~brayer/vision/fourier.html
+[phantom_orig]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_orig.png
+[phantom_backproj]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_backproj.png
+[phantom_tv]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_tv.png
+[phantom_gx]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gx.png
+[phantom_gy]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gy.png
+[phantom_gI]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gI.png
+[M rand]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/measurement_random.png
+[M radial]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/measurement_radial.png
+[phantom rand bp]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_rand_bp.png
+[phantom rand tv]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_rand_tv.png
+[cameraman]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman.png
+[cameraman_grad]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_grad.png
+[cameraman_bp]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_bp.png
+[cameraman_tv]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_tv.png
+[cameraman_rand_bp]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_rand_bp.png
+[cameraman_rand_tv]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_rand_tv.png
+[camera_mag_hist]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/camera_mag_hist.png
+[code]: https://github.com/iveney/l1min/blob/master/image_recovery_l1.m
+
+[L2 vs L1]: /blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/
+[Sparse Signal 1D]: /blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: travel | Zigang Xiao]]></title>
+  <link href="http://blog.ivansiu.com/blog/categories/travel/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2015-05-22T17:32:50-05:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang Xiao (Ivan)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Roadtrip in America 2013]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/08/28/roadtrips-in-us-2013/"/>
+    <updated>2013-08-28T16:17:00-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/08/28/roadtrips-in-us-2013</id>
+    <content type="html"><![CDATA[In this year, I did several crazy road trips, each trip has about 3k miles. Here're them.
+
+# Winter Trip
+The first trip is a trip with my parents, where they flied to Chicago and I drove them to UIUC for a visit.
+We then flied to LA and rented a car to start our road trip. The whole trip was mainly in California, though
+we drove a bit east and visited Las Vegas and Grand canyon.
+
+![Around the West Coast]
+
+<!-- more -->
+
+# Route 66
+I drove from Champaign all the way to Mountain View, with most of the part of [Route 66](https://en.wikipedia.org/wiki/U.S._Route_66).
+
+![The Good Old Route 66]
+
+# I-80
+After my internship in California, I drove back from Mountain View to Champaign.
+
+![I-80 Back to Champaign]
+
+[Around the West Coast]: https://lh3.googleusercontent.com/-3XKmLgVuYw8/UlBRR-rXocI/AAAAAAAA6Qg/IIHynx2WdOQ/s800/Winter%2520trip.png
+[The Good Old Route 66]: https://lh5.googleusercontent.com/-fMUI4Zi2a68/UlBUCwGlIoI/AAAAAAAA6Q0/14KGATd9IHw/s800/Champaign%252C%2520IL%2520to%2520Mountain%2520View%252C%2520CA%2520-%2520Google%2520Maps.png
+[I-80 Back to Champaign]: https://lh6.googleusercontent.com/-QEnrQ49XzlQ/UlBQLfKAtTI/AAAAAAAA6QM/JBcEAGUNxiI/s800/Sunnyvale%252C%2520CA%2520to%2520Champaign%252C%2520IL%2520-%2520Google%2520Maps.png]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: probability | Zigang Xiao]]></title>
+  <link href="http://blog.ivansiu.com/blog/categories/probability/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2015-05-22T17:32:50-05:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang Xiao (Ivan)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood/"/>
+    <updated>2014-09-24T15:41:44-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood</id>
+    <content type="html"><![CDATA[Let $\data$ be a set of data generated from some distribution parameterized by
+$\theta$. We want to *estimate* the unknown parameter $\theta$. What we can do?
+
+Essentially, we want to find a most likely value of $\theta$ given $\data$,
+that is $\arg \max P(\theta | \data)$. According to Bayes Rule, we have
+
+$$
+P(\theta \given \data) = \frac{P(\data \given \theta)P(\theta)}{P(\data)}
+$$
+
+and the terms have the following meanings:
+
+- $P(\theta \given \data)$: Posterior
+- $P(\data \given \theta)$: Likelihood
+- $P(\theta)$: Prior
+- $P(\data)$: Evidence
+
+<!-- more -->
+
+## Maximum Likelihood Estimation (MLE)
+
+An easy way out is to use the MLE method.
+We want to find a $\theta$ the *best explains* the data. 
+That is, we maximize $P(\data \given \theta)$.
+Denote such a value as $\hat{\theta}_{ML}$. We have 
+
+$$
+\hat{\theta}_{ML} = \argmax_\theta P(\data \given \theta) = 
+\argmax_\theta P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta )
+$$
+
+Note that the above $P$ is a joint distribution over the data.
+We usually assume the observations are *independent*. Thus, we have
+
+$$
+P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) = 
+\prod_{i=1}^{N} P(\mathbf{x}_i \given \theta )
+$$
+
+We usually use logarithm to simplify the computation, as 
+logarithm is monotonically increasing. Thus, we write:
+
+$$
+\mathcal{L}(\data \given \theta) = \sum_{i=1}^N \log P(\mathbf{x}_i \given \theta )
+$$
+
+Finally, we seek for the ML solution:
+
+$$
+\hat{\theta}_{ML} = \argmax_\theta \mathcal{L}(\data \given \theta)
+$$
+
+If we know the distribution $P$, we can usually solve the above by 
+setting derivative of $\theta$ to 0 and solve for $\theta$, that is,
+
+$$
+\frac{\partial L}{\partial \theta} = 0
+$$
+
+## Maximum A Posteriori (MAP)
+
+In MAP, we maximize $P(\theta \given \data)$ directly. Denote the MAP hypothesis 
+as $\hat{\theta}_{MAP}$, we have:
+
+$$\begin{array}{rl}
+\hat{\theta}_{MAP} = & \argmax_\theta P(\theta \given \data) \\\\
+ = & \argmax_\theta \frac{P(\data \given \theta)P(\theta)}{P(\data)} \\\\
+ = & \argmax_\theta P(\data \given \theta)P(\theta)
+\end{array}$$
+
+Note that the last step is due to the evidence (data) $\data$ is constant, and
+thus can be omitted in $\argmax$.
+
+At this step, we notice that the only difference between $\hat{\theta}_{ML}$ and
+$\hat{\theta}_{MAP}$ is the prior term $P(\theta)$. Another way to interpret
+is that we consider $MAP$ is more general than $MLE$, as if we assume all
+the possible $\theta$ are equally probable a priori, e.g., they have the same
+prior probability, or *uniform prior*, we can effectively remove $P(\theta)$
+from the MAP formula, and it looks like exactly the same as MLE.
+
+Finally, if the independent observation holds, again we can use logarithm and
+expand $\hat{\theta}_{MAP}$ as:
+
+$$
+\begin{array}{rl}
+\hat{\theta}_{MAP} = & \argmax_\theta L(\data \given \theta) \\\\
+ = & \argmax_\theta \sum_{i=1}^{N} \log P(\mathbf{x}_i \given \theta ) + \log P(\theta)
+\end{array}
+$$
+
+The extra prior term has the effect that we are essentially 'pulling' the
+$\theta$ distribution towards prior value. This makes sense as we are 
+putting our domain knowledge as *prior* and intuitively the estimation is
+biased towards the *prior* value.
+
+## Naive Bayes Classifier
+
+Assume that we are given a set of data $\data$, where each example
+$\mathbf{x_j}=(a_1, a_2, \ldots, a_n)$,  which can be viewed as *conjunctions of
+attributes values*. $v_j \in V$ is the corresponding class value. Using MAP, we
+can classify an example $\mathbf{x}$ as:
+
+$$v_{MAP}=\argmax_{v_j\in V} P(v_j \given a_1, \ldots, a_n)$$
+
+The problem is that it is hard to find a joint distribution for  $P(\mathbf{x}
+\given \theta)$. If we use the data to estimate the distribution, we typically
+don't have enough data for each attribute. In other words, the  data we have is
+very sparse compared to the whole distribution space.
+
+Naive bayes makes the assumption that each
+attribute is *conditionally independent* given the target class $v_j$, that is,
+
+$$P(a_1, \ldots, a_n \given v_j) = \prod_{i=1}^n P(a_i \given v_j)$$
+
+which can be easily estimated from the data.
+Thus, we have the following naive bayes classifier:
+
+$$v_{NB} = \argmax_{v_j \in V} P(v_j) \prod_{i=1}^n P(a_i \given v_j)$$
+
+Note that the learning of naive bayes simply involves in estimating
+$P(a_i \given v_j)$ and $P(v_j)$ based on the frequencies in the training data.
+
+Normally the conditional independence assumption does not hold, but naive bayes
+performs well even if so. 
+More importantly, **when conditional independence is satisfied, Naive Bayes corresponds to MAP classification.**
+
+## Conclusion
+
+MLE, MAP and Naive Bayes are all connected. While MLE and MAP are parameter
+estimation methods that returns a single value of the paramter being estimated,
+NB is a classifier that predicts the probability of the class that an example
+belongs to. We also have the following insightes:
+
+- Given the data, MLE considers the paramter to be a constant and estimates
+a value that provide maximum support for the data.
+- MLE does not allow us to 'inject' our beliefs about the likely values for the parameter (prior) in the estimation process.
+- MAP allows the fact that the paramter can take values from a prior
+(non-uniform) distribution that express our prior beliefs regarding the paramters.
+- MAP returns paramter value where the probability is highest given data.
+- Again, both MLE and MAP returns a single and specific value for the paramter.
+By contrast, *bayesian estimation* computes the full posterior distribution
+$P(\theta \given \data)$.
+
+
+## Thoughts
+
+After reading this [article], I have the following interpretation:
+
+- The Maximum Likelihood approach can be roughly regarded as traditional "frequentist" thinking.
+- The MAP approach is a direct applicatin of Bayes Theorem. Thus, it can be regarded as a "bayesian" way of thinking.
+
+
+[article]: http://www.behind-the-enemy-lines.com/2008/01/are-you-bayesian-or-frequentist-or.html]]></content>
+  </entry>
+  
+</feed>

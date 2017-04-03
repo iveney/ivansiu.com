@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: osx | Zigang Xiao]]></title>
+  <link href="http://blog.ivansiu.com/blog/categories/osx/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2015-05-22T17:32:50-05:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang Xiao (Ivan)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OS X: reveal file in console]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console/"/>
+    <updated>2014-05-01T19:58:20-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console</id>
+    <content type="html"><![CDATA[![](https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-os-x-reveal-file-in-console.png)
+
+One of the neat things you can do in OS X is to reveal a file in Finder.app from
+some other applications. Turns out lots of the time, we also want to do that in
+the terminal. The following script helps you with that:
+
+<!-- more -->
+
+``` applescript reveal
+#!/usr/bin/osascript
+on run args
+	set fullpath to do shell script "realpath " & (quoted form of first item of args)
+	set theFile to POSIX file fullpath
+	tell application "Finder"
+		reveal theFile
+		activate
+	end tell
+end
+```
+
+Note:
+
+1. You should put this into a directory in your search path. I recommend in
+`~/bin`. Also remember to `chmod +x`.
+2. The above requires another script `realpath`, which returns the
+fullpath of a file. You can find it
+[here](/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/).]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OS X: get full path of file using realpath]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/"/>
+    <updated>2014-05-01T18:25:56-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath</id>
+    <content type="html"><![CDATA[``` bash Demonstrate of realpath
+➜  /Applications  realpath iBooks.app
+/Applications/iBooks.app
+➜  /Applications
+```
+
+`realpath` is a command line utility that is 
+included in most UNIX distributions but not Mac OS X.
+Thanks to [Stuart Campbell](https://github.com/harto),
+a minimal implementation is provided 
+[here](https://github.com/harto/realpath-osx), and my 
+[fork](https://github.com/iveney/realpath-osx).
+
+<!-- more -->
+
+If you use `homebrew`, you can tap my 
+[repo](https://github.com/iveney/homebrew-mocha), and install it using
+homebrew.
+
+``` bash
+brew tap iveney/mocha
+brew install realpath
+```
+
+Viola! Now you can get the full path of file in console. A nice thing
+I often use is to chain it with `pbcopy` to copy the full path to 
+the OS X clipboard.]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fix (ugly) Safari 7.0 not using local pac file]]></title>
+    <link href="http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/"/>
+    <updated>2013-12-05T02:03:43-06:00</updated>
+    <id>http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file</id>
+    <content type="html"><![CDATA[I found that Safari in Mavericks is not using local `proxy.pac` at all.
+Turns out because of sandboxing, it will not allow reading file from local.
+A traditional solution is to turn on **Web Sharing**, and thus use HTTP to read the pac file such as `http://localhost/proxy.pac`.
+
+However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:
+
+```
+sudo apachectl start
+```
+
+Also, place the pac file under `/Library/WebServer/Documents`, which is the default Document Root of Apache.
+
+Tom Fischer proposed [another way](https://discussions.apple.com/thread/3202499?start=30&tstart=0) to get around, however I don't think it a good idea to mess around the system files.]]></content>
+  </entry>
+  
+</feed>

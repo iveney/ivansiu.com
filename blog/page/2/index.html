@@ -22,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.ivansiu.com/">
+  <link rel="canonical" href="http://blog.ivansiu.com/blog/page/2/">
   <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Zigang Xiao" type="application/atom+xml">
@@ -30,8 +30,8 @@
   <meta name="og:site_name" content="Zigang Xiao" />
   <meta name="og:title" content="Zigang Xiao" />
   <meta name="og:description" content=" My newly setup blog that will post ideas and codes. " />
-  <meta name="og:url" content="http://blog.ivansiu.com/index.html"/>
-  <meta name="url" content="http://blog.ivansiu.com/index.html">
+  <meta name="og:url" content="http://blog.ivansiu.com/blog/page/2/index.html"/>
+  <meta name="url" content="http://blog.ivansiu.com/blog/page/2/index.html">
   
   <meta name="distribution" content="global">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -166,7 +166,7 @@ https://github.com/imathis/octopress/issues/599
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance/">美国留学：学生保险拔智齿</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">Sparse Signal Reconstruction via L1-minimization</a></h1>
     
     
       <p class="meta">
@@ -191,13 +191,76 @@ https://github.com/imathis/octopress/issues/599
   
 
 
-<time datetime="2015-05-14T22:30:58-05:00" pubdate data-updated="true">May 14<span>th</span>, 2015</time> - 
+<time datetime="2014-05-18T22:13:08-05:00" pubdate data-updated="true">May 18<span>th</span>, 2014</time> - 
         
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/chinese/'>chinese</a>, <a class='category' href='/blog/categories/personal/'>personal</a>
+    <a class='category' href='/blog/categories/machine-learning/'>Machine Learning</a>, <a class='category' href='/blog/categories/signal-processing/'>Signal Processing</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://dl.dropboxusercontent.com/u/3315210/blog/l1/sparse_signal_reconstruction.png"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/sparse_signal_reconstruction.png" alt="Sparse Signal Reconstruction Results" /></a></p>
+<p>This is a follow-up of the <a href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">previous post</a> on applications of L1 minimization.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">A Comparison of Least Square, L2-regularization and L1-regularization</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-14T21:32:38-05:00" pubdate data-updated="true">May 14<span>th</span>, 2014</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/machine-learning/'>Machine Learning</a>
   
 </span>
 
@@ -209,14 +272,15 @@ posted in
 
 
   <div class="entry-content"><figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2015-05-14-study-abroad-wisdom-teeth-removal-with-student-insurance.jpg" alt="Wisdom Teeth (source)" /><figcaption>Wisdom Teeth (<a href="http://www.dentalstudio101.com/blog/wisdom-teeth-do-i-leave-them-in-or-take-them-out/">source</a>)</figcaption>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/coef.png" alt="Recovered Coefficients by Different Methods" /><figcaption>Recovered Coefficients by Different Methods</figcaption>
 </figure>
-<p>在快奔三的年纪，终于长出了最后一颗智齿。本来想着说这辈子不用拔智齿的——因为我25岁前就已经长完了三颗智齿，并且都 align 得非常好，并没有阻生。之前在中国时的医生也告诉我，没有必要拔掉，因为他们出来得迟，因此比起其他牙齿也会掉得迟。所以以后牙齿掉完后，他们还会在那里，可以做到固定镶牙的用途。当然我在美国没有听到有医生这样提起的，而且美国的习惯是 4 颗一起全部拔掉，一了百了！听起来有点 scary，只是他们的考虑也不是没有道理：智齿一般会长歪，即使没有长歪，也可能引发各种疾病，比如由于长得比较靠里，比较难清洁到，因此很容易蛀牙。更甚的是，蛀牙后，会引起正常的牙齿也蛀牙！这个情况就发生了在我身上：我的下面两颗支持都有蛀牙，并且引起了旁边的蛀牙！为了这个问题，我已经补过两次牙齿。这成为了我这次拔掉他们的最大原因。</p>
+<h1 id="problem-setting">Problem Setting</h1>
+<p>Ordinary Least Square (OLS), L2-regularization and L1-regularization are all techniques of finding solutions in a linear system. However, they serve for different purposes. Recently, L1-regularization gains much attention due to its ability in finding sparse solutions. This post demonstrates this by comparing OLS, L2 and L1 regularization.</p>
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">Read on &rarr;</a>
     </footer>
   
 
@@ -231,7 +295,7 @@ posted in
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/05/04/popular-watches-under-150/">Popular Watches Under $150</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/05/02/debugging-applescript-print-to-a-file/">Debugging AppleScript: Print to a File</a></h1>
     
     
       <p class="meta">
@@ -256,13 +320,76 @@ posted in
   
 
 
-<time datetime="2015-05-04T13:24:35-05:00" pubdate data-updated="true">May 4<span>th</span>, 2015</time> - 
+<time datetime="2014-05-02T16:26:50-05:00" pubdate data-updated="true">May 2<span>nd</span>, 2014</time> - 
         
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/watches/'>watches</a>
+    <a class='category' href='/blog/categories/applescript/'>AppleScript</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Debugging AppleScript is easy when you work with the script editor, simply use <code>log</code> to print out anything in the console. However, after you compiled it to an app, this cannot work anymore.</p>
+<p>I find there are several ways to do it in this <a href="http://stackoverflow.com/questions/2749863/applescript-editor-write-message-to-the-result-window">thread</a>. The <a href="http://stackoverflow.com/a/21309748/577704">two approaches</a> that work best for me are:</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/02/debugging-applescript-print-to-a-file/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/01/os-x-reveal-file-in-console/">OS X: Reveal File in Console</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-01T19:58:20-05:00" pubdate data-updated="true">May 1<span>st</span>, 2014</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/osx/'>osx</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
   
 </span>
 
@@ -274,14 +401,14 @@ posted in
 
 
   <div class="entry-content"><figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/top10.jpg" />
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-os-x-reveal-file-in-console.png" />
 </figure>
-<p>I’ve been looking around entry-level watches for some time. Recently, I answered a <a href="http://www.zhihu.com/question/29695310/answer/45929205?group_id=577053538367111168">question</a> in Zhihu (Chinese Quora), and I feel like to transcribe this collection in my blog.</p>
+<p>One of the neat things you can do in OS X is to reveal a file in Finder.app from some other applications. Turns out lots of the time, we also want to do that in the terminal. The following script helps you with that:</p>
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2015/05/04/popular-watches-under-150/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2014/05/01/os-x-reveal-file-in-console/">Read on &rarr;</a>
     </footer>
   
 
@@ -296,7 +423,7 @@ posted in
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/03/26/watch-review-rodina-r005gb/">Watch Review: Rodina R005GB</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">OS X: Get Full Path of File Using Realpath</a></h1>
     
     
       <p class="meta">
@@ -321,13 +448,92 @@ posted in
   
 
 
-<time datetime="2015-03-26T23:04:16-05:00" pubdate data-updated="true">Mar 26<span>th</span>, 2015</time> - 
+<time datetime="2014-05-01T18:25:56-05:00" pubdate data-updated="true">May 1<span>st</span>, 2014</time> - 
         
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/fashion/'>fashion</a>, <a class='category' href='/blog/categories/review/'>review</a>, <a class='category' href='/blog/categories/watch/'>watch</a>
+    <a class='category' href='/blog/categories/osx/'>osx</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="bogus-wrapper">
+<notextile>
+<figure class='code'><figcaption>
+<span>Demonstrate of realpath</span>
+</figcaption>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>➜  /Applications  realpath iBooks.app
+</span><span class='line'>/Applications/iBooks.app
+</span><span class='line'>➜  /Applications
+</span></code></pre></td></tr></table>
+</div>
+</figure>
+</notextile>
+</div>
+<p><code>realpath</code> is a command line utility that is included in most UNIX distributions but not Mac OS X. Thanks to <a href="https://github.com/harto">Stuart Campbell</a>, a minimal implementation is provided <a href="https://github.com/harto/realpath-osx">here</a>, and my <a href="https://github.com/iveney/realpath-osx">fork</a>.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Send Ctrl-a in Tmux After Rebinding to It</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-01T17:14:46-05:00" pubdate data-updated="true">May 1<span>st</span>, 2014</time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/tips/'>tips</a>, <a class='category' href='/blog/categories/tmux/'>tmux</a>
   
 </span>
 
@@ -339,15 +545,14 @@ posted in
 
 
   <div class="entry-content"><figure>
-<img src="https://lh5.googleusercontent.com/-DHaUjkLmpQ0/VRTXaDnoOkI/AAAAAAAA-F0/4JzbtSb1RJE/s400/Tangente_38_sapphire_crystal_back___Beautiful_watches_purchased_online__Directly_from_NOMOS_Glash%25C3%25BCtte_.jpg" alt="Tangente" /><figcaption>Tangente</figcaption>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png" />
 </figure>
-<p>So NOMOS has this awesome looking Bauhaus style watch: <a href="http://www.nomos-store.com/en/Watches/Model-series/Tangente/Watches-with-manual-winding/Tangente-38-sapphire-crystal-back.html">Tangente</a>. Apparently everyone wants one, but not everyone wants to break their bank ($2330 USD).</p>
-<p>Luckily, we have an alternative here: <a href="http://www.amazon.com/gp/product/B00URBA0SE/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00URBA0SE&amp;linkCode=as2&amp;tag=zigxia-20&amp;linkId=DH2F6ZTQGNLSXYBJ">Rodina series watches</a> <a href="http://www.amazon.com/gp/product/B00VPYP77Q/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00VPYP77Q&amp;linkCode=as2&amp;tag=zigxia-20&amp;linkId=FTNKEBI6N26BLLVP">(or with Date)</a>.</p>
+<p>While <code>tmux</code> provides much better functionality than <code>screen</code>, most of us that work with tmux have been using <code>screen</code> for a long time, and it is more comfortable for us to use <code>ctrl-a</code> than the default <code>ctrl-b</code>, which is finger-strechy. Thus the first thing I will do after installing <code>tmux</code> is to rebind the prefix to <code>ctrl-a</code>. That gives us the most handy way of swapping last two windows by typing <code>ctrl-a ctrl-a</code>.</p>
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2015/03/26/watch-review-rodina-r005gb/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Read on &rarr;</a>
     </footer>
   
 
@@ -362,7 +567,7 @@ posted in
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">精英主义与投票考试</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Source-highlight for Matlab/octave</a></h1>
     
     
       <p class="meta">
@@ -387,149 +592,13 @@ posted in
   
 
 
-<time datetime="2014-10-01T22:29:30-05:00" pubdate data-updated="true">Oct 1<span>st</span>, 2014</time> - 
+<time datetime="2014-05-01T01:59:40-05:00" pubdate data-updated="true">May 1<span>st</span>, 2014</time> - 
         
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/thoughts/'>thoughts</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="题记">题记</h2>
-<p>有感于最近香港要求普选的民运，心中大概有点想法。考虑到自己对政治的认识与时间的限制，为了防止与 别人无谓的争辩， 不想把这些想法发到社交网络上，毕竟，这只是个人的想法，或者更严格来说， 是一种理念。因为很多主义与思想，都没有绝对的对错，我们只能做到根据自己的人生观与思想来 做出取舍。而偏偏这个世界上又很多人喜欢跟别人 argue，一定要说服别人为止——我根本没有这个时间 与精力去辩论。另外，这也同时印证了我为什么是 pro-精英主义的，我深知自己对这些事物的认识 不够，所以自觉需要更严谨的学习才有资本与别人争论。我相信多年以后，自己的看法一定又会 有所改变。彼时回首看这些文章，一定会觉得自己幼稚。不过无论怎么说，还是记录下自己的想法。</p>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/09/24/notes-on-maximum-likelihood/">Notes on Maximum Likelihood, Maximum a Posteriori and Naive Bayes</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-09-24T15:41:44-05:00" pubdate data-updated="true">Sep 24<span>th</span>, 2014</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/machine-learning/'>machine learning</a>, <a class='category' href='/blog/categories/probability/'>probability</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Let <span class="math">\(\data\)</span> be a set of data generated from some distribution parameterized by <span class="math">\(\theta\)</span>. We want to <em>estimate</em> the unknown parameter <span class="math">\(\theta\)</span>. What we can do?</p>
-<p>Essentially, we want to find a most likely value of <span class="math">\(\theta\)</span> given <span class="math">\(\data\)</span>, that is <span class="math">\(\arg \max P(\theta | \data)\)</span>. According to Bayes Rule, we have</p>
-<p><span class="math">\[
-P(\theta \given \data) = \frac{P(\data \given \theta)P(\theta)}{P(\data)}
-\]</span></p>
-<p>and the terms have the following meanings:</p>
-<ul>
-<li><span class="math">\(P(\theta \given \data)\)</span>: Posterior</li>
-<li><span class="math">\(P(\data \given \theta)\)</span>: Likelihood</li>
-<li><span class="math">\(P(\theta)\)</span>: Prior</li>
-<li><span class="math">\(P(\data)\)</span>: Evidence</li>
-</ul>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/09/24/notes-on-maximum-likelihood/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/">Fix Mid 2009 MBP RAM Not Recognized Issue</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-28T23:30:56-05:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/diy/'>DIY</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>
+    <a class='category' href='/blog/categories/homebrew/'>homebrew</a>, <a class='category' href='/blog/categories/matlab/'>matlab</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
   
 </span>
 
@@ -541,14 +610,14 @@ posted in
 
 
   <div class="entry-content"><figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/mbp09-ram-theory.png" alt="Possible cause of unrecoganized RAM" /><figcaption>Possible cause of unrecoganized RAM</figcaption>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-source-highlight-for-matlab-slash-octave.png" />
 </figure>
-<p>A few days ago, I encountered an issue which seems to be common among mid-2009 MBPs: one of the RAM (in slot 1) is not recognized anymore. Or, sometimes it is recognized, but after sleep and wake up, the computer freezes and impossible to recover but force power off.</p>
+<p>I recently worked with Matlab a lot. When in console, sometimes I want to use <code>less</code> to quickly examine the file content, and I have already <a href="http://superuser.com/a/71593">set it up</a> such that it uses <a href="http://www.gnu.org/software/src-highlite/">source-highlight</a> to output colorful escape sequence to the console. However, source-highlight does not come with a syntax support for Matlab by default. Luckily, this <a href="http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html">post</a> and <a href="http://blog.sina.com.cn/s/blog_4513dde60101kpmr.html">this</a> (in Chinese) provides a solution.</p>
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">Read on &rarr;</a>
     </footer>
   
 
@@ -563,7 +632,7 @@ posted in
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/">Replacing SATA Cable in Mid 2009 MBP</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch Remove Photos in iPhone, Batch Convert Videos and Upload Back</a></h1>
     
     
       <p class="meta">
@@ -588,13 +657,13 @@ posted in
   
 
 
-<time datetime="2014-05-28T02:15:08-05:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time> - 
+<time datetime="2014-01-29T20:16:21-06:00" pubdate data-updated="true">Jan 29<span>th</span>, 2014</time> - 
         
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/diy/'>DIY</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>
+    <a class='category' href='/blog/categories/iphone/'>iphone</a>, <a class='category' href='/blog/categories/workflow/'>workflow</a>
   
 </span>
 
@@ -605,15 +674,12 @@ posted in
   </header>
 
 
-  <div class="entry-content"><figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/sata-cable.jpg" alt="Replacing MBP cable" /><figcaption>Replacing MBP cable</figcaption>
-</figure>
-<p>Recently, my mid 2009 MBP (Model A1278) fails to recognize the hard drive. My first bet was another disk failure on me, but it was not the case. I took down the hard drive and put it to a mobile hard drive case and it can be read smoothly.</p>
+  <div class="entry-content"><p>One of the problems that drives iOS user crazy is the user-unfriendly manipulation/syncing of photos in iOS. There are just no easy way to remove photos in batch (though you can delete the entire camera roll in the settings).</p>
 </div>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Read on &rarr;</a>
     </footer>
   
 
@@ -628,7 +694,7 @@ posted in
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/05/22/my-octopress-blogging-flow/">My Octopress Blogging Flow</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">Fix (Ugly) Safari 7.0 Not Using Local Pac File</a></h1>
     
     
       <p class="meta">
@@ -653,13 +719,13 @@ posted in
   
 
 
-<time datetime="2014-05-22T22:38:07-05:00" pubdate data-updated="true">May 22<span>nd</span>, 2014</time> - 
+<time datetime="2013-12-05T02:03:43-06:00" pubdate data-updated="true">Dec 5<span>th</span>, 2013</time> - 
         
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/blogging/'>blogging</a>, <a class='category' href='/blog/categories/octopress/'>octopress</a>
+    <a class='category' href='/blog/categories/networking/'>networking</a>, <a class='category' href='/blog/categories/osx/'>osx</a>
   
 </span>
 
@@ -670,95 +736,25 @@ posted in
   </header>
 
 
-  <div class="entry-content"><figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/sublime-marked.png" alt="Writing in Sublime Text and previewing in Marked" /><figcaption>Writing in Sublime Text and previewing in Marked</figcaption>
+  <div class="entry-content"><p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all. Turns out because of sandboxing, it will not allow reading file from local. A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
+<p>However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:</p>
+<div class="bogus-wrapper">
+<notextile>
+<figure class='code'>
+<div class="highlight">
+<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apachectl start</span></code></pre></td></tr></table>
+</div>
 </figure>
-<p>After blogging with <a href="http://octopress.org">Octopress</a> for a while, I have already gained some insights on it, and my publishing flow has been smoother. I think it is right time to share my flow as a reference.</p>
+</notextile>
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/05/22/my-octopress-blogging-flow/">Read on &rarr;</a>
-    </footer>
-  
-
+<p>Also, place the pac file under <code>/Library/WebServer/Documents</code>, which is the default Document Root of Apache.</p>
+<p>Tom Fischer proposed <a href="https://discussions.apple.com/thread/3202499?start=30&amp;tstart=0">another way</a> to get around, however I don’t think it a good idea to mess around the system files.</p>
+<div class="references">
 
 </div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/">Sparse Image Reconstruction via L1-minimization</a></h1>
-    
-    
-      <p class="meta">
-        
+</div>
   
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-19T15:12:36-05:00" pubdate data-updated="true">May 19<span>th</span>, 2014</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/machine-learning/'>machine learning</a>, <a class='category' href='/blog/categories/signal-processing/'>signal processing</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><table>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_orig.png" alt="phantom_orig" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_backproj.png" alt="phantom_backproj" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_tv.png" alt="phantom_tv" /></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Original</td>
-<td style="text-align: center;">Minimum Energy Reconstruction</td>
-<td style="text-align: center;">Sparse Reconstruction</td>
-</tr>
-</tbody>
-</table>
-<h2 id="introduction">Introduction</h2>
-<p>This is a follow up of the L1-minimization series. The previous two posts are:</p>
-<ol type="1">
-<li><a href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">A Comparison of Least Square, L2-regularization and L1-regularization</a></li>
-<li><a href="/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">Sparse Signal Reconstruction via L1-minimization</a> </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/">Read on &rarr;</a>
-    </footer>
   
 
 
@@ -771,9 +767,13 @@ posted in
         <ul class="pager">
           
             <li class="previous">
-              <a href="/blog/page/2/">&larr; Older</a>
+              <a href="/blog/page/3/">&larr; Older</a>
             </li>
           
+          
+            <li class="next">
+              <a class="next" href="/">Newer &rarr;</a>
+            </li>
           
         </ul>
       </div>

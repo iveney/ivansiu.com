@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tips | Zigang Xiao]]></title>
+  <link href="http://blog.ivansiu.com/blog/categories/tips/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2015-05-22T17:32:50-05:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang Xiao (Ivan)]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OS X: reveal file in console]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console/"/>
+    <updated>2014-05-01T19:58:20-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console</id>
+    <content type="html"><![CDATA[![](https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-os-x-reveal-file-in-console.png)
+
+One of the neat things you can do in OS X is to reveal a file in Finder.app from
+some other applications. Turns out lots of the time, we also want to do that in
+the terminal. The following script helps you with that:
+
+<!-- more -->
+
+``` applescript reveal
+#!/usr/bin/osascript
+on run args
+	set fullpath to do shell script "realpath " & (quoted form of first item of args)
+	set theFile to POSIX file fullpath
+	tell application "Finder"
+		reveal theFile
+		activate
+	end tell
+end
+```
+
+Note:
+
+1. You should put this into a directory in your search path. I recommend in
+`~/bin`. Also remember to `chmod +x`.
+2. The above requires another script `realpath`, which returns the
+fullpath of a file. You can find it
+[here](/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/).]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OS X: get full path of file using realpath]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/"/>
+    <updated>2014-05-01T18:25:56-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath</id>
+    <content type="html"><![CDATA[``` bash Demonstrate of realpath
+➜  /Applications  realpath iBooks.app
+/Applications/iBooks.app
+➜  /Applications
+```
+
+`realpath` is a command line utility that is 
+included in most UNIX distributions but not Mac OS X.
+Thanks to [Stuart Campbell](https://github.com/harto),
+a minimal implementation is provided 
+[here](https://github.com/harto/realpath-osx), and my 
+[fork](https://github.com/iveney/realpath-osx).
+
+<!-- more -->
+
+If you use `homebrew`, you can tap my 
+[repo](https://github.com/iveney/homebrew-mocha), and install it using
+homebrew.
+
+``` bash
+brew tap iveney/mocha
+brew install realpath
+```
+
+Viola! Now you can get the full path of file in console. A nice thing
+I often use is to chain it with `pbcopy` to copy the full path to 
+the OS X clipboard.]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Send ctrl-a in tmux after rebinding to it]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/"/>
+    <updated>2014-05-01T17:14:46-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it</id>
+    <content type="html"><![CDATA[![](https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png)
+
+While `tmux` provides much better functionality than `screen`,
+most of us that work with tmux have been using `screen` for a long time,
+and it is more comfortable for us to use `ctrl-a` than the default `ctrl-b`,
+which is finger-strechy. Thus the first thing I will do after installing `tmux`
+is to rebind the prefix to `ctrl-a`. That gives us the most handy way of
+swapping last two windows by typing `ctrl-a ctrl-a`.
+
+<!-- more -->
+
+However, this comes for a price. That is, in a shell environment that
+is integrated with `readline`, `ctrl-a` is used to jump the begining of line.
+Now that it is mapped as prefix, we can no longer do that.
+
+Surprisingly, the solution is pretty simple. Just use `ctrl-a a` to
+send the prefix itself, and use `ctrl-a ctrl-a` to go to the last window.
+Specifically, add these two lines in `~/.tmux.conf`:
+
+``` bash ~/.tmux.conf 
+bind a send-prefix
+bind-key C-a last-window
+```
+
+[via](http://stackoverflow.com/questions/11557076/if-i-set-key-bind-of-c-b-to-c-a-in-tmux-how-can-i-move-the-cursor-to-the-beginni#comment15297769_11561128).]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Source-highlight for matlab/octave]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/"/>
+    <updated>2014-05-01T01:59:40-05:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave</id>
+    <content type="html"><![CDATA[![](https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-source-highlight-for-matlab-slash-octave.png)
+
+I recently worked with Matlab a lot. When in console, sometimes I want to use
+`less` to quickly examine the file content, and I have already 
+[set it up](http://superuser.com/a/71593)
+such that it uses [source-highlight](http://www.gnu.org/software/src-highlite/)
+to output colorful escape sequence to the console.
+However, source-highlight does not come with a syntax support for Matlab
+by default. Luckily, this
+[post](http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html) and 
+[this](http://blog.sina.com.cn/s/blog_4513dde60101kpmr.html) (in Chinese) 
+provides a solution.
+
+<!-- more -->
+
+First of all, install source-highlight using homebrew. 
+
+```
+brew install source-highlight
+```
+
+Note that  source-highlight depends on boost, and as of the date of this post,
+brew provides a precompiled library (bottle) for boost. However, the python
+support is compiled against the system python, so if you installed a custom one
+(say installed via homebrew)
+and use it by default, brew will compile the boost from source instead, which
+takes an extremely long time.  To prevent this, we need to unlink it first,
+and link it back afterwards. That is,
+
+
+``` bash
+brew unlink python
+brew link python    # after installation
+```
+
+Go to the following folder and create two files,
+ 
+``` bash
+cd `brew --prefix source-highlight`/share/source-highlight
+```
+
+``` ini matlab.style
+keyword blue;
+string #a020f0;
+comment darkgreen;
+```
+
+
+``` ini matlab.lang
+keyword = "break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while"
+
+keyword = '^\s*(break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while)(?=\s)'
+
+include "function.lang"
+
+state command start '^\s*[a-zA-Z][\w]*(?=\s)(?!\s+\.?[*/+-:]\s+\w)(?!\s+=)' begin
+        comment start "%"
+        string delim '[[:blank:]]' '[^%;]*'
+end
+
+comment delim "%{" "%}" multiline nested
+comment start "%"
+
+string delim '(?<![\w.])\'' "'" escape "''"
+```
+
+Finally, edit `lang.map` to create a mapping for matlab file.
+
+``` bash lang.map
+echo 'm = matlab.lang' >> lang.map
+```]]></content>
+  </entry>
+  
+</feed>
