@@ -32,8 +32,8 @@
   <meta name="og:url" content="http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection/"/>
   <meta name="url" content="http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection/">
   
-  <meta name="subject" content="LaTeX"/>
-  <meta name="category" content="LaTeX"/>
+  <meta name="subject" content="latex"/>
+  <meta name="category" content="latex"/>
   
   <meta name="distribution" content="global">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -131,13 +131,13 @@ https://github.com/imathis/octopress/issues/599
   
 
 
-<time datetime="2013-12-03T15:18:00-06:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2013</time> - 
+<time datetime="2013-12-03T15:18:00-08:00" pubdate data-updated="true"></time> - 
         
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/latex/'>LaTeX</a>
+    <a class='category' href='/blog/categories/latex/'>latex</a>
   
 </span>
 
@@ -150,18 +150,21 @@ posted in
 
   <div class="entry-content"><p>This post summarizes some common useful tips in LaTeX editing.</p>
 <!-- more -->
-
 <h2 id="figures">Figures</h2>
 <ul>
 <li><a href="http://www.howtotex.com/tips-tricks/vertical-alignment-of-subfigures/">Horizontal alignment of subfigures</a></li>
 <li><code>subfloat</code> in <code>subfig</code>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -170,7 +173,10 @@ posted in
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="c">% Style: Figure 1(a)</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='latex'><span class='line'><span class="c">% Style: Figure 1(a)</span>
 </span><span class='line'><span class="k">\usepackage</span><span class="na">[subrefformat=parens,labelformat=parens]</span><span class="nb">{</span>subfig<span class="nb">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">\subfloat</span><span class="na">[]</span><span class="nb">{</span>
@@ -179,7 +185,10 @@ posted in
 </span><span class='line'><span class="nb">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">\subref*</span><span class="nb">{</span>fig:example<span class="nb">}</span>
-</span></code></pre></td></tr></table>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -191,11 +200,15 @@ posted in
 <li>biblatex simple usage
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -203,7 +216,10 @@ posted in
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="c">% unsrt, abbrev, last option means use unsrt in \cite[xxx,yyy,ccc]</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='latex'><span class='line'><span class="c">% unsrt, abbrev, last option means use unsrt in \cite[xxx,yyy,ccc]</span>
 </span><span class='line'><span class="k">\usepackage</span><span class="na">[sorting=none,firstinits=true,sortcites=true]</span><span class="nb">{</span>biblatex<span class="nb">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="c">% add this in preamble</span>
@@ -211,7 +227,10 @@ posted in
 </span><span class='line'>
 </span><span class='line'><span class="c">% at the end</span>
 </span><span class='line'><span class="k">\printbibliography</span>
-</span></code></pre></td></tr></table>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -223,13 +242,23 @@ posted in
 <li>Graphics path
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\graphicspath</span><span class="nb"></span>
-</span></code></pre></td></tr></table>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='latex'><span class='line'><span class="k">\graphicspath</span><span class="nb"></span>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -237,13 +266,23 @@ posted in
 <li>Use other file extensions:
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\DeclareGraphicsExtensions</span><span class="nb">{</span>.pdf, .jpg, .png<span class="nb">}</span>
-</span></code></pre></td></tr></table>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='latex'><span class='line'><span class="k">\DeclareGraphicsExtensions</span><span class="nb">{</span>.pdf, .jpg, .png<span class="nb">}</span>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -254,25 +293,35 @@ posted in
 <li>threeparttable: Use footnote in tabular
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="c">% inside tabular:</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='latex'><span class='line'><span class="c">% inside tabular:</span>
 </span><span class='line'><span class="k">\tnote</span><span class="nb">{</span><span class="s">$</span><span class="nv">\dagger</span><span class="s">$</span><span class="nb">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="c">% after tabular</span>
 </span><span class='line'><span class="k">\begin</span><span class="nb">{</span>tablenotes<span class="nb">}</span>[para] <span class="c">% do not break line between items</span>
 </span><span class='line'><span class="k">\item</span> [<span class="s">$</span><span class="nv">\dagger</span><span class="s">$</span>] A foot note. <span class="c">% this reference to the item</span>
 </span><span class='line'><span class="k">\end</span><span class="nb">{</span>tablenotes<span class="nb">}</span>
-</span></code></pre></td></tr></table>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -283,13 +332,23 @@ posted in
 <li>New definition/theorem
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\newtheorem</span><span class="nb">{</span>definition<span class="nb">}{</span>Definition<span class="nb">}</span>
-</span></code></pre></td></tr></table>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='latex'><span class='line'><span class="k">\newtheorem</span><span class="nb">{</span>definition<span class="nb">}{</span>Definition<span class="nb">}</span>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -316,17 +375,27 @@ posted in
 <li>reduce space between float and text
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\textfloatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='latex'><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\textfloatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
 </span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\floatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
 </span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\intextsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
-</span></code></pre></td></tr></table>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -334,13 +403,23 @@ posted in
 <li>reduce bib item separation in biblatex<a name="bibitemsep"></a>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\setlength\bibitemsep</span><span class="nb">{</span>0.5<span class="k">\itemsep</span><span class="nb">}</span>
-</span></code></pre></td></tr></table>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='latex'><span class='line'><span class="k">\setlength\bibitemsep</span><span class="nb">{</span>0.5<span class="k">\itemsep</span><span class="nb">}</span>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -367,9 +446,6 @@ posted in
 <li><a href="http://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-files-to-make-them-available-to-all-my-tex-files">Where do I place my own .sty files, to make them available to all my .tex files?</a></li>
 <li><a href="http://tex.stackexchange.com/questions/38287/creating-a-central-bibliography">Creating a central bibliography</a></li>
 </ul>
-<div class="references">
-
-</div>
 </div>
 
 
@@ -396,13 +472,13 @@ posted in
   
 
 
-<time datetime="2013-12-03T15:18:00-06:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2013</time> - 
+<time datetime="2013-12-03T15:18:00-08:00" pubdate data-updated="true"></time> - 
       
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/latex/'>LaTeX</a>
+    <a class='category' href='/blog/categories/latex/'>latex</a>
   
 </span>
 
@@ -449,6 +525,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2017/04/02/zai-mei-guo-huan-lun-tai-de-jing-li/">在美國換輪胎的經歷</a>
+        </li>
+      
+        <li>
           <a href="/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance/">美国留学：学生保险拔智齿</a>
         </li>
       
@@ -462,10 +542,6 @@ posted in
       
         <li>
           <a href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">精英主义与投票考试</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/09/24/notes-on-maximum-likelihood/">Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes</a>
         </li>
       
     </ul>
@@ -519,7 +595,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Zigang Xiao</a>
-  - Copyright &copy; 2015 - Zigang Xiao (Ivan)
+  - Copyright &copy; 2017 - Zigang Xiao (Ivan)
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>

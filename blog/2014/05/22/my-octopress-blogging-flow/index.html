@@ -131,7 +131,7 @@ https://github.com/imathis/octopress/issues/599
   
 
 
-<time datetime="2014-05-22T22:38:07-05:00" pubdate data-updated="true">May 22<span>nd</span>, 2014</time> - 
+<time datetime="2014-05-22T20:38:07-07:00" pubdate data-updated="true"></time> - 
         
 
 posted in
@@ -153,7 +153,6 @@ posted in
 </figure>
 <p>After blogging with <a href="http://octopress.org">Octopress</a> for a while, I have already gained some insights on it, and my publishing flow has been smoother. I think it is right time to share my flow as a reference.</p>
 <!-- more -->
-
 <h2 id="the-flow">The Flow</h2>
 <p>The following sections outlines the flow. The last section contains assorted tips and tricks. For the basic configuration of Octopress, please refer to the official <a href="http://octopress.org">website</a>. I also recommend installing <a href="http://www.alfredapp.com">Alfred.app</a>.</p>
 <h3 id="creating-a-post-alfred-workflow-blog-publish">Creating a post: alfred workflow (blog publish)</h3>
@@ -166,7 +165,7 @@ posted in
 <p>I use <a href="http://www.sublimetext.com">Sublime Text (ST)</a> as my text editor, because it provides VIM keybinding and there is a huge repository of plugins. While editing, I use [Marked] to instantly render the markdown file and view the result. In fact, the title image shows my editing and previewing in action.</p>
 <p>To make the process sweeter, there is a ST plugin called <code>Marked App Menu</code> that allows you to open the current file in Marked. Just search in ST Package Control to install it.</p>
 <h3 id="previewing-pow-rake-watch-pow-alfred-workflow">Previewing: pow + rake watch + pow alfred workflow</h3>
-<p>To preview the generate website, simply install <a href="http://pow.cx">pow</a> and execute <code>rake watch</code> under octopress directory to monitor the change. Octopress official website provides <a href="http://octopress.org/docs/blogging/">some explanation</a>. After installation, you can view your website locally at <a href="http://octopress.dev">http://octopress.dev</a>.</p>
+<p>To preview the generate website, simply install <a href="http://pow.cx">pow</a> and execute <code>rake watch</code> under octopress directory to monitor the change. Octopress official website provides <a href="http://octopress.org/docs/blogging/">some explanation</a>. After installation, you can view your website locally at <a href="http://octopress.dev" class="uri">http://octopress.dev</a>.</p>
 <p>You should also install the <a href="http://tombeynon.github.io/alfred-pow/">pow alfred workflow</a>, which can help you open pow website in a breeze.</p>
 <figure>
 <img src="https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/pow.png" />
@@ -175,21 +174,31 @@ posted in
 <p>Since I am an EECS student, I write a lot of <a href="/blog/categories/optimization">Optimization</a>, <a href="/blog/categories/machine-learning">Machine Learning</a> and <a href="/blog/categories/computer-vision">Computer Vision</a> stuff, which relies heavily on mathematics. Thus, writing math formulas is a must for me. <a href="http://mathjax.org">MathJax</a> is a javascript library for rendering math by writing LaTeX math. To do this, one needs to configure the site and link to the library. Put these two lines into <code>&lt;octopress&gt;/source/_includes/custom/head.html</code>:</p>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
 </span><span class='line'>  <span class="na">src=</span><span class="s">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'><span class="nt">&lt;/script&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/javascripts/MathJaxLocal.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span></code></pre></td></tr></table>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -197,11 +206,15 @@ posted in
 <p>The first script block loads MathJax, and the second loads a custom configuration in <code>source/javascripts/MathJaxLocal.js</code>. It is a good place to write your own macro there. For instance:</p>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -216,7 +229,10 @@ posted in
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='javascript'><span class='line'><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
 </span><span class='line'>  <span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span>
 </span><span class='line'>      <span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&quot;AMS&quot;</span> <span class="p">},</span>
 </span><span class='line'>      <span class="nx">TagSide</span><span class="o">:</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
@@ -231,13 +247,16 @@ posted in
 </span><span class='line'><span class="p">});</span>
 </span><span class='line'>
 </span><span class='line'><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">loadComplete</span><span class="p">(</span><span class="s2">&quot;/javascripts/MathJaxLocal.js&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
 </div>
 <p>Now you can write math!</p>
-<p><span class="math">\[e^{i \pi} + 1 = 0\]</span></p>
+<p><span class="math display">\[e^{i \pi} + 1 = 0\]</span></p>
 <p>There are a couple of good articles for reference:</p>
 <ol type="1">
 <li><a href="http://drz.ac/2013/01/03/blogging-with-math/">Blogging With Math: Octopress, MathJax, and Pandoc</a></li>
@@ -256,11 +275,15 @@ posted in
 <p>After installation, I update the <code>markdown</code> section of <code>_config.yml</code> with the following:</p>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -268,7 +291,10 @@ posted in
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">markdown</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">pandoc</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">markdown</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">pandoc</span>
 </span><span class='line'><span class="l-Scalar-Plain">pandoc</span><span class="p-Indicator">:</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">html5</span>
 </span><span class='line'>  <span class="l-Scalar-Plain">extensions</span><span class="p-Indicator">:</span>
@@ -276,12 +302,15 @@ posted in
 </span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">mathjax</span>
 </span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">bibliography</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">source/blog.bib</span>
 </span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">csl</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">_style/ieee.csl</span>
-</span></code></pre></td></tr></table>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
 </div>
-<p>which tells Octopress to use pandoc, and pass the option <code>smart</code>, <code>mathjax</code> and use the <em>style file</em> <code>ieee.csl</code> to format the <em>biliography</em> <code>blog.bib</code>. For example, <code>refer to [@xiao2013optimally]</code> generates <em>refer to <span class="citation" data-cites="xiao2013optimally">[1]</span></em> (scroll down to see the <a href="#references">References</a> section).</p>
+<p>which tells Octopress to use pandoc, and pass the option <code>smart</code>, <code>mathjax</code> and use the <em>style file</em> <code>ieee.csl</code> to format the <em>biliography</em> <code>blog.bib</code>. For example, <code>refer to [@xiao2013optimally]</code> generates <em>refer to <span class="citation" data-cites="xiao2013optimally">[[1]]</span></em> (scroll down to see the <a href="#references">References</a> section).</p>
 <h3 id="pandocs-markdown-reference-dash.app-and-dash-alfred-workflow">Pandoc’s Markdown Reference: Dash.app and Dash alfred workflow</h3>
 <p><a href="http://kapeli.com/dash">Dash.app</a> is an API Documentation Browser and Code Snippet Manager. It provides an convinient alfred workflow that searches the documents:</p>
 <figure>
@@ -294,14 +323,16 @@ posted in
 <h3 id="tips-and-tricks">Tips and tricks</h3>
 <p>Continuously growing…</p>
 <ul>
-<li>There are lots of undocumented/less documented things in Octopress, which can help you write blog posts kinda ‘programmatically’. For example, <code>http://blog.ivansiu.com</code> returns the url of site, which is <a href="http://blog.ivansiu.com">http://blog.ivansiu.com</a> in my case. In fact, anything in <code>_config.yml</code> is a variable under <code>site</code>.</li>
+<li>There are lots of undocumented/less documented things in Octopress, which can help you write blog posts kinda ‘programmatically’. For example, <code>http://blog.ivansiu.com</code> returns the url of site, which is <a href="http://blog.ivansiu.com" class="uri">http://blog.ivansiu.com</a> in my case. In fact, anything in <code>_config.yml</code> is a variable under <code>site</code>.</li>
 </ul>
 <h2 id="conclusion">Conclusion</h2>
 <p>In conclusion, Octopress is a revolutionary blogging framework. It provides a robust static site building framework (jekyll, bootstrap, scss, etc.) and allows complete control over the source, which is perfect for users that have basic coding and source control skills. In fact, it gives me a similar feeling of getting touch with a Mac. That is, compared to Windows, which is too close and does not provide built-in programming-friendly environment (Console, UNIX stuff, etc.), and compared to Linux, which is very open but too many variations and too many customizations needed, it combines their advantages by presenting a user- friendly interface and provides all sorts of underlying UNIX tools. I am very satisfied about this and my intention to write posts have revived. However, some sort of basic configuration is still needed. In particular, I would say Mathjax rendering and better image support definitely need to be integrated in the next release.</p>
 <p><em>What’s your thought? Do you have any neat tricks publishing with <a href="http://octopress.org">Octopress</a>? Please leave your comments.</em></p>
-<div class="references">
-<h2>References</h2>
-<p>[1] Z. Xiao, Y. Du, H. Tian, and M. D. Wong, “Optimally minimizing overlay violation in self-aligned double patterning decomposition for row-based standard cell layout in polynomial time,” in <em>Computer-aided design (iCCAD), 2013 iEEE/aCM international conference on</em>, 2013, pp. 32–39.</p>
+<h2 id="references" class="unnumbered">References</h2>
+<div id="refs" class="references">
+<div id="ref-xiao2013optimally">
+<p>[1] Z. Xiao, Y. Du, H. Tian, and M. D. Wong, “Optimally minimizing overlay violation in self-aligned double patterning decomposition for row-based standard cell layout in polynomial time,” in <em>Computer-aided design (iccad), 2013 ieee/acm international conference on</em>, 2013, pp. 32–39.</p>
+</div>
 </div>
 </div>
 
@@ -329,7 +360,7 @@ posted in
   
 
 
-<time datetime="2014-05-22T22:38:07-05:00" pubdate data-updated="true">May 22<span>nd</span>, 2014</time> - 
+<time datetime="2014-05-22T20:38:07-07:00" pubdate data-updated="true"></time> - 
       
 
 posted in
@@ -382,6 +413,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2017/04/02/zai-mei-guo-huan-lun-tai-de-jing-li/">在美國換輪胎的經歷</a>
+        </li>
+      
+        <li>
           <a href="/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance/">美国留学：学生保险拔智齿</a>
         </li>
       
@@ -395,10 +430,6 @@ posted in
       
         <li>
           <a href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">精英主义与投票考试</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/09/24/notes-on-maximum-likelihood/">Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes</a>
         </li>
       
     </ul>
@@ -452,7 +483,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Zigang Xiao</a>
-  - Copyright &copy; 2015 - Zigang Xiao (Ivan)
+  - Copyright &copy; 2017 - Zigang Xiao (Ivan)
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>

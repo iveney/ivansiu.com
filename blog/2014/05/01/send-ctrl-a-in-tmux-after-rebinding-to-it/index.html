@@ -131,7 +131,7 @@ https://github.com/imathis/octopress/issues/599
   
 
 
-<time datetime="2014-05-01T17:14:46-05:00" pubdate data-updated="true">May 1<span>st</span>, 2014</time> - 
+<time datetime="2014-05-01T15:14:46-07:00" pubdate data-updated="true"></time> - 
         
 
 posted in
@@ -153,28 +153,34 @@ posted in
 </figure>
 <p>While <code>tmux</code> provides much better functionality than <code>screen</code>, most of us that work with tmux have been using <code>screen</code> for a long time, and it is more comfortable for us to use <code>ctrl-a</code> than the default <code>ctrl-b</code>, which is finger-strechy. Thus the first thing I will do after installing <code>tmux</code> is to rebind the prefix to <code>ctrl-a</code>. That gives us the most handy way of swapping last two windows by typing <code>ctrl-a ctrl-a</code>.</p>
 <!-- more -->
-
 <p>However, this comes for a price. That is, in a shell environment that is integrated with <code>readline</code>, <code>ctrl-a</code> is used to jump the begining of line. Now that it is mapped as prefix, we can no longer do that.</p>
 <p>Surprisingly, the solution is pretty simple. Just use <code>ctrl-a a</code> to send the prefix itself, and use <code>ctrl-a ctrl-a</code> to go to the last window. Specifically, add these two lines in <code>~/.tmux.conf</code>:</p>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
-<span>~/.tmux.conf </span>
+<figure class="code">
+<figcaption>
+<span>~/.tmux.conf</span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">bind </span>a send-prefix
+</pre>
+</td>
+<td class="code">
+<pre><code class='bash'><span class='line'><span class="nb">bind </span>a send-prefix
 </span><span class='line'><span class="nb">bind</span>-key C-a last-window
-</span></code></pre></td></tr></table>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
 </div>
 <p><a href="http://stackoverflow.com/questions/11557076/if-i-set-key-bind-of-c-b-to-c-a-in-tmux-how-can-i-move-the-cursor-to-the-beginni#comment15297769_11561128">via</a>.</p>
-<div class="references">
-
-</div>
 </div>
 
 
@@ -201,7 +207,7 @@ posted in
   
 
 
-<time datetime="2014-05-01T17:14:46-05:00" pubdate data-updated="true">May 1<span>st</span>, 2014</time> - 
+<time datetime="2014-05-01T15:14:46-07:00" pubdate data-updated="true"></time> - 
       
 
 posted in
@@ -226,7 +232,7 @@ posted in
 
     
     
-      <a class="pull-left" href="/blog/2014/05/01/source-highlight-for-matlab-slash-octave/" title="Previous Post: Source-highlight for matlab/octave">&laquo; Source-highlight for matlab/octave</a>
+      <a class="pull-left" href="/blog/2014/04/30/source-highlight-for-matlab-slash-octave/" title="Previous Post: Source-highlight for matlab/octave">&laquo; Source-highlight for matlab/octave</a>
     
     
       <a class="pull-right" href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/" title="Next Post: OS X: get full path of file using realpath">OS X: get full path of file using realpath &raquo;</a>
@@ -254,6 +260,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2017/04/02/zai-mei-guo-huan-lun-tai-de-jing-li/">在美國換輪胎的經歷</a>
+        </li>
+      
+        <li>
           <a href="/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance/">美国留学：学生保险拔智齿</a>
         </li>
       
@@ -267,10 +277,6 @@ posted in
       
         <li>
           <a href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">精英主义与投票考试</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/09/24/notes-on-maximum-likelihood/">Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes</a>
         </li>
       
     </ul>
@@ -324,7 +330,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Zigang Xiao</a>
-  - Copyright &copy; 2015 - Zigang Xiao (Ivan)
+  - Copyright &copy; 2017 - Zigang Xiao (Ivan)
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>

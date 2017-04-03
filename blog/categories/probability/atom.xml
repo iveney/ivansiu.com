@@ -4,7 +4,7 @@
   <title><![CDATA[Category: probability | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/probability/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2015-05-22T17:32:50-05:00</updated>
+  <updated>2017-04-03T02:20:27-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -16,10 +16,12 @@
   <entry>
     <title type="html"><![CDATA[Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood/"/>
-    <updated>2014-09-24T15:41:44-05:00</updated>
+    <updated>2014-09-24T13:41:44-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood</id>
     <content type="html"><![CDATA[Let $\data$ be a set of data generated from some distribution parameterized by
 $\theta$. We want to *estimate* the unknown parameter $\theta$. What we can do?
+
+<!-- more -->
 
 Essentially, we want to find a most likely value of $\theta$ given $\data$,
 that is $\arg \max P(\theta | \data)$. According to Bayes Rule, we have
@@ -35,17 +37,15 @@ and the terms have the following meanings:
 - $P(\theta)$: Prior
 - $P(\data)$: Evidence
 
-<!-- more -->
-
 ## Maximum Likelihood Estimation (MLE)
 
 An easy way out is to use the MLE method.
-We want to find a $\theta$ the *best explains* the data. 
+We want to find a $\theta$ the *best explains* the data.
 That is, we maximize $P(\data \given \theta)$.
-Denote such a value as $\hat{\theta}_{ML}$. We have 
+Denote such a value as $\hat{\theta}_{ML}$. We have
 
 $$
-\hat{\theta}_{ML} = \argmax_\theta P(\data \given \theta) = 
+\hat{\theta}_{ML} = \argmax_\theta P(\data \given \theta) =
 \argmax_\theta P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta )
 $$
 
@@ -53,11 +53,11 @@ Note that the above $P$ is a joint distribution over the data.
 We usually assume the observations are *independent*. Thus, we have
 
 $$
-P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) = 
+P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
 \prod_{i=1}^{N} P(\mathbf{x}_i \given \theta )
 $$
 
-We usually use logarithm to simplify the computation, as 
+We usually use logarithm to simplify the computation, as
 logarithm is monotonically increasing. Thus, we write:
 
 $$
@@ -70,7 +70,7 @@ $$
 \hat{\theta}_{ML} = \argmax_\theta \mathcal{L}(\data \given \theta)
 $$
 
-If we know the distribution $P$, we can usually solve the above by 
+If we know the distribution $P$, we can usually solve the above by
 setting derivative of $\theta$ to 0 and solve for $\theta$, that is,
 
 $$
@@ -79,7 +79,7 @@ $$
 
 ## Maximum A Posteriori (MAP)
 
-In MAP, we maximize $P(\theta \given \data)$ directly. Denote the MAP hypothesis 
+In MAP, we maximize $P(\theta \given \data)$ directly. Denote the MAP hypothesis
 as $\hat{\theta}_{MAP}$, we have:
 
 $$\begin{array}{rl}
@@ -109,7 +109,7 @@ $$
 $$
 
 The extra prior term has the effect that we are essentially 'pulling' the
-$\theta$ distribution towards prior value. This makes sense as we are 
+$\theta$ distribution towards prior value. This makes sense as we are
 putting our domain knowledge as *prior* and intuitively the estimation is
 biased towards the *prior* value.
 
@@ -141,7 +141,7 @@ Note that the learning of naive bayes simply involves in estimating
 $P(a_i \given v_j)$ and $P(v_j)$ based on the frequencies in the training data.
 
 Normally the conditional independence assumption does not hold, but naive bayes
-performs well even if so. 
+performs well even if so.
 More importantly, **when conditional independence is satisfied, Naive Bayes corresponds to MAP classification.**
 
 ## Conclusion
@@ -170,7 +170,8 @@ After reading this [article], I have the following interpretation:
 - The MAP approach is a direct applicatin of Bayes Theorem. Thus, it can be regarded as a "bayesian" way of thinking.
 
 
-[article]: http://www.behind-the-enemy-lines.com/2008/01/are-you-bayesian-or-frequentist-or.html]]></content>
+[article]: http://www.behind-the-enemy-lines.com/2008/01/are-you-bayesian-or-frequentist-or.html
+]]></content>
   </entry>
   
 </feed>

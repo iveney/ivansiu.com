@@ -131,7 +131,7 @@ https://github.com/imathis/octopress/issues/599
   
 
 
-<time datetime="2014-05-01T19:58:20-05:00" pubdate data-updated="true">May 1<span>st</span>, 2014</time> - 
+<time datetime="2014-05-01T17:58:20-07:00" pubdate data-updated="true"></time> - 
         
 
 posted in
@@ -153,14 +153,17 @@ posted in
 </figure>
 <p>One of the neat things you can do in OS X is to reveal a file in Finder.app from some other applications. Turns out lots of the time, we also want to do that in the terminal. The following script helps you with that:</p>
 <!-- more -->
-
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span>reveal</span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -169,7 +172,10 @@ posted in
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="c">#!/usr/bin/osascript</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='applescript'><span class='line'><span class="c">#!/usr/bin/osascript</span>
 </span><span class='line'><span class="k">on</span> <span class="nb">run</span> <span class="nv">args</span>
 </span><span class='line'>  <span class="k">set</span> <span class="nv">fullpath</span> <span class="k">to</span> <span class="nb">do shell script</span> <span class="s2">&quot;realpath &quot;</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nb">quoted form</span> <span class="k">of</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">of</span> <span class="nv">args</span><span class="p">)</span>
 </span><span class='line'>  <span class="k">set</span> <span class="nv">theFile</span> <span class="k">to</span> <span class="nv">POSIX</span> <span class="nv">file</span> <span class="nv">fullpath</span>
@@ -178,7 +184,10 @@ posted in
 </span><span class='line'>      <span class="nb">activate</span>
 </span><span class='line'>  <span class="k">end</span> <span class="k">tell</span>
 </span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -188,9 +197,6 @@ posted in
 <li>You should put this into a directory in your search path. I recommend in <code>~/bin</code>. Also remember to <code>chmod +x</code>.</li>
 <li>The above requires another script <code>realpath</code>, which returns the fullpath of a file. You can find it <a href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">here</a>.</li>
 </ol>
-<div class="references">
-
-</div>
 </div>
 
 
@@ -217,7 +223,7 @@ posted in
   
 
 
-<time datetime="2014-05-01T19:58:20-05:00" pubdate data-updated="true">May 1<span>st</span>, 2014</time> - 
+<time datetime="2014-05-01T17:58:20-07:00" pubdate data-updated="true"></time> - 
       
 
 posted in
@@ -270,6 +276,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2017/04/02/zai-mei-guo-huan-lun-tai-de-jing-li/">在美國換輪胎的經歷</a>
+        </li>
+      
+        <li>
           <a href="/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance/">美国留学：学生保险拔智齿</a>
         </li>
       
@@ -283,10 +293,6 @@ posted in
       
         <li>
           <a href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">精英主义与投票考试</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/09/24/notes-on-maximum-likelihood/">Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes</a>
         </li>
       
     </ul>
@@ -340,7 +346,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Zigang Xiao</a>
-  - Copyright &copy; 2015 - Zigang Xiao (Ivan)
+  - Copyright &copy; 2017 - Zigang Xiao (Ivan)
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>

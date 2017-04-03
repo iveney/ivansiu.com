@@ -133,7 +133,7 @@ https://github.com/imathis/octopress/issues/599
   
 
 
-<time datetime="2013-10-08T15:59:00-05:00" pubdate data-updated="true">Oct 8<span>th</span>, 2013</time> - 
+<time datetime="2013-10-08T15:59:00-07:00" pubdate data-updated="true"></time> - 
         
 
 posted in
@@ -154,57 +154,53 @@ posted in
 <p>Hopcroft-Karp algorithm also utilizes the augmenting path. The difference between the <a href="/blog/2013/10/07/graph-matching-augmenting-path/">simple augmenting path algorithm</a> is, instead of searching augmenting path one by one, it looks for many paths in the same time. The paths found at each iteration are in fact <strong>vertex disjoint path</strong>. By doing so, the number of iterations can be cut down, since there cannot be too many disjoing paths.</p>
 <p>The major observation is that the length of augementing path grows at each step. Thus, if we keep finding a set of vertex disjoint augmenting paths, the algorithm is guaranteed to stop eventually and faster than finding the path one by one.</p>
 <!-- more -->
-
 <h2 id="finding-maximal-set-of-vertex-disjoint-paths">Finding Maximal Set of Vertex Disjoint Paths</h2>
-<p>Let <span class="math">\(G=(U \cup V, E)\)</span> be the bipartite graph and <span class="math">\(G_M\)</span> be the directed graph w.r.t to matching <span class="math">\(M\)</span>. The <strong>layered graph</strong> is contructed out of <span class="math">\(G_M\)</span>, where the distance at a vertex <span class="math">\(v\)</span> is defined as the length of shortest path from some vertices in <span class="math">\(U\)</span>.</p>
-<p>This can done by simply running a modified BFS on <span class="math">\(G_M\)</span>: we start by enqueing all the free vertices <span class="math">\(U&#39;\)</span> in <span class="math">\(U\)</span> and label them as 0 (distance), propagate and label until one or more free vertices in <span class="math">\(V\)</span> are reached. Let the label (distance) be <span class="math">\(k\)</span>, and denote this graph as <span class="math">\(L\)</span>.</p>
-<p>We can then run a modified DFS on <span class="math">\(L\)</span>, starting from any of the vertices in <span class="math">\(U&#39;\)</span>. Whenever we reach a free vertices in <span class="math">\(V\)</span>, we delete the path <span class="math">\(p\)</span> from <span class="math">\(L\)</span>, and repeat. It can be proven that all the paths found are shortest vertex disjoint paths of length <span class="math">\(k\)</span>. This set of paths are the maximal set we are looking for.</p>
+<p>Let <span class="math inline">\(G=(U \cup V, E)\)</span> be the bipartite graph and <span class="math inline">\(G_M\)</span> be the directed graph w.r.t to matching <span class="math inline">\(M\)</span>. The <strong>layered graph</strong> is contructed out of <span class="math inline">\(G_M\)</span>, where the distance at a vertex <span class="math inline">\(v\)</span> is defined as the length of shortest path from some vertices in <span class="math inline">\(U\)</span>.</p>
+<p>This can done by simply running a modified BFS on <span class="math inline">\(G_M\)</span>: we start by enqueing all the free vertices <span class="math inline">\(U&#39;\)</span> in <span class="math inline">\(U\)</span> and label them as 0 (distance), propagate and label until one or more free vertices in <span class="math inline">\(V\)</span> are reached. Let the label (distance) be <span class="math inline">\(k\)</span>, and denote this graph as <span class="math inline">\(L\)</span>.</p>
+<p>We can then run a modified DFS on <span class="math inline">\(L\)</span>, starting from any of the vertices in <span class="math inline">\(U&#39;\)</span>. Whenever we reach a free vertices in <span class="math inline">\(V\)</span>, we delete the path <span class="math inline">\(p\)</span> from <span class="math inline">\(L\)</span>, and repeat. It can be proven that all the paths found are shortest vertex disjoint paths of length <span class="math inline">\(k\)</span>. This set of paths are the maximal set we are looking for.</p>
 <h2 id="algorithm-outline">Algorithm Outline</h2>
 <ul>
-<li>MAXIMAL-SET-OF-PATHS(<span class="math">\(G=(U \cup V, E), M\)</span>)
+<li>MAXIMAL-SET-OF-PATHS(<span class="math inline">\(G=(U \cup V, E), M\)</span>)
 <ul>
-<li><span class="math">\(P \gets \varnothing\)</span></li>
-<li><span class="math">\(L \gets \)</span> Run modified BFS on <span class="math">\(G_M\)</span></li>
-<li><span class="math">\(U&#39; \gets \)</span> free vertices in <span class="math">\(U\)</span></li>
-<li>for <span class="math">\(u \in U&#39;\)</span>
+<li><span class="math inline">\(P \gets \varnothing\)</span></li>
+<li>$L $ Run modified BFS on <span class="math inline">\(G_M\)</span></li>
+<li>$U’ $ free vertices in <span class="math inline">\(U\)</span></li>
+<li>for <span class="math inline">\(u \in U&#39;\)</span>
 <ul>
-<li><span class="math">\(p \gets \)</span> PARTIAL-DFS(<span class="math">\(G, v, T\)</span>)</li>
-<li>if <span class="math">\(p \neq \varnothing \)</span>
+<li>$p $ PARTIAL-DFS(<span class="math inline">\(G, v, T\)</span>)</li>
+<li>if $p $
 <ul>
-<li><span class="math">\(P = P \cup p\)</span></li>
-<li>Remove <span class="math">\(p\)</span> from <span class="math">\(L\)</span></li>
+<li><span class="math inline">\(P = P \cup p\)</span></li>
+<li>Remove <span class="math inline">\(p\)</span> from <span class="math inline">\(L\)</span></li>
 </ul></li>
 </ul></li>
-<li>return <span class="math">\(P\)</span></li>
+<li>return <span class="math inline">\(P\)</span></li>
 </ul></li>
 </ul>
 <hr />
 <ul>
-<li>HOPCROFT-KARP(<span class="math">\(G\)</span>)
+<li>HOPCROFT-KARP(<span class="math inline">\(G\)</span>)
 <ul>
-<li><span class="math">\(M \gets \varnothing\)</span></li>
+<li><span class="math inline">\(M \gets \varnothing\)</span></li>
 <li>repeat
 <ul>
-<li><span class="math">\(P \gets \)</span> MAXIMAL-SET-OF-PATHS(<span class="math">\(G, M\)</span>)</li>
-<li>if <span class="math">\(P \neq \varnothing\)</span>
+<li>$P $ MAXIMAL-SET-OF-PATHS(<span class="math inline">\(G, M\)</span>)</li>
+<li>if <span class="math inline">\(P \neq \varnothing\)</span>
 <ul>
-<li><span class="math">\(M \gets M \oplus P\)</span></li>
+<li><span class="math inline">\(M \gets M \oplus P\)</span></li>
 </ul></li>
 </ul></li>
-<li>until <span class="math">\(P = \varnothing\)</span></li>
-<li>return <span class="math">\(M\)</span></li>
+<li>until <span class="math inline">\(P = \varnothing\)</span></li>
+<li>return <span class="math inline">\(M\)</span></li>
 </ul></li>
 </ul>
 <h2 id="analysis">Analysis</h2>
-<p>It can be shown that the loop will be executed at most <span class="math">\(O(\sqrt{|V|})\)</span> times, and running the DFS and BFS requires <span class="math">\(O(|E|)\)</span> time. Thus the overall run time is <span class="math">\(O(\sqrt{|V|} |E|)\)</span>.</p>
+<p>It can be shown that the loop will be executed at most <span class="math inline">\(O(\sqrt{|V|})\)</span> times, and running the DFS and BFS requires <span class="math inline">\(O(|E|)\)</span> time. Thus the overall run time is <span class="math inline">\(O(\sqrt{|V|} |E|)\)</span>.</p>
 <h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Hopcroft-Karp">Wikipedia article</a></li>
 <li><a href="http://www.dis.uniroma1.it/~sankowski/lecture2.pdf">Lecture note from Sapienza University of Rome</a></li>
 </ul>
-<div class="references">
-
-</div>
 </div>
 
 
@@ -231,7 +227,7 @@ posted in
   
 
 
-<time datetime="2013-10-08T15:59:00-05:00" pubdate data-updated="true">Oct 8<span>th</span>, 2013</time> - 
+<time datetime="2013-10-08T15:59:00-07:00" pubdate data-updated="true"></time> - 
       
 
 posted in
@@ -284,6 +280,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2017/04/02/zai-mei-guo-huan-lun-tai-de-jing-li/">在美國換輪胎的經歷</a>
+        </li>
+      
+        <li>
           <a href="/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance/">美国留学：学生保险拔智齿</a>
         </li>
       
@@ -297,10 +297,6 @@ posted in
       
         <li>
           <a href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">精英主义与投票考试</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/09/24/notes-on-maximum-likelihood/">Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes</a>
         </li>
       
     </ul>
@@ -354,7 +350,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Zigang Xiao</a>
-  - Copyright &copy; 2015 - Zigang Xiao (Ivan)
+  - Copyright &copy; 2017 - Zigang Xiao (Ivan)
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>

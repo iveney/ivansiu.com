@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: DIY | Zigang Xiao]]></title>
+  <title><![CDATA[Category: diy | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/diy/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2015-05-22T17:32:50-05:00</updated>
+  <updated>2017-04-03T02:20:27-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Fix Mid 2009 MBP RAM not recognized issue]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/"/>
-    <updated>2014-05-28T23:30:56-05:00</updated>
+    <updated>2014-05-28T21:30:56-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue</id>
     <content type="html"><![CDATA[![Possible cause of unrecoganized RAM](https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/mbp09-ram-theory.png)
 
@@ -88,7 +88,7 @@ instruction helpful, leave a comment and share it!*]]></content>
   <entry>
     <title type="html"><![CDATA[Replacing SATA cable in Mid 2009 MBP]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/"/>
-    <updated>2014-05-28T02:15:08-05:00</updated>
+    <updated>2014-05-28T00:15:08-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp</id>
     <content type="html"><![CDATA[![Replacing MBP cable](https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/sata-cable.jpg)
 
@@ -130,7 +130,7 @@ instruction helpful, leave a comment and share it!*
   <entry>
     <title type="html"><![CDATA[Saving $80 by Fixing MagSafe by Yourself]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/"/>
-    <updated>2013-11-08T22:06:00-06:00</updated>
+    <updated>2013-11-08T22:06:00-08:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself</id>
     <content type="html"><![CDATA[After four years of use, the wire on my MagSafe finally fray out. After searching a bit, I found that a new one costs $80!!
 My old memories came back: almost all accessories by Apple are rip-offs. See how low the ratings are:
@@ -194,7 +194,7 @@ instruction helpful, leave a comment and share it!*
   <entry>
     <title type="html"><![CDATA[Installing a new car stereo]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/08/30/installing-a-new-car-stereo/"/>
-    <updated>2013-08-30T16:50:00-05:00</updated>
+    <updated>2013-08-30T16:50:00-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/08/30/installing-a-new-car-stereo</id>
     <content type="html"><![CDATA[I did not realize until my car's radio's broken that, with less than a hundred bucks, you can buy a new Head Unit with nearly all functionality. Some note-worthy features include:
 

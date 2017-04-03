@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">
+  <link rel="canonical" href="http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave/">
   <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Zigang Xiao" type="application/atom+xml">
@@ -29,11 +29,11 @@
   <meta name="og:site_name" content="Zigang Xiao" />
   <meta name="og:title" content="Source-highlight for matlab/octave" />
   <meta name="og:description" content="I recently worked with Matlab a lot. When in console, sometimes I want to use less to quickly examine the file content, and I have already set it up &hellip;" />
-  <meta name="og:url" content="http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/"/>
-  <meta name="url" content="http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/">
+  <meta name="og:url" content="http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave/"/>
+  <meta name="url" content="http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave/">
   
-  <meta name="subject" content="homebrewmatlabtips"/>
-  <meta name="category" content="homebrewmatlabtips"/>
+  <meta name="subject" content="tipsmatlabhomebrew"/>
+  <meta name="category" content="tipsmatlabhomebrew"/>
   
   <meta name="distribution" content="global">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -131,7 +131,7 @@ https://github.com/imathis/octopress/issues/599
   
 
 
-<time datetime="2014-05-01T01:59:40-05:00" pubdate data-updated="true">May 1<span>st</span>, 2014</time> - 
+<time datetime="2014-04-30T23:59:40-07:00" pubdate data-updated="true"></time> - 
         
 
 posted in
@@ -153,14 +153,22 @@ posted in
 </figure>
 <p>I recently worked with Matlab a lot. When in console, sometimes I want to use <code>less</code> to quickly examine the file content, and I have already <a href="http://superuser.com/a/71593">set it up</a> such that it uses <a href="http://www.gnu.org/software/src-highlite/">source-highlight</a> to output colorful escape sequence to the console. However, source-highlight does not come with a syntax support for Matlab by default. Luckily, this <a href="http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html">post</a> and <a href="http://blog.sina.com.cn/s/blog_4513dde60101kpmr.html">this</a> (in Chinese) provides a solution.</p>
 <!-- more -->
-
 <p>First of all, install source-highlight using homebrew.</p>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'>
+<figure class="code">
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>brew install source-highlight</span></code></pre></td></tr></table>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class=''><span class='line'>brew install source-highlight</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -168,15 +176,25 @@ posted in
 <p>Note that source-highlight depends on boost, and as of the date of this post, brew provides a precompiled library (bottle) for boost. However, the python support is compiled against the system python, so if you installed a custom one (say installed via homebrew) and use it by default, brew will compile the boost from source instead, which takes an extremely long time. To prevent this, we need to unlink it first, and link it back afterwards. That is,</p>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew unlink python
+</pre>
+</td>
+<td class="code">
+<pre><code class='bash'><span class='line'>brew unlink python
 </span><span class='line'>brew link python    <span class="c"># after installation</span>
-</span></code></pre></td></tr></table>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -184,41 +202,65 @@ posted in
 <p>Go to the following folder and create two files,</p>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> <span class="sb">`</span>brew --prefix <span class="nb">source</span>-highlight<span class="sb">`</span>/share/source-highlight
-</span></code></pre></td></tr></table>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='bash'><span class='line'><span class="nb">cd</span> <span class="sb">`</span>brew --prefix <span class="nb">source</span>-highlight<span class="sb">`</span>/share/source-highlight
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
 </div>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span>matlab.style</span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="err">keyword</span> <span class="err">blue</span><span class="c1">;</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='ini'><span class='line'><span class="err">keyword</span> <span class="err">blue</span><span class="c1">;</span>
 </span><span class='line'><span class="err">string</span> <span class="c1">#a020f0;</span>
 </span><span class='line'><span class="err">comment</span> <span class="err">darkgreen</span><span class="c1">;</span>
-</span></code></pre></td></tr></table>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
 </div>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span>matlab.lang</span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -233,7 +275,10 @@ posted in
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="na">keyword</span> <span class="o">=</span> <span class="s">&quot;break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while&quot;</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='ini'><span class='line'><span class="na">keyword</span> <span class="o">=</span> <span class="s">&quot;break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while&quot;</span>
 </span><span class='line'>
 </span><span class='line'><span class="na">keyword</span> <span class="o">=</span> <span class="s">&#39;^\s*(break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while)(?=\s)&#39;</span>
 </span><span class='line'>
@@ -248,7 +293,10 @@ posted in
 </span><span class='line'><span class="err">comment</span> <span class="err">start</span> <span class="err">&quot;%&quot;</span>
 </span><span class='line'>
 </span><span class='line'><span class="err">string</span> <span class="err">delim</span> <span class="err">&#39;(?&lt;![\w.])\&#39;&#39;</span> <span class="err">&quot;&#39;&quot;</span> <span class="err">escape</span> <span class="err">&quot;&#39;&#39;&quot;</span>
-</span></code></pre></td></tr></table>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -256,19 +304,26 @@ posted in
 <p>Finally, edit <code>lang.map</code> to create a mapping for matlab file.</p>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span>lang.map</span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo</span> <span class="s1">&#39;m = matlab.lang&#39;</span> &gt;&gt; lang.map
-</span></code></pre></td></tr></table>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='bash'><span class='line'><span class="nb">echo</span> <span class="s1">&#39;m = matlab.lang&#39;</span> &gt;&gt; lang.map
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
-</div>
-<div class="references">
-
 </div>
 </div>
 
@@ -296,7 +351,7 @@ posted in
   
 
 
-<time datetime="2014-05-01T01:59:40-05:00" pubdate data-updated="true">May 1<span>st</span>, 2014</time> - 
+<time datetime="2014-04-30T23:59:40-07:00" pubdate data-updated="true"></time> - 
       
 
 posted in
@@ -311,7 +366,7 @@ posted in
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/" data-via="iveney" data-counturl="http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave/" data-via="iveney" data-counturl="http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave/" >Tweet</a>
   
   
   
@@ -349,6 +404,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2017/04/02/zai-mei-guo-huan-lun-tai-de-jing-li/">在美國換輪胎的經歷</a>
+        </li>
+      
+        <li>
           <a href="/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance/">美国留学：学生保险拔智齿</a>
         </li>
       
@@ -362,10 +421,6 @@ posted in
       
         <li>
           <a href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">精英主义与投票考试</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/09/24/notes-on-maximum-likelihood/">Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes</a>
         </li>
       
     </ul>
@@ -419,7 +474,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Zigang Xiao</a>
-  - Copyright &copy; 2015 - Zigang Xiao (Ivan)
+  - Copyright &copy; 2017 - Zigang Xiao (Ivan)
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>
@@ -445,8 +500,8 @@ posted in
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/';
-        var disqus_url = 'http://blog.ivansiu.com/blog/2014/05/01/source-highlight-for-matlab-slash-octave/';
+        var disqus_identifier = 'http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave/';
+        var disqus_url = 'http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -133,7 +133,7 @@ https://github.com/imathis/octopress/issues/599
   
 
 
-<time datetime="2013-10-07T18:47:00-05:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time> - 
+<time datetime="2013-10-07T18:47:00-07:00" pubdate data-updated="true"></time> - 
         
 
 posted in
@@ -151,36 +151,32 @@ posted in
 
 
   <div class="entry-content"><h2 id="introduction">Introduction</h2>
-<p>Let <span class="math">\(G=(V, E)\)</span> be an undirected graph. Matching in <span class="math">\(G\)</span> is a subset of edges <span class="math">\(M \subseteq E\)</span> such that at most one edge is incident to each vertex in <span class="math">\(V\)</span>.</p>
-<p>A vertex is <em>matched</em> is it is incident to some edge in <span class="math">\(M\)</span>, otherwise it is called <em>free</em> or <em>exposed</em>.</p>
+<p>Let <span class="math inline">\(G=(V, E)\)</span> be an undirected graph. Matching in <span class="math inline">\(G\)</span> is a subset of edges <span class="math inline">\(M \subseteq E\)</span> such that at most one edge is incident to each vertex in <span class="math inline">\(V\)</span>.</p>
+<p>A vertex is <em>matched</em> is it is incident to some edge in <span class="math inline">\(M\)</span>, otherwise it is called <em>free</em> or <em>exposed</em>.</p>
 <h2 id="augmenting-paths">Augmenting Paths</h2>
 <ul>
 <li>Alternating path: a path in which the edges belong alternatively to the matching and not to the matching</li>
 <li>Augmenting path: an alternating path that starts from and ends on exposed vertices</li>
 </ul>
 <p>Clearly, an augmenting path can be ‘flipped’ to increase the matching size <strong>by one</strong>, i.e., just make free vertex matched and make matched vertex free in this path.</p>
-<p><strong>Berge’s Theorem</strong>: The matching M is maximum <strong>iff</strong> there is no augmenting path w.r.t. <span class="math">\(M\)</span>. I personally think the proof is easy but quite powerful.</p>
+<p><strong>Berge’s Theorem</strong>: The matching M is maximum <strong>iff</strong> there is no augmenting path w.r.t. <span class="math inline">\(M\)</span>. I personally think the proof is easy but quite powerful.</p>
 <p>Thus, we can immediately use the theorem to design an algorithm: find augmenting path iteratively until no more can be found. The problem is how we can find the augmenting path.</p>
 <!-- more -->
-
 <h2 id="algorithm-for-bipartite-graph">Algorithm for bipartite graph</h2>
-<p>FIND-AUGMENTING-PATH(<span class="math">\(G=(V_1 \cup V_2, E), M\)</span>)</p>
+<p>FIND-AUGMENTING-PATH(<span class="math inline">\(G=(V_1 \cup V_2, E), M\)</span>)</p>
 <ul>
-<li><span class="math">\(V&#39;_1\)</span> = a set of free vertices in <span class="math">\(V_1\)</span></li>
-<li><span class="math">\(V&#39;_2\)</span> = a set of free vertices in <span class="math">\(V_2\)</span></li>
-<li>Construct the directed graph <span class="math">\(G_M = (V_1 \cup V_2, E_M)\)</span>
+<li><span class="math inline">\(V&#39;_1\)</span> = a set of free vertices in <span class="math inline">\(V_1\)</span></li>
+<li><span class="math inline">\(V&#39;_2\)</span> = a set of free vertices in <span class="math inline">\(V_2\)</span></li>
+<li>Construct the directed graph <span class="math inline">\(G_M = (V_1 \cup V_2, E_M)\)</span>
 <ul>
-<li><span class="math">\(E_M\)</span> is a set of directed edges such that it includes all arcs from <span class="math">\(V_1\)</span> to <span class="math">\(V_2\)</span>, and all matching arcs from <span class="math">\(V_2\)</span> to <span class="math">\(V_1\)</span></li>
-<li>i.e., <span class="math">\(E_M = &#92;{(v_1, v_2) : v_1, v_2 \in E \setminus M, v_1 \in V_1, v_2 \in V_2&#92;} \cup &#92;{(v_2, v_1) : v_1, v_2 \in M, v_1 \in V_1, v_2 \in V_2&#92;}\)</span></li>
+<li><span class="math inline">\(E_M\)</span> is a set of directed edges such that it includes all arcs from <span class="math inline">\(V_1\)</span> to <span class="math inline">\(V_2\)</span>, and all matching arcs from <span class="math inline">\(V_2\)</span> to <span class="math inline">\(V_1\)</span></li>
+<li>i.e., <span class="math inline">\(E_M = \\{(v_1, v_2) : v_1, v_2 \in E \setminus M, v_1 \in V_1, v_2 \in V_2\\} \cup \\{(v_2, v_1) : v_1, v_2 \in M, v_1 \in V_1, v_2 \in V_2\\}\)</span></li>
 </ul></li>
-<li>Find a simple path <span class="math">\(p\)</span> from <span class="math">\(V&#39;\_1\)</span> to <span class="math">\(V&#39;\_2\)</span> in <span class="math">\(G_M\)</span></li>
+<li>Find a simple path <span class="math inline">\(p\)</span> from <span class="math inline">\(V&#39;\_1\)</span> to <span class="math inline">\(V&#39;\_2\)</span> in <span class="math inline">\(G_M\)</span></li>
 </ul>
-<p>Note that the above graph <span class="math">\(G\_M\)</span> is similar to the residual network in network flow. Apparently, <span class="math">\(p\)</span> starts from a free vertex in <span class="math">\(V&#39;\_1\)</span> and ends at another free vertex in <span class="math">\(V&#39;\_2\)</span>, thus it is an augmenting path.</p>
+<p>Note that the above graph <span class="math inline">\(G\_M\)</span> is similar to the residual network in network flow. Apparently, <span class="math inline">\(p\)</span> starts from a free vertex in <span class="math inline">\(V&#39;\_1\)</span> and ends at another free vertex in <span class="math inline">\(V&#39;\_2\)</span>, thus it is an augmenting path.</p>
 <h2 id="complexity">Complexity</h2>
-<p>The maximum size of matching is upper bounded by <span class="math">\(|V|/2\)</span>, and each step, the matching size is incremented by one. Thus, the number of augmenting path found will be at most <span class="math">\(O(|V|)\)</span>. At each step, it takes <span class="math">\(O(|E|)\)</span> to find a path. Thus the overall running time is <span class="math">\(O(|V||E|)\)</span>.</p>
-<div class="references">
-
-</div>
+<p>The maximum size of matching is upper bounded by <span class="math inline">\(|V|/2\)</span>, and each step, the matching size is incremented by one. Thus, the number of augmenting path found will be at most <span class="math inline">\(O(|V|)\)</span>. At each step, it takes <span class="math inline">\(O(|E|)\)</span> to find a path. Thus the overall running time is <span class="math inline">\(O(|V||E|)\)</span>.</p>
 </div>
 
 
@@ -207,7 +203,7 @@ posted in
   
 
 
-<time datetime="2013-10-07T18:47:00-05:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time> - 
+<time datetime="2013-10-07T18:47:00-07:00" pubdate data-updated="true"></time> - 
       
 
 posted in
@@ -260,6 +256,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2017/04/02/zai-mei-guo-huan-lun-tai-de-jing-li/">在美國換輪胎的經歷</a>
+        </li>
+      
+        <li>
           <a href="/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance/">美国留学：学生保险拔智齿</a>
         </li>
       
@@ -273,10 +273,6 @@ posted in
       
         <li>
           <a href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">精英主义与投票考试</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/09/24/notes-on-maximum-likelihood/">Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes</a>
         </li>
       
     </ul>
@@ -330,7 +326,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Zigang Xiao</a>
-  - Copyright &copy; 2015 - Zigang Xiao (Ivan)
+  - Copyright &copy; 2017 - Zigang Xiao (Ivan)
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>

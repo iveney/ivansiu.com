@@ -131,7 +131,7 @@ https://github.com/imathis/octopress/issues/599
   
 
 
-<time datetime="2013-10-07T18:08:00-05:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time> - 
+<time datetime="2013-10-07T18:08:00-07:00" pubdate data-updated="true"></time> - 
         
 
 posted in
@@ -151,8 +151,7 @@ posted in
   <div class="entry-content"><p>According to CLRS: Many of the asymptotically fastest maximum-flow algorithms are push-relabel algorithms, and the fastest actual implementations of maximum-flow algorithms are based on the push-relabel method. Push-relabel methods also efficiently solve other flow problems, such as the minimum-cost flow problem.</p>
 <p>This algorithm has a very different flavor. The overall idea is to generate a ‘preflow’ that may not satisfy the flow properties, and keep ‘pushing’) and ‘elevating’ (relabelling) the vertices until we cannot do that. We then remove the ‘excess’ from the preflow and obtain a valid flow, which is also a max flow. In particular, the in-flow may be larger than out-flow at a vertex. The amount of overflow is called ‘excess’.</p>
 <!-- more -->
-
-<p>The intuition behind is this: think of the vertices as platforms that have different height, where initially <span class="math">\(S\)</span> has <span class="math">\(|V|\)</span> height and all other vertices have 0 heights. The flow can only be pushed from higher vertices to lower vertices. Whenever we do not have any flow to push, we find some vertex that has unsaturated out edge to its neighbor vertices to ‘relabel’, i.e., elevating its height such that we can continue to ‘push’. Thus, there are two operations ‘push’ and ‘relabel’ (and thus the name):</p>
+<p>The intuition behind is this: think of the vertices as platforms that have different height, where initially <span class="math inline">\(S\)</span> has <span class="math inline">\(|V|\)</span> height and all other vertices have 0 heights. The flow can only be pushed from higher vertices to lower vertices. Whenever we do not have any flow to push, we find some vertex that has unsaturated out edge to its neighbor vertices to ‘relabel’, i.e., elevating its height such that we can continue to ‘push’. Thus, there are two operations ‘push’ and ‘relabel’ (and thus the name):</p>
 <pre><code>push: sending excess from u to v
 relabel: increase the height of u to min({v: neighbor of u})+1</code></pre>
 <p>The algorithm is as follows:</p>
@@ -162,10 +161,7 @@ While there is vertex that can be pushed or relabel
   do push or relabel
 End while
 return F.</code></pre>
-<p>The naive implementation has runtime <span class="math">\(O(|V|^2 |E|)\)</span>, and can be improved to <span class="math">\(O(|V|^3)\)</span>.</p>
-<div class="references">
-
-</div>
+<p>The naive implementation has runtime <span class="math inline">\(O(|V|^2 |E|)\)</span>, and can be improved to <span class="math inline">\(O(|V|^3)\)</span>.</p>
 </div>
 
 
@@ -192,7 +188,7 @@ return F.</code></pre>
   
 
 
-<time datetime="2013-10-07T18:08:00-05:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time> - 
+<time datetime="2013-10-07T18:08:00-07:00" pubdate data-updated="true"></time> - 
       
 
 posted in
@@ -245,6 +241,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2017/04/02/zai-mei-guo-huan-lun-tai-de-jing-li/">在美國換輪胎的經歷</a>
+        </li>
+      
+        <li>
           <a href="/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance/">美国留学：学生保险拔智齿</a>
         </li>
       
@@ -258,10 +258,6 @@ posted in
       
         <li>
           <a href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">精英主义与投票考试</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/09/24/notes-on-maximum-likelihood/">Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes</a>
         </li>
       
     </ul>
@@ -315,7 +311,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Zigang Xiao</a>
-  - Copyright &copy; 2015 - Zigang Xiao (Ivan)
+  - Copyright &copy; 2017 - Zigang Xiao (Ivan)
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>

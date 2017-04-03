@@ -22,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.ivansiu.com/blog/page/3/">
+  <link rel="canonical" href="http://blog.ivansiu.com/posts/2/">
   <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Zigang Xiao" type="application/atom+xml">
@@ -30,8 +30,8 @@
   <meta name="og:site_name" content="Zigang Xiao" />
   <meta name="og:title" content="Zigang Xiao" />
   <meta name="og:description" content=" My newly setup blog that will post ideas and codes. " />
-  <meta name="og:url" content="http://blog.ivansiu.com/blog/page/3/index.html"/>
-  <meta name="url" content="http://blog.ivansiu.com/blog/page/3/index.html">
+  <meta name="og:url" content="http://blog.ivansiu.com/posts/2/index.html"/>
+  <meta name="url" content="http://blog.ivansiu.com/posts/2/index.html">
   
   <meta name="distribution" content="global">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -76,9 +76,9 @@ https://github.com/imathis/octopress/issues/599
     <div id="hero-inner" class="container">
       <div class="span10 offset1">
   <h1>
-      I&#8217;m <em>Zigang Xiao (Ivan)</em>,<br/>
-      a <em>PhD candidate</em><br/>
-      in <em>University of Illinois</em>.
+      I'm <em>Zigang Xiao (Ivan)</em>,<br/>
+      an <em>engineer</em> in <em>bay area</em>.<br/>
+      I do <em>ML</em> stuff.
   </h1>
 </div>
 
@@ -100,6 +100,10 @@ https://github.com/imathis/octopress/issues/599
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2017/04/02/zai-mei-guo-huan-lun-tai-de-jing-li/">在美國換輪胎的經歷</a>
+        </li>
+      
+        <li>
           <a href="/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance/">美国留学：学生保险拔智齿</a>
         </li>
       
@@ -113,10 +117,6 @@ https://github.com/imathis/octopress/issues/599
       
         <li>
           <a href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">精英主义与投票考试</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/09/24/notes-on-maximum-likelihood/">Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes</a>
         </li>
       
     </ul>
@@ -166,6 +166,624 @@ https://github.com/imathis/octopress/issues/599
 
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">Sparse Signal Reconstruction via L1-minimization</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-18T20:13:08-07:00" pubdate data-updated="true"></time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/machine-learning/'>machine learning</a>, <a class='category' href='/blog/categories/signal-processing/'>signal processing</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://dl.dropboxusercontent.com/u/3315210/blog/l1/sparse_signal_reconstruction.png"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/sparse_signal_reconstruction.png" alt="Sparse Signal Reconstruction Results" /></a></p>
+<p>This is a follow-up of the <a href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">previous post</a> on applications of L1 minimization.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">A Comparison of Least Square, L2-regularization and L1-regularization</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-14T19:32:38-07:00" pubdate data-updated="true"></time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/machine-learning/'>machine learning</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/coef.png" alt="Recovered Coefficients by Different Methods" /><figcaption>Recovered Coefficients by Different Methods</figcaption>
+</figure>
+<h1 id="problem-setting">Problem Setting</h1>
+<p>Ordinary Least Square (OLS), L2-regularization and L1-regularization are all techniques of finding solutions in a linear system. However, they serve for different purposes. Recently, L1-regularization gains much attention due to its ability in finding sparse solutions. This post demonstrates this by comparing OLS, L2 and L1 regularization.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/02/debugging-applescript-print-to-a-file/">Debugging AppleScript: Print to a File</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-02T14:26:50-07:00" pubdate data-updated="true"></time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/applescript/'>applescript</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Debugging AppleScript is easy when you work with the script editor, simply use <code>log</code> to print out anything in the console. However, after you compiled it to an app, this cannot work anymore.</p>
+<p>I find there are several ways to do it in this <a href="http://stackoverflow.com/questions/2749863/applescript-editor-write-message-to-the-result-window">thread</a>. The <a href="http://stackoverflow.com/a/21309748/577704">two approaches</a> that work best for me are:</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/02/debugging-applescript-print-to-a-file/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/01/os-x-reveal-file-in-console/">OS X: Reveal File in Console</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-01T17:58:20-07:00" pubdate data-updated="true"></time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/osx/'>osx</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-os-x-reveal-file-in-console.png" />
+</figure>
+<p>One of the neat things you can do in OS X is to reveal a file in Finder.app from some other applications. Turns out lots of the time, we also want to do that in the terminal. The following script helps you with that:</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/01/os-x-reveal-file-in-console/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">OS X: Get Full Path of File Using Realpath</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-01T16:25:56-07:00" pubdate data-updated="true"></time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/osx/'>osx</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="bogus-wrapper">
+<notextile>
+<figure class="code">
+<figcaption>
+<span>Demonstrate of realpath</span>
+</figcaption>
+<div class="highlight">
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='bash'><span class='line'>➜  /Applications  realpath iBooks.app
+</span><span class='line'>/Applications/iBooks.app
+</span><span class='line'>➜  /Applications
+</span></code></pre>
+</td>
+</tr>
+</table>
+</div>
+</figure>
+</notextile>
+</div>
+<p><code>realpath</code> is a command line utility that is included in most UNIX distributions but not Mac OS X. Thanks to <a href="https://github.com/harto">Stuart Campbell</a>, a minimal implementation is provided <a href="https://github.com/harto/realpath-osx">here</a>, and my <a href="https://github.com/iveney/realpath-osx">fork</a>.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Send Ctrl-a in Tmux After Rebinding to It</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-01T15:14:46-07:00" pubdate data-updated="true"></time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/tips/'>tips</a>, <a class='category' href='/blog/categories/tmux/'>tmux</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png" />
+</figure>
+<p>While <code>tmux</code> provides much better functionality than <code>screen</code>, most of us that work with tmux have been using <code>screen</code> for a long time, and it is more comfortable for us to use <code>ctrl-a</code> than the default <code>ctrl-b</code>, which is finger-strechy. Thus the first thing I will do after installing <code>tmux</code> is to rebind the prefix to <code>ctrl-a</code>. That gives us the most handy way of swapping last two windows by typing <code>ctrl-a ctrl-a</code>.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/30/source-highlight-for-matlab-slash-octave/">Source-highlight for Matlab/octave</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-30T23:59:40-07:00" pubdate data-updated="true"></time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/homebrew/'>homebrew</a>, <a class='category' href='/blog/categories/matlab/'>matlab</a>, <a class='category' href='/blog/categories/tips/'>tips</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure>
+<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-source-highlight-for-matlab-slash-octave.png" />
+</figure>
+<p>I recently worked with Matlab a lot. When in console, sometimes I want to use <code>less</code> to quickly examine the file content, and I have already <a href="http://superuser.com/a/71593">set it up</a> such that it uses <a href="http://www.gnu.org/software/src-highlite/">source-highlight</a> to output colorful escape sequence to the console. However, source-highlight does not come with a syntax support for Matlab by default. Luckily, this <a href="http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html">post</a> and <a href="http://blog.sina.com.cn/s/blog_4513dde60101kpmr.html">this</a> (in Chinese) provides a solution.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/04/30/source-highlight-for-matlab-slash-octave/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Batch Remove Photos in iPhone, Batch Convert Videos and Upload Back</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-29T18:16:21-08:00" pubdate data-updated="true"></time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/iphone/'>iphone</a>, <a class='category' href='/blog/categories/workflow/'>workflow</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>One of the problems that drives iOS user crazy is the user-unfriendly manipulation/syncing of photos in iOS. There are just no easy way to remove photos in batch (though you can delete the entire camera roll in the settings).</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/01/29/batch-remove-photos-in-iphone/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/">Fix (Ugly) Safari 7.0 Not Using Local Pac File</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-05T00:03:43-08:00" pubdate data-updated="true"></time> - 
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/networking/'>networking</a>, <a class='category' href='/blog/categories/osx/'>osx</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all. Turns out because of sandboxing, it will not allow reading file from local. A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
+<p>However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:</p>
+<div class="bogus-wrapper">
+<notextile>
+<figure class="code">
+<div class="highlight">
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class=''><span class='line'>sudo apachectl start</span></code></pre>
+</td>
+</tr>
+</table>
+</div>
+</figure>
+</notextile>
+</div>
+<p>Also, place the pac file under <code>/Library/WebServer/Documents</code>, which is the default Document Root of Apache.</p>
+<p>Tom Fischer proposed <a href="https://discussions.apple.com/thread/3202499?start=30&amp;tstart=0">another way</a> to get around, however I don’t think it a good idea to mess around the system files.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/12/03/latex-tips-and-tricks-collection/">LaTeX Tips and Tricks Collection</a></h1>
     
     
@@ -191,13 +809,13 @@ https://github.com/imathis/octopress/issues/599
   
 
 
-<time datetime="2013-12-03T15:18:00-06:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2013</time> - 
+<time datetime="2013-12-03T15:18:00-08:00" pubdate data-updated="true"></time> - 
         
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/latex/'>LaTeX</a>
+    <a class='category' href='/blog/categories/latex/'>latex</a>
   
 </span>
 
@@ -222,557 +840,17 @@ posted in
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Saving $80 by Fixing MagSafe by Yourself</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-08T22:06:00-06:00" pubdate data-updated="true">Nov 8<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/diy/'>DIY</a>, <a class='category' href='/blog/categories/mac/'>Mac</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After four years of use, the wire on my MagSafe finally fray out. After searching a bit, I found that a new one costs $80!! My old memories came back: almost all accessories by Apple are rip-offs. See how low the ratings are:</p>
-<figure>
-<img src="https://lh3.googleusercontent.com/-HbwCGT5IRfg/Un22iAWR3FI/AAAAAAAA6S8/kb8A295sneA/s800/Apple%252085W%2520MagSafe%2520Power%2520Adapter%2520%2528for%252015-%2520and%252017-inch%2520MacBook%2520Pro%2529%2520-%2520Apple%2520Store%2520%2528U.S.%2529.png" />
-</figure>
-<p>I know that this can be easily fixed if you know a little soldering and have courage: the adapter is working perfectly fine, it is just the wires. I decided to DIY. There are several pretty good articles on how to <a href="http://www.instructables.com/id/How-to-open-and-replace-the-MagSafe-cord-on-an-App/?ALLSTEPS">open the MagSafe</a> and how to <a href="http://www.instructables.com/id/MacBook-Mag-Safe-Charger-Budget-Repair-Disas/">solder it</a>.</p>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/">Understanding Page Components of Octopress: Using Foxslide as an Example</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-17T16:12:00-05:00" pubdate data-updated="true">Oct 17<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/octopress/'>octopress</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure>
-<img src="https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg" />
-</figure>
-<div class="references">
-
-</div>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/17/updating-octopress-theme/">Updating Octopress Theme</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-17T14:54:00-05:00" pubdate data-updated="true">Oct 17<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/octopress/'>octopress</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The themes are stored in <code>.themes/&lt;name&gt;</code>, we can use the rake command to update either the source or style, as documented in the <a href="http://octopress.org/docs/updating/">office website</a>. However, the syntax should be more clear, i.e.,</p>
-<div class="bogus-wrapper">
-<notextile>
-<figure class='code'>
-<div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake update_source['theme name']</span></code></pre></td></tr></table>
-</div>
-</figure>
-</notextile>
-</div>
-<p>Without the brackets, it defaults to <code>.themes/classic</code>.</p>
-<p>Caveats:</p>
-<ul>
-<li>Do NOT use <code>rake install</code> to install the theme again, since it will overwrite the whole thing, including the files in <code>source/_include/custom</code> directory.</li>
-<li>When working on the blog, anything outside of <code>source/_include/custom</code> should be considered the theme. Thus, do not make changes directly in <code>source</code>. Make changes to theme and update the theme to reflect the changes to the blog.</li>
-</ul>
-<div class="references">
-
-</div>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/">Graph Matching: Hopcroft-Karp Algorithm</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-08T15:59:00-05:00" pubdate data-updated="true">Oct 8<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="overview">Overview</h2>
-<p>Hopcroft-Karp algorithm also utilizes the augmenting path. The difference between the <a href="/blog/2013/10/07/graph-matching-augmenting-path/">simple augmenting path algorithm</a> is, instead of searching augmenting path one by one, it looks for many paths in the same time. The paths found at each iteration are in fact <strong>vertex disjoint path</strong>. By doing so, the number of iterations can be cut down, since there cannot be too many disjoing paths.</p>
-<p>The major observation is that the length of augementing path grows at each step. Thus, if we keep finding a set of vertex disjoint augmenting paths, the algorithm is guaranteed to stop eventually and faster than finding the path one by one.</p>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/10/08/graph-matching-hopcroft-karp-algorithm/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/07/graph-matching-augmenting-path/">Graph Matching: Augmenting Path</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-07T18:47:00-05:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="introduction">Introduction</h2>
-<p>Let <span class="math">\(G=(V, E)\)</span> be an undirected graph. Matching in <span class="math">\(G\)</span> is a subset of edges <span class="math">\(M \subseteq E\)</span> such that at most one edge is incident to each vertex in <span class="math">\(V\)</span>.</p>
-<p>A vertex is <em>matched</em> is it is incident to some edge in <span class="math">\(M\)</span>, otherwise it is called <em>free</em> or <em>exposed</em>.</p>
-<h2 id="augmenting-paths">Augmenting Paths</h2>
-<ul>
-<li>Alternating path: a path in which the edges belong alternatively to the matching and not to the matching</li>
-<li>Augmenting path: an alternating path that starts from and ends on exposed vertices</li>
-</ul>
-<p>Clearly, an augmenting path can be ‘flipped’ to increase the matching size <strong>by one</strong>, i.e., just make free vertex matched and make matched vertex free in this path.</p>
-<p><strong>Berge’s Theorem</strong>: The matching M is maximum <strong>iff</strong> there is no augmenting path w.r.t. <span class="math">\(M\)</span>. I personally think the proof is easy but quite powerful.</p>
-<p>Thus, we can immediately use the theorem to design an algorithm: find augmenting path iteratively until no more can be found. The problem is how we can find the augmenting path.</p>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/10/07/graph-matching-augmenting-path/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/07/network-flow-push-relabel-algorithm/">Network Flow: Push-relabel Algorithm</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-07T18:08:00-05:00" pubdate data-updated="true">Oct 7<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>According to CLRS: Many of the asymptotically fastest maximum-flow algorithms are push-relabel algorithms, and the fastest actual implementations of maximum-flow algorithms are based on the push-relabel method. Push-relabel methods also efficiently solve other flow problems, such as the minimum-cost flow problem.</p>
-<p>This algorithm has a very different flavor. The overall idea is to generate a ‘preflow’ that may not satisfy the flow properties, and keep ‘pushing’) and ‘elevating’ (relabelling) the vertices until we cannot do that. We then remove the ‘excess’ from the preflow and obtain a valid flow, which is also a max flow. In particular, the in-flow may be larger than out-flow at a vertex. The amount of overflow is called ‘excess’.</p>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/10/07/network-flow-push-relabel-algorithm/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Network Flow: Ford-Fulkerson Method</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-03T18:13:00-05:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Basic method (framework) is Ford-Fulkerson. It’s called a “method” because it’s general, there can be different implementation that yield different complexity. It looks like this:</p>
-<pre><code>Let F be an empty flow
-While there is augmenting path P from s to t
-    Augment F with P
-End while</code></pre>
-<p>The problem is how we find the augmenting path efficiently. A naive implementation is to use DFS to randomly pick a <span class="math">\(s-t\)</span> path and augment it. However, it has two problems:</p>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/30/installing-a-new-car-stereo/">Installing a New Car Stereo</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zigang Xiao (Ivan)</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-30T16:50:00-05:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time> - 
-        
-
-posted in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/diy/'>DIY</a>, <a class='category' href='/blog/categories/car/'>car</a>
-  
-</span>
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I did not realize until my car’s radio’s broken that, with less than a hundred bucks, you can buy a new Head Unit with nearly all functionality. Some note-worthy features include:</p>
-<ul>
-<li>iPod/iPhone support. Control the iphone directly from the panel.</li>
-<li>App support. This includes I-heart-radio, pandora, etc.</li>
-<li>Bluetooth Audio: stream music directly from a paired device. Even supports Pandora!</li>
-<li>Upgraded FM/AM support. Displays text from radio stations.</li>
-</ul>
-<p></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/08/30/installing-a-new-car-stereo/">Read on &rarr;</a>
-    </footer>
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
           
             <li class="previous">
-              <a href="/blog/page/4/">&larr; Older</a>
+              <a href="3">&larr; Older</a>
             </li>
           
           
             <li class="next">
-              <a class="next" href="/blog/page/2/">Newer &rarr;</a>
+              <a class="next" href="1">Newer &rarr;</a>
             </li>
           
         </ul>
@@ -790,6 +868,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2017/04/02/zai-mei-guo-huan-lun-tai-de-jing-li/">在美國換輪胎的經歷</a>
+        </li>
+      
+        <li>
           <a href="/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance/">美国留学：学生保险拔智齿</a>
         </li>
       
@@ -803,10 +885,6 @@ posted in
       
         <li>
           <a href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">精英主义与投票考试</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/09/24/notes-on-maximum-likelihood/">Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes</a>
         </li>
       
     </ul>
@@ -860,7 +938,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Zigang Xiao</a>
-  - Copyright &copy; 2015 - Zigang Xiao (Ivan)
+  - Copyright &copy; 2017 - Zigang Xiao (Ivan)
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>

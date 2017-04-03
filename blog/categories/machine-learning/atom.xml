@@ -4,7 +4,7 @@
   <title><![CDATA[Category: machine learning | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/machine-learning/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2015-05-22T17:32:50-05:00</updated>
+  <updated>2017-04-03T02:20:27-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -16,10 +16,12 @@
   <entry>
     <title type="html"><![CDATA[Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood/"/>
-    <updated>2014-09-24T15:41:44-05:00</updated>
+    <updated>2014-09-24T13:41:44-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood</id>
     <content type="html"><![CDATA[Let $\data$ be a set of data generated from some distribution parameterized by
 $\theta$. We want to *estimate* the unknown parameter $\theta$. What we can do?
+
+<!-- more -->
 
 Essentially, we want to find a most likely value of $\theta$ given $\data$,
 that is $\arg \max P(\theta | \data)$. According to Bayes Rule, we have
@@ -35,17 +37,15 @@ and the terms have the following meanings:
 - $P(\theta)$: Prior
 - $P(\data)$: Evidence
 
-<!-- more -->
-
 ## Maximum Likelihood Estimation (MLE)
 
 An easy way out is to use the MLE method.
-We want to find a $\theta$ the *best explains* the data. 
+We want to find a $\theta$ the *best explains* the data.
 That is, we maximize $P(\data \given \theta)$.
-Denote such a value as $\hat{\theta}_{ML}$. We have 
+Denote such a value as $\hat{\theta}_{ML}$. We have
 
 $$
-\hat{\theta}_{ML} = \argmax_\theta P(\data \given \theta) = 
+\hat{\theta}_{ML} = \argmax_\theta P(\data \given \theta) =
 \argmax_\theta P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta )
 $$
 
@@ -53,11 +53,11 @@ Note that the above $P$ is a joint distribution over the data.
 We usually assume the observations are *independent*. Thus, we have
 
 $$
-P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) = 
+P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
 \prod_{i=1}^{N} P(\mathbf{x}_i \given \theta )
 $$
 
-We usually use logarithm to simplify the computation, as 
+We usually use logarithm to simplify the computation, as
 logarithm is monotonically increasing. Thus, we write:
 
 $$
@@ -70,7 +70,7 @@ $$
 \hat{\theta}_{ML} = \argmax_\theta \mathcal{L}(\data \given \theta)
 $$
 
-If we know the distribution $P$, we can usually solve the above by 
+If we know the distribution $P$, we can usually solve the above by
 setting derivative of $\theta$ to 0 and solve for $\theta$, that is,
 
 $$
@@ -79,7 +79,7 @@ $$
 
 ## Maximum A Posteriori (MAP)
 
-In MAP, we maximize $P(\theta \given \data)$ directly. Denote the MAP hypothesis 
+In MAP, we maximize $P(\theta \given \data)$ directly. Denote the MAP hypothesis
 as $\hat{\theta}_{MAP}$, we have:
 
 $$\begin{array}{rl}
@@ -109,7 +109,7 @@ $$
 $$
 
 The extra prior term has the effect that we are essentially 'pulling' the
-$\theta$ distribution towards prior value. This makes sense as we are 
+$\theta$ distribution towards prior value. This makes sense as we are
 putting our domain knowledge as *prior* and intuitively the estimation is
 biased towards the *prior* value.
 
@@ -141,7 +141,7 @@ Note that the learning of naive bayes simply involves in estimating
 $P(a_i \given v_j)$ and $P(v_j)$ based on the frequencies in the training data.
 
 Normally the conditional independence assumption does not hold, but naive bayes
-performs well even if so. 
+performs well even if so.
 More importantly, **when conditional independence is satisfied, Naive Bayes corresponds to MAP classification.**
 
 ## Conclusion
@@ -170,13 +170,14 @@ After reading this [article], I have the following interpretation:
 - The MAP approach is a direct applicatin of Bayes Theorem. Thus, it can be regarded as a "bayesian" way of thinking.
 
 
-[article]: http://www.behind-the-enemy-lines.com/2008/01/are-you-bayesian-or-frequentist-or.html]]></content>
+[article]: http://www.behind-the-enemy-lines.com/2008/01/are-you-bayesian-or-frequentist-or.html
+]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Sparse Image Reconstruction via L1-minimization]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/"/>
-    <updated>2014-05-19T15:12:36-05:00</updated>
+    <updated>2014-05-19T13:12:36-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization</id>
     <content type="html"><![CDATA[---
 nocite: 
@@ -371,6 +372,396 @@ For interested readers, the following references will be helpful.
 [L2 vs L1]: /blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/
 [Sparse Signal 1D]: /blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/
 ]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sparse Signal Reconstruction via L1-minimization]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/"/>
+    <updated>2014-05-18T20:13:08-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization</id>
+    <content type="html"><![CDATA[[![Sparse Signal Reconstruction Results]][Sparse Signal Reconstruction Results]
+
+This is a follow-up of the [previous post] on applications of L1 minimization.
+
+<!-- more -->
+
+As we know, any signal can be decomposed into a linear combination of basis,
+and the most famous one is [Fourier Transform]. 
+For simplicity, let's assume that we have a signal that
+is a superposition of some sinusoids. For example, the following:
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="p">.</span><span class="mi">5</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(.</span><span class="mi">1</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="nb">sin</span><span class="p">(</span><span class="mf">1.3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="p">.</span><span class="mi">7</span><span class="o">*</span><span class="nb">sin</span><span class="p">(.</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="mf">2.3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+With *discrete consine transform* (DCT), we can easily find the coefficients of
+corresponding sinusoid components. The above example's coefficients (in
+frequency domain) and signal in time domain are shown in the post figure.
+
+Now, let's assume we do not know the signal and want to reconstruct it
+by sampling. Theorectically, the number of samples required is at least
+two times the signal frequency, according to the famous
+[Nyquist–Shannon sampling theorem].
+
+However, this assume zero-knowledge about the signal. If we know some structure
+of the signal, e.g., the DCT coefficients are sparse in our case, we can 
+further reduce the number of samples required. [^Nsamples]
+
+The following code snippet demonstrates how this works. We generate
+the original signal in time domain and then perform a DCT to obtain the coefficients.
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% sparse signal recovery using L1</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rng</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'><span class="n">N</span> <span class="p">=</span> <span class="mi">256</span><span class="p">;</span> <span class="n">R</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">C</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% some superposition of sinoisoids, feel free to change and experiment</span>
+</span><span class='line'><span class="n">f</span> <span class="p">=</span> <span class="p">@(</span><span class="n">x</span><span class="p">)</span> <span class="p">.</span><span class="mi">5</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(.</span><span class="mi">1</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="nb">sin</span><span class="p">(</span><span class="mf">1.3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="p">.</span><span class="mi">7</span><span class="o">*</span><span class="nb">sin</span><span class="p">(.</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="mf">2.3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span><span class='line'><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">10</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+</span><span class='line'><span class="n">y</span> <span class="p">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="n">coef</span> <span class="p">=</span> <span class="n">dct</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="n">stem</span><span class="p">(</span><span class="n">coef</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Original signal in frequency domain&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Original signal in time domain&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Let's assume that we have a device that can sample from the frequency domain.
+To do this, we create a *random measurement matrix* to obtain the samples.
+We use 80 samples here. Note that we normalize the measurement matrix
+to have orthonormal basis, i.e., the norm of each row is 1, and the dot product
+of different row is 0.
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% measurement matrix</span>
+</span><span class='line'><span class="n">K</span><span class="p">=</span><span class="mi">80</span><span class="p">;</span>
+</span><span class='line'><span class="n">A</span><span class="p">=</span><span class="nb">randn</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+</span><span class='line'><span class="n">A</span><span class="p">=</span><span class="n">orth</span><span class="p">(</span><span class="n">A</span><span class="o">&#39;</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% observations</span>
+</span><span class='line'><span class="n">b</span><span class="p">=</span><span class="n">A</span><span class="o">*</span><span class="n">coef</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+We first try a least-square approach, which boils down to inverse the matrix
+and obtain $\hat{x}=A^{-1} b$. Note that as A is not square, we are
+using its *pseudo-inverse* here. Furthermore, as A is othornormal, its
+transpose is the same as pseudo-inverse.
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% min-energy observations</span>
+</span><span class='line'><span class="n">c0</span> <span class="p">=</span> <span class="n">A</span><span class="o">&#39;*</span><span class="n">b</span><span class="p">;</span> <span class="c">% A&#39; = pinv(A) here since A is a full-rank orthonormal matrix</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+</span><span class='line'><span class="n">stem</span><span class="p">(</span><span class="n">c0</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Minimum energy recovery - coef&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+</span><span class='line'><span class="n">y0</span> <span class="p">=</span> <span class="n">idct</span><span class="p">(</span><span class="n">c0</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Minimum energy recovery - signal&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Recovered&#39;</span><span class="p">,</span> <span class="s">&#39;Original&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+As we can see, there are lots of non-zeros in the coefficients, and
+the recovered signal is very different from the original signal.
+
+Finally, we use L1-minimization for reconstruction. I used `lasso` 
+to perform a L1-regualarized minimization. Another package that performs various
+L1-minimization is [l1-magic].
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% L1-minimization</span>
+</span><span class='line'><span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">fitinfo</span><span class="p">]</span> <span class="p">=</span> <span class="n">lasso</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s">&#39;Lambda&#39;</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">);</span>
+</span><span class='line'><span class="c">% If use L1-magic</span>
+</span><span class='line'><span class="c">% addpath /path/to/l1magic/Optimization</span>
+</span><span class='line'><span class="c">% [c1] = l1eq_pd(c0, A, [], b, 1e-4);</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+</span><span class='line'><span class="n">stem</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;L1 recovery - coef&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
+</span><span class='line'><span class="n">y1</span> <span class="p">=</span> <span class="n">idct</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;L1 recovery - signal&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Recovered&#39;</span><span class="p">,</span> <span class="s">&#39;Original&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+The above shows that L1-minimization successfully recovered the original signal.
+A complete code snippet can be found [here][gist].
+
+[Sparse Signal Reconstruction Results]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/sparse_signal_reconstruction.png
+[Fourier Transform]: http://en.wikipedia.org/wiki/Fourier_transform
+[Nyquist–Shannon sampling theorem]: http://en.wikipedia.org/wiki/Nyquist–Shannon_sampling_theorem
+[l1-magic]: http://users.ece.gatech.edu/~justin/l1magic/
+[gist]: https://gist.github.com/842145ae48381a5a8dca
+[previous post]: /blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/
+
+[^Nsamples]: In order to recover f perfectly, we need at least $B \log (N)$ samples [(source)](http://users.ece.gatech.edu/~justin/l1magic/downloads/papers/CandesRombergTao_revisedNov2005.pdf).]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[A Comparison of Least Square, L2-regularization and L1-regularization]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/"/>
+    <updated>2014-05-14T19:32:38-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization</id>
+    <content type="html"><![CDATA[![Recovered Coefficients by Different Methods][coef]
+
+# Problem Setting
+
+Ordinary Least Square (OLS), L2-regularization and L1-regularization are
+all techniques of finding solutions in a linear system. However,
+they serve for different purposes. Recently, L1-regularization gains
+much attention due to its ability in finding sparse solutions.
+This post demonstrates this by comparing OLS, L2 and L1 regularization.
+
+<!-- more -->
+
+Consider the following linear system:
+
+$$Ax = y$$
+
+where $A \in \reals^{m \times n}$, $m$ is the number of rows (observations) and
+$n$ is the number of columns (variable dimension), $x$ is the variable
+coefficients and $y$ is the response. There are three cases to consider:
+
+1. $m=n$. This is the common-seen case. If $A$ is not degenerate, the solution
+is unique.
+2. $m>n$. This is called *over-determined linear system*. There is usually *no*
+solutions, but an *approximation* can be easily found by minimizing
+the *residue cost* $\norm{Ax-y}^2_2$ using least square methods, and it has
+a nice closed-form solution $x_{ls}=(A^T A)^{-1} A^T y$. In L2-regularization,
+we add a penalize term to minimize the 2-norm of the coefficients. Thus, the 
+objective becomes:
+$$\min_x \norm{Ax-y}^2_2 + \alpha \norm{x}_2$$
+where $\alpha$ is a weight to decide the importance of the regularization.
+3. $m<n$. This is called *under-determined linear system*. There is usually 
+no solution or infinite solutions. This is where it get interesting: 
+when we have some prior knowledge in the solution structure, such as
+sparsity, we can have a 'metric' to find a better solution among a whole bunch.
+The objective is thus:
+$$\min_x \norm{Ax-y}^2_2 + \alpha \norm{x}_1$$
+The optimization technique for the above problem is called [lasso], and there
+is an advanced version called [elastic net], which [combines the L2 and L1
+regularization together][combination], hoping to get the advantages of both: L1 regularization
+finds sparse solution but introduces a large Mean Square Error (MSE) error,
+while L2 is better at minimizing MSE. 
+
+## An Example
+
+In the following, we show their performances by solving a simple case.
+
+<figure class='code'><figcaption><span>regression_ex.m</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% Compare Ordinary Least square (no regularization), L2-reguarlized (Ridge),</span>
+</span><span class='line'><span class="c">% L1-regualarized (Lasso) regression in finding the sparse coefficient</span>
+</span><span class='line'><span class="c">% in a underdetermined linear system</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rng</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>  <span class="c">% for reproducibility</span>
+</span><span class='line'><span class="n">m</span> <span class="p">=</span> <span class="mi">50</span><span class="p">;</span>  <span class="c">% num samples</span>
+</span><span class='line'><span class="n">n</span> <span class="p">=</span> <span class="mi">200</span><span class="p">;</span> <span class="c">% num variables, note that n &gt; m</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">A</span> <span class="p">=</span> <span class="nb">rand</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+</span><span class='line'><span class="n">x</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="n">nz</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c">% 10 non-zeros variables (sparse)</span>
+</span><span class='line'><span class="n">nz_idx</span> <span class="p">=</span> <span class="n">randperm</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+</span><span class='line'><span class="n">x</span><span class="p">(</span><span class="n">nz_idx</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nz</span><span class="p">))</span> <span class="p">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="nb">rand</span><span class="p">(</span><span class="n">nz</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="n">y</span> <span class="p">=</span> <span class="n">A</span><span class="o">*</span><span class="n">x</span><span class="p">;</span>
+</span><span class='line'><span class="n">y</span> <span class="p">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.05</span> <span class="o">*</span> <span class="nb">rand</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="c">% add some noise</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% plot original x</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span> <span class="n">tight</span><span class="p">;</span>
+</span><span class='line'><span class="n">title</span><span class="p">(</span><span class="s">&#39;Original coefficients&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% OLS</span>
+</span><span class='line'><span class="n">x_ols</span> <span class="p">=</span> <span class="n">A</span> <span class="o">\</span> <span class="n">y</span><span class="p">;</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="n">bar</span><span class="p">(</span><span class="n">x_ols</span><span class="p">),</span> <span class="n">axis</span> <span class="n">tight</span><span class="p">;</span>
+</span><span class='line'><span class="n">title</span><span class="p">(</span><span class="s">&#39;Ordinary Least Square&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">y_ols</span> <span class="p">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">x_ols</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% L2 (Ridge) </span>
+</span><span class='line'><span class="n">x_l2</span> <span class="p">=</span> <span class="n">ridge</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>  <span class="c">% last parameter = 00 to generate intercept term</span>
+</span><span class='line'><span class="n">b_l2</span> <span class="p">=</span> <span class="n">x_l2</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="n">x_l2</span> <span class="p">=</span> <span class="n">x_l2</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</span><span class='line'><span class="n">bar</span><span class="p">(</span><span class="n">x_l2</span><span class="p">),</span> <span class="n">axis</span> <span class="n">tight</span><span class="p">;</span>
+</span><span class='line'><span class="n">title</span><span class="p">(</span><span class="s">&#39;L2 Regularization&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">y_l2</span> <span class="p">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">x_l2</span> <span class="o">+</span> <span class="n">b_l2</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% L1 (Lasso)</span>
+</span><span class='line'><span class="p">[</span><span class="n">x_l1</span><span class="p">,</span> <span class="n">fitinfo</span><span class="p">]</span> <span class="p">=</span> <span class="n">lasso</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;Lambda&#39;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">);</span>
+</span><span class='line'><span class="n">b_l1</span> <span class="p">=</span> <span class="n">fitinfo</span><span class="p">.</span><span class="n">Intercept</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="n">y_l1</span> <span class="p">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">x_l1</span> <span class="o">+</span> <span class="n">b_l1</span><span class="p">;</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+</span><span class='line'><span class="n">bar</span><span class="p">(</span><span class="n">x_l1</span><span class="p">),</span> <span class="n">axis</span> <span class="n">tight</span><span class="p">;</span>
+</span><span class='line'><span class="n">title</span><span class="p">(</span><span class="s">&#39;L1 Regularization&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% L1 (Elastic Net)</span>
+</span><span class='line'><span class="p">[</span><span class="n">x_en</span><span class="p">,</span> <span class="n">fitinfo_en</span><span class="p">]</span> <span class="p">=</span> <span class="n">lasso</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;Lambda&#39;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s">&#39;Alpha&#39;</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">);</span>
+</span><span class='line'><span class="n">b_en</span> <span class="p">=</span> <span class="n">fitinfo_en</span><span class="p">.</span><span class="n">Intercept</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="n">y_en</span> <span class="p">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">x_en</span> <span class="o">+</span> <span class="n">b_en</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">MSE_y</span> <span class="p">=</span> <span class="p">[</span><span class="n">mse</span><span class="p">(</span><span class="n">y_ols</span><span class="o">-</span><span class="n">y</span><span class="p">),</span> <span class="n">mse</span><span class="p">(</span><span class="n">y_l2</span><span class="o">-</span><span class="n">y</span><span class="p">),</span> <span class="n">mse</span><span class="p">(</span><span class="n">y_l1</span><span class="o">-</span><span class="n">y</span><span class="p">),</span> <span class="n">mse</span><span class="p">(</span><span class="n">y_en</span><span class="o">-</span><span class="n">y</span><span class="p">)];</span>
+</span><span class='line'><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Mean square error: &#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">fprintf</span><span class="p">(</span><span class="s">&#39;%g    &#39;</span><span class="p">,</span> <span class="n">MSE_y</span><span class="p">);</span> <span class="n">fprintf</span><span class="p">(</span><span class="s">&#39;\n\n&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% Plot the recovered coefficients</span>
+</span><span class='line'><span class="n">figure</span><span class="p">,</span> <span class="n">hold</span> <span class="n">on</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x_l1</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x_en</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s">&#39;g--&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Lasso Coef&#39;</span><span class="p">,</span> <span class="s">&#39;Elastic Net coef&#39;</span><span class="p">,</span> <span class="s">&#39;Original Coef&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Output:
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="n">Mean</span> <span class="n">square</span> <span class="n">error</span><span class="p">:</span>
+</span><span class='line'><span class="mf">1.81793e-29</span>    <span class="mf">7.93494e-15</span>    <span class="mf">0.0975002</span>    <span class="mf">0.0641214</span>
+</span></code></pre></td></tr></table></div></figure>
+
+The above code snippets generates an under-determined matrix $A$, and
+a sparse coefficients which has 200 variables but only 10 of them are non-zeros.
+Noises are added to the responses. We then run the proposed three methods
+to try to recover the coefficients. It then generates two plots:
+
+1. The first plot is as shown in the top. As we can see, OLS does a very bad job,
+though the MSE is minimized to zero. 
+L2-regularization do find some of the sparks, but there are also lots of non-zeros
+introduced. Finally, L1-regularization finds most of the non-zeros correctly
+and resembles the original coefficients most.
+2. The second plot shows how similar the recovered coefficients by lasso and
+elastic nets resemble the original coefficients. As we can see, both of them
+can recover most parts, while elastic nets contain some small 'noise'. However,
+elastic net yields a slightly better MSE than lasso.
+
+![Plot of Coefficients][plot]
+
+## Probing Further
+
+Scikit has some excellent examples on regualarization ([1], [2]). Quora has an
+excellent [discussion] on L2 vs L1 regualarization. I found the top three answers
+very useful in understanding deeper, especially from the *Bayesian regularization paradigm* perspective by thinking the regularization as MAP (Maximum A Posteriori)
+that adds a Laplacian (L1) or Gaussian (L2) prior to the original objective.
+
+[coef]: https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/coef.png
+[plot]: https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/plot.png
+[lasso]: http://www-stat.stanford.edu/~tibs/lasso.html
+[elastic net]: http://en.wikipedia.org/wiki/Elastic_net_regularization
+[combination]: http://scikit-learn.org/stable/modules/linear_model.html#elastic-net
+[1]: http://scikit-learn.org/stable/modules/linear_model.html
+[2]: http://scikit-learn.org/stable/auto_examples/linear_model/plot_lasso_and_elasticnet.html
+[discussion]: http://www.quora.com/Machine-Learning/What-is-the-difference-between-L1-and-L2-regularization]]></content>
   </entry>
   
 </feed>

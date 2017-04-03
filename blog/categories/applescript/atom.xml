@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: AppleScript | Zigang Xiao]]></title>
+  <title><![CDATA[Category: applescript | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/applescript/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2015-05-22T17:32:50-05:00</updated>
+  <updated>2017-04-03T02:20:27-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Debugging AppleScript: print to a file]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file/"/>
-    <updated>2014-05-02T16:26:50-05:00</updated>
+    <updated>2014-05-02T14:26:50-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file</id>
     <content type="html"><![CDATA[Debugging AppleScript is easy when you work with the script editor,
 simply use `log` to print out anything in the console.
@@ -31,19 +31,20 @@ that work best for me are:
 
 1. Use `logger` to log to the syslog. E.g.,
 
-``` applescript
-do shell script "logger -t 'AS DEBUG' " & myObj
-```
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;logger -t &#39;AS DEBUG&#39; &quot;</span> <span class="o">&amp;</span> <span class="nv">myObj</span>
+</span></code></pre></td></tr></table></div></figure>
 
 However, I don't know why sometimes this is not logged. So I will use the 
 following:
 
 2. Echo to file
 
-``` applescript
-do shell script "echo " & quoted form of (myObj as string) & ¬
-    " >> ~/Desktop/as_debug.txt"
-```
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;echo &quot;</span> <span class="o">&amp;</span> <span class="nb">quoted form</span> <span class="k">of</span> <span class="p">(</span><span class="nv">myObj</span> <span class="k">as </span><span class="nc">string</span><span class="p">)</span> <span class="o">&amp;</span> <span class="se">¬</span>
+</span><span class='line'>    <span class="s2">&quot; &gt;&gt; ~/Desktop/as_debug.txt&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 ]]></content>
   </entry>
   

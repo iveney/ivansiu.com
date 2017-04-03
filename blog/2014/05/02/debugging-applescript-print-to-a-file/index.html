@@ -32,8 +32,8 @@
   <meta name="og:url" content="http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file/"/>
   <meta name="url" content="http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file/">
   
-  <meta name="subject" content="AppleScript"/>
-  <meta name="category" content="AppleScript"/>
+  <meta name="subject" content="applescript"/>
+  <meta name="category" content="applescript"/>
   
   <meta name="distribution" content="global">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
@@ -131,13 +131,13 @@ https://github.com/imathis/octopress/issues/599
   
 
 
-<time datetime="2014-05-02T16:26:50-05:00" pubdate data-updated="true">May 2<span>nd</span>, 2014</time> - 
+<time datetime="2014-05-02T14:26:50-07:00" pubdate data-updated="true"></time> - 
         
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/applescript/'>AppleScript</a>
+    <a class='category' href='/blog/categories/applescript/'>applescript</a>
   
 </span>
 
@@ -151,19 +151,28 @@ posted in
   <div class="entry-content"><p>Debugging AppleScript is easy when you work with the script editor, simply use <code>log</code> to print out anything in the console. However, after you compiled it to an app, this cannot work anymore.</p>
 <p>I find there are several ways to do it in this <a href="http://stackoverflow.com/questions/2749863/applescript-editor-write-message-to-the-result-window">thread</a>. The <a href="http://stackoverflow.com/a/21309748/577704">two approaches</a> that work best for me are:</p>
 <!-- more -->
-
 <ol type="1">
 <li>Use <code>logger</code> to log to the syslog. E.g.,</li>
 </ol>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;logger -t &#39;AS DEBUG&#39; &quot;</span> <span class="o">&amp;</span> <span class="nv">myObj</span>
-</span></code></pre></td></tr></table>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;logger -t &#39;AS DEBUG&#39; &quot;</span> <span class="o">&amp;</span> <span class="nv">myObj</span>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
@@ -174,21 +183,28 @@ posted in
 </ol>
 <div class="bogus-wrapper">
 <notextile>
-<figure class='code'><figcaption>
+<figure class="code">
+<figcaption>
 <span></span>
 </figcaption>
 <div class="highlight">
-<table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;echo &quot;</span> <span class="o">&amp;</span> <span class="nb">quoted form</span> <span class="k">of</span> <span class="p">(</span><span class="nv">myObj</span> <span class="k">as </span><span class="nc">string</span><span class="p">)</span> <span class="o">&amp;</span> <span class="se">¬</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;echo &quot;</span> <span class="o">&amp;</span> <span class="nb">quoted form</span> <span class="k">of</span> <span class="p">(</span><span class="nv">myObj</span> <span class="k">as </span><span class="nc">string</span><span class="p">)</span> <span class="o">&amp;</span> <span class="se">¬</span>
 </span><span class='line'>    <span class="s2">&quot; &gt;&gt; ~/Desktop/as_debug.txt&quot;</span>
-</span></code></pre></td></tr></table>
+</span></code></pre>
+</td>
+</tr>
+</table>
 </div>
 </figure>
 </notextile>
-</div>
-<div class="references">
-
 </div>
 </div>
 
@@ -216,13 +232,13 @@ posted in
   
 
 
-<time datetime="2014-05-02T16:26:50-05:00" pubdate data-updated="true">May 2<span>nd</span>, 2014</time> - 
+<time datetime="2014-05-02T14:26:50-07:00" pubdate data-updated="true"></time> - 
       
 
 posted in
 <span class="categories">
   
-    <a class='category' href='/blog/categories/applescript/'>AppleScript</a>
+    <a class='category' href='/blog/categories/applescript/'>applescript</a>
   
 </span>
 
@@ -269,6 +285,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2017/04/02/zai-mei-guo-huan-lun-tai-de-jing-li/">在美國換輪胎的經歷</a>
+        </li>
+      
+        <li>
           <a href="/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance/">美国留学：学生保险拔智齿</a>
         </li>
       
@@ -282,10 +302,6 @@ posted in
       
         <li>
           <a href="/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/">精英主义与投票考试</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2014/09/24/notes-on-maximum-likelihood/">Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes</a>
         </li>
       
     </ul>
@@ -339,7 +355,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Zigang Xiao</a>
-  - Copyright &copy; 2015 - Zigang Xiao (Ivan)
+  - Copyright &copy; 2017 - Zigang Xiao (Ivan)
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>
