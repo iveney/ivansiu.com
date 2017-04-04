@@ -4,7 +4,7 @@
   <title><![CDATA[Category: signal processing | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/signal-processing/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-04-03T02:20:27-07:00</updated>
+  <updated>2017-04-04T01:25:25-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -189,23 +189,23 @@ If you have any thoughts, do not hesitate to leave a comment.*
 For interested readers, the following references will be helpful.
 
 [FFT 2D]: http://www.cs.unm.edu/~brayer/vision/fourier.html
-[phantom_orig]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_orig.png
-[phantom_backproj]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_backproj.png
-[phantom_tv]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_tv.png
-[phantom_gx]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gx.png
-[phantom_gy]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gy.png
-[phantom_gI]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gI.png
-[M rand]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/measurement_random.png
-[M radial]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/measurement_radial.png
-[phantom rand bp]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_rand_bp.png
-[phantom rand tv]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_rand_tv.png
-[cameraman]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman.png
-[cameraman_grad]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_grad.png
-[cameraman_bp]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_bp.png
-[cameraman_tv]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_tv.png
-[cameraman_rand_bp]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_rand_bp.png
-[cameraman_rand_tv]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_rand_tv.png
-[camera_mag_hist]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/camera_mag_hist.png
+[phantom_orig]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_orig.png
+[phantom_backproj]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_backproj.png
+[phantom_tv]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_tv.png
+[phantom_gx]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gx.png
+[phantom_gy]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gy.png
+[phantom_gI]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gI.png
+[M rand]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/measurement_random.png
+[M radial]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/measurement_radial.png
+[phantom rand bp]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_rand_bp.png
+[phantom rand tv]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_rand_tv.png
+[cameraman]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman.png
+[cameraman_grad]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_grad.png
+[cameraman_bp]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_bp.png
+[cameraman_tv]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_tv.png
+[cameraman_rand_bp]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_rand_bp.png
+[cameraman_rand_tv]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_rand_tv.png
+[camera_mag_hist]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/camera_mag_hist.png
 [code]: https://github.com/iveney/l1min/blob/master/image_recovery_l1.m
 
 [L2 vs L1]: /blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/
@@ -378,14 +378,15 @@ L1-minimization is [l1-magic].
 The above shows that L1-minimization successfully recovered the original signal.
 A complete code snippet can be found [here][gist].
 
-[Sparse Signal Reconstruction Results]: https://dl.dropboxusercontent.com/u/3315210/blog/l1/sparse_signal_reconstruction.png
+[Sparse Signal Reconstruction Results]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/sparse_signal_reconstruction.png
 [Fourier Transform]: http://en.wikipedia.org/wiki/Fourier_transform
 [Nyquist–Shannon sampling theorem]: http://en.wikipedia.org/wiki/Nyquist–Shannon_sampling_theorem
 [l1-magic]: http://users.ece.gatech.edu/~justin/l1magic/
 [gist]: https://gist.github.com/842145ae48381a5a8dca
 [previous post]: /blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/
 
-[^Nsamples]: In order to recover f perfectly, we need at least $B \log (N)$ samples [(source)](http://users.ece.gatech.edu/~justin/l1magic/downloads/papers/CandesRombergTao_revisedNov2005.pdf).]]></content>
+[^Nsamples]: In order to recover f perfectly, we need at least $B \log (N)$ samples [(source)](http://users.ece.gatech.edu/~justin/l1magic/downloads/papers/CandesRombergTao_revisedNov2005.pdf).
+]]></content>
   </entry>
   
 </feed>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-04-03T02:20:27-07:00</updated>
+  <updated>2017-04-04T01:25:25-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -14,11 +14,84 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Migrating from dropbox public folder]]></title>
+    <link href="http://blog.ivansiu.com/blog/2017/04/03/migrating-from-dropbox-public-folder/"/>
+    <updated>2017-04-03T02:22:32-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2017/04/03/migrating-from-dropbox-public-folder</id>
+    <content type="html"><![CDATA[Dropbox recently removed its public folder feature, which was used to host my blog's images. I have to figure out a solution to host and fix the paths to these images...
+
+<!-- more -->
+
+Dropbox [announced](https://www.dropbox.com/help/16) that *As of March 15, 2017 the Public folder in your Dropbox account has been converted into a standard folder.* Sad, all my previous links are hosted on Dropbox, and they all become invalid URLs.
+
+I figured that I have to use another image hosting service. After some searching online, [Cloundinary](http://cloudinary.com/invites/lpov9zyyucivvxsnalc5/qebjx4vsaxc746ormmqa) seems to be a good option. One design of my hosted images are that they are organized in sub-folders under a 'blog' folder. This means that if I want to seamlessly convert the links, I need to preserve the folder structure too.
+
+Cloudinary seems to suggest they support auto-creating folders. Unfortunately that does not quite work for me.
+
+![settings]
+
+In fact, I wrote a small script to do this.
+
+<figure class='code'><figcaption><span>Upload a folder to cloudinary</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">os</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">cloudinary</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">cloudinary.uploader</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">cloudinary.api</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Upload the folder in rootdir to cloudinary, preserving the file structure</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cloudinary</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
+</span><span class='line'>  <span class="n">cloud_name</span> <span class="o">=</span> <span class="s">&quot;&lt;name&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">api_key</span> <span class="o">=</span> <span class="s">&quot;&lt;your key&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">api_secret</span> <span class="o">=</span> <span class="s">&quot;&lt;your secret&gt;&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rootdir</span> <span class="o">=</span> <span class="s">&#39;blog&#39;</span>
+</span><span class='line'><span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">subs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">rootdir</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">cloudinary</span><span class="o">.</span><span class="n">uploader</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="nb">file</span><span class="p">),</span>
+</span><span class='line'>            <span class="n">folder</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">use_filename</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">unique_filename</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">resource_type</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+With that, I did a simple sed run on all my post sources:
+
+<figure class='code'><figcaption><span>Upload a folder to cloudinary</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s">&#39;&#39;</span> <span class="s">&#39;s/&lt;dropbox base url&gt;/&lt;cloundinary base url&gt;/&#39;</span> <span class="o">*.</span><span class="n">markdown</span>
+</span></code></pre></td></tr></table></div></figure>
+
+then rake preview. Boom! All the images are shown again!
+
+[settings]: http://res.cloudinary.com/maomao/image/upload/v1491293789/blog/Cloudinary_Management_Console_-_Settings.png
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[My Octopress Blogging Flow]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow/"/>
     <updated>2014-05-22T20:38:07-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow</id>
-    <content type="html"><![CDATA[![Writing in Sublime Text and previewing in Marked](https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/sublime-marked.png)
+    <content type="html"><![CDATA[![Writing in Sublime Text and previewing in Marked](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/sublime-marked.png)
 
 After blogging with [Octopress] for a while, I have already gained
 some insights on it, and my publishing flow has been smoother.
@@ -64,7 +137,7 @@ Octopress official website provides [some explanation](http://octopress.org/docs
 You should also install the [pow alfred workflow][pow for alfred], which can
 help you open pow website in a breeze.
 
-![](https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/pow.png)
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/pow.png)
 
 ### Math Rendering: MathJax
 
@@ -142,7 +215,7 @@ There are a couple of good articles for reference:
 I host my images in Dropbox Public folder, since you can simply copy the public
 link and paste it to the post source, for example:
 
-![](https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/dropbox-image.png)
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/dropbox-image.png)
 
 ### Image editing: Skitch + OmniGraffle
 
@@ -186,11 +259,11 @@ For example, `refer to [@xiao2013optimally]` generates *refer to [@xiao2013optim
 [Dash.app](http://kapeli.com/dash) is an API Documentation Browser and Code Snippet Manager. It provides an convinient alfred workflow that searches
 the documents:
 
-![](https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/alfred-dash.png)
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/alfred-dash.png)
 
 opens
 
-![](https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/Dash.png)
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/Dash.png)
 
 ### Tips and tricks
 
@@ -223,12 +296,13 @@ Please leave your comments.*
 
 ## References
 
-[blog-publish]: https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/blog-publish.png
+[blog-publish]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/blog-publish.png
 [alfred workflow]: http://www.alfredforum.com/topic/2289-octopress-publisher/
 [Octopress]: http://octopress.org
 [Sublime Text]: http://www.sublimetext.com
 [pow]: http://pow.cx
-[pow for alfred]: http://tombeynon.github.io/alfred-pow/]]></content>
+[pow for alfred]: http://tombeynon.github.io/alfred-pow/
+]]></content>
   </entry>
   
   <entry>
@@ -236,7 +310,8 @@ Please leave your comments.*
     <link href="http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example/"/>
     <updated>2013-10-17T16:12:00-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/17/understanding-page-components-of-octopress-using-foxslide-as-an-example</id>
-    <content type="html"><![CDATA[![](https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg)]]></content>
+    <content type="html"><![CDATA[![](https://lh6.googleusercontent.com/-Gq3oxMml8sU/UmBScRSUxhI/AAAAAAAA6SE/0MuhSb9sdWM/s800/foxslide.jpg)
+]]></content>
   </entry>
   
   <entry>

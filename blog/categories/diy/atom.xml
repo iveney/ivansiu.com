@@ -4,7 +4,7 @@
   <title><![CDATA[Category: diy | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/diy/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-04-03T02:20:27-07:00</updated>
+  <updated>2017-04-04T01:25:25-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/"/>
     <updated>2014-05-28T21:30:56-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue</id>
-    <content type="html"><![CDATA[![Possible cause of unrecoganized RAM](https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/mbp09-ram-theory.png)
+    <content type="html"><![CDATA[![Possible cause of unrecoganized RAM](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/mbp09-ram-theory.png)
 
 A few days ago, I encountered an issue which seems to be common among mid-2009
 MBPs: one of the RAM (in slot 1) is not recognized anymore. Or, sometimes
@@ -47,21 +47,21 @@ help tucking the RAMs.
 As I am fixing it, I accidentally broke the left holder. So I have to customized
 a plastic holder and stuck it with the logic board to hold the inner ram (slot 1).
 
-![](https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/cracked-holder.jpg)
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/cracked-holder.jpg)
 
 To verify my theory, I then taped a padding at the corresponding RAM position in the back cover:
 
-![](https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/padding.jpg)
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/padding.jpg)
 
 And they look like the following before I close:
 
-![](https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/padding-ram.jpg)
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/padding-ram.jpg)
 
 Note that you have to screw it real tight to create the pressure such that
 the RAM is aligned. That said, there will be a 'bump' at that position, 
 and will easily cause scratch. So I use an apple sticker to cover my ass:
 
-![](https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/sticker.jpg)
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/sticker.jpg)
 
 This method worked for me, well, at 99% of the time. Sometimes after sleep, the
 MBP still won't wake up. I notice that this usually due to running  the MBP for
@@ -82,7 +82,8 @@ my following posts:
 - [Replace faulty SATA cable](/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/)
 
 *If you have similar experience, do not hesitate to let me know. If you find my
-instruction helpful, leave a comment and share it!*]]></content>
+instruction helpful, leave a comment and share it!*
+]]></content>
   </entry>
   
   <entry>
@@ -90,7 +91,7 @@ instruction helpful, leave a comment and share it!*]]></content>
     <link href="http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/"/>
     <updated>2014-05-28T00:15:08-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp</id>
-    <content type="html"><![CDATA[![Replacing MBP cable](https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/sata-cable.jpg)
+    <content type="html"><![CDATA[![Replacing MBP cable](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/sata-cable.jpg)
 
 Recently, my mid 2009 MBP (Model A1278) fails to recognize the hard drive. My
 first bet was  another disk failure on me, but it was not the case. I took down
@@ -124,7 +125,8 @@ instruction helpful, leave a comment and share it!*
 
 [cable ifixit]: http://www.ifixit.com/MacBook-Parts/MacBook-Pro-13-Inch-Unibody-Hard-Drive-Cable/IF163-013#productDescription
 [illustrated document]: http://www.ifixit.com/Guide/MacBook+Pro+13-Inch+Unibody+Mid+2009+Hard+Drive+Cable+Replacement/1340
-[cable amazon]: http://www.amazon.com/gp/product/B004VSZCL4/ref=oh_details_o02_s00_i00?ie=UTF8&psc=1]]></content>
+[cable amazon]: http://www.amazon.com/gp/product/B004VSZCL4/ref=oh_details_o02_s00_i00?ie=UTF8&psc=1
+]]></content>
   </entry>
   
   <entry>

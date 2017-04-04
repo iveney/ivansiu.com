@@ -4,7 +4,7 @@
   <title><![CDATA[Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-04-03T02:20:27-07:00</updated>
+  <updated>2017-04-04T01:25:25-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -12,6 +12,109 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Migrating from dropbox public folder]]></title>
+    <link href="http://blog.ivansiu.com/blog/2017/04/03/migrating-from-dropbox-public-folder/"/>
+    <updated>2017-04-03T02:22:32-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2017/04/03/migrating-from-dropbox-public-folder</id>
+    <content type="html"><![CDATA[<p>Dropbox recently removed its public folder feature, which was used to host my blog’s images. I have to figure out a solution to host and fix the paths to these images…</p>
+<!-- more -->
+<p>Dropbox <a href="https://www.dropbox.com/help/16">announced</a> that <em>As of March 15, 2017 the Public folder in your Dropbox account has been converted into a standard folder.</em> Sad, all my previous links are hosted on Dropbox, and they all become invalid URLs.</p>
+<p>I figured that I have to use another image hosting service. After some searching online, <a href="http://cloudinary.com/invites/lpov9zyyucivvxsnalc5/qebjx4vsaxc746ormmqa">Cloundinary</a> seems to be a good option. One design of my hosted images are that they are organized in sub-folders under a ‘blog’ folder. This means that if I want to seamlessly convert the links, I need to preserve the folder structure too.</p>
+<p>Cloudinary seems to suggest they support auto-creating folders. Unfortunately that does not quite work for me.</p>
+<figure>
+<img src="http://res.cloudinary.com/maomao/image/upload/v1491293789/blog/Cloudinary_Management_Console_-_Settings.png" alt="settings" /><figcaption>settings</figcaption>
+</figure>
+<p>In fact, I wrote a small script to do this.</p>
+<div class="bogus-wrapper">
+<notextile>
+<figure class="code">
+<figcaption>
+<span>Upload a folder to cloudinary</span>
+</figcaption>
+<div class="highlight">
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">os</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">cloudinary</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">cloudinary.uploader</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">cloudinary.api</span>
+</span><span class='line'>
+</span><span class='line'><span class="c"># Upload the folder in rootdir to cloudinary, preserving the file structure</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cloudinary</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
+</span><span class='line'>  <span class="n">cloud_name</span> <span class="o">=</span> <span class="s">&quot;&lt;name&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">api_key</span> <span class="o">=</span> <span class="s">&quot;&lt;your key&gt;&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="n">api_secret</span> <span class="o">=</span> <span class="s">&quot;&lt;your secret&gt;&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rootdir</span> <span class="o">=</span> <span class="s">&#39;blog&#39;</span>
+</span><span class='line'><span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">subs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">rootdir</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+</span><span class='line'>        <span class="n">cloudinary</span><span class="o">.</span><span class="n">uploader</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span>
+</span><span class='line'>            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="nb">file</span><span class="p">),</span>
+</span><span class='line'>            <span class="n">folder</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">use_filename</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+</span><span class='line'>            <span class="n">unique_filename</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">resource_type</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">)</span>
+</span></code></pre>
+</td>
+</tr>
+</table>
+</div>
+</figure>
+</notextile>
+</div>
+<p>With that, I did a simple sed run on all my post sources:</p>
+<div class="bogus-wrapper">
+<notextile>
+<figure class="code">
+<figcaption>
+<span>Upload a folder to cloudinary</span>
+</figcaption>
+<div class="highlight">
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class='python'><span class='line'><span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s">&#39;&#39;</span> <span class="s">&#39;s/&lt;dropbox base url&gt;/&lt;cloundinary base url&gt;/&#39;</span> <span class="o">*.</span><span class="n">markdown</span>
+</span></code></pre>
+</td>
+</tr>
+</table>
+</div>
+</figure>
+</notextile>
+</div>
+<p>then rake preview. Boom! All the images are shown again!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[在美國換輪胎的經歷]]></title>
@@ -70,7 +173,7 @@
     <updated>2015-05-14T20:30:58-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2015/05/14/study-abroad-wisdom-teeth-removal-with-student-insurance</id>
     <content type="html"><![CDATA[<figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2015-05-14-study-abroad-wisdom-teeth-removal-with-student-insurance.jpg" alt="Wisdom Teeth (source)" /><figcaption>Wisdom Teeth (<a href="http://www.dentalstudio101.com/blog/wisdom-teeth-do-i-leave-them-in-or-take-them-out/">source</a>)</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/2015-05-14-study-abroad-wisdom-teeth-removal-with-student-insurance.jpg" alt="Wisdom Teeth (source)" /><figcaption>Wisdom Teeth (<a href="http://www.dentalstudio101.com/blog/wisdom-teeth-do-i-leave-them-in-or-take-them-out/">source</a>)</figcaption>
 </figure>
 <p>在快奔三的年纪，终于长出了最后一颗智齿。</p>
 <!-- more -->
@@ -88,7 +191,7 @@
 <p>过了两周，总算没那么疼了。牙线也开始脱落，能正常吃东西了。我觉得我恢复得还是不错的，没有需要用上医生开的处方药，只是用 OTC 的 ibuprofen 即可止疼。只是每天早上起来时会比较疼，因为平躺着会让它充血。</p>
 <p>PS. 如果有在 UIUC 的朋友也想去拔智齿，可以先去 Creative Smiles Dental （在 marketplace 那边）检查。没有租生的智齿它们是可以直接拔的。提我的名字（说我 refer 你）可以每人各拿 $50 的优惠 :)</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/dentalreferal.jpg" alt="Referal" /><figcaption>Referal</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/dentalreferal.jpg" alt="Referal" /><figcaption>Referal</figcaption>
 </figure>
 ]]></content>
   </entry>
@@ -99,51 +202,51 @@
     <updated>2015-05-04T11:24:35-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2015/05/04/popular-watches-under-150</id>
     <content type="html"><![CDATA[<figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/top10.jpg" />
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/watches/top10.jpg" />
 </figure>
 <p>I’ve been looking around entry-level watches for some time. Recently, I answered a <a href="http://www.zhihu.com/question/29695310/answer/45929205?group_id=577053538367111168">question</a> in Zhihu (Chinese Quora), and I feel like to transcribe this collection in my blog.</p>
 <!-- more -->
 <h2 id="dress-watch">Dress Watch</h2>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/rodina.jpg" alt="Rodina R005, $119 via Amazon" /><figcaption>Rodina R005, $119 via Amazon</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/watches/rodina.jpg" alt="Rodina R005, $119 via Amazon" /><figcaption>Rodina R005, $119 via Amazon</figcaption>
 </figure>
 <p>This watch is discussed in my previous <a href="http://blog.ivansiu.com/blog/2015/03/26/watch-review-rodina-r005gb/">blog post</a>. It is a bit debatable as some people think it completely ripoff the NOMOS Tangente. However, considering there so many Rolex Submariner homages, this should also considered a homage. It uses a Seagull ST1701 movement, sapphire crystal, and display case back. At this price point, it is really a good deal. Get in on <a href="http://www.amazon.com/gp/product/B00VLY2106/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00VLY2106&amp;linkCode=as2&amp;tag=zigxia-20&amp;linkId=3ZTM75JFDBHOIEIK">Amazon</a>.</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/orient_bambino.png" alt="Orient Bambino, $130 via Amazon" /><figcaption>Orient Bambino, $130 via Amazon</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/watches/orient_bambino.png" alt="Orient Bambino, $130 via Amazon" /><figcaption>Orient Bambino, $130 via Amazon</figcaption>
 </figure>
 <p>I’ve always like the ORIENT logo, much more than SEIKO’s. This watch features Roman literals, blue hands and white classic dial. <a href="http://www.amazon.com/gp/product/B00MVPB7UO/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00MVPB7UO&amp;linkCode=as2&amp;tag=zigxia-20&amp;linkId=MGHKNNXNNVCQ5GOO">Amazon</a></p>
-<p><img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/DW_men.jpg" alt="Daniel Wellington, $120 Men" /> <img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/DW_women.jpg" alt="$85 Women" /></p>
+<p><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/watches/DW_men.jpg" alt="Daniel Wellington, $120 Men" /> <img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/DW_women.jpg" alt="$85 Women" /></p>
 <p>This has been quite popular in China, due to their successful marketing campaign. It is a quartz (Japanese) watch with multiple variation, and looks really good. Get the best looking ones <a href="http://www.amazon.com/gp/product/B00BKQT5RC/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00BKQT5RC&amp;linkCode=as2&amp;tag=zigxia-20&amp;linkId=K2IGKVEEO7YTRQ6T">here</a> and <a href="http://www.amazon.com/gp/product/B00D19B4DE/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00D19B4DE&amp;linkCode=as2&amp;tag=zigxia-20&amp;linkId=2AHHERE54PC7HT5A">here</a>.</p>
 <h2 id="divers-watch">Diver’s Watch</h2>
 <p>Now moves to my favorite category. Rolex designed the true classic look of today’s diver’s watch. However, the retail price for a submariner is probably too high for lots of people. Fortunately, Japanese brands SEIKO and ORIENT provide some affordable options here.</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/seiko_skx007.jpg" alt="SEIKO skx007" /><figcaption>SEIKO skx007</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/watches/seiko_skx007.jpg" alt="SEIKO skx007" /><figcaption>SEIKO skx007</figcaption>
 </figure>
 <p>A very popular one. Considered as a poor man’s Rolex. You can get it around $180 at <a href="http://www.amazon.com/gp/product/B000B5OD4I/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B000B5OD4I&amp;linkCode=as2&amp;tag=zigxia-20&amp;linkId=TWJOKBR4I6MCBOXS">Amazon</a>.</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/orient_ray.jpg" alt="Orient Ray" /><figcaption>Orient Ray</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/watches/orient_ray.jpg" alt="Orient Ray" /><figcaption>Orient Ray</figcaption>
 </figure>
 <p>Also a very popular one. As I said, I really like Orient’s LOGO. I find it far more interesting to see the lions and shields rather than just the word “SEIKO”. $130 at <a href="http://www.amazon.com/gp/product/B00A6U2EWQ/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00A6U2EWQ&amp;linkCode=as2&amp;tag=zigxia-20&amp;linkId=GTWCDGRCTEYGW7QY">Amazon</a>.</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/orient_mako.png" alt="Orient Mako" /><figcaption>Orient Mako</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/watches/orient_mako.png" alt="Orient Mako" /><figcaption>Orient Mako</figcaption>
 </figure>
 <p>Ray’s brother, Mako. The watch face is slightly different, thinner hands, arabic numbers at 6, 9 and 12 o’clock. Also around $130 at <a href="http://www.amazon.com/gp/product/B001EWEQ3A/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B001EWEQ3A&amp;linkCode=as2&amp;tag=zigxia-20&amp;linkId=H37LB2B5KGLJ5NMQ">Amazon</a>.</p>
 <h2 id="fieldflightpilot-watch">Field/Flight/Pilot Watch</h2>
-<p><img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/seiko_snzg13.jpg" alt="Seiko SNZG13" /> <img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/seiko_snzg13_lume.jpg" /></p>
+<p><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/watches/seiko_snzg13.jpg" alt="Seiko SNZG13" /> <img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/seiko_snzg13_lume.jpg" /></p>
 <p>One of my favorite. It’s lume is fantastic and got countless compliments. Only $100 at <a href="http://www.amazon.com/gp/product/B006BUE84M/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B006BUE84M&amp;linkCode=as2&amp;tag=zigxia-20&amp;linkId=MA3O42A4RNTDGIY6">Amazon</a>.</p>
-<p><img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/orient_pilot.jpg" alt="Orient FER2A001B0 Pilot Watch" /> <img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/orient_pilot_lume.jpg" /></p>
+<p><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/watches/orient_pilot.jpg" alt="Orient FER2A001B0 Pilot Watch" /> <img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/orient_pilot_lume.jpg" /></p>
 <p>This is my favorite style. Look at the beautifully designed digits! It’s lume is also awesome: lumes at all numbers! When it’s on sale you can <a href="http://amzn.to/1GCsWQG">get it at $125</a>.</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/seiko_snk809.jpg" alt="SEIKO SNK 809" /><figcaption>SEIKO SNK 809</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/watches/seiko_snk809.jpg" alt="SEIKO SNK 809" /><figcaption>SEIKO SNK 809</figcaption>
 </figure>
 <p>Bestseller in Amazon. Come with various colors (<a href="http://amzn.to/1HY92E4">black</a>, <a href="http://amzn.to/1EVJrMP">green</a>, <a href="http://amzn.to/1bJZXCj">blue</a>, <a href="http://amzn.to/1GCtCpo">beige</a>). It’s so cheap ($50) that people are getting all colors and rotate everyday. Also, since it’s so affordable, it will become your workhorse. You won’t treat it like million dollar watch that only put in your locker.</p>
 <h2 id="skeleton-watch">Skeleton Watch</h2>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/seagull_m182SK.jpg" alt="Seagull M182SK" /><figcaption>Seagull M182SK</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/watches/seagull_m182SK.jpg" alt="Seagull M182SK" /><figcaption>Seagull M182SK</figcaption>
 </figure>
 <p>Quite popular in watchuseek forum. Very nice seagull movement with a complete see-through design. That said, it might be too busy to see the hands. $135 at <a href="http://www.amazon.com/gp/product/B00KCJZ0TA/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00KCJZ0TA&amp;linkCode=as2&amp;tag=zigxia-20&amp;linkId=QUCGQW7E3HYSEZH4">Amazon</a>.</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/watches/fossil_grant.jpg" alt="Fossil Grant" /><figcaption>Fossil Grant</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/watches/fossil_grant.jpg" alt="Fossil Grant" /><figcaption>Fossil Grant</figcaption>
 </figure>
 <p>This skeleton is cleaner than the Seagull’s. Nevertheless, Seagull is more reputable than Fossil in watch making. <a href="http://amzn.to/1HYa178">Amazon</a>.</p>
 <h2 id="conclusion">Conclusion</h2>
@@ -347,7 +450,7 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
     <updated>2014-05-28T21:30:56-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue</id>
     <content type="html"><![CDATA[<figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/mbp09-ram-theory.png" alt="Possible cause of unrecoganized RAM" /><figcaption>Possible cause of unrecoganized RAM</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/mbp09-ram-theory.png" alt="Possible cause of unrecoganized RAM" /><figcaption>Possible cause of unrecoganized RAM</figcaption>
 </figure>
 <p>A few days ago, I encountered an issue which seems to be common among mid-2009 MBPs: one of the RAM (in slot 1) is not recognized anymore. Or, sometimes it is recognized, but after sleep and wake up, the computer freezes and impossible to recover but force power off.</p>
 <!-- more -->
@@ -355,19 +458,19 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
 <p>As I suggested in <a href="https://discussions.apple.com/message/24868689#24868689">my reply</a>, this may due to a RAM slot degradation. My guess is, the RAM slot cannot align the RAM to a correct contact positions any more. Precisely, see the post image above. Notice that the two clips on the left and right are used to hold the rams in a horizontal position, otherwise they will bend upwards. I took a close look at those clips and found that the plastic wore out and cannot hold them as original. I don’t have great ways to fix them, so I just cropped some papers and insert them between the RAMs and the back edges on the body, hoping they can help tucking the RAMs.</p>
 <p>As I am fixing it, I accidentally broke the left holder. So I have to customized a plastic holder and stuck it with the logic board to hold the inner ram (slot 1).</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/cracked-holder.jpg" />
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/cracked-holder.jpg" />
 </figure>
 <p>To verify my theory, I then taped a padding at the corresponding RAM position in the back cover:</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/padding.jpg" />
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/padding.jpg" />
 </figure>
 <p>And they look like the following before I close:</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/padding-ram.jpg" />
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/padding-ram.jpg" />
 </figure>
 <p>Note that you have to screw it real tight to create the pressure such that the RAM is aligned. That said, there will be a ‘bump’ at that position, and will easily cause scratch. So I use an apple sticker to cover my ass:</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/sticker.jpg" />
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/sticker.jpg" />
 </figure>
 <p>This method worked for me, well, at 99% of the time. Sometimes after sleep, the MBP still won’t wake up. I notice that this usually due to running the MBP for a long time, and it’s hot inside. Nevertheless, this is the best solution I can come up with by now. <em>If you have any other cheap solution that does not require replacing the logic board, please let me know in the comments.</em></p>
 <p>Finally, Zach Clawson created a <a href="https://people.cam.cornell.edu/~zc227/extras/mid2009mbp_RAM.html">dedicated page</a> for this issue, which lists lots of reference and provides explanation to it. Make sure you check it out if you have encountered similar issue.</p>
@@ -387,7 +490,7 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
     <updated>2014-05-28T00:15:08-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp</id>
     <content type="html"><![CDATA[<figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/fix-mbp/sata-cable.jpg" alt="Replacing MBP cable" /><figcaption>Replacing MBP cable</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/sata-cable.jpg" alt="Replacing MBP cable" /><figcaption>Replacing MBP cable</figcaption>
 </figure>
 <p>Recently, my mid 2009 MBP (Model A1278) fails to recognize the hard drive. My first bet was another disk failure on me, but it was not the case. I took down the hard drive and put it to a mobile hard drive case and it can be read smoothly.</p>
 <!-- more -->
@@ -408,7 +511,7 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
     <updated>2014-05-22T20:38:07-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow</id>
     <content type="html"><![CDATA[<figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/sublime-marked.png" alt="Writing in Sublime Text and previewing in Marked" /><figcaption>Writing in Sublime Text and previewing in Marked</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/sublime-marked.png" alt="Writing in Sublime Text and previewing in Marked" /><figcaption>Writing in Sublime Text and previewing in Marked</figcaption>
 </figure>
 <p>After blogging with <a href="http://octopress.org">Octopress</a> for a while, I have already gained some insights on it, and my publishing flow has been smoother. I think it is right time to share my flow as a reference.</p>
 <!-- more -->
@@ -417,7 +520,7 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
 <h3 id="creating-a-post-alfred-workflow-blog-publish">Creating a post: alfred workflow (blog publish)</h3>
 <p><a href="https://github.com/temikus">Artem Yakimenko</a> created an awesome <a href="http://www.alfredforum.com/topic/2289-octopress-publisher/">alfred workflow</a> for publishing and generating octopress websites. Use <code>blog publish [title]</code> to create a new post:</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/blog-publish.png" />
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/blog-publish.png" />
 </figure>
 <p>It then opens the post in your specified text editor with template.</p>
 <h3 id="editing-sublime-text.app-marked.app-marked-app-menu-st-plugin">Editing: Sublime Text.app + Marked.app + Marked App Menu (ST Plugin)</h3>
@@ -427,7 +530,7 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
 <p>To preview the generate website, simply install <a href="http://pow.cx">pow</a> and execute <code>rake watch</code> under octopress directory to monitor the change. Octopress official website provides <a href="http://octopress.org/docs/blogging/">some explanation</a>. After installation, you can view your website locally at <a href="http://octopress.dev" class="uri">http://octopress.dev</a>.</p>
 <p>You should also install the <a href="http://tombeynon.github.io/alfred-pow/">pow alfred workflow</a>, which can help you open pow website in a breeze.</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/pow.png" />
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/pow.png" />
 </figure>
 <h3 id="math-rendering-mathjax">Math Rendering: MathJax</h3>
 <p>Since I am an EECS student, I write a lot of <a href="http://blog.ivansiu.com/blog/categories/optimization">Optimization</a>, <a href="http://blog.ivansiu.com/blog/categories/machine-learning">Machine Learning</a> and <a href="http://blog.ivansiu.com/blog/categories/computer-vision">Computer Vision</a> stuff, which relies heavily on mathematics. Thus, writing math formulas is a must for me. <a href="http://mathjax.org">MathJax</a> is a javascript library for rendering math by writing LaTeX math. To do this, one needs to configure the site and link to the library. Put these two lines into <code>&lt;octopress&gt;/source/_includes/custom/head.html</code>:</p>
@@ -525,7 +628,7 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
 <h3 id="image-hosting-dropbox-public-folder">Image hosting: Dropbox public folder</h3>
 <p>I host my images in Dropbox Public folder, since you can simply copy the public link and paste it to the post source, for example:</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/dropbox-image.png" />
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/dropbox-image.png" />
 </figure>
 <h3 id="image-editing-skitch-omnigraffle">Image editing: Skitch + OmniGraffle</h3>
 <p>The previous image is done by a timed capture from <a href="http://skitch.com">skitch</a>. For advanced vector graphics, I use <a href="http://www.omnigroup.com/omnigraffle">OmniGraffle</a>.</p>
@@ -573,11 +676,11 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
 <h3 id="pandocs-markdown-reference-dash.app-and-dash-alfred-workflow">Pandoc’s Markdown Reference: Dash.app and Dash alfred workflow</h3>
 <p><a href="http://kapeli.com/dash">Dash.app</a> is an API Documentation Browser and Code Snippet Manager. It provides an convinient alfred workflow that searches the documents:</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/alfred-dash.png" />
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/alfred-dash.png" />
 </figure>
 <p>opens</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/Dash.png" />
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/Dash.png" />
 </figure>
 <h3 id="tips-and-tricks">Tips and tricks</h3>
 <p>Continuously growing…</p>
@@ -604,9 +707,9 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
     <content type="html"><![CDATA[<table>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_orig.png" alt="phantom_orig" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_backproj.png" alt="phantom_backproj" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_tv.png" alt="phantom_tv" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_orig.png" alt="phantom_orig" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_backproj.png" alt="phantom_backproj" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_tv.png" alt="phantom_tv" /></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Original</td>
@@ -638,9 +741,9 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
 <table>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gx.png" alt="phantom_gx" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gy.png" alt="phantom_gy" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_gI.png" alt="phantom_gI" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gx.png" alt="phantom_gx" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gy.png" alt="phantom_gy" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gI.png" alt="phantom_gI" /></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>Gx(I)</code></td>
@@ -661,9 +764,9 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
 <table>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/measurement_random.png" alt="M rand" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_rand_bp.png" alt="phantom rand bp" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_rand_tv.png" alt="phantom rand tv" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/measurement_random.png" alt="M rand" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_rand_bp.png" alt="phantom rand bp" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_rand_tv.png" alt="phantom rand tv" /></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Random measurement</td>
@@ -675,9 +778,9 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
 <table>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/measurement_radial.png" alt="M radial" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_backproj.png" alt="phantom_backproj" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/phantom_tv.png" alt="phantom_tv" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/measurement_radial.png" alt="M radial" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_backproj.png" alt="phantom_backproj" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_tv.png" alt="phantom_tv" /></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Radial measurement</td>
@@ -695,8 +798,8 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
 <table>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman.png" alt="cameraman" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_grad.png" alt="cameraman_grad" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman.png" alt="cameraman" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_grad.png" alt="cameraman_grad" /></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Cameraman</td>
@@ -708,10 +811,10 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
 <table>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_rand_bp.png" alt="cameraman_rand_bp" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_rand_tv.png" alt="cameraman_rand_tv" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_bp.png" alt="cameraman_bp" /></td>
-<td style="text-align: center;"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/cameraman_tv.png" alt="cameraman_tv" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_rand_bp.png" alt="cameraman_rand_bp" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_rand_tv.png" alt="cameraman_rand_tv" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_bp.png" alt="cameraman_bp" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_tv.png" alt="cameraman_tv" /></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Rand (L2)</td>
@@ -723,7 +826,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
 </table>
 <p>As we can see, the results are not as good. In fact, the non-zero ratio of its gradient is 0.9928, which is not sparse at all. However, if we plot the histogram of gradients, we will find that most of the gradient magnitudes are small:</p>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/camera_mag_hist.png" alt="Gradient Histogram" /><figcaption>Gradient Histogram</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/camera_mag_hist.png" alt="Gradient Histogram" /><figcaption>Gradient Histogram</figcaption>
 </figure>
 <p>In particular, most of them are smaller than 200, which means the number of ‘changes’ that are larger than 200 is small. In fact, the ratio of gradient &gt; 200 is only <em>0.0964</em>! Thus, there are two possible ways to discard these information and get a ‘compressed’ image that is sparse in gradients:</p>
 <ol type="1">
@@ -755,7 +858,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
     <link href="http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/"/>
     <updated>2014-05-18T20:13:08-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization</id>
-    <content type="html"><![CDATA[<p><a href="https://dl.dropboxusercontent.com/u/3315210/blog/l1/sparse_signal_reconstruction.png"><img src="https://dl.dropboxusercontent.com/u/3315210/blog/l1/sparse_signal_reconstruction.png" alt="Sparse Signal Reconstruction Results" /></a></p>
+    <content type="html"><![CDATA[<p><a href="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/sparse_signal_reconstruction.png"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/sparse_signal_reconstruction.png" alt="Sparse Signal Reconstruction Results" /></a></p>
 <p>This is a follow-up of the <a href="http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">previous post</a> on applications of L1 minimization.</p>
 <!-- more -->
 <p>As we know, any signal can be decomposed into a linear combination of basis, and the most famous one is <a href="http://en.wikipedia.org/wiki/Fourier_transform">Fourier Transform</a>. For simplicity, let’s assume that we have a signal that is a superposition of some sinusoids. For example, the following:</p>
@@ -990,7 +1093,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
     <updated>2014-05-14T19:32:38-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization</id>
     <content type="html"><![CDATA[<figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/coef.png" alt="Recovered Coefficients by Different Methods" /><figcaption>Recovered Coefficients by Different Methods</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/coef.png" alt="Recovered Coefficients by Different Methods" /><figcaption>Recovered Coefficients by Different Methods</figcaption>
 </figure>
 <h1 id="problem-setting">Problem Setting</h1>
 <p>Ordinary Least Square (OLS), L2-regularization and L1-regularization are all techniques of finding solutions in a linear system. However, they serve for different purposes. Recently, L1-regularization gains much attention due to its ability in finding sparse solutions. This post demonstrates this by comparing OLS, L2 and L1 regularization.</p>
@@ -1178,7 +1281,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
 <li>The second plot shows how similar the recovered coefficients by lasso and elastic nets resemble the original coefficients. As we can see, both of them can recover most parts, while elastic nets contain some small ‘noise’. However, elastic net yields a slightly better MSE than lasso.</li>
 </ol>
 <figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/plot.png" alt="Plot of Coefficients" /><figcaption>Plot of Coefficients</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization/plot.png" alt="Plot of Coefficients" /><figcaption>Plot of Coefficients</figcaption>
 </figure>
 <h2 id="probing-further">Probing Further</h2>
 <p>Scikit has some excellent examples on regualarization (<a href="http://scikit-learn.org/stable/modules/linear_model.html">1</a>, <a href="http://scikit-learn.org/stable/auto_examples/linear_model/plot_lasso_and_elasticnet.html">2</a>). Quora has an excellent <a href="http://www.quora.com/Machine-Learning/What-is-the-difference-between-L1-and-L2-regularization">discussion</a> on L2 vs L1 regualarization. I found the top three answers very useful in understanding deeper, especially from the <em>Bayesian regularization paradigm</em> perspective by thinking the regularization as MAP (Maximum A Posteriori) that adds a Laplacian (L1) or Gaussian (L2) prior to the original objective.</p>
@@ -1257,7 +1360,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
     <updated>2014-05-01T17:58:20-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console</id>
     <content type="html"><![CDATA[<figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-os-x-reveal-file-in-console.png" />
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/2014-05-01-os-x-reveal-file-in-console.png" />
 </figure>
 <p>One of the neat things you can do in OS X is to reveal a file in Finder.app from some other applications. Turns out lots of the time, we also want to do that in the terminal. The following script helps you with that:</p>
 <!-- more -->
@@ -1378,7 +1481,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
     <updated>2014-05-01T15:14:46-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it</id>
     <content type="html"><![CDATA[<figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png" />
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png" />
 </figure>
 <p>While <code>tmux</code> provides much better functionality than <code>screen</code>, most of us that work with tmux have been using <code>screen</code> for a long time, and it is more comfortable for us to use <code>ctrl-a</code> than the default <code>ctrl-b</code>, which is finger-strechy. Thus the first thing I will do after installing <code>tmux</code> is to rebind the prefix to <code>ctrl-a</code>. That gives us the most handy way of swapping last two windows by typing <code>ctrl-a ctrl-a</code>.</p>
 <!-- more -->
@@ -1419,7 +1522,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
     <updated>2014-04-30T23:59:40-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/04/30/source-highlight-for-matlab-slash-octave</id>
     <content type="html"><![CDATA[<figure>
-<img src="https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-source-highlight-for-matlab-slash-octave.png" />
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/2014-05-01-source-highlight-for-matlab-slash-octave.png" />
 </figure>
 <p>I recently worked with Matlab a lot. When in console, sometimes I want to use <code>less</code> to quickly examine the file content, and I have already <a href="http://superuser.com/a/71593">set it up</a> such that it uses <a href="http://www.gnu.org/software/src-highlite/">source-highlight</a> to output colorful escape sequence to the console. However, source-highlight does not come with a syntax support for Matlab by default. Luckily, this <a href="http://blog.sina.com.cn/s/blog_4513dde60100o6o4.html">post</a> and <a href="http://blog.sina.com.cn/s/blog_4513dde60101kpmr.html">this</a> (in Chinese) provides a solution.</p>
 <!-- more -->
@@ -1645,312 +1748,6 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
 </div>
 <p>Also, place the pac file under <code>/Library/WebServer/Documents</code>, which is the default Document Root of Apache.</p>
 <p>Tom Fischer proposed <a href="https://discussions.apple.com/thread/3202499?start=30&amp;tstart=0">another way</a> to get around, however I don’t think it a good idea to mess around the system files.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[LaTeX Tips and Tricks Collection]]></title>
-    <link href="http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection/"/>
-    <updated>2013-12-03T15:18:00-08:00</updated>
-    <id>http://blog.ivansiu.com/blog/2013/12/03/latex-tips-and-tricks-collection</id>
-    <content type="html"><![CDATA[<p>This post summarizes some common useful tips in LaTeX editing.</p>
-<!-- more -->
-<h2 id="figures">Figures</h2>
-<ul>
-<li><a href="http://www.howtotex.com/tips-tricks/vertical-alignment-of-subfigures/">Horizontal alignment of subfigures</a></li>
-<li><code>subfloat</code> in <code>subfig</code>
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<figcaption>
-<span></span>
-</figcaption>
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class='latex'><span class='line'><span class="c">% Style: Figure 1(a)</span>
-</span><span class='line'><span class="k">\usepackage</span><span class="na">[subrefformat=parens,labelformat=parens]</span><span class="nb">{</span>subfig<span class="nb">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">\subfloat</span><span class="na">[]</span><span class="nb">{</span>
-</span><span class='line'><span class="k">\includegraphics</span><span class="na">[height=\textheight]</span><span class="nb">{</span>example<span class="nb">}</span>
-</span><span class='line'><span class="k">\label</span><span class="nb">{</span>fig:example<span class="nb">}</span>
-</span><span class='line'><span class="nb">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">\subref*</span><span class="nb">{</span>fig:example<span class="nb">}</span>
-</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div></li>
-</ul>
-<h2 id="bibliography">Bibliography</h2>
-<ul>
-<li><a href="http://tex.stackexchange.com/questions/12686/how-do-i-run-bibtex-after-using-the-output-directory-flag-with-pdflatex-when-f">How do I run bibtex after using the -output-directory flag with pdflatex, when files are included from subdirectories?</a></li>
-<li>biblatex simple usage
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<figcaption>
-<span></span>
-</figcaption>
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class='latex'><span class='line'><span class="c">% unsrt, abbrev, last option means use unsrt in \cite[xxx,yyy,ccc]</span>
-</span><span class='line'><span class="k">\usepackage</span><span class="na">[sorting=none,firstinits=true,sortcites=true]</span><span class="nb">{</span>biblatex<span class="nb">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">% add this in preamble</span>
-</span><span class='line'><span class="k">\bibliography</span><span class="nb">{</span>dsa-verification<span class="nb">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">% at the end</span>
-</span><span class='line'><span class="k">\printbibliography</span>
-</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div></li>
-<li><a href="#bibitemsep">Item spacing</a></li>
-</ul>
-<h2 id="graphics">Graphics</h2>
-<ul>
-<li>Graphics path
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<figcaption>
-<span></span>
-</figcaption>
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class='latex'><span class='line'><span class="k">\graphicspath</span><span class="nb"></span>
-</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div></li>
-<li>Use other file extensions:
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<figcaption>
-<span></span>
-</figcaption>
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class='latex'><span class='line'><span class="k">\DeclareGraphicsExtensions</span><span class="nb">{</span>.pdf, .jpg, .png<span class="nb">}</span>
-</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div></li>
-</ul>
-<h2 id="table-and-tabular">Table and Tabular</h2>
-<ul>
-<li>threeparttable: Use footnote in tabular
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<figcaption>
-<span></span>
-</figcaption>
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class='latex'><span class='line'><span class="c">% inside tabular:</span>
-</span><span class='line'><span class="k">\tnote</span><span class="nb">{</span><span class="s">$</span><span class="nv">\dagger</span><span class="s">$</span><span class="nb">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">% after tabular</span>
-</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>tablenotes<span class="nb">}</span>[para] <span class="c">% do not break line between items</span>
-</span><span class='line'><span class="k">\item</span> [<span class="s">$</span><span class="nv">\dagger</span><span class="s">$</span>] A foot note. <span class="c">% this reference to the item</span>
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>tablenotes<span class="nb">}</span>
-</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div></li>
-</ul>
-<h2 id="theorem-definition">Theorem, Definition</h2>
-<ul>
-<li>New definition/theorem
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<figcaption>
-<span></span>
-</figcaption>
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class='latex'><span class='line'><span class="k">\newtheorem</span><span class="nb">{</span>definition<span class="nb">}{</span>Definition<span class="nb">}</span>
-</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div></li>
-<li>Useful packages:
-<ul>
-<li>ntheorem</li>
-<li>amsthm</li>
-</ul></li>
-</ul>
-<h2 id="fonts">Fonts</h2>
-<h2 id="packages">Packages</h2>
-<ul>
-<li>csvsimple: can automatically read csv and create tabular.</li>
-<li>algpseudocode: the most updated algorithm / code environment, need to sit inside with <code>algorithm</code> package.</li>
-<li>biblatex: provides better control for Bibliography.</li>
-<li>multirow: provides <code>\multirow</code> and <code>\multicolumn</code>.</li>
-<li>url: provides <code>\url</code>.</li>
-<li>xspace: prevent a command eating space.</li>
-<li>flushend: provides <code>\flushend</code>, balance two columns.</li>
-</ul>
-<h2 id="controlling-space">Controlling space</h2>
-<ul>
-<li>reduce space between float and text
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<figcaption>
-<span></span>
-</figcaption>
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class='latex'><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\textfloatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
-</span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\floatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
-</span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\intextsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
-</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div></li>
-<li>reduce bib item separation in biblatex<a name="bibitemsep"></a>
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<figcaption>
-<span></span>
-</figcaption>
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class='latex'><span class='line'><span class="k">\setlength\bibitemsep</span><span class="nb">{</span>0.5<span class="k">\itemsep</span><span class="nb">}</span>
-</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div></li>
-<li>geometry: control the margins at top, bottom, left and right</li>
-<li><p>enumitem: control the spacing related to <code>enumerate</code> and <code>itemize</code>.</p></li>
-<li><a href="http://gurmeet.net/computer-science/latex-tips-n-tricks-for-conference-papers/">LaTeX Tips n Tricks for Conference Papers</a></li>
-<li><a href="http://www.terminally-incoherent.com/blog/2007/09/19/latex-squeezing-the-vertical-white-space/">Latex: Squeezing the Vertical White Space</a></li>
-<li><p><a href="http://www.eng.cam.ac.uk/help/tpl/textprocessing/squeeze.html">Squeezing Space in LaTeX</a></p></li>
-</ul>
-<h2 id="commands-and-tools">Commands and tools:</h2>
-<ul>
-<li>latexmk: automatically compile multiple times to resolve reference.</li>
-<li>biber: replacement for bibtex for <code>biblatex</code></li>
-<li>texdoc: use <code>texdoc &lt;package&gt;</code> to search for a manual.</li>
-</ul>
-<h2 id="ieee">IEEE</h2>
-<ul>
-<li>proof: use <code>\IEEEproof</code></li>
-<li>multiple equations: use <code>\IEEEeqnarray</code> or <code>array</code>.</li>
-</ul>
-<h2 id="uncategorized">Uncategorized</h2>
-<ul>
-<li><a href="http://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-files-to-make-them-available-to-all-my-tex-files">Where do I place my own .sty files, to make them available to all my .tex files?</a></li>
-<li><a href="http://tex.stackexchange.com/questions/38287/creating-a-central-bibliography">Creating a central bibliography</a></li>
-</ul>
 ]]></content>
   </entry>
   

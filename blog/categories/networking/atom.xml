@@ -4,7 +4,7 @@
   <title><![CDATA[Category: networking | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/networking/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-04-03T02:20:27-07:00</updated>
+  <updated>2017-04-04T01:25:25-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -29,7 +29,8 @@ However, this cannot be done that simple, since Apple removed Web Sharing from n
 
 Also, place the pac file under `/Library/WebServer/Documents`, which is the default Document Root of Apache.
 
-Tom Fischer proposed [another way](https://discussions.apple.com/thread/3202499?start=30&tstart=0) to get around, however I don't think it a good idea to mess around the system files.]]></content>
+Tom Fischer proposed [another way](https://discussions.apple.com/thread/3202499?start=30&tstart=0) to get around, however I don't think it a good idea to mess around the system files.
+]]></content>
   </entry>
   
   <entry>
@@ -89,7 +90,8 @@ I am forwarded to
 
 ### More On Port Forwarding
 
-https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding]]></content>
+https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding
+]]></content>
   </entry>
   
 </feed>

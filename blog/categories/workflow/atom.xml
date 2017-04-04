@@ -4,7 +4,7 @@
   <title><![CDATA[Category: workflow | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/workflow/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-04-03T02:20:27-07:00</updated>
+  <updated>2017-04-04T01:25:25-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -32,7 +32,8 @@ The workflow I adopted is a two-step approach: mark those I want to keep in the 
 
 If you have some videos that occupy lots of space, you can convert them to lower quality. To do this, HandBrake is the excellent tool, which is open-sourced. However, it does not support batch change. Luckily, [HandBrakeBatch](http://www.osomac.com/apps/osx/handbrake-batch/) by [OSOMAC](http://www.osomac.com) can achieve this.
 
-To upload things back, [SimpleTransfer](http://rambax.com/simpletransfer.html) can help, especially for videos, which cannot be put back into camera roll easily (I have no idea why apple restricts this). The lite version is free, but you can only upload one item at a time, and there are also some restrictions.]]></content>
+To upload things back, [SimpleTransfer](http://rambax.com/simpletransfer.html) can help, especially for videos, which cannot be put back into camera roll easily (I have no idea why apple restricts this). The lite version is free, but you can only upload one item at a time, and there are also some restrictions.
+]]></content>
   </entry>
   
 </feed>

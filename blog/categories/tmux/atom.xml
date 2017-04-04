@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tmux | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/tmux/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-04-03T02:20:27-07:00</updated>
+  <updated>2017-04-04T01:25:25-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/"/>
     <updated>2014-05-01T15:14:46-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it</id>
-    <content type="html"><![CDATA[![](https://dl.dropboxusercontent.com/u/3315210/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png)
+    <content type="html"><![CDATA[![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png)
 
 While `tmux` provides much better functionality than `screen`,
 most of us that work with tmux have been using `screen` for a long time,
@@ -43,7 +43,8 @@ Specifically, add these two lines in `~/.tmux.conf`:
 </span><span class='line'><span class="nb">bind</span>-key C-a last-window
 </span></code></pre></td></tr></table></div></figure>
 
-[via](http://stackoverflow.com/questions/11557076/if-i-set-key-bind-of-c-b-to-c-a-in-tmux-how-can-i-move-the-cursor-to-the-beginni#comment15297769_11561128).]]></content>
+[via](http://stackoverflow.com/questions/11557076/if-i-set-key-bind-of-c-b-to-c-a-in-tmux-how-can-i-move-the-cursor-to-the-beginni#comment15297769_11561128).
+]]></content>
   </entry>
   
 </feed>

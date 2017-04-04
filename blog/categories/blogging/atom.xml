@@ -4,7 +4,7 @@
   <title><![CDATA[Category: blogging | Zigang Xiao]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/blogging/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-04-03T02:20:27-07:00</updated>
+  <updated>2017-04-04T01:25:25-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang Xiao (Ivan)]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow/"/>
     <updated>2014-05-22T20:38:07-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow</id>
-    <content type="html"><![CDATA[![Writing in Sublime Text and previewing in Marked](https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/sublime-marked.png)
+    <content type="html"><![CDATA[![Writing in Sublime Text and previewing in Marked](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/sublime-marked.png)
 
 After blogging with [Octopress] for a while, I have already gained
 some insights on it, and my publishing flow has been smoother.
@@ -64,7 +64,7 @@ Octopress official website provides [some explanation](http://octopress.org/docs
 You should also install the [pow alfred workflow][pow for alfred], which can
 help you open pow website in a breeze.
 
-![](https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/pow.png)
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/pow.png)
 
 ### Math Rendering: MathJax
 
@@ -142,7 +142,7 @@ There are a couple of good articles for reference:
 I host my images in Dropbox Public folder, since you can simply copy the public
 link and paste it to the post source, for example:
 
-![](https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/dropbox-image.png)
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/dropbox-image.png)
 
 ### Image editing: Skitch + OmniGraffle
 
@@ -186,11 +186,11 @@ For example, `refer to [@xiao2013optimally]` generates *refer to [@xiao2013optim
 [Dash.app](http://kapeli.com/dash) is an API Documentation Browser and Code Snippet Manager. It provides an convinient alfred workflow that searches
 the documents:
 
-![](https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/alfred-dash.png)
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/alfred-dash.png)
 
 opens
 
-![](https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/Dash.png)
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/Dash.png)
 
 ### Tips and tricks
 
@@ -223,12 +223,13 @@ Please leave your comments.*
 
 ## References
 
-[blog-publish]: https://dl.dropboxusercontent.com/u/3315210/blog/octopress-flow/blog-publish.png
+[blog-publish]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/blog-publish.png
 [alfred workflow]: http://www.alfredforum.com/topic/2289-octopress-publisher/
 [Octopress]: http://octopress.org
 [Sublime Text]: http://www.sublimetext.com
 [pow]: http://pow.cx
-[pow for alfred]: http://tombeynon.github.io/alfred-pow/]]></content>
+[pow for alfred]: http://tombeynon.github.io/alfred-pow/
+]]></content>
   </entry>
   
 </feed>
