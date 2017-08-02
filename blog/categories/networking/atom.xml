@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: networking | Zigang "Ivan" Xiao]]></title>
+  <title><![CDATA[Category: networking | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/networking/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-04-16T17:41:31-07:00</updated>
+  <updated>2017-08-01T22:42:02-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
-    <name><![CDATA[Ivan Xiao]]></name>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>

@@ -1,17 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: tips | Zigang "Ivan" Xiao]]></title>
+  <title><![CDATA[Category: tips | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/tips/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-04-16T17:41:31-07:00</updated>
+  <updated>2017-08-01T22:42:02-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
-    <name><![CDATA[Ivan Xiao]]></name>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[美國租車陷阱：Toll Charges]]></title>
+    <link href="http://blog.ivansiu.com/blog/2017/08/01/zu-che-xian-jing-:toll-charges/"/>
+    <updated>2017-08-01T22:14:24-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2017/08/01/zu-che-xian-jing-:toll-charges</id>
+    <content type="html"><![CDATA[今天收到了一張大概兩個月前的 bill，說我欠款 \$30 美金……
+
+<!-- more -->
+
+![](http://res.cloudinary.com/maomao/image/upload/v1501651001/platepass-scam.jpg)
+
+兩個月前，我因爲[車子被 flying debris 刮傷 hood](/blog/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object/)，而拿去了修車店修理。同時保險公司也 cover 我租車的費用。於是，在 Hertz 租了一輛小車。
+
+由於我上班下班都會經過 Dumbarton bridge，所以單程會被收取 \$5 費用。由於我自己有 fastrak，所以都是過橋時拿出來使用。但是有一次過橋忘記了。當時想着，也許跟之前一樣，會寄賬單到家，所以也沒多想。直到今天看到賬單，才大吃一驚：你收取我原價 \$5 的過路費，我認了。但是由於我只是一次沒有交，而收取我整個 rental period 的 service charge，每天 \$4.95，封頂 \$24.75。這多收的服務費，都已經是我的過路費的5倍了。這未免太坑了點？？
+
+仔細想想，這家名爲 PlatePass 的公司，實在是太陰險毒辣了。賬單在我結束租車後近兩個月後才寄出，此時早已經過了保險 claim 完成的日子。這間狠毒的公司，說白了就是躺着就把錢給賺了。
+
+仔細上網搜搜，我不是第一個人。網上早已經有[N多的抱怨](https://www.consumeraffairs.com/travel/platepass-com.html)。不少的[文章](http://www.courant.com/consumer/bottom-line/hc-bottom-line-hertz-platepass-20150514-column.html)也[披露](https://thepointsguy.com/guide/avoid-rental-car-toll-charges/)了這些公司無賴的行徑。可惜的是，我並沒有看到操作性太強的 argue 方法。只能吃一塹，長一智，以後一定要廣而告之，揭發這些無恥商家的醜惡行徑。文章裏面給出的建議是：
+
+1. 遇到 toll bridge/road，不要走快速通道，走現金通道。
+2. 自帶 toll transponder
+3. 設 gps 時，avoid toll roads。
+
+希望下次大家不要再犯這樣的錯誤了。
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OS X: reveal file in console]]></title>

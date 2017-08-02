@@ -1,17 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Zigang "Ivan" Xiao]]></title>
+  <title><![CDATA[Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-04-16T17:41:31-07:00</updated>
+  <updated>2017-08-01T22:42:02-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
-    <name><![CDATA[Ivan Xiao]]></name>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[美國租車陷阱：Toll Charges]]></title>
+    <link href="http://blog.ivansiu.com/blog/2017/08/01/zu-che-xian-jing-:toll-charges/"/>
+    <updated>2017-08-01T22:14:24-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2017/08/01/zu-che-xian-jing-:toll-charges</id>
+    <content type="html"><![CDATA[<p>今天收到了一張大概兩個月前的 bill，說我欠款 $30 美金……</p>
+<!-- more -->
+<figure>
+<img src="http://res.cloudinary.com/maomao/image/upload/v1501651001/platepass-scam.jpg" />
+</figure>
+<p>兩個月前，我因爲<a href="http://blog.ivansiu.com/blog/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object/">車子被 flying debris 刮傷 hood</a>，而拿去了修車店修理。同時保險公司也 cover 我租車的費用。於是，在 Hertz 租了一輛小車。</p>
+<p>由於我上班下班都會經過 Dumbarton bridge，所以單程會被收取 $5 費用。由於我自己有 fastrak，所以都是過橋時拿出來使用。但是有一次過橋忘記了。當時想着，也許跟之前一樣，會寄賬單到家，所以也沒多想。直到今天看到賬單，才大吃一驚：你收取我原價 $5 的過路費，我認了。但是由於我只是一次沒有交，而收取我整個 rental period 的 service charge，每天 $4.95，封頂 $24.75。這多收的服務費，都已經是我的過路費的5倍了。這未免太坑了點？？</p>
+<p>仔細想想，這家名爲 PlatePass 的公司，實在是太陰險毒辣了。賬單在我結束租車後近兩個月後才寄出，此時早已經過了保險 claim 完成的日子。這間狠毒的公司，說白了就是躺着就把錢給賺了。</p>
+<p>仔細上網搜搜，我不是第一個人。網上早已經有<a href="https://www.consumeraffairs.com/travel/platepass-com.html">N多的抱怨</a>。不少的<a href="http://www.courant.com/consumer/bottom-line/hc-bottom-line-hertz-platepass-20150514-column.html">文章</a>也<a href="https://thepointsguy.com/guide/avoid-rental-car-toll-charges/">披露</a>了這些公司無賴的行徑。可惜的是，我並沒有看到操作性太強的 argue 方法。只能吃一塹，長一智，以後一定要廣而告之，揭發這些無恥商家的醜惡行徑。文章裏面給出的建議是：</p>
+<ol type="1">
+<li>遇到 toll bridge/road，不要走快速通道，走現金通道。</li>
+<li>自帶 toll transponder</li>
+<li>設 gps 時，avoid toll roads。</li>
+</ol>
+<p>希望下次大家不要再犯這樣的錯誤了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Making an comprehensive insurance claim after got hit by road debris (flying object)]]></title>
+    <link href="http://blog.ivansiu.com/blog/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object/"/>
+    <updated>2017-04-30T13:30:04-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object</id>
+    <content type="html"><![CDATA[<p>Just a normal day of going to work. Bang! I got hit by a flying object … :(</p>
+<!-- more -->
+<h2 id="how-it-happened">How it happened</h2>
+<p>This video best explains it:</p>
+<video  preload='metadata' controls >
+<source src='http://res.cloudinary.com/maomao/video/upload/v1493584125/blog/flying_debris.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+</video>
+<h2 id="getting-a-quote">Getting a quote</h2>
+<p>While I am pretty sure that this should be a comprehensive claim, I wanted to avoid it if this can be repaired under a few hundred dollars. The common saying is that comprehensive claim will not increase your premimum, but there is also saying in the web that said if you <em>claim three times in a three year period</em>, it might. I went ahead to get quote from two shops, and turned out that it is way more than I expected: they range from \$1800 to \$2200!.</p>
+<p>First, let’s take a look at my damanges:</p>
+<p><img src="https://res.cloudinary.com/maomao/image/upload/w_400/v1493586583/scratch1.jpg" /> <img src="https://res.cloudinary.com/maomao/image/upload/w_400/v1493585253/scratch2.jpg" /> <img src="https://res.cloudinary.com/maomao/image/upload/w_400/v1493585253/scratch3.jpg" /></p>
+<p>The scratches are all over, and the most severe one, as shown in the first image, is that my base layer seems to be damaged.</p>
+<figure>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1493585408/car_paint_layers.png" />
+</figure>
+<p>Depending on different level of damage on the layers, including base, prime, base (paint) and clear coat layer, this is the hardest one so it actually takes quite a lot money to fix. For a simple clear coat damage, it is easy enough to DIY, and I’ve found some awesome tutorials online, including <a href="http://guidetodetailing.com/damage-repair/how-to-repair-paint-chips-deep-scratches/">this</a> and <a href="http://www.carpaintrepairinfo.com/repair-deep-car-scratches-50/">this</a>. There are also a bunch of videos online.</p>
+<p>Unfortunately my problem is way over that, and I guess I do have to make a claim. I do need to pay \$500 deductible, so the insurance will actually pay \$2k-ish minus deductible. The good thing is that while my car is being fixed, I still got a ride from Hertz, paid by my insurance company.</p>
+<h2 id="making-a-claim">Making a claim</h2>
+<p>Making a claim is easy. Just called the number and make the case. A case number will be created and an insurance adjuster will be assigned. After discussing with the adjuster, I can take the car to the body shop and an appraiser will come and do an inspection.</p>
+<h2 id="getting-the-paint-repaired">Getting the paint repaired</h2>
+<h2 id="conclusion">Conclusion</h2>
+<p>My overall experience with comprehensive insurance has been very good. I have claimed it a few times to repair not-at-fault damages, and in fact it already paid off my insurance premimums paid these years… However, I do have to pay deductible per-case basis, which is non-trivial also (except glass claim). Getting a zero-deductible claim will increase the premium a lot, so it seems 500 deductible is the norm.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Migrating from dropbox public folder]]></title>
@@ -1698,56 +1751,6 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
 </figure>
 </notextile>
 </div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Batch remove photos in iPhone, batch convert videos and upload back]]></title>
-    <link href="http://blog.ivansiu.com/blog/2014/01/29/batch-remove-photos-in-iphone/"/>
-    <updated>2014-01-29T18:16:21-08:00</updated>
-    <id>http://blog.ivansiu.com/blog/2014/01/29/batch-remove-photos-in-iphone</id>
-    <content type="html"><![CDATA[<p>One of the problems that drives iOS user crazy is the user-unfriendly manipulation/syncing of photos in iOS. There are just no easy way to remove photos in batch (though you can delete the entire camera roll in the settings).</p>
-<!-- more -->
-<p>There are several ways to manipulate it, but really not enough:</p>
-<ol type="1">
-<li>use iPhoto/Aperture to import and delete. However, the photos must be imported first, I cannot just delete it. Ever since there is iCloud, importing becomes not that important.</li>
-<li>use iTunes to Sync. Same as above, ever since iCloud, no reason to sync again.</li>
-<li>the only way to use built-in tools to manipulate the camera roll is to use Image Capture utility. That way, one can select and delete photos. However, it still does not have custom filtering of photos and does not support albums.</li>
-</ol>
-<p>The workflow I adopted is a two-step approach: mark those I want to keep in the iPhone, delete all stuff using the 3rd method, then upload back.</p>
-<p>If you have some videos that occupy lots of space, you can convert them to lower quality. To do this, HandBrake is the excellent tool, which is open-sourced. However, it does not support batch change. Luckily, <a href="http://www.osomac.com/apps/osx/handbrake-batch/">HandBrakeBatch</a> by <a href="http://www.osomac.com">OSOMAC</a> can achieve this.</p>
-<p>To upload things back, <a href="http://rambax.com/simpletransfer.html">SimpleTransfer</a> can help, especially for videos, which cannot be put back into camera roll easily (I have no idea why apple restricts this). The lite version is free, but you can only upload one item at a time, and there are also some restrictions.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Fix (ugly) Safari 7.0 not using local pac file]]></title>
-    <link href="http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/"/>
-    <updated>2013-12-05T00:03:43-08:00</updated>
-    <id>http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file</id>
-    <content type="html"><![CDATA[<p>I found that Safari in Mavericks is not using local <code>proxy.pac</code> at all. Turns out because of sandboxing, it will not allow reading file from local. A traditional solution is to turn on <strong>Web Sharing</strong>, and thus use HTTP to read the pac file such as <code>http://localhost/proxy.pac</code>.</p>
-<p>However, this cannot be done that simple, since Apple removed Web Sharing from normal version of Mavericks. To turn on the web service (Apache), do this:</p>
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class=''><span class='line'>sudo apachectl start</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div>
-<p>Also, place the pac file under <code>/Library/WebServer/Documents</code>, which is the default Document Root of Apache.</p>
-<p>Tom Fischer proposed <a href="https://discussions.apple.com/thread/3202499?start=30&amp;tstart=0">another way</a> to get around, however I don’t think it a good idea to mess around the system files.</p>
 ]]></content>
   </entry>
   

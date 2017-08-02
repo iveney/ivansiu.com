@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.ivansiu.com/blog/2017/08/01/zu-che-xian-jing-:toll-charges/</loc>
+<lastmod>2017-08-01T22:14:24-07:00</lastmod>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/blog/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object/</loc>
+<lastmod>2017-04-30T13:30:04-07:00</lastmod>
+</url>
+<url>
 <loc>http://blog.ivansiu.com/blog/2017/04/03/migrating-from-dropbox-public-folder/</loc>
 <lastmod>2017-04-03T02:22:32-07:00</lastmod>
 </url>
@@ -225,5 +233,17 @@
 </url>
 <url>
 <loc>http://blog.ivansiu.com/blog/categories/automotives/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/blog/categories/insurance/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/posts/2/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/posts/3/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/posts/4/</loc>
 </url>
 </urlset>
