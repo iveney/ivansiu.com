@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he/</loc>
+<lastmod>2017-08-06T17:27:49-07:00</lastmod>
+</url>
+<url>
 <loc>http://blog.ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling/</loc>
-<lastmod>2017-08-06T23:51:44-07:00</lastmod>
+<lastmod>2017-08-06T10:51:44-07:00</lastmod>
 </url>
 <url>
 <loc>http://blog.ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao/</loc>
@@ -248,14 +252,5 @@
 </url>
 <url>
 <loc>http://blog.ivansiu.com/blog/categories/insurance/</loc>
-</url>
-<url>
-<loc>http://blog.ivansiu.com/posts/2/</loc>
-</url>
-<url>
-<loc>http://blog.ivansiu.com/posts/3/</loc>
-</url>
-<url>
-<loc>http://blog.ivansiu.com/posts/4/</loc>
 </url>
 </urlset>
