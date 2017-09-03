@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.ivansiu.com/blog/2017/09/03/wei-blog-zeng-jia-linklog-gong-neng/</loc>
+<lastmod>2017-09-03T12:42:03-07:00</lastmod>
+</url>
+<url>
 <loc>http://blog.ivansiu.com/blog/2017/08/28/rime-zeng-qiang-bao/</loc>
 <lastmod>2017-08-28T23:34:29-07:00</lastmod>
 </url>
@@ -268,14 +272,5 @@
 </url>
 <url>
 <loc>http://blog.ivansiu.com/blog/categories/linklog/</loc>
-</url>
-<url>
-<loc>http://blog.ivansiu.com/posts/2/</loc>
-</url>
-<url>
-<loc>http://blog.ivansiu.com/posts/3/</loc>
-</url>
-<url>
-<loc>http://blog.ivansiu.com/posts/4/</loc>
 </url>
 </urlset>
