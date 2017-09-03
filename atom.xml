@@ -4,7 +4,7 @@
   <title><![CDATA[Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-08-06T17:59:19-07:00</updated>
+  <updated>2017-09-03T01:20:43-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rime 增強包]]></title>
+    <link href="http://blog.ivansiu.com/blog/2017/08/28/rime-zeng-qiang-bao/"/>
+    <updated>2017-08-28T23:34:29-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2017/08/28/rime-zeng-qiang-bao</id>
+    <content type="html"><![CDATA[<p>本篇 post 本身是作爲 <a href="http://octopress.org/docs/blogging/linklog/">linklog</a> 存在，但是發現竟然不支持！！！而官方文檔明明有提到這個功能的……</p>
+<!-- more -->
+<p>簡單來說，octopress 的作者自暴自棄，停止了它的開發。所謂穩定版其實還停留在很早之前的版本，而之後的 2.x, 3.x 版本，也停滯了，包括 linklog 這個功能。</p>
+<p>所以，只能暫時手動把 link 提供在此了：http://tieba.baidu.com/p/4125987751/。這個鏈接提供了網友自製的鼠鬚管詞庫，用上後準確率提高了很多。</p>
+<h2 id="增加-linklog-support">增加 linklog support</h2>
+<p>花了一晚時間參考了一些文章，大致是把這個功能給加到 theme 里了。大致步驟：</p>
+<ol type="1">
+<li>安裝 <a href="https://github.com/octopress/linkblog">linkblog</a></li>
+<li>基於 octopress 沒有 merge 進 master 的 <a href="https://github.com/imathis/octopress/pull/1320/files?diff=unified#diff-337c6850898d3fbd8f57f88d16420a03">diff</a>， 增加 support</li>
+<li>Daring Fireball 作爲基準，理論上可以達到<a href="https://daringfireball.net/linked/">它的效果</a>。</li>
+</ol>
+<p>有意思的是，這個功能大概體現爲：</p>
+<ol type="1">
+<li>在 index 頁面，title 渲染爲 <code>&lt;title&gt; + &lt;marker&gt;</code>，其中 title 指向引用的文章，而 marker 指向本地文章的 permanent link。</li>
+</ol>
+<ul>
+<li>這個 marker 的設計很有意思，下一步爲加上 hover text，提示指向的地方。</li>
+</ul>
+<ol start="2" type="1">
+<li>在 page 頁面， title 渲染爲 <code>&lt;title&gt;</code>，title 指向引用的文章</li>
+<li>增加了 linklog 頁面，只顯示類型爲 linklog 的文章。</li>
+</ol>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[夏威夷遊記（四） 吃吃喝喝]]></title>
@@ -322,7 +352,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Making an comprehensive insurance claim after got hit by road debris (flying object)]]></title>
+    <title type="html"><![CDATA[Making an Comprehensive Insurance Claim After Got Hit by Road Debris (Flying Object)]]></title>
     <link href="http://blog.ivansiu.com/blog/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object/"/>
     <updated>2017-04-30T13:30:04-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object</id>
@@ -352,7 +382,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Migrating from dropbox public folder]]></title>
+    <title type="html"><![CDATA[Migrating From Dropbox Public Folder]]></title>
     <link href="http://blog.ivansiu.com/blog/2017/04/03/migrating-from-dropbox-public-folder/"/>
     <updated>2017-04-03T02:22:32-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2017/04/03/migrating-from-dropbox-public-folder</id>
@@ -535,7 +565,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Popular watches under $150]]></title>
+    <title type="html"><![CDATA[Popular Watches Under $150]]></title>
     <link href="http://blog.ivansiu.com/blog/2015/05/04/popular-watches-under-150/"/>
     <updated>2015-05-04T11:24:35-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2015/05/04/popular-watches-under-150</id>
@@ -697,7 +727,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Notes on Maximum Likelihood, Maximum A Posteriori and Naive Bayes]]></title>
+    <title type="html"><![CDATA[Notes on Maximum Likelihood, Maximum a Posteriori and Naive Bayes]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood/"/>
     <updated>2014-09-24T13:41:44-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood</id>
@@ -783,7 +813,7 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Fix Mid 2009 MBP RAM not recognized issue]]></title>
+    <title type="html"><![CDATA[Fix Mid 2009 MBP RAM Not Recognized Issue]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/"/>
     <updated>2014-05-28T21:30:56-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue</id>
@@ -823,7 +853,7 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Replacing SATA cable in Mid 2009 MBP]]></title>
+    <title type="html"><![CDATA[Replacing SATA Cable in Mid 2009 MBP]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/"/>
     <updated>2014-05-28T00:15:08-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp</id>
@@ -1623,72 +1653,6 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
 </figure>
 <h2 id="probing-further">Probing Further</h2>
 <p>Scikit has some excellent examples on regualarization (<a href="http://scikit-learn.org/stable/modules/linear_model.html">1</a>, <a href="http://scikit-learn.org/stable/auto_examples/linear_model/plot_lasso_and_elasticnet.html">2</a>). Quora has an excellent <a href="http://www.quora.com/Machine-Learning/What-is-the-difference-between-L1-and-L2-regularization">discussion</a> on L2 vs L1 regualarization. I found the top three answers very useful in understanding deeper, especially from the <em>Bayesian regularization paradigm</em> perspective by thinking the regularization as MAP (Maximum A Posteriori) that adds a Laplacian (L1) or Gaussian (L2) prior to the original objective.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Debugging AppleScript: print to a file]]></title>
-    <link href="http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file/"/>
-    <updated>2014-05-02T14:26:50-07:00</updated>
-    <id>http://blog.ivansiu.com/blog/2014/05/02/debugging-applescript-print-to-a-file</id>
-    <content type="html"><![CDATA[<p>Debugging AppleScript is easy when you work with the script editor, simply use <code>log</code> to print out anything in the console. However, after you compiled it to an app, this cannot work anymore.</p>
-<p>I find there are several ways to do it in this <a href="http://stackoverflow.com/questions/2749863/applescript-editor-write-message-to-the-result-window">thread</a>. The <a href="http://stackoverflow.com/a/21309748/577704">two approaches</a> that work best for me are:</p>
-<!-- more -->
-<ol type="1">
-<li>Use <code>logger</code> to log to the syslog. E.g.,</li>
-</ol>
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<figcaption>
-<span></span>
-</figcaption>
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;logger -t &#39;AS DEBUG&#39; &quot;</span> <span class="o">&amp;</span> <span class="nv">myObj</span>
-</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div>
-<p>However, I don’t know why sometimes this is not logged. So I will use the following:</p>
-<ol start="2" type="1">
-<li>Echo to file</li>
-</ol>
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<figcaption>
-<span></span>
-</figcaption>
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;echo &quot;</span> <span class="o">&amp;</span> <span class="nb">quoted form</span> <span class="k">of</span> <span class="p">(</span><span class="nv">myObj</span> <span class="k">as </span><span class="nc">string</span><span class="p">)</span> <span class="o">&amp;</span> <span class="se">¬</span>
-</span><span class='line'>    <span class="s2">&quot; &gt;&gt; ~/Desktop/as_debug.txt&quot;</span>
-</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div>
 ]]></content>
   </entry>
   

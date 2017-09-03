@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.ivansiu.com/blog/2017/08/28/rime-zeng-qiang-bao/</loc>
+<lastmod>2017-08-28T23:34:29-07:00</lastmod>
+</url>
+<url>
 <loc>http://blog.ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he/</loc>
 <lastmod>2017-08-06T17:27:49-07:00</lastmod>
 </url>
@@ -152,6 +156,9 @@
 <loc>http://blog.ivansiu.com/blog/archives/</loc>
 </url>
 <url>
+<loc>http://blog.ivansiu.com/blog/linklogs/</loc>
+</url>
+<url>
 <loc>http://blog.ivansiu.com/</loc>
 </url>
 <url>
@@ -252,5 +259,23 @@
 </url>
 <url>
 <loc>http://blog.ivansiu.com/blog/categories/insurance/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/blog/categories/efficiency/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/blog/categories/software/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/blog/categories/linklog/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/posts/2/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/posts/3/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/posts/4/</loc>
 </url>
 </urlset>

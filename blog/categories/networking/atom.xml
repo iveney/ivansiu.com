@@ -4,7 +4,7 @@
   <title><![CDATA[Category: networking | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/networking/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-08-06T17:59:19-07:00</updated>
+  <updated>2017-09-03T01:20:43-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Fix (ugly) Safari 7.0 not using local pac file]]></title>
+    <title type="html"><![CDATA[Fix (Ugly) Safari 7.0 Not Using Local Pac File]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/"/>
     <updated>2013-12-05T00:03:43-08:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file</id>
@@ -34,7 +34,7 @@ Tom Fischer proposed [another way](https://discussions.apple.com/thread/3202499?
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Notes on SSH port forwarding]]></title>
+    <title type="html"><![CDATA[Notes on SSH Port Forwarding]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/"/>
     <updated>2013-05-09T21:43:00-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding</id>

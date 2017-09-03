@@ -4,7 +4,7 @@
   <title><![CDATA[Category: osx | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/osx/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-08-06T17:59:19-07:00</updated>
+  <updated>2017-09-03T01:20:43-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[OS X: reveal file in console]]></title>
+    <title type="html"><![CDATA[OS X: Reveal File in Console]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console/"/>
     <updated>2014-05-01T17:58:20-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console</id>
@@ -57,7 +57,7 @@ fullpath of a file. You can find it
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[OS X: get full path of file using realpath]]></title>
+    <title type="html"><![CDATA[OS X: Get Full Path of File Using Realpath]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/"/>
     <updated>2014-05-01T16:25:56-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath</id>
@@ -115,7 +115,7 @@ brew install realpath
 </span><span class='line'>  <span class="o">&lt;/</span><span class="nv">entry</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="o">&lt;</span><span class="nv">entry</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="na">title</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="o">&gt;&lt;</span><span class="p">!</span><span class="err">[</span><span class="nv">CDATA</span><span class="err">[</span><span class="nv">Fix</span> <span class="p">(</span><span class="nv">ugly</span><span class="p">)</span> <span class="nv">Safari</span> <span class="mf">7.0</span> <span class="ow">not</span> <span class="nv">using</span> <span class="k">local</span> <span class="nv">pac</span> <span class="nv">file</span><span class="err">]]</span><span class="o">&gt;&lt;/</span><span class="na">title</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="na">title</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="o">&gt;&lt;</span><span class="p">!</span><span class="err">[</span><span class="nv">CDATA</span><span class="err">[</span><span class="nv">Fix</span> <span class="p">(</span><span class="nv">Ugly</span><span class="p">)</span> <span class="nv">Safari</span> <span class="mf">7.0</span> <span class="nv">Not</span> <span class="nv">Using</span> <span class="nv">Local</span> <span class="nv">Pac</span> <span class="nv">File</span><span class="err">]]</span><span class="o">&gt;&lt;/</span><span class="na">title</span><span class="o">&gt;</span>
 </span><span class='line'>    <span class="o">&lt;</span><span class="nv">link</span> <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;http://blog.ivansiu.com/blog/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file/&quot;</span><span class="o">/&gt;</span>
 </span><span class='line'>    <span class="o">&lt;</span><span class="nv">updated</span><span class="o">&gt;</span><span class="mi">2013</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">05</span><span class="err">T</span><span class="mi">00</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">43</span><span class="o">-</span><span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="o">&lt;/</span><span class="nv">updated</span><span class="o">&gt;</span>
 </span><span class='line'>    <span class="o">&lt;</span><span class="na">id</span><span class="o">&gt;</span><span class="nv">http</span><span class="p">:</span><span class="o">//</span><span class="nv">blog</span><span class="p">.</span><span class="nv">ivansiu</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">blog</span><span class="o">/</span><span class="mi">2013</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="nv">fix</span><span class="o">-</span><span class="nv">ugly</span><span class="o">-</span><span class="nv">safari</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="nv">dot</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="ow">not</span><span class="o">-</span><span class="nv">using</span><span class="o">-</span><span class="k">local</span><span class="o">-</span><span class="nv">pac</span><span class="o">-</span><span class="nv">file</span><span class="o">&lt;/</span><span class="na">id</span><span class="o">&gt;</span>

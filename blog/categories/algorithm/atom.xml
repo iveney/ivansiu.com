@@ -4,7 +4,7 @@
   <title><![CDATA[Category: algorithm | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/algorithm/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-08-06T17:59:19-07:00</updated>
+  <updated>2017-09-03T01:20:43-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -120,7 +120,7 @@ The maximum size of matching is upper bounded by $|V|/2$, and each step, the mat
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Network Flow: Push-relabel algorithm]]></title>
+    <title type="html"><![CDATA[Network Flow: Push-relabel Algorithm]]></title>
     <link href="http://blog.ivansiu.com/blog/2013/10/07/network-flow-push-relabel-algorithm/"/>
     <updated>2013-10-07T18:08:00-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2013/10/07/network-flow-push-relabel-algorithm</id>

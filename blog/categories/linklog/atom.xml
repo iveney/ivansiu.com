@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: linklog | Ivan's Blog]]></title>
+  <link href="http://blog.ivansiu.com/blog/categories/linklog/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2017-09-03T01:20:43-07:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rime 增強包]]></title>
+    <link href="http://blog.ivansiu.com/blog/2017/08/28/rime-zeng-qiang-bao/"/>
+    <updated>2017-08-28T23:34:29-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2017/08/28/rime-zeng-qiang-bao</id>
+    <content type="html"><![CDATA[本篇 post 本身是作爲 [linklog](http://octopress.org/docs/blogging/linklog/) 存在，但是發現竟然不支持！！！而官方文檔明明有提到這個功能的……
+
+<!-- more -->
+
+簡單來說，octopress 的作者自暴自棄，停止了它的開發。所謂穩定版其實還停留在很早之前的版本，而之後的 2.x, 3.x 版本，也停滯了，包括 linklog 這個功能。
+
+所以，只能暫時手動把 link 提供在此了：http://tieba.baidu.com/p/4125987751/。這個鏈接提供了網友自製的鼠鬚管詞庫，用上後準確率提高了很多。
+
+## 增加 linklog support
+花了一晚時間參考了一些文章，大致是把這個功能給加到 theme 里了。大致步驟：
+
+1. 安裝 [linkblog](https://github.com/octopress/linkblog)
+2. 基於 octopress 沒有 merge 進 master 的 [diff](https://github.com/imathis/octopress/pull/1320/files?diff=unified#diff-337c6850898d3fbd8f57f88d16420a03)， 增加 support
+3. Daring Fireball 作爲基準，理論上可以達到[它的效果](https://daringfireball.net/linked/)。
+
+有意思的是，這個功能大概體現爲：
+
+1. 在 index 頁面，title 渲染爲 `<title> + <marker>`，其中 title 指向引用的文章，而 marker 指向本地文章的 permanent link。
+  - 這個 marker 的設計很有意思，下一步爲加上 hover text，提示指向的地方。
+2. 在 page 頁面， title 渲染爲 `<title>`，title 指向引用的文章
+3. 增加了 linklog 頁面，只顯示類型爲 linklog 的文章。
+]]></content>
+  </entry>
+  
+</feed>

@@ -101,6 +101,10 @@ Some of my posts are written in Chinese. </p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2017/08/28/rime-zeng-qiang-bao/">Rime 增強包</a>
+        </li>
+      
+        <li>
           <a href="/blog/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he/">夏威夷遊記（四） 吃吃喝喝</a>
         </li>
       
@@ -114,10 +118,6 @@ Some of my posts are written in Chinese. </p>
       
         <li>
           <a href="/blog/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao/">夏威夷遊記（一） 瓦胡島</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2017/08/01/zu-che-xian-jing-:toll-charges/">美國租車陷阱：Toll Charges</a>
         </li>
       
     </ul>
@@ -168,9 +168,13 @@ Some of my posts are written in Chinese. </p>
         <div class="article-format">
 
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/07/graph-matching-augmenting-path/">Graph Matching: Augmenting Path</a></h1>
-    
+    <h1 class="entry-title">
+
+
+<a href="/blog/2013/10/17/updating-octopress-theme/">Updating Octopress Theme</a>
+
+
+</h1>
     
       <p class="meta">
         
@@ -181,7 +185,7 @@ Some of my posts are written in Chinese. </p>
     <span class="byline author vcard">by <span class="fn">Zigang "Ivan" Xiao</span></span>
   
 
- - 
+ -
         
 
 
@@ -194,7 +198,94 @@ Some of my posts are written in Chinese. </p>
   
 
 
-<time datetime="2013-10-07T18:47:00-07:00" pubdate data-updated="true"></time> - 
+<time datetime="2013-10-17T14:54:00-07:00" pubdate data-updated="true"></time> -
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>octopress</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The themes are stored in <code>.themes/&lt;name&gt;</code>, we can use the rake command to update either the source or style, as documented in the <a href="http://octopress.org/docs/updating/">office website</a>. However, the syntax should be more clear, i.e.,</p>
+<div class="bogus-wrapper">
+<notextile>
+<figure class="code">
+<div class="highlight">
+<table>
+<tr>
+<td class="gutter">
+<pre class="line-numbers"><span class='line-number'>1</span>
+</pre>
+</td>
+<td class="code">
+<pre><code class=''><span class='line'>rake update_source['theme name']</span></code></pre>
+</td>
+</tr>
+</table>
+</div>
+</figure>
+</notextile>
+</div>
+<p>Without the brackets, it defaults to <code>.themes/classic</code>.</p>
+<p>Caveats:</p>
+<ul>
+<li>Do NOT use <code>rake install</code> to install the theme again, since it will overwrite the whole thing, including the files in <code>source/_include/custom</code> directory.</li>
+<li>When working on the blog, anything outside of <code>source/_include/custom</code> should be considered the theme. Thus, do not make changes directly in <code>source</code>. Make changes to theme and update the theme to reflect the changes to the blog.</li>
+</ul>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    <h1 class="entry-title">
+
+
+<a href="/blog/2013/10/07/graph-matching-augmenting-path/">Graph Matching: Augmenting Path</a>
+
+
+</h1>
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang "Ivan" Xiao</span></span>
+  
+
+ -
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-07T18:47:00-07:00" pubdate data-updated="true"></time> -
         
 
 posted in
@@ -240,9 +331,13 @@ posted in
         <div class="article-format">
 
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/07/network-flow-push-relabel-algorithm/">Network Flow: Push-relabel Algorithm</a></h1>
-    
+    <h1 class="entry-title">
+
+
+<a href="/blog/2013/10/07/network-flow-push-relabel-algorithm/">Network Flow: Push-relabel Algorithm</a>
+
+
+</h1>
     
       <p class="meta">
         
@@ -253,7 +348,7 @@ posted in
     <span class="byline author vcard">by <span class="fn">Zigang "Ivan" Xiao</span></span>
   
 
- - 
+ -
         
 
 
@@ -266,7 +361,7 @@ posted in
   
 
 
-<time datetime="2013-10-07T18:08:00-07:00" pubdate data-updated="true"></time> - 
+<time datetime="2013-10-07T18:08:00-07:00" pubdate data-updated="true"></time> -
         
 
 posted in
@@ -303,9 +398,13 @@ posted in
         <div class="article-format">
 
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Network Flow: Ford-Fulkerson Method</a></h1>
-    
+    <h1 class="entry-title">
+
+
+<a href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Network Flow: Ford-Fulkerson Method</a>
+
+
+</h1>
     
       <p class="meta">
         
@@ -316,7 +415,7 @@ posted in
     <span class="byline author vcard">by <span class="fn">Zigang "Ivan" Xiao</span></span>
   
 
- - 
+ -
         
 
 
@@ -329,7 +428,7 @@ posted in
   
 
 
-<time datetime="2013-10-03T18:13:00-07:00" pubdate data-updated="true"></time> - 
+<time datetime="2013-10-03T18:13:00-07:00" pubdate data-updated="true"></time> -
         
 
 posted in
@@ -370,9 +469,13 @@ End while</code></pre>
         <div class="article-format">
 
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/30/installing-a-new-car-stereo/">Installing a New Car Stereo</a></h1>
-    
+    <h1 class="entry-title">
+
+
+<a href="/blog/2013/08/30/installing-a-new-car-stereo/">Installing a New Car Stereo</a>
+
+
+</h1>
     
       <p class="meta">
         
@@ -383,7 +486,7 @@ End while</code></pre>
     <span class="byline author vcard">by <span class="fn">Zigang "Ivan" Xiao</span></span>
   
 
- - 
+ -
         
 
 
@@ -396,7 +499,7 @@ End while</code></pre>
   
 
 
-<time datetime="2013-08-30T16:50:00-07:00" pubdate data-updated="true"></time> - 
+<time datetime="2013-08-30T16:50:00-07:00" pubdate data-updated="true"></time> -
         
 
 posted in
@@ -438,9 +541,13 @@ posted in
         <div class="article-format">
 
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/28/roadtrips-in-us-2013/">Roadtrip in America 2013</a></h1>
-    
+    <h1 class="entry-title">
+
+
+<a href="/blog/2013/08/28/roadtrips-in-us-2013/">Roadtrip in America 2013</a>
+
+
+</h1>
     
       <p class="meta">
         
@@ -451,7 +558,7 @@ posted in
     <span class="byline author vcard">by <span class="fn">Zigang "Ivan" Xiao</span></span>
   
 
- - 
+ -
         
 
 
@@ -464,7 +571,7 @@ posted in
   
 
 
-<time datetime="2013-08-28T16:17:00-07:00" pubdate data-updated="true"></time> - 
+<time datetime="2013-08-28T16:17:00-07:00" pubdate data-updated="true"></time> -
         
 
 posted in
@@ -505,9 +612,13 @@ posted in
         <div class="article-format">
 
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/09/notes-on-ssh-port-forwarding/">Notes on SSH Port Forwarding</a></h1>
-    
+    <h1 class="entry-title">
+
+
+<a href="/blog/2013/05/09/notes-on-ssh-port-forwarding/">Notes on SSH Port Forwarding</a>
+
+
+</h1>
     
       <p class="meta">
         
@@ -518,7 +629,7 @@ posted in
     <span class="byline author vcard">by <span class="fn">Zigang "Ivan" Xiao</span></span>
   
 
- - 
+ -
         
 
 
@@ -531,7 +642,7 @@ posted in
   
 
 
-<time datetime="2013-05-09T21:43:00-07:00" pubdate data-updated="true"></time> - 
+<time datetime="2013-05-09T21:43:00-07:00" pubdate data-updated="true"></time> -
         
 
 posted in
@@ -595,6 +706,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2017/08/28/rime-zeng-qiang-bao/">Rime 增強包</a>
+        </li>
+      
+        <li>
           <a href="/blog/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he/">夏威夷遊記（四） 吃吃喝喝</a>
         </li>
       
@@ -608,10 +723,6 @@ posted in
       
         <li>
           <a href="/blog/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao/">夏威夷遊記（一） 瓦胡島</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2017/08/01/zu-che-xian-jing-:toll-charges/">美國租車陷阱：Toll Charges</a>
         </li>
       
     </ul>
