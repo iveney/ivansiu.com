@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.ivansiu.com/blog/2017/09/04/recommendation-system-review/</loc>
+<lastmod>2017-09-04T15:25:06-07:00</lastmod>
+</url>
+<url>
 <loc>http://blog.ivansiu.com/blog/2017/09/03/wei-blog-zeng-jia-linklog-gong-neng/</loc>
 <lastmod>2017-09-03T12:42:03-07:00</lastmod>
 </url>
@@ -272,5 +276,17 @@
 </url>
 <url>
 <loc>http://blog.ivansiu.com/blog/categories/linklog/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/blog/categories/recommendation-system/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/page2/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/page3/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/page4/</loc>
 </url>
 </urlset>
