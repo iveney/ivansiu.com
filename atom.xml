@@ -4,7 +4,7 @@
   <title><![CDATA[Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-09-07T22:43:11-07:00</updated>
+  <updated>2017-11-26T19:20:21-08:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -12,6 +12,211 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[States and Countries I've Visited]]></title>
+    <link href="http://blog.ivansiu.com/blog/2017/11/25/states-and-countries-ive-visited/"/>
+    <updated>2017-11-25T20:40:47-08:00</updated>
+    <id>http://blog.ivansiu.com/blog/2017/11/25/states-and-countries-ive-visited</id>
+    <content type="html"><![CDATA[<p>Keep track of the places I’ve been too :)</p>
+<!-- more -->
+<p><a href="http://www.amcharts.com/visited_states/#US-AK,US-AZ,US-CA,US-CO,US-DC,US-FL,US-HI,US-IA,US-IL,US-IN,US-KS,US-MA,US-MO,US-MT,US-NE,US-NM,US-NV,US-NY,US-OH,US-OK,US-OR,US-PA,US-TX,US-UT,US-WA,US-WI,US-WY">States I’ve visited</a></p>
+<script src="https://www.amcharts.com/lib/3/ammap.js" type="text/javascript"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/usaHigh.js" type="text/javascript"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/worldHigh.js" type="text/javascript"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js" type="text/javascript"></script>
+<script src="https://www.amcharts.com/lib/3/themes/dark.js" type="text/javascript"></script>
+<div id="states-div" style="width: 100%; height: 400px;">
+
+</div>
+<script type="text/javascript">
+var map = AmCharts.makeChart("states-div",{
+type: "map",
+theme: "light",
+panEventsEnabled : true,
+backgroundColor : "#535364",
+backgroundAlpha : 1,
+zoomControl: {
+zoomControlEnabled : true
+},
+dataProvider : {
+map : "usaHigh",
+getAreasFromMap : true,
+areas :
+[
+  {
+    "id": "US-AK",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-AZ",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-CA",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-CO",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-DC",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-FL",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-HI",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-IA",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-IL",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-IN",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-KS",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-MA",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-MO",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-MT",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-NE",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-NM",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-NV",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-NY",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-OH",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-OK",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-OR",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-PA",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-TX",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-UT",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-WA",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-WI",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-WY",
+    "showAsSelected": true
+  }
+]
+},
+areasSettings : {
+autoZoom : true,
+color : "#B4B4B7",
+colorSolid : "#84ADE9",
+selectedColor : "#84ADE9",
+outlineColor : "#666666",
+rollOverColor : "#9EC2F7",
+rollOverOutlineColor : "#000000"
+}
+});
+</script>
+<hr />
+<p><a href="http://www.amcharts.com/visited_countries/#US,CN,NP,TW">Countries I’ve Visited</a></p>
+<div id="countries-div" style="width: 100%; height: 400px;">
+
+</div>
+<script type="text/javascript">
+var map = AmCharts.makeChart("countries-div",{
+type: "map",
+theme: "dark",
+projection: "mercator",
+panEventsEnabled : true,
+backgroundColor : "#535364",
+backgroundAlpha : 1,
+zoomControl: {
+zoomControlEnabled : true
+},
+dataProvider : {
+map : "worldHigh",
+getAreasFromMap : true,
+areas :
+[
+  {
+    "id": "US",
+    "showAsSelected": true
+  },
+  {
+    "id": "CN",
+    "showAsSelected": true
+  },
+  {
+    "id": "NP",
+    "showAsSelected": true
+  },
+  {
+    "id": "TW",
+    "showAsSelected": true
+  }
+]
+},
+areasSettings : {
+autoZoom : true,
+color : "#B4B4B7",
+colorSolid : "#84ADE9",
+selectedColor : "#84ADE9",
+outlineColor : "#666666",
+rollOverColor : "#9EC2F7",
+rollOverOutlineColor : "#000000"
+}
+});
+</script>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Recommendation System Review]]></title>
@@ -1081,160 +1286,6 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
 <div id="refs" class="references">
 <div id="ref-xiao2013optimally">
 <p>[1] Z. Xiao, Y. Du, H. Tian, and M. D. Wong, “Optimally minimizing overlay violation in self-aligned double patterning decomposition for row-based standard cell layout in polynomial time,” in <em>Computer-aided design (iccad), 2013 ieee/acm international conference on</em>, 2013, pp. 32–39.</p>
-</div>
-</div>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sparse Image Reconstruction via L1-minimization]]></title>
-    <link href="http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/"/>
-    <updated>2014-05-19T13:12:36-07:00</updated>
-    <id>http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization</id>
-    <content type="html"><![CDATA[<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_orig.png" alt="phantom_orig" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_backproj.png" alt="phantom_backproj" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_tv.png" alt="phantom_tv" /></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Original</td>
-<td style="text-align: center;">Minimum Energy Reconstruction</td>
-<td style="text-align: center;">Sparse Reconstruction</td>
-</tr>
-</tbody>
-</table>
-<h2 id="introduction">Introduction</h2>
-<p>This is a follow up of the L1-minimization series. The previous two posts are:</p>
-<ol type="1">
-<li><a href="http://blog.ivansiu.com/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">A Comparison of Least Square, L2-regularization and L1-regularization</a></li>
-<li><a href="http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">Sparse Signal Reconstruction via L1-minimization</a> <!-- more --></li>
-</ol>
-<p>We have explored using L1-minimization technique to <a href="http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">recover a sparse signal</a>. The example shows a 1D example. This post demonsrates on a 2D example, where the image is viewed as a signal. This makes sense as we can perform 2D Fourier Transform in the image, where the basis are a combination of <em>horizontal</em> and <em>vertical</em> waves. For a complete introduction to FFT on images, refer to <a href="http://www.cs.unm.edu/~brayer/vision/fourier.html">this tutorial</a>. Notice that similar to 1D signal, we do not measure the image directly in time domain, but we do it in the frequency domain. Concretely, say <span class="math inline">\(x\)</span> is the 2D image collapsed to 1D, and <span class="math inline">\(A \in \reals^{k\times n}\)</span> is the measurement matrix, <span class="math inline">\(b\)</span> is the observation, we then have <span class="math inline">\(Ax=b\)</span>. Usually we will require <span class="math inline">\(k = n\)</span> to obtain an exact solution for <span class="math inline">\(x\)</span> given <span class="math inline">\(A\)</span> and <span class="math inline">\(b\)</span>. Now, if we use FFT and obtain the frequency coefficients as <span class="math inline">\(\hat{x}\)</span>, we can also perform similar measurements <span class="math inline">\(\hat{A} \hat{x} = \hat{b}\)</span>, and the requirement <span class="math inline">\(k = n\)</span> is the same. In other words, the required samples (the information) is <em>the same</em>. By using the inverse fourier transform, we can convert <span class="math inline">\(\hat{x}\)</span> back to <span class="math inline">\(x\)</span>. The only difference is that the measurement <span class="math inline">\(\hat{A}\)</span> is taken in frequency (Fourier) domain. As we can see later, we can utilize sparse information to reduce <span class="math inline">\(k\)</span>.</p>
-<h2 id="image-gradients-and-total-variation">Image Gradients and Total Variation</h2>
-<p>We first introduct the concept of image gradients. For any 2D real image <code>I</code>, if we think about each row as a signal, we can then view the ‘difference’ between adjacent pixels as (horizontal) gradient <code>Gx(I)</code>, this makes sense since a sharpe change denotes an edge. Similary, we can define the vertical gradient <code>Gy(I)</code> for columns. Thus, we have</p>
-<p><span class="math display">\[Gx(I) = \begin{cases}
-I_{i+1, j} - I_{ij} &amp; i &lt; n \\\\ 0 &amp; i = n
-\end{cases}
-\qquad
-Gy(I) = \begin{cases}
-I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
-\end{cases}\]</span></p>
-<p>where the image size is <span class="math inline">\(n\times n\)</span>.</p>
-<p>Collectively, the image gradient <code>G(I)</code> is defined as the magnitude (2-norm) of both components:</p>
-<p><span class="math display">\[G(I)_{ij} = \sqrt{(Gx(I)_{ij})^2 + (Gy(I)_{ij})^2}\]</span></p>
-<p>The following shows <code>Gx</code>, <code>Gy</code> and <code>G</code> of the phantom image:</p>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gx.png" alt="phantom_gx" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gy.png" alt="phantom_gy" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gI.png" alt="phantom_gI" /></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><code>Gx(I)</code></td>
-<td style="text-align: center;"><code>Gy(I)</code></td>
-<td style="text-align: center;"><code>G(I)</code></td>
-</tr>
-</tbody>
-</table>
-<p>The <em>total variation</em> <code>TV(I)</code> of an image is just the sum of this discrete gradient at every point.</p>
-<p><span class="math display">\[TV(I)= \norm{G(I)}_1 = \sum_{i,j} G(I)_{ij}\]</span></p>
-<p>We notice that <span class="math inline">\(TV(I)\)</span> is just the <em>L1-norm</em> of <span class="math inline">\(G(I)\)</span>, which leads us to the following: if we have an image that is sparse in its image gradients, we can exploit that and use our L1-minimization trick.</p>
-<h2 id="sparse-gradient-image-reconstruction">Sparse Gradient Image Reconstruction</h2>
-<p>The ratio of non-zero elements in <code>Gx</code>, <code>Gy</code> and <code>G</code> of the phantom image is <code>0.0711</code>, <code>0.0634</code> and <code>0.0769</code>, respectively. These ratios are really small - and we consider the gradient as <em>sparse</em>.</p>
-<p>Let <span class="math inline">\(F: \reals^{n\times n} \to \complex^{n\times n}\)</span> be the FFT operator, and <span class="math inline">\(F I\)</span> be the Fourier transform taken on image I. Define a set <span class="math inline">\(\Omega\)</span> as the <span class="math inline">\(k\)</span> two-dimensional frequencies chosen according to some sampling pattern from the <span class="math inline">\(n \times n\)</span>. We further define <span class="math inline">\(F_\Omega I: \reals^{n \times n} \to \complex^k\)</span> as the <span class="math inline">\(k\)</span> observation taken from the fourier transform of image I. We can then solve the following optimization problem to recover <span class="math inline">\(I\)</span>:</p>
-<p><span class="math display">\[\min_I \norm{F_\Omega I - b}^2_2\]</span></p>
-<p>where <span class="math inline">\(F_\Omega\)</span> can be view as the measurement matrix, <span class="math inline">\(b\)</span> is the observation, and we want to find <span class="math inline">\(I\)</span> such that the <em>reconstruction cost</em> (energy) is minimized.</p>
-<p>However, the above does not quite work. As we can see in the following images, the <em>L2-minimization</em> does a poor job, either for a random measurement or a radial measurement <span class="citation" data-cites="candes2006robust">[[1]]</span> in Fourier domain.</p>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/measurement_random.png" alt="M rand" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_rand_bp.png" alt="phantom rand bp" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_rand_tv.png" alt="phantom rand tv" /></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Random measurement</td>
-<td style="text-align: center;">L2-minimization</td>
-<td style="text-align: center;">L1-minimization</td>
-</tr>
-</tbody>
-</table>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/measurement_radial.png" alt="M radial" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_backproj.png" alt="phantom_backproj" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_tv.png" alt="phantom_tv" /></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Radial measurement</td>
-<td style="text-align: center;">L2-minimization</td>
-<td style="text-align: center;">L1-minimization</td>
-</tr>
-</tbody>
-</table>
-<p>To utilize the sparse information, we add a L1-regularization term to the above objective function, which yields the following:</p>
-<p><span class="math display">\[(TV_1) \quad \min_I \norm{F_\Omega I - b}^2_2 + \lambda TV(I)\]</span></p>
-<p>Without surprise, optimizing the above gives us a <em>perfect</em> reconstruction of the original image. It is shown that if there exists a piecewise constant I with sufficiently few edges (i.e., <span class="math inline">\(G(I)_{ij}\)</span> is nonzero for only a small number of indices i, j), then <span class="math inline">\((TV_1)\)</span> will recover I exactly.</p>
-<p>A heavily commented code example is available in my <a href="https://github.com/iveney/l1min/blob/master/image_recovery_l1.m">github repository</a>. Leave a comment if you have any question.</p>
-<h2 id="probing-further">Probing Further</h2>
-<p>Now, take a look at another example <code>cameraman</code>, which has the following gradients (intensity rescaled using matlab’s <code>imagesc</code>.</p>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman.png" alt="cameraman" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_grad.png" alt="cameraman_grad" /></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Cameraman</td>
-<td style="text-align: center;">Gradient</td>
-</tr>
-</tbody>
-</table>
-<p>The following shows the reconstructions (left two are using random measurements, right two are using radial measurements).</p>
-<table>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_rand_bp.png" alt="cameraman_rand_bp" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_rand_tv.png" alt="cameraman_rand_tv" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_bp.png" alt="cameraman_bp" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_tv.png" alt="cameraman_tv" /></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Rand (L2)</td>
-<td style="text-align: center;">Rand (L1)</td>
-<td style="text-align: center;">Radial (L2)</td>
-<td style="text-align: center;">Radial (L1)</td>
-</tr>
-</tbody>
-</table>
-<p>As we can see, the results are not as good. In fact, the non-zero ratio of its gradient is 0.9928, which is not sparse at all. However, if we plot the histogram of gradients, we will find that most of the gradient magnitudes are small:</p>
-<figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/camera_mag_hist.png" alt="Gradient Histogram" /><figcaption>Gradient Histogram</figcaption>
-</figure>
-<p>In particular, most of them are smaller than 200, which means the number of ‘changes’ that are larger than 200 is small. In fact, the ratio of gradient &gt; 200 is only <em>0.0964</em>! Thus, there are two possible ways to discard these information and get a ‘compressed’ image that is sparse in gradients:</p>
-<ol type="1">
-<li>Use mean-shift algorithm to segment the regions such that they have the same color intensities. K-means or quantization should achieve a similar result, though might not as good as mean-shift.</li>
-<li>Use image filtering to smooth the image, which can effectively average colors and discard high frequency information.</li>
-</ol>
-<p><em>I’ll leave these conjectures for furture implementation. For those intereted, please try them yourself and let me know your results. If you have any thoughts, do not hesitate to leave a comment.</em></p>
-<h2 id="references">References</h2>
-<p>For interested readers, the following references will be helpful.</p>
-<div id="refs" class="references">
-<div id="ref-candes2006robust">
-<p>[1] E. J. Candès, J. Romberg, and T. Tao, “Robust uncertainty principles: Exact signal reconstruction from highly incomplete frequency information,” <em>Information Theory, IEEE Transactions on</em>, vol. 52, no. 2, pp. 489–509, 2006.</p>
-</div>
-<div id="ref-candes2005l1">
-<p>[2] E. Candes and J. Romberg, “L1-magic: Recovery of sparse signals via convex programming,” vol. 4, 2005.</p>
-</div>
-<div id="ref-hesthavensparse">
-<p>[3] J. S. Hesthaven, K. Chowdhary, E. Walsh, and others, “Sparse gradient image reconstruction from incomplete fourier measurements and prior edge information,” <em>IEEE TRANSACTIONS ON IMAGE PROCESSING</em>, 2012.</p>
-</div>
-<div id="ref-pant2013new">
-<p>[4] J. K. Pant, W.-S. Lu, and A. Antoniou, “A new algorithm for compressive sensing based on total-variation norm,” in <em>Circuits and systems (iscas), 2013 ieee international symposium on</em>, 2013, pp. 1352–1355.</p>
 </div>
 </div>
 ]]></content>

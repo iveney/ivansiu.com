@@ -4,7 +4,7 @@
   <title><![CDATA[Category: travel | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/travel/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-09-07T22:43:11-07:00</updated>
+  <updated>2017-11-26T19:20:21-08:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -12,6 +12,215 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[States and Countries I've Visited]]></title>
+    <link href="http://blog.ivansiu.com/blog/2017/11/25/states-and-countries-ive-visited/"/>
+    <updated>2017-11-25T20:40:47-08:00</updated>
+    <id>http://blog.ivansiu.com/blog/2017/11/25/states-and-countries-ive-visited</id>
+    <content type="html"><![CDATA[Keep track of the places I've been too :)
+
+<!-- more -->
+
+[States I've visited](http://www.amcharts.com/visited_states/#US-AK,US-AZ,US-CA,US-CO,US-DC,US-FL,US-HI,US-IA,US-IL,US-IN,US-KS,US-MA,US-MO,US-MT,US-NE,US-NM,US-NV,US-NY,US-OH,US-OK,US-OR,US-PA,US-TX,US-UT,US-WA,US-WI,US-WY)
+
+<script src="https://www.amcharts.com/lib/3/ammap.js" type="text/javascript"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/usaHigh.js" type="text/javascript"></script>
+<script src="https://www.amcharts.com/lib/3/maps/js/worldHigh.js" type="text/javascript"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js" type="text/javascript"></script>
+<script src="https://www.amcharts.com/lib/3/themes/dark.js" type="text/javascript"></script>
+
+<div id="states-div" style="width: 100%; height: 400px;"></div>
+<script type="text/javascript">
+var map = AmCharts.makeChart("states-div",{
+type: "map",
+theme: "light",
+panEventsEnabled : true,
+backgroundColor : "#535364",
+backgroundAlpha : 1,
+zoomControl: {
+zoomControlEnabled : true
+},
+dataProvider : {
+map : "usaHigh",
+getAreasFromMap : true,
+areas :
+[
+  {
+    "id": "US-AK",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-AZ",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-CA",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-CO",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-DC",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-FL",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-HI",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-IA",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-IL",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-IN",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-KS",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-MA",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-MO",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-MT",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-NE",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-NM",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-NV",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-NY",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-OH",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-OK",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-OR",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-PA",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-TX",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-UT",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-WA",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-WI",
+    "showAsSelected": true
+  },
+  {
+    "id": "US-WY",
+    "showAsSelected": true
+  }
+]
+},
+areasSettings : {
+autoZoom : true,
+color : "#B4B4B7",
+colorSolid : "#84ADE9",
+selectedColor : "#84ADE9",
+outlineColor : "#666666",
+rollOverColor : "#9EC2F7",
+rollOverOutlineColor : "#000000"
+}
+});
+</script>
+
+----
+
+[Countries I've Visited](http://www.amcharts.com/visited_countries/#US,CN,NP,TW)
+
+<div id="countries-div" style="width: 100%; height: 400px;"></div>
+<script type="text/javascript">
+var map = AmCharts.makeChart("countries-div",{
+type: "map",
+theme: "dark",
+projection: "mercator",
+panEventsEnabled : true,
+backgroundColor : "#535364",
+backgroundAlpha : 1,
+zoomControl: {
+zoomControlEnabled : true
+},
+dataProvider : {
+map : "worldHigh",
+getAreasFromMap : true,
+areas :
+[
+  {
+    "id": "US",
+    "showAsSelected": true
+  },
+  {
+    "id": "CN",
+    "showAsSelected": true
+  },
+  {
+    "id": "NP",
+    "showAsSelected": true
+  },
+  {
+    "id": "TW",
+    "showAsSelected": true
+  }
+]
+},
+areasSettings : {
+autoZoom : true,
+color : "#B4B4B7",
+colorSolid : "#84ADE9",
+selectedColor : "#84ADE9",
+outlineColor : "#666666",
+rollOverColor : "#9EC2F7",
+rollOverOutlineColor : "#000000"
+}
+});
+</script>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[夏威夷遊記（四） 吃吃喝喝]]></title>
@@ -285,38 +494,6 @@ SFO - HNL，入住在 Waikiki Marina Resort。這是一個 condo 型的旅店，
 - [夏威夷遊記（二） 茂宜島 Road to Hana, Ahihi-Kinau, Lahaina](/blog/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao/)
 - [夏威夷遊記（三） 茂宜島 Molokini Snorkelling](/blog/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling/)
 - [夏威夷遊記（四） 吃吃喝喝](/blog/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he/)
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[美國租車陷阱：Toll Charges]]></title>
-    <link href="http://blog.ivansiu.com/blog/2017/08/01/zu-che-xian-jing-:toll-charges/"/>
-    <updated>2017-08-01T22:14:24-07:00</updated>
-    <id>http://blog.ivansiu.com/blog/2017/08/01/zu-che-xian-jing-:toll-charges</id>
-    <content type="html"><![CDATA[今天收到了一張大概兩個月前的 bill，說我欠款 \$30 美金……
-
-（如果你看到這篇文章，並且知道最新進展，請務必留言讓我知道。）
-
-<!-- more -->
-
-![](http://res.cloudinary.com/maomao/image/upload/v1501651001/platepass-scam.jpg)
-
-兩個月前，我因爲[車子被 flying debris 刮傷 hood](/blog/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object/)，而拿去了修車店修理。同時保險公司也 cover 我租車的費用。於是，在 Hertz 租了一輛小車。
-
-由於我上班下班都會經過 Dumbarton bridge，所以單程會被收取 \$5 費用。由於我自己有 fastrak，所以都是過橋時拿出來使用。但是有一次過橋忘記了。當時想着，也許跟之前一樣，會寄賬單到家，所以也沒多想。直到今天看到賬單，才大吃一驚：你收取我原價 \$5 的過路費，我認了。但是由於我只是一次沒有交，而收取我整個 rental period 的 service charge，每天 \$4.95，封頂 \$24.75。這多收的服務費，都已經是我的過路費的5倍了。這未免太坑了點？？
-
-仔細想想，這家名爲 PlatePass 的公司，實在是太陰險毒辣了。賬單在我結束租車後近兩個月後才寄出，此時早已經過了保險 claim 完成的日子。這間狠毒的公司，說白了就是躺着就把錢給賺了。
-
-仔細上網搜搜，我不是第一個人。網上早已經有[N多的抱怨](https://www.consumeraffairs.com/travel/platepass-com.html)。不少的[文章](http://www.courant.com/consumer/bottom-line/hc-bottom-line-hertz-platepass-20150514-column.html)也[披露](https://thepointsguy.com/guide/avoid-rental-car-toll-charges/)了這些公司無賴的行徑。可惜的是，我並沒有看到操作性太強的 argue 方法。只能吃一塹，長一智，以後一定要廣而告之，揭發這些無恥商家的醜惡行徑。文章裏面給出的建議是：
-
-1. 遇到 toll bridge/road，不要走快速通道，走現金通道。
-2. 自帶 toll transponder
-3. 設 gps 時，avoid toll roads。
-
-希望下次大家不要再犯這樣的錯誤了。
-
-----
-更新：看到有文章介紹說，三藩市已經有律師在[告類似公司的 shady practice 了](https://consumerist.com/2017/03/02/san-francisco-suing-hertz-for-allegedly-ripping-off-car-renters-on-golden-gate-bridge/)。希望能告贏。其實以前就已經有一個 [class action suit](http://www.hertzplatepasssettlement.com/) ，不過已經是好幾年前的事了。非常震驚他們竟然還在繼續下去。
 ]]></content>
   </entry>
   
