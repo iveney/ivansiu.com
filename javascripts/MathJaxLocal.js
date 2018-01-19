@@ -1,11 +1,11 @@
 MathJax.Hub.Config({
 	tex2jax: {
-		inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+		inlineMath: [ ['\\$','\\$'], ["\\(","\\)"] ],
 		displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
 		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
 		processEscapes: true,
 	},
-	TeX: { 
+	TeX: {
 		equationNumbers: { autoNumber: "AMS" },
 		TagSide: "left",
 		Macros: {

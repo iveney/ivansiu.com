@@ -4,7 +4,7 @@
   <title><![CDATA[Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2017-11-26T19:20:21-08:00</updated>
+  <updated>2018-01-19T00:11:03-08:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -12,6 +12,52 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Backdoor Roth IRA and Mega Backdoor Roth IRA]]></title>
+    <link href="http://blog.ivansiu.com/blog/2018/01/18/backdoor-roth-ira-and-mega-backdoor-roth-ira/"/>
+    <updated>2018-01-18T23:08:40-08:00</updated>
+    <id>http://blog.ivansiu.com/blog/2018/01/18/backdoor-roth-ira-and-mega-backdoor-roth-ira</id>
+    <content type="html"><![CDATA[<p>A while ago I came across “<a href="https://thecollegeinvestor.com/17561/understanding-the-mega-backdoor-roth-ira/">Mega Backdoor Roth IRA</a>”, which is a good way to place fund with tax-efficiency. I read a few documents and found that even though there are lots of good materials on it in English, not quite so in Chinese. So I want to write down my notes and share the knowledge here.</p>
+<figure>
+<img src="http://res.cloudinary.com/maomao/image/upload/c_fit,h_400/v1516349055/megabackdoor_roth.png" />
+</figure>
+<!-- more -->
+<h2 id="背景知识美国税务与退休金制度">背景知识：美国税务与退休金制度</h2>
+<ul>
+<li>美国的个人所得税包括联邦税，州税，社会保险，联邦医疗保险（Medicare） 以及 联邦医疗补助（Medicaid）。而最重要的 federal tax 是累进的。</li>
+<li>美国常见的退休金账户分为 401(k) 与 IRA，其中 401(k) 是公司提供的账户，IRA 是个人申请的账户。</li>
+<li>401(k) 又分为 Traditional 401(k) 与 Roth 401(k)：</li>
+<li>Traditional 401(k) 是所谓的推迟收税账户 (tax-deferred account)，即存入这个账户的钱当时不需要交税，而退休取出来的时候需要收税，但是你可以控制每个月提取的金额。可想而知，这里有两个因素决定你究竟延迟交税是省了还是亏了：1是你每个月取多少，2是未来的税阶会变成怎样。理论上来说，如果你控制每个月提取额度并且未来税是逐渐降低的，那么你则是省了税。另外，放在账户里的钱可以用来投资，但投资的收入一样需要交税。</li>
+<li>Roth 401(k) 存入的时候需要交税，也就是说存的是税后的钱。因为交过税了，所以取出来时不需要再交。主要好处是这个账户的投资收入也是免税的！因此如果投资合理，盈利是很可观的。</li>
+<li>类似地，IRA 与分为 Traditional IRA 以及 Roth IRA。</li>
+<li>每年个人存进 401(k)的资金有上限，2018年是 $18500。一般公司会匹配一定的程度，但个人与匹配加起来最高不超过一定限额，2018是 $55000。</li>
+<li>类似地， IRA的上限是 $5500。但是，当你的收入超过一定程度，则会受到一定限制：</li>
+<li>Traditional IRA: 当收入超过限额，则免税额递减至0。但是你仍然可以存税后的钱到这个账户——这是后文要提到的 backdoor IRA 的基础。</li>
+<li>Roth IRA: 当收入超过限额，则可存资金递减至0。</li>
+</ul>
+<h2 id="backdoor-roth-ira">Backdoor Roth IRA</h2>
+<p>对于一般雇员来说，一个好的策略是至少存一定量的 401(k)，使得能拿到公司匹配的最大限额（相当于免费的钱）。另外，很多人其实是会存至上限 (max out) ，因为 traditional 和 roth 的优惠都好。可是对于收入很高的人来说，他们没办法免税地存钱到 IRA，也不能存到 Roth IRA，有什么办法可以做到呢？那就是所谓的 backdoor IRA。</p>
+<p>虽然我们没法免税存钱到 IRA，但是我们仍然可以<strong>存税后的钱到 IRA</strong>。资金到位后，我们可以把这笔钱从 traditional IRA 转到 Roth IRA 账户。这样的好处是显而易见的：本来这些税后的钱在 IRA 账户投资收入是未来要交税的，转为 Roth 后，不用交税了！由于 $5500 的上限，用这种方法最多可以 backdoor $5500 到 Roth IRA。虽然这个方法被称为 “backdoor”，但它完全是<strong>合法的</strong>。</p>
+<p>更细节的操作方法，请参考<a href="https://thecollegeinvestor.com/17561/understanding-the-mega-backdoor-roth-ira/">这篇文章</a>。</p>
+<h2 id="mega-backdoor-roth-ira">Mega Backdoor Roth IRA</h2>
+<p>那么我们有没办法超越 $5500 的上限？答案是肯定的！使用类似 backdoor IRA 的方法，我们可以存高至 $35000 的钱到 Roth IRA。因为这个钱几乎是 backdoor 的六倍，因此大家也叫它为 Mega backdoor Roth IRA。当然，这个方法需要有一定前提条件：公司的 401(k) 必须支持这个操作。</p>
+<p>具体方法跟 backdoor 很类似，我们先 max out limit，假设是 2018 的 $18500，并且公司给 match 了 $6000，那么你还能再存 $55000-$18500-$6000=$30500 的税后资金到 401(k)。这笔钱有两种转换方法：</p>
+<ol type="1">
+<li>In plan conversion，直接转换为 Roth 401(k)</li>
+<li>Roll over to Roth IRA，如果 broker 支持的话，可以让它们把这笔 Roth 401(k) 转存到 Roth IRA。</li>
+</ol>
+<p>具体的限制也请参考<a href="https://thecollegeinvestor.com/17561/understanding-the-mega-backdoor-roth-ira/">文章</a>。</p>
+<h2 id="tax-efficient-fund-placement">Tax-efficient fund placement</h2>
+<p>使用以上两种办法，可以有如下的退休金储蓄计划：</p>
+<ol type="1">
+<li>Max out 401(k) （税前 $18500），或者 Max out Roth 401(k) （税后 $18500）</li>
+<li>Max out backdoor Roth IRA - $5500</li>
+<li>Max out Mega backdoor Roth IRA</li>
+</ol>
+<p>其中第一步究竟是哪种要见仁见智。但是一般的说法是，如果处于事业上升期，那么应该优先 max out Roth，因为现阶段的税阶并不是职业生涯里最高的，并且早期的投资可以有更高的复利，而这些复利最终又是免税的。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[States and Countries I've Visited]]></title>
@@ -1094,200 +1140,6 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
 <li><a href="http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/">Fix unrecognized RAM</a></li>
 </ul>
 <p><em>If you have similar experience, do not hesitate to let me know. If you find my instruction helpful, leave a comment and share it!</em></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[My Octopress Blogging Flow]]></title>
-    <link href="http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow/"/>
-    <updated>2014-05-22T20:38:07-07:00</updated>
-    <id>http://blog.ivansiu.com/blog/2014/05/22/my-octopress-blogging-flow</id>
-    <content type="html"><![CDATA[<figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/sublime-marked.png" alt="Writing in Sublime Text and previewing in Marked" /><figcaption>Writing in Sublime Text and previewing in Marked</figcaption>
-</figure>
-<p>After blogging with <a href="http://octopress.org">Octopress</a> for a while, I have already gained some insights on it, and my publishing flow has been smoother. I think it is right time to share my flow as a reference.</p>
-<!-- more -->
-<h2 id="the-flow">The Flow</h2>
-<p>The following sections outlines the flow. The last section contains assorted tips and tricks. For the basic configuration of Octopress, please refer to the official <a href="http://octopress.org">website</a>. I also recommend installing <a href="http://www.alfredapp.com">Alfred.app</a>.</p>
-<h3 id="creating-a-post-alfred-workflow-blog-publish">Creating a post: alfred workflow (blog publish)</h3>
-<p><a href="https://github.com/temikus">Artem Yakimenko</a> created an awesome <a href="http://www.alfredforum.com/topic/2289-octopress-publisher/">alfred workflow</a> for publishing and generating octopress websites. Use <code>blog publish [title]</code> to create a new post:</p>
-<figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/blog-publish.png" />
-</figure>
-<p>It then opens the post in your specified text editor with template.</p>
-<h3 id="editing-sublime-text.app-marked.app-marked-app-menu-st-plugin">Editing: Sublime Text.app + Marked.app + Marked App Menu (ST Plugin)</h3>
-<p>I use <a href="http://www.sublimetext.com">Sublime Text (ST)</a> as my text editor, because it provides VIM keybinding and there is a huge repository of plugins. While editing, I use [Marked] to instantly render the markdown file and view the result. In fact, the title image shows my editing and previewing in action.</p>
-<p>To make the process sweeter, there is a ST plugin called <code>Marked App Menu</code> that allows you to open the current file in Marked. Just search in ST Package Control to install it.</p>
-<h3 id="previewing-pow-rake-watch-pow-alfred-workflow">Previewing: pow + rake watch + pow alfred workflow</h3>
-<p>To preview the generate website, simply install <a href="http://pow.cx">pow</a> and execute <code>rake watch</code> under octopress directory to monitor the change. Octopress official website provides <a href="http://octopress.org/docs/blogging/">some explanation</a>. After installation, you can view your website locally at <a href="http://octopress.dev" class="uri">http://octopress.dev</a>.</p>
-<p>You should also install the <a href="http://tombeynon.github.io/alfred-pow/">pow alfred workflow</a>, which can help you open pow website in a breeze.</p>
-<figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/pow.png" />
-</figure>
-<h3 id="math-rendering-mathjax">Math Rendering: MathJax</h3>
-<p>Since I am an EECS student, I write a lot of <a href="http://blog.ivansiu.com/blog/categories/optimization">Optimization</a>, <a href="http://blog.ivansiu.com/blog/categories/machine-learning">Machine Learning</a> and <a href="http://blog.ivansiu.com/blog/categories/computer-vision">Computer Vision</a> stuff, which relies heavily on mathematics. Thus, writing math formulas is a must for me. <a href="http://mathjax.org">MathJax</a> is a javascript library for rendering math by writing LaTeX math. To do this, one needs to configure the site and link to the library. Put these two lines into <code>&lt;octopress&gt;/source/_includes/custom/head.html</code>:</p>
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<figcaption>
-<span></span>
-</figcaption>
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
-</span><span class='line'>  <span class="na">src=</span><span class="s">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;/javascripts/MathJaxLocal.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div>
-<p>The first script block loads MathJax, and the second loads a custom configuration in <code>source/javascripts/MathJaxLocal.js</code>. It is a good place to write your own macro there. For instance:</p>
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<figcaption>
-<span></span>
-</figcaption>
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class='javascript'><span class='line'><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
-</span><span class='line'>  <span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&quot;AMS&quot;</span> <span class="p">},</span>
-</span><span class='line'>      <span class="nx">TagSide</span><span class="o">:</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
-</span><span class='line'>      <span class="nx">Macros</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>          <span class="nx">reals</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathbb{R}&#39;</span><span class="p">],</span>
-</span><span class='line'>          <span class="nx">complex</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathbb{C}&#39;</span><span class="p">],</span>
-</span><span class='line'>          <span class="nx">norm</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\left\\lVert#1\\right\\rVert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-</span><span class='line'>          <span class="nx">given</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\:#1\\vert\\:&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-</span><span class='line'>          <span class="nx">data</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathcal{D}&#39;</span><span class="p">],</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">loadComplete</span><span class="p">(</span><span class="s2">&quot;/javascripts/MathJaxLocal.js&quot;</span><span class="p">);</span>
-</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div>
-<p>Now you can write math!</p>
-<p><span class="math display">\[e^{i \pi} + 1 = 0\]</span></p>
-<p>There are a couple of good articles for reference:</p>
-<ol type="1">
-<li><a href="http://drz.ac/2013/01/03/blogging-with-math/">Blogging With Math: Octopress, MathJax, and Pandoc</a></li>
-<li><a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/">Writing Math Equations on Octopress</a></li>
-<li><a href="http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress">LaTeX Math in Octopress</a></li>
-</ol>
-<h3 id="image-hosting-dropbox-public-folder">Image hosting: Dropbox public folder</h3>
-<p>I host my images in Dropbox Public folder, since you can simply copy the public link and paste it to the post source, for example:</p>
-<figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/dropbox-image.png" />
-</figure>
-<h3 id="image-editing-skitch-omnigraffle">Image editing: Skitch + OmniGraffle</h3>
-<p>The previous image is done by a timed capture from <a href="http://skitch.com">skitch</a>. For advanced vector graphics, I use <a href="http://www.omnigroup.com/omnigraffle">OmniGraffle</a>.</p>
-<h3 id="markdown-converter-pandoc">Markdown converter: pandoc</h3>
-<p><a href="http://johnmacfarlane.net/pandoc/index.html">Pandoc</a> is a swiss-army knife like tool that convert documents in multiple formats to several dozens of output formats. I mainly use it as the markdown converter for Octopress. A <a href="https://github.com/dsanson/jekyll-pandoc-plugin">plugin</a> can help you with that.</p>
-<p>After installation, I update the <code>markdown</code> section of <code>_config.yml</code> with the following:</p>
-<div class="bogus-wrapper">
-<notextile>
-<figure class="code">
-<figcaption>
-<span></span>
-</figcaption>
-<div class="highlight">
-<table>
-<tr>
-<td class="gutter">
-<pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre>
-</td>
-<td class="code">
-<pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">markdown</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">pandoc</span>
-</span><span class='line'><span class="l-Scalar-Plain">pandoc</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">html5</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">extensions</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">smart</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">mathjax</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">bibliography</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">source/blog.bib</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">csl</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">_style/ieee.csl</span>
-</span></code></pre>
-</td>
-</tr>
-</table>
-</div>
-</figure>
-</notextile>
-</div>
-<p>which tells Octopress to use pandoc, and pass the option <code>smart</code>, <code>mathjax</code> and use the <em>style file</em> <code>ieee.csl</code> to format the <em>biliography</em> <code>blog.bib</code>. For example, <code>refer to [@xiao2013optimally]</code> generates <em>refer to <span class="citation" data-cites="xiao2013optimally">[[1]]</span></em> (scroll down to see the <a href="#references">References</a> section).</p>
-<h3 id="pandocs-markdown-reference-dash.app-and-dash-alfred-workflow">Pandoc’s Markdown Reference: Dash.app and Dash alfred workflow</h3>
-<p><a href="http://kapeli.com/dash">Dash.app</a> is an API Documentation Browser and Code Snippet Manager. It provides an convinient alfred workflow that searches the documents:</p>
-<figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/alfred-dash.png" />
-</figure>
-<p>opens</p>
-<figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/Dash.png" />
-</figure>
-<h3 id="tips-and-tricks">Tips and tricks</h3>
-<p>Continuously growing…</p>
-<ul>
-<li>There are lots of undocumented/less documented things in Octopress, which can help you write blog posts kinda ‘programmatically’. For example, <code>http://blog.ivansiu.com</code> returns the url of site, which is <a href="http://blog.ivansiu.com" class="uri">http://blog.ivansiu.com</a> in my case. In fact, anything in <code>_config.yml</code> is a variable under <code>site</code>.</li>
-</ul>
-<h2 id="conclusion">Conclusion</h2>
-<p>In conclusion, Octopress is a revolutionary blogging framework. It provides a robust static site building framework (jekyll, bootstrap, scss, etc.) and allows complete control over the source, which is perfect for users that have basic coding and source control skills. In fact, it gives me a similar feeling of getting touch with a Mac. That is, compared to Windows, which is too close and does not provide built-in programming-friendly environment (Console, UNIX stuff, etc.), and compared to Linux, which is very open but too many variations and too many customizations needed, it combines their advantages by presenting a user- friendly interface and provides all sorts of underlying UNIX tools. I am very satisfied about this and my intention to write posts have revived. However, some sort of basic configuration is still needed. In particular, I would say Mathjax rendering and better image support definitely need to be integrated in the next release.</p>
-<p><em>What’s your thought? Do you have any neat tricks publishing with <a href="http://octopress.org">Octopress</a>? Please leave your comments.</em></p>
-<h2 id="references" class="unnumbered">References</h2>
-<div id="refs" class="references">
-<div id="ref-xiao2013optimally">
-<p>[1] Z. Xiao, Y. Du, H. Tian, and M. D. Wong, “Optimally minimizing overlay violation in self-aligned double patterning decomposition for row-based standard cell layout in polynomial time,” in <em>Computer-aided design (iccad), 2013 ieee/acm international conference on</em>, 2013, pp. 32–39.</p>
-</div>
-</div>
 ]]></content>
   </entry>
   
