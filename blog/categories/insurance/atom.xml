@@ -4,7 +4,7 @@
   <title><![CDATA[Category: insurance | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/insurance/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2018-01-20T19:25:51-08:00</updated>
+  <updated>2018-01-20T22:05:02-08:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -26,7 +26,7 @@
 ## How it happened
 This video best explains it:
 
-{% video http://res.cloudinary.com/maomao/video/upload/v1493584125/blog/flying_debris.mp4 %}
+<video  preload='metadata' controls ><source src='http://res.cloudinary.com/maomao/video/upload/v1493584125/blog/flying_debris.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></video>
 
 
 ## Getting a quote

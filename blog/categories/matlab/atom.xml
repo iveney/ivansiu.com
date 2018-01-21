@@ -4,7 +4,7 @@
   <title><![CDATA[Category: matlab | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/matlab/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2018-01-20T19:25:51-08:00</updated>
+  <updated>2018-01-20T22:05:02-08:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -35,9 +35,8 @@ provides a solution.
 
 First of all, install source-highlight using homebrew. 
 
-```
-brew install source-highlight
-```
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>brew install source-highlight</span></code></pre></td></tr></table></div></figure>
 
 Note that  source-highlight depends on boost, and as of the date of this post,
 brew provides a precompiled library (bottle) for boost. However, the python
@@ -48,47 +47,64 @@ takes an extremely long time.  To prevent this, we need to unlink it first,
 and link it back afterwards. That is,
 
 
-``` bash
-brew unlink python
-brew link python    # after installation
-```
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew unlink python
+</span><span class='line'>brew link python    <span class="c"># after installation</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Go to the following folder and create two files,
  
-``` bash
-cd `brew --prefix source-highlight`/share/source-highlight
-```
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">cd</span> <span class="sb">`</span>brew --prefix <span class="nb">source</span>-highlight<span class="sb">`</span>/share/source-highlight
+</span></code></pre></td></tr></table></div></figure>
 
-``` ini matlab.style
-keyword blue;
-string #a020f0;
-comment darkgreen;
-```
+<figure class='code'><figcaption><span>matlab.style</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="err">keyword</span> <span class="err">blue</span><span class="c1">;</span>
+</span><span class='line'><span class="err">string</span> <span class="c1">#a020f0;</span>
+</span><span class='line'><span class="err">comment</span> <span class="err">darkgreen</span><span class="c1">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-``` ini matlab.lang
-keyword = "break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while"
-
-keyword = '^\s*(break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while)(?=\s)'
-
-include "function.lang"
-
-state command start '^\s*[a-zA-Z][\w]*(?=\s)(?!\s+\.?[*/+-:]\s+\w)(?!\s+=)' begin
-        comment start "%"
-        string delim '[[:blank:]]' '[^%;]*'
-end
-
-comment delim "%{" "%}" multiline nested
-comment start "%"
-
-string delim '(?<![\w.])\'' "'" escape "''"
-```
+<figure class='code'><figcaption><span>matlab.lang</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="na">keyword</span> <span class="o">=</span> <span class="s">&quot;break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">keyword</span> <span class="o">=</span> <span class="s">&#39;^\s*(break|case|catch|classdef|continue|else|elseif|end|for|function|global|if|otherwise|parfor|persistent|return|spmd|switch|try|while)(?=\s)&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">include</span> <span class="err">&quot;function.lang&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="na">state command start &#39;^\s*[a-zA-Z][\w]*(?</span><span class="o">=</span><span class="s">\s)(?!\s+\.?[*/+-:]\s+\w)(?!\s+=)&#39; begin</span>
+</span><span class='line'><span class="s">        comment start &quot;%&quot;</span>
+</span><span class='line'><span class="s">        string delim &#39;[[:blank:]]&#39; &#39;[^%;]*&#39;</span>
+</span><span class='line'><span class="err">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">comment</span> <span class="err">delim</span> <span class="err">&quot;%{&quot;</span> <span class="err">&quot;%}&quot;</span> <span class="err">multiline</span> <span class="err">nested</span>
+</span><span class='line'><span class="err">comment</span> <span class="err">start</span> <span class="err">&quot;%&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">string</span> <span class="err">delim</span> <span class="err">&#39;(?&lt;![\w.])\&#39;&#39;</span> <span class="err">&quot;&#39;&quot;</span> <span class="err">escape</span> <span class="err">&quot;&#39;&#39;&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Finally, edit `lang.map` to create a mapping for matlab file.
 
-``` bash lang.map
-echo 'm = matlab.lang' >> lang.map
-```
+<figure class='code'><figcaption><span>lang.map</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">echo</span> <span class="s1">&#39;m = matlab.lang&#39;</span> &gt;&gt; lang.map
+</span></code></pre></td></tr></table></div></figure>
 ]]></content>
   </entry>
   
