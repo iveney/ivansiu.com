@@ -4,7 +4,7 @@
   <title><![CDATA[Category: algorithm | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/algorithm/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2018-01-19T00:11:03-08:00</updated>
+  <updated>2018-01-20T19:21:22-08:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -21,7 +21,7 @@
     <content type="html"><![CDATA[## Overview
 
 Hopcroft-Karp algorithm also utilizes the augmenting path. The difference
-between the [simple augmenting path algorithm](/blog/2013/10/07/graph-matching-augmenting-path/) is, instead of searching
+between the [simple augmenting path algorithm]({% post_url 2013-10-07-graph-matching-augmenting-path %}) is, instead of searching
 augmenting path one by one, it looks for many paths in the same time. The paths found at each iteration are in fact **vertex disjoint path**.
 By doing so, the number of iterations can be cut down, since there cannot be too many disjoing paths.
 

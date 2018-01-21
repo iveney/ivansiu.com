@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: blog | Ivan's Blog]]></title>
+  <link href="http://blog.ivansiu.com/blog/categories/blog/atom.xml" rel="self"/>
+  <link href="http://blog.ivansiu.com/"/>
+  <updated>2018-01-20T19:20:36-08:00</updated>
+  <id>http://blog.ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Write Blog Post With Dropbox Paper]]></title>
+    <link href="http://blog.ivansiu.com/blog/2018/01/20/write-blog-post-with-dropbox-paper/"/>
+    <updated>2018-01-20T19:20:35-08:00</updated>
+    <id>http://blog.ivansiu.com/blog/2018/01/20/write-blog-post-with-dropbox-paper</id>
+    <content type="html"><![CDATA[My new workflow is using Dropbox Paper so that I can easily write in WYSIWYG style (rich text), and easily export as Markdown. Very convenient.
+
+<!-- more -->
+
+
+My previous blogpost was written using this method. Steps as below.
+
+
+## 1. Write your post
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_4103A3F76CAE554E4D694B1801AAB4B486D3FE4DF7E362E98E1839B120DBD00E_1516504615365_image.png)
+
+## 2. Export as markdown
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_4103A3F76CAE554E4D694B1801AAB4B486D3FE4DF7E362E98E1839B120DBD00E_1516504655450_image.png)
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_4103A3F76CAE554E4D694B1801AAB4B486D3FE4DF7E362E98E1839B120DBD00E_1516504671369_image.png)
+
+## 3. Copy paste the downloaded markdown to your blog system
+
+After clicking ‘Download’, a md file will be downloaded. In my case, I use Octopress. You can easily fix up the metadata and preview. What is super-nice is that the image is automatically uploaded to cloud and you can use it as is, unless you want to upload it to your own host. Of course, this is also a disadvantage, you will need to manually upload those photos. I haven’t figured out a way to automate this yet.
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tmux | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/tmux/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2018-01-19T00:11:03-08:00</updated>
+  <updated>2018-01-20T19:21:22-08:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -37,11 +37,10 @@ Surprisingly, the solution is pretty simple. Just use `ctrl-a a` to
 send the prefix itself, and use `ctrl-a ctrl-a` to go to the last window.
 Specifically, add these two lines in `~/.tmux.conf`:
 
-<figure class='code'><figcaption><span>~/.tmux.conf </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">bind </span>a send-prefix
-</span><span class='line'><span class="nb">bind</span>-key C-a last-window
-</span></code></pre></td></tr></table></div></figure>
+``` bash ~/.tmux.conf 
+bind a send-prefix
+bind-key C-a last-window
+```
 
 [via](http://stackoverflow.com/questions/11557076/if-i-set-key-bind-of-c-b-to-c-a-in-tmux-how-can-i-move-the-cursor-to-the-beginni#comment15297769_11561128).
 ]]></content>

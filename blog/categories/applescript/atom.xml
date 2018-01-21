@@ -4,7 +4,7 @@
   <title><![CDATA[Category: applescript | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/applescript/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2018-01-19T00:11:03-08:00</updated>
+  <updated>2018-01-20T19:21:22-08:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -31,20 +31,19 @@ that work best for me are:
 
 1. Use `logger` to log to the syslog. E.g.,
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;logger -t &#39;AS DEBUG&#39; &quot;</span> <span class="o">&amp;</span> <span class="nv">myObj</span>
-</span></code></pre></td></tr></table></div></figure>
+``` applescript
+do shell script "logger -t 'AS DEBUG' " & myObj
+```
 
 However, I don't know why sometimes this is not logged. So I will use the 
 following:
 
 2. Echo to file
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="nb">do shell script</span> <span class="s2">&quot;echo &quot;</span> <span class="o">&amp;</span> <span class="nb">quoted form</span> <span class="k">of</span> <span class="p">(</span><span class="nv">myObj</span> <span class="k">as </span><span class="nc">string</span><span class="p">)</span> <span class="o">&amp;</span> <span class="se">¬</span>
-</span><span class='line'>    <span class="s2">&quot; &gt;&gt; ~/Desktop/as_debug.txt&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+``` applescript
+do shell script "echo " & quoted form of (myObj as string) & ¬
+    " >> ~/Desktop/as_debug.txt"
+```
 ]]></content>
   </entry>
   

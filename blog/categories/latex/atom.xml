@@ -4,7 +4,7 @@
   <title><![CDATA[Category: latex | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/latex/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2018-01-19T00:11:03-08:00</updated>
+  <updated>2018-01-20T19:21:22-08:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -26,82 +26,61 @@
 
 - [Horizontal alignment of subfigures](http://www.howtotex.com/tips-tricks/vertical-alignment-of-subfigures/)
 - `subfloat` in `subfig`
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="c">% Style: Figure 1(a)</span>
-</span><span class='line'><span class="k">\usepackage</span><span class="na">[subrefformat=parens,labelformat=parens]</span><span class="nb">{</span>subfig<span class="nb">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">\subfloat</span><span class="na">[]</span><span class="nb">{</span>
-</span><span class='line'><span class="k">\includegraphics</span><span class="na">[height=\textheight]</span><span class="nb">{</span>example<span class="nb">}</span>
-</span><span class='line'><span class="k">\label</span><span class="nb">{</span>fig:example<span class="nb">}</span>
-</span><span class='line'><span class="nb">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">\subref*</span><span class="nb">{</span>fig:example<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
+``` latex
+% Style: Figure 1(a)
+\usepackage[subrefformat=parens,labelformat=parens]{subfig}
+
+\subfloat[]{
+\includegraphics[height=\textheight]{example}
+\label{fig:example}
+}
+
+\subref*{fig:example}
+```
 
 ## Bibliography
 
 - [How do I run bibtex after using the -output-directory flag with pdflatex, when files are included from subdirectories?](http://tex.stackexchange.com/questions/12686/how-do-i-run-bibtex-after-using-the-output-directory-flag-with-pdflatex-when-f)
 - biblatex simple usage
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="c">% unsrt, abbrev, last option means use unsrt in \cite[xxx,yyy,ccc]</span>
-</span><span class='line'><span class="k">\usepackage</span><span class="na">[sorting=none,firstinits=true,sortcites=true]</span><span class="nb">{</span>biblatex<span class="nb">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">% add this in preamble</span>
-</span><span class='line'><span class="k">\bibliography</span><span class="nb">{</span>dsa-verification<span class="nb">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">% at the end</span>
-</span><span class='line'><span class="k">\printbibliography</span>
-</span></code></pre></td></tr></table></div></figure>
+``` latex
+% unsrt, abbrev, last option means use unsrt in \cite[xxx,yyy,ccc]
+\usepackage[sorting=none,firstinits=true,sortcites=true]{biblatex}
+
+% add this in preamble
+\bibliography{dsa-verification}
+
+% at the end
+\printbibliography
+```
 - [Item spacing](#bibitemsep)
 
 ## Graphics
 - Graphics path
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\graphicspath</span><span class="nb"></span>
-</span></code></pre></td></tr></table></div></figure>
+``` latex
+\graphicspath{{figs/}}
+```
 - Use other file extensions:
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\DeclareGraphicsExtensions</span><span class="nb">{</span>.pdf, .jpg, .png<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
+``` latex
+\DeclareGraphicsExtensions{.pdf, .jpg, .png}
+```
 
 ## Table and Tabular
 - threeparttable: Use footnote in tabular
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="c">% inside tabular:</span>
-</span><span class='line'><span class="k">\tnote</span><span class="nb">{</span><span class="s">$</span><span class="nv">\dagger</span><span class="s">$</span><span class="nb">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">% after tabular</span>
-</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>tablenotes<span class="nb">}</span>[para] <span class="c">% do not break line between items</span>
-</span><span class='line'><span class="k">\item</span> [<span class="s">$</span><span class="nv">\dagger</span><span class="s">$</span>] A foot note. <span class="c">% this reference to the item</span>
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>tablenotes<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
+``` latex
+% inside tabular:
+\tnote{$\dagger$}
+
+% after tabular
+\begin{tablenotes}[para] % do not break line between items
+\item [$\dagger$] A foot note. % this reference to the item
+\end{tablenotes}
+```
 
 ## Theorem, Definition
 - New definition/theorem
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\newtheorem</span><span class="nb">{</span>definition<span class="nb">}{</span>Definition<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
+``` latex
+\newtheorem{definition}{Definition}
+```
 - Useful packages:
     - ntheorem
     - amsthm
@@ -120,17 +99,15 @@
 
 ## Controlling space
 - reduce space between float and text
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\textfloatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
-</span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\floatsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
-</span><span class='line'><span class="k">\setlength</span><span class="nb">{</span><span class="k">\intextsep</span><span class="nb">}{</span>10pt plus 1.0pt minus 2.0pt<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
+``` latex
+\setlength{\textfloatsep}{10pt plus 1.0pt minus 2.0pt}
+\setlength{\floatsep}{10pt plus 1.0pt minus 2.0pt}
+\setlength{\intextsep}{10pt plus 1.0pt minus 2.0pt}
+```
 - reduce bib item separation in biblatex<a name="bibitemsep"></a>
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='latex'><span class='line'><span class="k">\setlength\bibitemsep</span><span class="nb">{</span>0.5<span class="k">\itemsep</span><span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
+``` latex
+\setlength\bibitemsep{0.5\itemsep}
+```
 - geometry: control the margins at top, bottom, left and right
 - enumitem: control the spacing related to `enumerate` and `itemize`.
 

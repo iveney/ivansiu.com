@@ -4,7 +4,7 @@
   <title><![CDATA[Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2018-01-19T00:11:03-08:00</updated>
+  <updated>2018-01-20T19:20:36-08:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Write Blog Post With Dropbox Paper]]></title>
+    <link href="http://blog.ivansiu.com/blog/2018/01/20/write-blog-post-with-dropbox-paper/"/>
+    <updated>2018-01-20T19:20:35-08:00</updated>
+    <id>http://blog.ivansiu.com/blog/2018/01/20/write-blog-post-with-dropbox-paper</id>
+    <content type="html"><![CDATA[<p>My new workflow is using Dropbox Paper so that I can easily write in WYSIWYG style (rich text), and easily export as Markdown. Very convenient.</p>
+<!-- more -->
+<p>My previous blogpost was written using this method. Steps as below.</p>
+<h2 id="write-your-post">1. Write your post</h2>
+<figure>
+<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_4103A3F76CAE554E4D694B1801AAB4B486D3FE4DF7E362E98E1839B120DBD00E_1516504615365_image.png" />
+</figure>
+<h2 id="export-as-markdown">2. Export as markdown</h2>
+<figure>
+<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_4103A3F76CAE554E4D694B1801AAB4B486D3FE4DF7E362E98E1839B120DBD00E_1516504655450_image.png" />
+</figure>
+<figure>
+<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_4103A3F76CAE554E4D694B1801AAB4B486D3FE4DF7E362E98E1839B120DBD00E_1516504671369_image.png" />
+</figure>
+<h2 id="copy-paste-the-downloaded-markdown-to-your-blog-system">3. Copy paste the downloaded markdown to your blog system</h2>
+<p>After clicking ‘Download’, a md file will be downloaded. In my case, I use Octopress. You can easily fix up the metadata and preview. What is super-nice is that the image is automatically uploaded to cloud and you can use it as is, unless you want to upload it to your own host. Of course, this is also a disadvantage, you will need to manually upload those photos. I haven’t figured out a way to automate this yet.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Backdoor Roth IRA and Mega Backdoor Roth IRA]]></title>
@@ -1117,27 +1141,6 @@ P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
 <ul>
 <li><a href="http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Fix frayed Magsafe cable</a></li>
 <li><a href="http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/">Replace faulty SATA cable</a></li>
-</ul>
-<p><em>If you have similar experience, do not hesitate to let me know. If you find my instruction helpful, leave a comment and share it!</em></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Replacing SATA Cable in Mid 2009 MBP]]></title>
-    <link href="http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/"/>
-    <updated>2014-05-28T00:15:08-07:00</updated>
-    <id>http://blog.ivansiu.com/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp</id>
-    <content type="html"><![CDATA[<figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/sata-cable.jpg" alt="Replacing MBP cable" /><figcaption>Replacing MBP cable</figcaption>
-</figure>
-<p>Recently, my mid 2009 MBP (Model A1278) fails to recognize the hard drive. My first bet was another disk failure on me, but it was not the case. I took down the hard drive and put it to a mobile hard drive case and it can be read smoothly.</p>
-<!-- more -->
-<p>It turns out that it is due to the SATA cable fault, which is a notorious problem for mid 2009 MBP model. See the threads and discussions <a href="http://forums.macrumors.com/showthread.php?t=1031577">here</a>, <a href="http://www.ifixit.com/Answers/View/36360/Internal+hard+drive+disk+not+recognized">here</a>, <a href="http://www.ifixit.com/Answers/View/43072/Hard+Drive+not+recognized+by+system+during+boot+or+install">here</a> and <a href="https://discussions.apple.com/message/25454809#25454809">here</a>.</p>
-<p>Luckily, the solution is simple, just go ahead and purchase a <a href="http://www.ifixit.com/MacBook-Parts/MacBook-Pro-13-Inch-Unibody-Hard-Drive-Cable/IF163-013#productDescription">replacement cable</a> and replace it. iFixit has a very detailed <a href="http://www.ifixit.com/Guide/MacBook+Pro+13-Inch+Unibody+Mid+2009+Hard+Drive+Cable+Replacement/1340">illustrated document</a> on the procedures. However, Amazon has a <a href="cable%20amazon">cheaper option</a>, and it works fine for me. I didn’t test the infra-red though, since I never and not plan to use it.</p>
-<p>There are other common issues for this model, and they can be easily fixed. See my following posts:</p>
-<ul>
-<li><a href="http://blog.ivansiu.com/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/">Fix frayed Magsafe cable</a></li>
-<li><a href="http://blog.ivansiu.com/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/">Fix unrecognized RAM</a></li>
 </ul>
 <p><em>If you have similar experience, do not hesitate to let me know. If you find my instruction helpful, leave a comment and share it!</em></p>
 ]]></content>

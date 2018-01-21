@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2018-01-19T00:11:03-08:00</updated>
+  <updated>2018-01-20T19:21:22-08:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -18,7 +18,7 @@
     <link href="http://blog.ivansiu.com/blog/2017/09/03/wei-blog-zeng-jia-linklog-gong-neng/"/>
     <updated>2017-09-03T12:42:03-07:00</updated>
     <id>http://blog.ivansiu.com/blog/2017/09/03/wei-blog-zeng-jia-linklog-gong-neng</id>
-    <content type="html"><![CDATA[最近[更新了一下鼠鬚管的配置](/blog/2017/08/28/rime-zeng-qiang-bao/)，本來是希望寫一篇 [linklog](http://octopress.org/docs/blogging/linklog/) 作爲推薦的。但是發現竟然不支持！！！而官方文檔明明有提到這個功能的……
+    <content type="html"><![CDATA[最近[更新了一下鼠鬚管的配置]({% post_url 2017-08-28-rime-zeng-qiang-bao %})，本來是希望寫一篇 [linklog](http://octopress.org/docs/blogging/linklog/) 作爲推薦的。但是發現竟然不支持！！！而官方文檔明明有提到這個功能的……
 
 <!-- more -->
 
@@ -61,53 +61,35 @@ Cloudinary seems to suggest they support auto-creating folders. Unfortunately th
 
 In fact, I wrote a small script to do this.
 
-<figure class='code'><figcaption><span>Upload a folder to cloudinary</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">os</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">cloudinary</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">cloudinary.uploader</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">cloudinary.api</span>
-</span><span class='line'>
-</span><span class='line'><span class="c"># Upload the folder in rootdir to cloudinary, preserving the file structure</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">cloudinary</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
-</span><span class='line'>  <span class="n">cloud_name</span> <span class="o">=</span> <span class="s">&quot;&lt;name&gt;&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="n">api_key</span> <span class="o">=</span> <span class="s">&quot;&lt;your key&gt;&quot;</span><span class="p">,</span>
-</span><span class='line'>  <span class="n">api_secret</span> <span class="o">=</span> <span class="s">&quot;&lt;your secret&gt;&quot;</span>
-</span><span class='line'><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">rootdir</span> <span class="o">=</span> <span class="s">&#39;blog&#39;</span>
-</span><span class='line'><span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">subs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">rootdir</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">for</span> <span class="nb">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-</span><span class='line'>        <span class="n">cloudinary</span><span class="o">.</span><span class="n">uploader</span><span class="o">.</span><span class="n">upload</span><span class="p">(</span>
-</span><span class='line'>            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="nb">file</span><span class="p">),</span>
-</span><span class='line'>            <span class="n">folder</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">use_filename</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-</span><span class='line'>            <span class="n">unique_filename</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">resource_type</span><span class="o">=</span><span class="s">&#39;auto&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+``` python Upload a folder to cloudinary
+import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+# Upload the folder in rootdir to cloudinary, preserving the file structure
+
+cloudinary.config(
+  cloud_name = "<name>",
+  api_key = "<your key>",
+  api_secret = "<your secret>"
+)
+
+rootdir = 'blog'
+for root, subs, files in os.walk(rootdir):
+    for file in files:
+        cloudinary.uploader.upload(
+            os.path.join(root, file),
+            folder=root, use_filename=True,
+            unique_filename=False, resource_type='auto')
+
+```
 
 With that, I did a simple sed run on all my post sources:
 
-<figure class='code'><figcaption><span>Upload a folder to cloudinary</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s">&#39;&#39;</span> <span class="s">&#39;s/&lt;dropbox base url&gt;/&lt;cloundinary base url&gt;/&#39;</span> <span class="o">*.</span><span class="n">markdown</span>
-</span></code></pre></td></tr></table></div></figure>
+```
+sed -i '' 's/<dropbox base url>/<cloundinary base url>/' *.markdown
+```
 
 then rake preview. Boom! All the images are shown again!
 
@@ -171,63 +153,45 @@ help you open pow website in a breeze.
 ### Math Rendering: MathJax
 
 Since I am an EECS student, I write a lot of 
-[Optimization](/blog/categories/optimization),
-[Machine Learning](/blog/categories/machine-learning)
+[Optimization](/{{ site.category_dir }}/optimization),
+[Machine Learning](/{{ site.category_dir }}/machine-learning)
 and
-[Computer Vision](/blog/categories/computer-vision) stuff, which
+[Computer Vision](/{{ site.category_dir }}/computer-vision) stuff, which
 relies heavily on mathematics. Thus, writing math formulas is a must for me.
 [MathJax](http://mathjax.org) is a javascript library for rendering
 math by writing LaTeX math. To do this, one needs to configure 
 the site and link to the library. Put these two lines into 
 `<octopress>/source/_includes/custom/head.html`:
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
-</span><span class='line'>	<span class="na">src=</span><span class="s">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://blog.ivansiu.com/javascripts/MathJaxLocal.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+``` html
+<script type="text/javascript"
+	src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/javascript" src="http://blog.ivansiu.com/javascripts/MathJaxLocal.js"></script>
+```
 
 The first script block loads MathJax, and the second loads a custom configuration
 in `source/javascripts/MathJaxLocal.js`. It is a good place to write your own
 macro there. For instance:
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
-</span><span class='line'>	<span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>		<span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&quot;AMS&quot;</span> <span class="p">},</span>
-</span><span class='line'>		<span class="nx">TagSide</span><span class="o">:</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
-</span><span class='line'>		<span class="nx">Macros</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>			<span class="nx">reals</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathbb{R}&#39;</span><span class="p">],</span>
-</span><span class='line'>			<span class="nx">complex</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathbb{C}&#39;</span><span class="p">],</span>
-</span><span class='line'>			<span class="nx">norm</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\left\\lVert#1\\right\\rVert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-</span><span class='line'>			<span class="nx">given</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\:#1\\vert\\:&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-</span><span class='line'>			<span class="nx">data</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathcal{D}&#39;</span><span class="p">],</span>
-</span><span class='line'>		<span class="p">}</span>
-</span><span class='line'>	<span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">loadComplete</span><span class="p">(</span><span class="s2">&quot;/javascripts/MathJaxLocal.js&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+``` javascript
+MathJax.Hub.Config({
+	TeX: { 
+		equationNumbers: { autoNumber: "AMS" },
+		TagSide: "left",
+		Macros: {
+			reals: ['\\mathbb{R}'],
+			complex: ['\\mathbb{C}'],
+			norm: ['\\left\\lVert#1\\right\\rVert', 1],
+			given: ['\\:#1\\vert\\:', 1],
+			data: ['\\mathcal{D}'],
+		}
+	}
+});
+
+MathJax.Ajax.loadComplete("/javascripts/MathJaxLocal.js");
+```
 
 Now you can write math!
 
@@ -261,23 +225,16 @@ markdown converter for Octopress. A [plugin](https://github.com/dsanson/jekyll-p
 After installation, I update the `markdown` section of `_config.yml` 
 with the following:
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">markdown</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">pandoc</span>
-</span><span class='line'><span class="l-Scalar-Plain">pandoc</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">html5</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">extensions</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">smart</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">mathjax</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">bibliography</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">source/blog.bib</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">csl</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">_style/ieee.csl</span>
-</span></code></pre></td></tr></table></div></figure>
+``` yaml
+markdown: pandoc
+pandoc:
+  format: html5
+  extensions:
+    - smart
+    - mathjax
+    - bibliography: source/blog.bib
+    - csl: _style/ieee.csl
+```
 
 which tells Octopress to use pandoc, and pass the option `smart`, `mathjax`
 and use the *style file* `ieee.csl` to format the *biliography* `blog.bib`.
@@ -300,8 +257,8 @@ Continuously growing...
 
 - There are lots of undocumented/less documented things in Octopress,
 which can help you write blog posts kinda 'programmatically'.
-For example, `http://blog.ivansiu.com` returns the url of site, which is 
-<http://blog.ivansiu.com> in my case. In fact, anything in `_config.yml` is a variable
+For example, `{{ site.url }}` returns the url of site, which is 
+<{{ site.url }}> in my case. In fact, anything in `_config.yml` is a variable
 under `site`.
 
 ## Conclusion
@@ -350,9 +307,9 @@ Please leave your comments.*
     <id>http://blog.ivansiu.com/blog/2013/10/17/updating-octopress-theme</id>
     <content type="html"><![CDATA[The themes are stored in `.themes/<name>`, we can use the rake command to update either the source or style, as documented in the [office website](http://octopress.org/docs/updating/). However, the syntax should be more clear, i.e.,
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">rake update_source[&#39;theme name&#39;]</span>
-</span></code></pre></td></tr></table></div></figure>
+```
+rake update_source['theme name']
+```
 
 Without the brackets, it defaults to `.themes/classic`.
 
