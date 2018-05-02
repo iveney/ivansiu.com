@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://blog.ivansiu.com/blog/2018/05/01/2018nian-zai-fremontmai-fang-shi-fou-shi-ji-he-gua-zhi-wo-jian/</loc>
+<lastmod>2018-05-01T23:25:08-07:00</lastmod>
+</url>
+<url>
 <loc>http://blog.ivansiu.com/blog/2018/01/20/write-blog-post-with-dropbox-paper/</loc>
 <lastmod>2018-01-20T19:20:35-08:00</lastmod>
 </url>
@@ -173,19 +177,19 @@
 <lastmod>2013-05-09T21:43:00-07:00</lastmod>
 </url>
 <url>
+<loc>http://blog.ivansiu.com/</loc>
+</url>
+<url>
 <loc>http://blog.ivansiu.com/blog/archives/</loc>
 </url>
 <url>
 <loc>http://blog.ivansiu.com/blog/linklogs/</loc>
 </url>
 <url>
-<loc>http://blog.ivansiu.com/</loc>
+<loc>http://blog.ivansiu.com/blog/classical-music/</loc>
 </url>
 <url>
 <loc>http://blog.ivansiu.com/blog/categories/</loc>
-</url>
-<url>
-<loc>http://blog.ivansiu.com/blog/classical-music/</loc>
 </url>
 <url>
 <loc>http://blog.ivansiu.com/blog/categories/socks/</loc>
@@ -297,5 +301,8 @@
 </url>
 <url>
 <loc>http://blog.ivansiu.com/blog/categories/finance/</loc>
+</url>
+<url>
+<loc>http://blog.ivansiu.com/blog/categories/house-buying/</loc>
 </url>
 </urlset>
