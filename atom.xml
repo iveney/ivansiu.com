@@ -4,7 +4,7 @@
   <title><![CDATA[Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2018-05-08T17:56:58-07:00</updated>
+  <updated>2019-08-10T14:48:23-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -12,6 +12,70 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[自建代理访问中国音乐服务]]></title>
+    <link href="http://blog.ivansiu.com/blog/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu/"/>
+    <updated>2019-08-10T14:46:18-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu</id>
+    <content type="html"><![CDATA[<p>由于版权原因，在外国访问中国音乐服务即使付费会员也可能没法听到音乐。同时，中国音乐服务版权现状复杂，使得音乐版权分布在不同的服务之间，使得用户没办法在一个平台上听到所有喜欢的歌曲，体验很差。本文介绍一个项目的配置来解除一些限制。</p>
+<!--more-->
+<h2 id="工作原理">工作原理</h2>
+<ul>
+<li>使用 UnblockNeteaseMusic 建立代理，可以运行在本地或者云端（文本选择 host 在阿里云）
+<ul>
+<li>使用云端的好处是对于 iOS 可以设置自动代理，不需要自己设置一台本地机器作为服务器</li>
+</ul></li>
+<li>使用 proxy.pac, proxifier 设置 iOS 以及 Mac 的代理</li>
+</ul>
+<h2 id="申请云服务器-vps">申请云服务器 VPS</h2>
+<p>使用腾讯云以及阿里云等都可以。似乎阿里云稍微便宜一点，因为我配置的 VPS 完全就是为了这个而服务，所以我申请的是最低级的一档，并且按照网络流量付费带宽（非固定带宽）。那么一个月大概是 24.1 元 + 流量：</p>
+<figure>
+<img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565467714331_image.png" />
+</figure>
+<p>欢迎使用我的<a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=3pew8zom">购买链接</a>进行注册。也欢迎留言让我知道哪里有更便宜的虚拟主机。</p>
+<h2 id="登录-vps-以及配置-unblockneteasemusic">登录 VPS 以及配置 UnblockNeteaseMusic</h2>
+<p>如何配置 VPS 以及登录这里就略过不谈了，应该在云服务器处都有教程。一般来说登录后要先安装一些必要的软件，比如 git, nodejs 等。</p>
+<p>准备就绪后，安装 <a href="https://github.com/nondanee/UnblockNeteaseMusic/"><strong>UnblockNeteaseMusic</strong></a><strong>。</strong></p>
+<pre><code>git clone https://github.com/nondanee/UnblockNeteaseMusic.git</code></pre>
+<p>安装好后，可以按照项目说明运行服务器。我使用的是旧方法：</p>
+<pre><code>node app.js -p 8000:8043</code></pre>
+<p>其中 <port1>:<port2> 里面，port1 是提供给客户端的端口，port2 用于内部转发，应该随便一个都可以。</p>
+<p>注意默认状态下阿里云的 8000 端口是关闭的，需要在阿里云的安全组里自行设置。这是一个例子：</p>
+<figure>
+<img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565468147793_image.png" />
+</figure>
+<p>Bonus：我一般在后台使用 mosh + tmux 对远程机器进行操控，免去每次登录。有兴趣的可以搜索如何配置。经观察，这似乎并不占用带宽并引起流量消费。</p>
+<h2 id="配置客户端">配置客户端</h2>
+<p><strong>iOS</strong></p>
+<p>iOS 的客户端类似 shadowrocket 等要钱，最简单的就是设置 proxy.pac 并且把相关服务 IP 重定向到服务器。下面是一个例子：</p>
+<pre><code>function FindProxyForURL(t) {
+  return shExpMatch(t, &quot;http://*.music.163.com/*&quot;)
+  || shExpMatch(url, &quot;http://*.126.net/*&quot;)
+  || shExpMatch(url, &quot;http://ipservice.163.com/*&quot;)
+      ? &quot;PROXY &lt;VPS IP&gt;:8000&quot;
+      : &quot;DIRECT&quot;
+}</code></pre>
+<p>需要把 <VPS IP> 设置成你的服务器的公网地址。把这段代码存成 proxy.pac。</p>
+<p>你可以把这个文件放在 VPS 上，我选择了把它放在了 dropbox。所以我在 iOS 上填的是类似以下的地址：</p>
+<pre><code>https://www.dropbox.com/s/abcdefg/proxy.pac?dl=0</code></pre>
+<p>记得要把 dl=0 改成 dl=1，否则会定向到 dropbox 文件的下载页面，而不是文件本身。</p>
+<p><strong>Mac</strong> Mac 的设置参考了<a href="https://www.sheyilin.com/2019/06/unblockneteasemusic/">这篇文章</a>。这里使用了 proxifier 这个软件。设置很简单，只需要设置对应的服务器，以及规则即可。</p>
+<figure>
+<img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565473436155_image.png" />
+</figure>
+<figure>
+<img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565473455528_image.png" />
+</figure>
+<h2 id="测试">测试</h2>
+<p>使用网易云音乐，查看一些平时看不到的灰色的歌曲，如果代理设置成功，可以看到服务器的输出，类似如下：</p>
+<figure>
+<img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565473520675_image.png" />
+</figure>
+<h2 id="参考文献">参考文献</h2>
+<p>[1] https://www.sheyilin.com/2019/06/unblockneteasemusic/</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[2018年在Fremont买房是否时机合适之我见]]></title>
@@ -1104,92 +1168,6 @@ rollOverOutlineColor : "#000000"
 <p>就投票权这一点来说，这两种主义就相当于两个极端：一个是认为选票控制在精英手里，一个是认为 人人有选票。我希望选票最终是要受到限制的，但是这个限制在公平与效益最大化的前提下做到最小。</p>
 <p>一个可能的解决方案，就是进行 voter’s test。就好像高考一样，诚然每个人都应该享有教育权， 但是在现实资源的限制下，我们必须用考试这种<em>相对公平</em>的方法来保证我们的资源要用在对的人 身上，对于参考者来说，也算是进行了投入，付出了机会成本，并且能认识到这个权利是要争取回来的。 同时，这个考试，也保证了投票者具有基本的知识修养。另外打一个比方，就是人人都可以享有路权（投票权）， 但是要真正在马路上开车行驶（行使投票权），就必须对他人负责，通过考试来证明自己有资格使用这条路 并且不会影响他人的生命安全（投票时做出理性选择）。这里有篇<a href="http://chit-philosophy.blogspot.com/2012/08/blog-post_20.html">文章</a>与我观点类似。</p>
 <p>这不是一个新的 idea，事实上，美国以前为了限制黑人投票，的确也实行过类似的考试。但那并不是说 这个制度就行不通，只是当时它被 abuse 了。这个考试必须是公平的，比如我们不设任何年龄与学历限制。这篇<a href="http://uspolitics.about.com/od/Voting/a/Should-Voters-Have-To-Pass-A-Test.htm">文章</a>介绍了一些背景，里面提到了一些支持 voter’s test 的<a href="http://www.latimes.com/opinion/opinion-la/la-oe-goldberg31jul31-column.html">人</a>。当然，我再次认识到这只是自己的主观认识，而且没有经过大量的背景阅读，所以很可能 这个制度会有更深层的问题。日后我会继续就这个 topic 展开讨论。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Notes on Maximum Likelihood, Maximum a Posteriori and Naive Bayes]]></title>
-    <link href="http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood/"/>
-    <updated>2014-09-24T13:41:44-07:00</updated>
-    <id>http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood</id>
-    <content type="html"><![CDATA[<p>Let <span class="math inline">\(\data\)</span> be a set of data generated from some distribution parameterized by <span class="math inline">\(\theta\)</span>. We want to <em>estimate</em> the unknown parameter <span class="math inline">\(\theta\)</span>. What we can do?</p>
-<!-- more -->
-<p>Essentially, we want to find a most likely value of <span class="math inline">\(\theta\)</span> given <span class="math inline">\(\data\)</span>, that is <span class="math inline">\(\arg \max P(\theta | \data)\)</span>. According to Bayes Rule, we have</p>
-<p><span class="math display">\[
-P(\theta \given \data) = \frac{P(\data \given \theta)P(\theta)}{P(\data)}
-\]</span></p>
-<p>and the terms have the following meanings:</p>
-<ul>
-<li><span class="math inline">\(P(\theta \given \data)\)</span>: Posterior</li>
-<li><span class="math inline">\(P(\data \given \theta)\)</span>: Likelihood</li>
-<li><span class="math inline">\(P(\theta)\)</span>: Prior</li>
-<li><span class="math inline">\(P(\data)\)</span>: Evidence</li>
-</ul>
-<h2 id="maximum-likelihood-estimation-mle">Maximum Likelihood Estimation (MLE)</h2>
-<p>An easy way out is to use the MLE method. We want to find a <span class="math inline">\(\theta\)</span> the <em>best explains</em> the data. That is, we maximize <span class="math inline">\(P(\data \given \theta)\)</span>. Denote such a value as <span class="math inline">\(\hat{\theta}_{ML}\)</span>. We have</p>
-<p><span class="math display">\[
-\hat{\theta}_{ML} = \argmax_\theta P(\data \given \theta) =
-\argmax_\theta P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta )
-\]</span></p>
-<p>Note that the above <span class="math inline">\(P\)</span> is a joint distribution over the data. We usually assume the observations are <em>independent</em>. Thus, we have</p>
-<p><span class="math display">\[
-P(\mathbf{x}_1, \ldots, \mathbf{x}_N \given \theta ) =
-\prod_{i=1}^{N} P(\mathbf{x}_i \given \theta )
-\]</span></p>
-<p>We usually use logarithm to simplify the computation, as logarithm is monotonically increasing. Thus, we write:</p>
-<p><span class="math display">\[
-\mathcal{L}(\data \given \theta) = \sum_{i=1}^N \log P(\mathbf{x}_i \given \theta )
-\]</span></p>
-<p>Finally, we seek for the ML solution:</p>
-<p><span class="math display">\[
-\hat{\theta}_{ML} = \argmax_\theta \mathcal{L}(\data \given \theta)
-\]</span></p>
-<p>If we know the distribution <span class="math inline">\(P\)</span>, we can usually solve the above by setting derivative of <span class="math inline">\(\theta\)</span> to 0 and solve for <span class="math inline">\(\theta\)</span>, that is,</p>
-<p><span class="math display">\[
-\frac{\partial L}{\partial \theta} = 0
-\]</span></p>
-<h2 id="maximum-a-posteriori-map">Maximum A Posteriori (MAP)</h2>
-<p>In MAP, we maximize <span class="math inline">\(P(\theta \given \data)\)</span> directly. Denote the MAP hypothesis as <span class="math inline">\(\hat{\theta}_{MAP}\)</span>, we have:</p>
-<p><span class="math display">\[\begin{array}{rl}
-\hat{\theta}_{MAP} = &amp; \argmax_\theta P(\theta \given \data) \\\\
- = &amp; \argmax_\theta \frac{P(\data \given \theta)P(\theta)}{P(\data)} \\\\
- = &amp; \argmax_\theta P(\data \given \theta)P(\theta)
-\end{array}\]</span></p>
-<p>Note that the last step is due to the evidence (data) <span class="math inline">\(\data\)</span> is constant, and thus can be omitted in <span class="math inline">\(\argmax\)</span>.</p>
-<p>At this step, we notice that the only difference between <span class="math inline">\(\hat{\theta}_{ML}\)</span> and <span class="math inline">\(\hat{\theta}_{MAP}\)</span> is the prior term <span class="math inline">\(P(\theta)\)</span>. Another way to interpret is that we consider <span class="math inline">\(MAP\)</span> is more general than <span class="math inline">\(MLE\)</span>, as if we assume all the possible <span class="math inline">\(\theta\)</span> are equally probable a priori, e.g., they have the same prior probability, or <em>uniform prior</em>, we can effectively remove <span class="math inline">\(P(\theta)\)</span> from the MAP formula, and it looks like exactly the same as MLE.</p>
-<p>Finally, if the independent observation holds, again we can use logarithm and expand <span class="math inline">\(\hat{\theta}_{MAP}\)</span> as:</p>
-<p><span class="math display">\[
-\begin{array}{rl}
-\hat{\theta}_{MAP} = &amp; \argmax_\theta L(\data \given \theta) \\\\
- = &amp; \argmax_\theta \sum_{i=1}^{N} \log P(\mathbf{x}_i \given \theta ) + \log P(\theta)
-\end{array}
-\]</span></p>
-<p>The extra prior term has the effect that we are essentially ‘pulling’ the <span class="math inline">\(\theta\)</span> distribution towards prior value. This makes sense as we are putting our domain knowledge as <em>prior</em> and intuitively the estimation is biased towards the <em>prior</em> value.</p>
-<h2 id="naive-bayes-classifier">Naive Bayes Classifier</h2>
-<p>Assume that we are given a set of data <span class="math inline">\(\data\)</span>, where each example <span class="math inline">\(\mathbf{x_j}=(a_1, a_2, \ldots, a_n)\)</span>, which can be viewed as <em>conjunctions of attributes values</em>. <span class="math inline">\(v_j \in V\)</span> is the corresponding class value. Using MAP, we can classify an example <span class="math inline">\(\mathbf{x}\)</span> as:</p>
-<p><span class="math display">\[v_{MAP}=\argmax_{v_j\in V} P(v_j \given a_1, \ldots, a_n)\]</span></p>
-<p>The problem is that it is hard to find a joint distribution for <span class="math inline">\(P(\mathbf{x} \given \theta)\)</span>. If we use the data to estimate the distribution, we typically don’t have enough data for each attribute. In other words, the data we have is very sparse compared to the whole distribution space.</p>
-<p>Naive bayes makes the assumption that each attribute is <em>conditionally independent</em> given the target class <span class="math inline">\(v_j\)</span>, that is,</p>
-<p><span class="math display">\[P(a_1, \ldots, a_n \given v_j) = \prod_{i=1}^n P(a_i \given v_j)\]</span></p>
-<p>which can be easily estimated from the data. Thus, we have the following naive bayes classifier:</p>
-<p><span class="math display">\[v_{NB} = \argmax_{v_j \in V} P(v_j) \prod_{i=1}^n P(a_i \given v_j)\]</span></p>
-<p>Note that the learning of naive bayes simply involves in estimating <span class="math inline">\(P(a_i \given v_j)\)</span> and <span class="math inline">\(P(v_j)\)</span> based on the frequencies in the training data.</p>
-<p>Normally the conditional independence assumption does not hold, but naive bayes performs well even if so. More importantly, <strong>when conditional independence is satisfied, Naive Bayes corresponds to MAP classification.</strong></p>
-<h2 id="conclusion">Conclusion</h2>
-<p>MLE, MAP and Naive Bayes are all connected. While MLE and MAP are parameter estimation methods that returns a single value of the paramter being estimated, NB is a classifier that predicts the probability of the class that an example belongs to. We also have the following insightes:</p>
-<ul>
-<li>Given the data, MLE considers the paramter to be a constant and estimates a value that provide maximum support for the data.</li>
-<li>MLE does not allow us to ‘inject’ our beliefs about the likely values for the parameter (prior) in the estimation process.</li>
-<li>MAP allows the fact that the paramter can take values from a prior (non-uniform) distribution that express our prior beliefs regarding the paramters.</li>
-<li>MAP returns paramter value where the probability is highest given data.</li>
-<li>Again, both MLE and MAP returns a single and specific value for the paramter. By contrast, <em>bayesian estimation</em> computes the full posterior distribution <span class="math inline">\(P(\theta \given \data)\)</span>.</li>
-</ul>
-<h2 id="thoughts">Thoughts</h2>
-<p>After reading this <a href="http://www.behind-the-enemy-lines.com/2008/01/are-you-bayesian-or-frequentist-or.html">article</a>, I have the following interpretation:</p>
-<ul>
-<li>The Maximum Likelihood approach can be roughly regarded as traditional “frequentist” thinking.</li>
-<li>The MAP approach is a direct applicatin of Bayes Theorem. Thus, it can be regarded as a “bayesian” way of thinking.</li>
-</ul>
 ]]></content>
   </entry>
   

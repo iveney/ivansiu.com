@@ -102,6 +102,10 @@ Some of my posts are written in Chinese. </p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu/">自建代理访问中国音乐服务</a>
+        </li>
+      
+        <li>
           <a href="/blog/2018/05/01/2018nian-zai-fremontmai-fang-shi-fou-shi-ji-he-gua-zhi-wo-jian/">2018年在Fremont买房是否时机合适之我见</a>
         </li>
       
@@ -115,10 +119,6 @@ Some of my posts are written in Chinese. </p>
       
         <li>
           <a href="/blog/2017/11/25/states-and-countries-ive-visited/">States and Countries I've Visited</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2017/09/04/recommendation-system-review/">Recommendation System Review</a>
         </li>
       
     </ul>
@@ -164,6 +164,78 @@ Some of my posts are written in Chinese. </p>
   <div class="container">
     <div class="row" id="post-container">
     
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    <h1 class="entry-title">
+
+
+
+<a href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Network Flow: Ford-Fulkerson Method</a>
+
+
+</h1>
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang "Ivan" Xiao</span></span>
+  
+
+ -
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-03T18:13:00-07:00" pubdate data-updated="true"></time> -
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Basic method (framework) is Ford-Fulkerson. It’s called a “method” because it’s general, there can be different implementation that yield different complexity. It looks like this:</p>
+<pre><code>Let F be an empty flow
+While there is augmenting path P from s to t
+    Augment F with P
+End while</code></pre>
+<p>The problem is how we find the augmenting path efficiently. A naive implementation is to use DFS to randomly pick a <span class="math inline">\(s-t\)</span> path and augment it. However, it has two problems:</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/10/03/network-flow-ford-fulkerson-method/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
     
     
       <article class="span4">
@@ -410,6 +482,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu/">自建代理访问中国音乐服务</a>
+        </li>
+      
+        <li>
           <a href="/blog/2018/05/01/2018nian-zai-fremontmai-fang-shi-fou-shi-ji-he-gua-zhi-wo-jian/">2018年在Fremont买房是否时机合适之我见</a>
         </li>
       
@@ -423,10 +499,6 @@ posted in
       
         <li>
           <a href="/blog/2017/11/25/states-and-countries-ive-visited/">States and Countries I've Visited</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2017/09/04/recommendation-system-review/">Recommendation System Review</a>
         </li>
       
     </ul>
@@ -482,7 +554,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Ivan's Blog</a>
-  - Copyright &copy; 2018 - Zigang "Ivan" Xiao
+  - Copyright &copy; 2019 - Zigang "Ivan" Xiao
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>
