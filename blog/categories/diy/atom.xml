@@ -4,7 +4,7 @@
   <title><![CDATA[Category: diy | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/diy/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2019-08-10T14:50:14-07:00</updated>
+  <updated>2019-09-07T15:43:57-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -78,8 +78,8 @@ out if you have encountered similar issue.
 There are other common issues for this model, and they can be easily fixed. See
 my following posts:
 
-- [Fix frayed Magsafe cable](/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/)
-- [Replace faulty SATA cable](/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/)
+- [Fix frayed Magsafe cable]({% post_url 2013-11-08-saving-80-dollars-by-fixing-magsafe-by-yourself %})
+- [Replace faulty SATA cable]({% post_url 2014-05-28-replacing-sata-cable-in-mid-2009-mbp %})
 
 *If you have similar experience, do not hesitate to let me know. If you find my
 instruction helpful, leave a comment and share it!*
@@ -117,8 +117,8 @@ the infra-red though, since I never and not plan to use it.
 There are other common issues for this model, and they can be easily fixed. See
 my following posts:
 
-- [Fix frayed Magsafe cable](/blog/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself/)
-- [Fix unrecognized RAM](/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/)
+- [Fix frayed Magsafe cable]({% post_url 2013-11-08-saving-80-dollars-by-fixing-magsafe-by-yourself %})
+- [Fix unrecognized RAM]({% post_url 2014-05-28-fix-mid-2009-mbp-ram-not-recognized-issue %})
 
 *If you have similar experience, do not hesitate to let me know. If you find my
 instruction helpful, leave a comment and share it!*
@@ -175,8 +175,8 @@ Hooray! Now it is working again! In fact, I am amazed that this piece of gadget 
 There are other common issues for this model, and they can be easily fixed. See
 my following posts:
 
-- [Replace faulty SATA cable](/blog/2014/05/28/replacing-sata-cable-in-mid-2009-mbp/)
-- [Fix unrecognized RAM](/blog/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue/)
+- [Replace faulty SATA cable]({% post_url 2014-05-28-replacing-sata-cable-in-mid-2009-mbp %})
+- [Fix unrecognized RAM]({% post_url 2014-05-28-fix-mid-2009-mbp-ram-not-recognized-issue %})
 
 *If you have similar experience, do not hesitate to let me know. If you find my
 instruction helpful, leave a comment and share it!*
@@ -209,12 +209,12 @@ instruction helpful, leave a comment and share it!*
 
 Since I never used CD, I actually decided to buy a Digital Media Receiver: [JVC KD-X250BT](http://www.crutchfield.com/S-kT2jsjodqXG/p_105KDX250B/JVC-KD-X250BT.html). Since every car has a different wiring harness, we need to buy a compatible wiring harness. My car has a Double DIN design but the DMR is a single DIN one, so I actually need to buy a installation kit. The wiring setup is fun:
 
-<img class="left" src="https://lh5.googleusercontent.com/-zOOgWaP5-W8/UiETJQhmUVI/AAAAAAAA6AM/jRAo6LHRlDU/s400/IMG_5341.jpg">
-<img class="right" src="https://lh4.googleusercontent.com/-n_QzAv5VgfQ/UiETKOBShuI/AAAAAAAA6AU/_F3-gN-NDio/s400/IMG_5342.jpg">
-<img class="left" src="https://lh5.googleusercontent.com/-p7tlzn7kbRc/UiETKzbUaCI/AAAAAAAA6Ac/37Dgx3cbUJM/s400/IMG_5344.jpg">
+{% img left https://lh5.googleusercontent.com/-zOOgWaP5-W8/UiETJQhmUVI/AAAAAAAA6AM/jRAo6LHRlDU/s400/IMG_5341.jpg %}
+{% img right https://lh4.googleusercontent.com/-n_QzAv5VgfQ/UiETKOBShuI/AAAAAAAA6AU/_F3-gN-NDio/s400/IMG_5342.jpg %}
+{% img left https://lh5.googleusercontent.com/-p7tlzn7kbRc/UiETKzbUaCI/AAAAAAAA6Ac/37Dgx3cbUJM/s400/IMG_5344.jpg %}
 
-<img class="right" src="https://lh6.googleusercontent.com/-KJRCnhX64lg/UiETLxnhJKI/AAAAAAAA6Ak/qdqbEPUfAUI/s600/IMG_5345.JPG">
-<img src="https://lh5.googleusercontent.com/-h0tu6PrFzIk/UiETMWNKURI/AAAAAAAA6As/Zll5LFDkixM/s600/IMG_5346.JPG">
+{% img right https://lh6.googleusercontent.com/-KJRCnhX64lg/UiETLxnhJKI/AAAAAAAA6Ak/qdqbEPUfAUI/s600/IMG_5345.JPG %}
+{% img https://lh5.googleusercontent.com/-h0tu6PrFzIk/UiETMWNKURI/AAAAAAAA6As/Zll5LFDkixM/s600/IMG_5346.JPG %}
 ]]></content>
   </entry>
   

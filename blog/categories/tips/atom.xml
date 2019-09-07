@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tips | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/tips/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2019-08-10T14:50:14-07:00</updated>
+  <updated>2019-09-07T15:43:57-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -54,7 +54,7 @@ After clicking ‘Download’, a md file will be downloaded. In my case, I use O
 
 ![](http://res.cloudinary.com/maomao/image/upload/v1501651001/platepass-scam.jpg)
 
-兩個月前，我因爲[車子被 flying debris 刮傷 hood](/blog/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object/)，而拿去了修車店修理。同時保險公司也 cover 我租車的費用。於是，在 Hertz 租了一輛小車。
+兩個月前，我因爲[車子被 flying debris 刮傷 hood]({% post_url 2017-04-30-making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object %})，而拿去了修車店修理。同時保險公司也 cover 我租車的費用。於是，在 Hertz 租了一輛小車。
 
 由於我上班下班都會經過 Dumbarton bridge，所以單程會被收取 \$5 費用。由於我自己有 fastrak，所以都是過橋時拿出來使用。但是有一次過橋忘記了。當時想着，也許跟之前一樣，會寄賬單到家，所以也沒多想。直到今天看到賬單，才大吃一驚：你收取我原價 \$5 的過路費，我認了。但是由於我只是一次沒有交，而收取我整個 rental period 的 service charge，每天 \$4.95，封頂 \$24.75。這多收的服務費，都已經是我的過路費的5倍了。這未免太坑了點？？
 
@@ -86,25 +86,17 @@ the terminal. The following script helps you with that:
 
 <!-- more -->
 
-<figure class='code'><figcaption><span>reveal</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="c">#!/usr/bin/osascript</span>
-</span><span class='line'><span class="k">on</span> <span class="nb">run</span> <span class="nv">args</span>
-</span><span class='line'>	<span class="k">set</span> <span class="nv">fullpath</span> <span class="k">to</span> <span class="nb">do shell script</span> <span class="s2">&quot;realpath &quot;</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nb">quoted form</span> <span class="k">of</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">of</span> <span class="nv">args</span><span class="p">)</span>
-</span><span class='line'>	<span class="k">set</span> <span class="nv">theFile</span> <span class="k">to</span> <span class="nv">POSIX</span> <span class="nv">file</span> <span class="nv">fullpath</span>
-</span><span class='line'>	<span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
-</span><span class='line'>		<span class="nv">reveal</span> <span class="nv">theFile</span>
-</span><span class='line'>		<span class="nb">activate</span>
-</span><span class='line'>	<span class="k">end</span> <span class="k">tell</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+``` applescript reveal
+#!/usr/bin/osascript
+on run args
+	set fullpath to do shell script "realpath " & (quoted form of first item of args)
+	set theFile to POSIX file fullpath
+	tell application "Finder"
+		reveal theFile
+		activate
+	end tell
+end
+```
 
 Note:
 
@@ -112,7 +104,7 @@ Note:
 `~/bin`. Also remember to `chmod +x`.
 2. The above requires another script `realpath`, which returns the
 fullpath of a file. You can find it
-[here](/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/).
+[here]({% post_url 2014-05-01-os-x-get-full-path-of-file-using-realpath %}).
 ]]></content>
   </entry>
   
@@ -125,92 +117,57 @@ fullpath of a file. You can find it
 ➜  /Applications  realpath iBooks.app
 /Applications/iBooks.app
 ➜  /Applications
-<figure class='code'><figcaption><span>reveal</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="err">`</span><span class="nv">realpath</span><span class="err">`</span> <span class="ow">is</span> <span class="nv">a</span> <span class="nv">command</span> <span class="nv">line</span> <span class="nv">utility</span> <span class="nb">that</span> <span class="ow">is</span>
-</span><span class='line'><span class="nv">included</span> <span class="k">in</span> <span class="nv">most</span> <span class="nv">UNIX</span> <span class="nv">distributions</span> <span class="nb">but</span> <span class="ow">not</span> <span class="nv">Mac</span> <span class="nv">OS</span> <span class="nv">X</span><span class="p">.</span>
-</span><span class='line'><span class="nv">Thanks</span> <span class="k">to</span> <span class="err">[</span><span class="nv">Stuart</span> <span class="nv">Campbell</span><span class="err">]</span><span class="p">(</span><span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">harto</span><span class="p">),</span>
-</span><span class='line'><span class="nv">a</span> <span class="nv">minimal</span> <span class="nv">implementation</span> <span class="ow">is</span> <span class="nv">provided</span>
-</span><span class='line'><span class="err">[</span><span class="nv">here</span><span class="err">]</span><span class="p">(</span><span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">harto</span><span class="o">/</span><span class="nv">realpath</span><span class="o">-</span><span class="nv">osx</span><span class="p">),</span> <span class="ow">and</span> <span class="k">my</span>
-</span><span class='line'><span class="err">[</span><span class="nv">fork</span><span class="err">]</span><span class="p">(</span><span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">iveney</span><span class="o">/</span><span class="nv">realpath</span><span class="o">-</span><span class="nv">osx</span><span class="p">).</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="p">!</span><span class="c">-- more --&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">If</span> <span class="nv">you</span> <span class="nv">use</span> <span class="err">`</span><span class="nv">homebrew</span><span class="err">`</span><span class="p">,</span> <span class="nv">you</span> <span class="nv">can</span> <span class="nv">tap</span> <span class="k">my</span>
-</span><span class='line'><span class="err">[</span><span class="nv">repo</span><span class="err">]</span><span class="p">(</span><span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">iveney</span><span class="o">/</span><span class="nv">homebrew</span><span class="o">-</span><span class="nv">mocha</span><span class="p">),</span> <span class="ow">and</span> <span class="nv">install</span> <span class="k">it</span> <span class="nv">using</span>
-</span><span class='line'><span class="nv">homebrew</span><span class="p">.</span>
-</span></code></pre></td></tr></table></div></figure> bash
+```
+
+`realpath` is a command line utility that is 
+included in most UNIX distributions but not Mac OS X.
+Thanks to [Stuart Campbell](https://github.com/harto),
+a minimal implementation is provided 
+[here](https://github.com/harto/realpath-osx), and my 
+[fork](https://github.com/iveney/realpath-osx).
+
+<!-- more -->
+
+If you use `homebrew`, you can tap my 
+[repo](https://github.com/iveney/homebrew-mocha), and install it using
+homebrew.
+
+``` bash
 brew tap iveney/mocha
 brew install realpath
-<figure class='code'><figcaption><span>reveal</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="nv">Viola</span><span class="p">!</span> <span class="nv">Now</span> <span class="nv">you</span> <span class="nv">can</span> <span class="k">get</span> <span class="nb">the</span> <span class="nv">full</span> <span class="na">path</span> <span class="k">of</span> <span class="nv">file</span> <span class="k">in</span> <span class="nv">console</span><span class="p">.</span> <span class="nv">A</span> <span class="nv">nice</span> <span class="nv">thing</span>
-</span><span class='line'><span class="nv">I</span> <span class="nv">often</span> <span class="nv">use</span> <span class="ow">is</span> <span class="k">to</span> <span class="nv">chain</span> <span class="k">it</span> <span class="nv">with</span> <span class="err">`</span><span class="nv">pbcopy</span><span class="err">`</span> <span class="k">to</span> <span class="nb">copy</span> <span class="nb">the</span> <span class="nv">full</span> <span class="nb">path to</span>
-</span><span class='line'><span class="nb">the</span> <span class="nv">OS</span> <span class="nv">X</span> <span class="nv">clipboard</span><span class="p">.</span>
-</span><span class='line'><span class="err">]]</span><span class="o">&gt;&lt;/</span><span class="na">content</span><span class="o">&gt;</span>
-</span><span class='line'>  <span class="o">&lt;/</span><span class="nv">entry</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="o">&lt;</span><span class="nv">entry</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="na">title</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="o">&gt;&lt;</span><span class="p">!</span><span class="err">[</span><span class="nv">CDATA</span><span class="err">[</span><span class="nv">Send</span> <span class="nv">Ctrl</span><span class="o">-</span><span class="nv">a</span> <span class="k">in</span> <span class="nv">Tmux</span> <span class="nv">After</span> <span class="nv">Rebinding</span> <span class="k">to</span> <span class="nv">It</span><span class="err">]]</span><span class="o">&gt;&lt;/</span><span class="na">title</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="nv">link</span> <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/&quot;</span><span class="o">/&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="nv">updated</span><span class="o">&gt;</span><span class="mi">2014</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">01</span><span class="err">T</span><span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">46</span><span class="o">-</span><span class="mi">07</span><span class="p">:</span><span class="mi">00</span><span class="o">&lt;/</span><span class="nv">updated</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="na">id</span><span class="o">&gt;</span><span class="nv">http</span><span class="p">:</span><span class="o">//</span><span class="nv">blog</span><span class="p">.</span><span class="nv">ivansiu</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">blog</span><span class="o">/</span><span class="mi">2014</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="nv">send</span><span class="o">-</span><span class="nv">ctrl</span><span class="o">-</span><span class="nv">a</span><span class="o">-</span><span class="k">in</span><span class="o">-</span><span class="nv">tmux</span><span class="o">-</span><span class="nb">after</span><span class="o">-</span><span class="nv">rebinding</span><span class="o">-</span><span class="k">to</span><span class="o">-</span><span class="k">it</span><span class="o">&lt;/</span><span class="na">id</span><span class="o">&gt;</span>
-</span><span class='line'>    <span class="o">&lt;</span><span class="na">content</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="o">&gt;&lt;</span><span class="p">!</span><span class="err">[</span><span class="nv">CDATA</span><span class="err">[</span><span class="p">!</span><span class="err">[]</span><span class="p">(</span><span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">res</span><span class="p">.</span><span class="nv">cloudinary</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">maomao</span><span class="o">/</span><span class="na">image</span><span class="o">/</span><span class="nv">upload</span><span class="o">/</span><span class="nv">v1491291930</span><span class="o">/</span><span class="nv">blog</span><span class="o">/</span><span class="mi">2014</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="nv">send</span><span class="o">-</span><span class="nv">ctrl</span><span class="o">-</span><span class="nv">a</span><span class="o">-</span><span class="k">in</span><span class="o">-</span><span class="nv">tmux</span><span class="o">-</span><span class="nb">after</span><span class="o">-</span><span class="nv">rebinding</span><span class="o">-</span><span class="k">to</span><span class="o">-</span><span class="k">it</span><span class="p">.</span><span class="nv">png</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">While</span> <span class="err">`</span><span class="nv">tmux</span><span class="err">`</span> <span class="nv">provides</span> <span class="nv">much</span> <span class="nv">better</span> <span class="nv">functionality</span> <span class="nv">than</span> <span class="err">`</span><span class="nv">screen</span><span class="err">`</span><span class="p">,</span>
-</span><span class='line'><span class="nv">most</span> <span class="k">of</span> <span class="nv">us</span> <span class="nb">that</span> <span class="nv">work</span> <span class="nv">with</span> <span class="nv">tmux</span> <span class="nv">have</span> <span class="nv">been</span> <span class="nv">using</span> <span class="err">`</span><span class="nv">screen</span><span class="err">`</span> <span class="nb">for</span> <span class="nv">a</span> <span class="nv">long</span> <span class="nv">time</span><span class="p">,</span>
-</span><span class='line'><span class="ow">and</span> <span class="k">it</span> <span class="ow">is</span> <span class="nv">more</span> <span class="nv">comfortable</span> <span class="nb">for</span> <span class="nv">us</span> <span class="k">to</span> <span class="nv">use</span> <span class="err">`</span><span class="nv">ctrl</span><span class="o">-</span><span class="nv">a</span><span class="err">`</span> <span class="nv">than</span> <span class="nb">the</span> <span class="nv">default</span> <span class="err">`</span><span class="nv">ctrl</span><span class="o">-</span><span class="nv">b</span><span class="err">`</span><span class="p">,</span>
-</span><span class='line'><span class="nv">which</span> <span class="ow">is</span> <span class="nv">finger</span><span class="o">-</span><span class="nv">strechy</span><span class="p">.</span> <span class="nv">Thus</span> <span class="nb">the</span> <span class="nb">first</span> <span class="nv">thing</span> <span class="nv">I</span> <span class="nv">will</span> <span class="nv">do</span> <span class="nb">after</span> <span class="nv">installing</span> <span class="err">`</span><span class="nv">tmux</span><span class="err">`</span>
-</span><span class='line'><span class="ow">is</span> <span class="k">to</span> <span class="nv">rebind</span> <span class="nb">the</span> <span class="nv">prefix</span> <span class="k">to</span> <span class="err">`</span><span class="nv">ctrl</span><span class="o">-</span><span class="nv">a</span><span class="err">`</span><span class="p">.</span> <span class="nv">That</span> <span class="nv">gives</span> <span class="nv">us</span> <span class="nb">the</span> <span class="nv">most</span> <span class="nv">handy</span> <span class="nv">way</span> <span class="k">of</span>
-</span><span class='line'><span class="nv">swapping</span> <span class="nb">last</span> <span class="nv">two</span> <span class="nb">windows</span> <span class="k">by</span> <span class="nv">typing</span> <span class="err">`</span><span class="nv">ctrl</span><span class="o">-</span><span class="nv">a</span> <span class="nv">ctrl</span><span class="o">-</span><span class="nv">a</span><span class="err">`</span><span class="p">.</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="p">!</span><span class="c">-- more --&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">However</span><span class="p">,</span> <span class="nv">this</span> <span class="nv">comes</span> <span class="nb">for</span> <span class="nv">a</span> <span class="nv">price</span><span class="p">.</span> <span class="nv">That</span> <span class="ow">is</span><span class="p">,</span> <span class="k">in</span> <span class="nv">a</span> <span class="nv">shell</span> <span class="nv">environment</span> <span class="nb">that</span>
-</span><span class='line'><span class="ow">is</span> <span class="nv">integrated</span> <span class="nv">with</span> <span class="err">`</span><span class="nv">readline</span><span class="err">`</span><span class="p">,</span> <span class="err">`</span><span class="nv">ctrl</span><span class="o">-</span><span class="nv">a</span><span class="err">`</span> <span class="ow">is</span> <span class="nv">used</span> <span class="k">to</span> <span class="nv">jump</span> <span class="nb">the</span> <span class="nv">begining</span> <span class="k">of</span> <span class="nv">line</span><span class="p">.</span>
-</span><span class='line'><span class="nv">Now</span> <span class="nb">that</span> <span class="k">it</span> <span class="ow">is</span> <span class="nv">mapped</span> <span class="k">as</span> <span class="nv">prefix</span><span class="p">,</span> <span class="nv">we</span> <span class="nv">can</span> <span class="nv">no</span> <span class="nv">longer</span> <span class="nv">do</span> <span class="nb">that</span><span class="p">.</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">Surprisingly</span><span class="p">,</span> <span class="nb">the</span> <span class="nv">solution</span> <span class="ow">is</span> <span class="nv">pretty</span> <span class="nv">simple</span><span class="p">.</span> <span class="nv">Just</span> <span class="nv">use</span> <span class="err">`</span><span class="nv">ctrl</span><span class="o">-</span><span class="nv">a</span> <span class="nv">a</span><span class="err">`</span> <span class="k">to</span>
-</span><span class='line'><span class="nv">send</span> <span class="nb">the</span> <span class="nv">prefix</span> <span class="nv">itself</span><span class="p">,</span> <span class="ow">and</span> <span class="nv">use</span> <span class="err">`</span><span class="nv">ctrl</span><span class="o">-</span><span class="nv">a</span> <span class="nv">ctrl</span><span class="o">-</span><span class="nv">a</span><span class="err">`</span> <span class="k">to</span> <span class="nb">go</span> <span class="k">to</span> <span class="nb">the</span> <span class="nb">last</span> <span class="na">window</span><span class="p">.</span>
-</span><span class='line'><span class="nv">Specifically</span><span class="p">,</span> <span class="nv">add</span> <span class="nv">these</span> <span class="nv">two</span> <span class="nv">lines</span> <span class="k">in</span> <span class="err">`~</span><span class="o">/</span><span class="p">.</span><span class="nv">tmux</span><span class="p">.</span><span class="nv">conf</span><span class="err">`</span><span class="p">:</span>
-</span></code></pre></td></tr></table></div></figure> bash ~/.tmux.conf 
+```
+
+Viola! Now you can get the full path of file in console. A nice thing
+I often use is to chain it with `pbcopy` to copy the full path to 
+the OS X clipboard.
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Send Ctrl-a in Tmux After Rebinding to It]]></title>
+    <link href="http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/"/>
+    <updated>2014-05-01T15:14:46-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it</id>
+    <content type="html"><![CDATA[![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png)
+
+While `tmux` provides much better functionality than `screen`,
+most of us that work with tmux have been using `screen` for a long time,
+and it is more comfortable for us to use `ctrl-a` than the default `ctrl-b`,
+which is finger-strechy. Thus the first thing I will do after installing `tmux`
+is to rebind the prefix to `ctrl-a`. That gives us the most handy way of
+swapping last two windows by typing `ctrl-a ctrl-a`.
+
+<!-- more -->
+
+However, this comes for a price. That is, in a shell environment that
+is integrated with `readline`, `ctrl-a` is used to jump the begining of line.
+Now that it is mapped as prefix, we can no longer do that.
+
+Surprisingly, the solution is pretty simple. Just use `ctrl-a a` to
+send the prefix itself, and use `ctrl-a ctrl-a` to go to the last window.
+Specifically, add these two lines in `~/.tmux.conf`:
+
+``` bash ~/.tmux.conf 
 bind a send-prefix
 bind-key C-a last-window
 ```

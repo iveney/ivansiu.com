@@ -4,7 +4,7 @@
   <title><![CDATA[Category: blogging | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/blogging/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2019-08-10T14:50:14-07:00</updated>
+  <updated>2019-09-07T15:43:57-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -97,63 +97,45 @@ help you open pow website in a breeze.
 ### Math Rendering: MathJax
 
 Since I am an EECS student, I write a lot of 
-[Optimization](/blog/categories/optimization),
-[Machine Learning](/blog/categories/machine-learning)
+[Optimization](/{{ site.category_dir }}/optimization),
+[Machine Learning](/{{ site.category_dir }}/machine-learning)
 and
-[Computer Vision](/blog/categories/computer-vision) stuff, which
+[Computer Vision](/{{ site.category_dir }}/computer-vision) stuff, which
 relies heavily on mathematics. Thus, writing math formulas is a must for me.
 [MathJax](http://mathjax.org) is a javascript library for rendering
 math by writing LaTeX math. To do this, one needs to configure 
 the site and link to the library. Put these two lines into 
 `<octopress>/source/_includes/custom/head.html`:
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
-</span><span class='line'>	<span class="na">src=</span><span class="s">&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://blog.ivansiu.com/javascripts/MathJaxLocal.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+``` html
+<script type="text/javascript"
+	src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/javascript" src="http://blog.ivansiu.com/javascripts/MathJaxLocal.js"></script>
+```
 
 The first script block loads MathJax, and the second loads a custom configuration
 in `source/javascripts/MathJaxLocal.js`. It is a good place to write your own
 macro there. For instance:
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
-</span><span class='line'>	<span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>		<span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&quot;AMS&quot;</span> <span class="p">},</span>
-</span><span class='line'>		<span class="nx">TagSide</span><span class="o">:</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
-</span><span class='line'>		<span class="nx">Macros</span><span class="o">:</span> <span class="p">{</span>
-</span><span class='line'>			<span class="nx">reals</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathbb{R}&#39;</span><span class="p">],</span>
-</span><span class='line'>			<span class="nx">complex</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathbb{C}&#39;</span><span class="p">],</span>
-</span><span class='line'>			<span class="nx">norm</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\left\\lVert#1\\right\\rVert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-</span><span class='line'>			<span class="nx">given</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\:#1\\vert\\:&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-</span><span class='line'>			<span class="nx">data</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathcal{D}&#39;</span><span class="p">],</span>
-</span><span class='line'>		<span class="p">}</span>
-</span><span class='line'>	<span class="p">}</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Ajax</span><span class="p">.</span><span class="nx">loadComplete</span><span class="p">(</span><span class="s2">&quot;/javascripts/MathJaxLocal.js&quot;</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+``` javascript
+MathJax.Hub.Config({
+	TeX: { 
+		equationNumbers: { autoNumber: "AMS" },
+		TagSide: "left",
+		Macros: {
+			reals: ['\\mathbb{R}'],
+			complex: ['\\mathbb{C}'],
+			norm: ['\\left\\lVert#1\\right\\rVert', 1],
+			given: ['\\:#1\\vert\\:', 1],
+			data: ['\\mathcal{D}'],
+		}
+	}
+});
+
+MathJax.Ajax.loadComplete("/javascripts/MathJaxLocal.js");
+```
 
 Now you can write math!
 
@@ -187,23 +169,16 @@ markdown converter for Octopress. A [plugin](https://github.com/dsanson/jekyll-p
 After installation, I update the `markdown` section of `_config.yml` 
 with the following:
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">markdown</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">pandoc</span>
-</span><span class='line'><span class="l-Scalar-Plain">pandoc</span><span class="p-Indicator">:</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">html5</span>
-</span><span class='line'>  <span class="l-Scalar-Plain">extensions</span><span class="p-Indicator">:</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">smart</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">mathjax</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">bibliography</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">source/blog.bib</span>
-</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">csl</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">_style/ieee.csl</span>
-</span></code></pre></td></tr></table></div></figure>
+``` yaml
+markdown: pandoc
+pandoc:
+  format: html5
+  extensions:
+    - smart
+    - mathjax
+    - bibliography: source/blog.bib
+    - csl: _style/ieee.csl
+```
 
 which tells Octopress to use pandoc, and pass the option `smart`, `mathjax`
 and use the *style file* `ieee.csl` to format the *biliography* `blog.bib`.
@@ -226,8 +201,8 @@ Continuously growing...
 
 - There are lots of undocumented/less documented things in Octopress,
 which can help you write blog posts kinda 'programmatically'.
-For example, `http://blog.ivansiu.com` returns the url of site, which is 
-<http://blog.ivansiu.com> in my case. In fact, anything in `_config.yml` is a variable
+For example, `{{ site.url }}` returns the url of site, which is 
+<{{ site.url }}> in my case. In fact, anything in `_config.yml` is a variable
 under `site`.
 
 ## Conclusion

@@ -4,7 +4,7 @@
   <title><![CDATA[Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2019-08-10T14:50:14-07:00</updated>
+  <updated>2019-09-07T15:42:21-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Http 与 Https 代理区别 / Proxifier 与 Charles 使用心得小结]]></title>
+    <link href="http://blog.ivansiu.com/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/"/>
+    <updated>2019-09-07T15:41:54-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie</id>
+    <content type="html"><![CDATA[<p>HTTP Proxy 与 HTTPS Proxy 的区别很容易混淆。本文通过使用 Proxifier 与 Charles 实战作为一个笔记备忘。</p>
+<!--more-->
+<h2 id="http-proxy-与-https-proxy-的区别">HTTP Proxy 与 HTTPS Proxy 的区别</h2>
+<p>如何使用 proxifier 处理以 https 开头的 url，也就是 SSL 连接？这种连接一般是访问 443 端口，而普通 http 连接使用的是 80 端口。<a href="https://www.proxifier.com/docs/win-v3/http-proxy.htm">摘自</a> Proxifier 官网:</p>
+<blockquote>
+<p>It is a common misconception to confuse HTTP proxy and HTTPS proxy. HTTP proxy servers can process HTTP connections (port 80). They can also support HTTPS connections (SSL) but usually such connections are only allowed on port 443 (the standard port for HTTPS). For example this is the default configuration for Squid and Microsoft ISA proxy servers. If an HTTP proxy allows HTTPS connections on arbitrary ports, it can be called HTTPS proxy server (also called CONNECT or SSL proxy). In this case it can be used for generic TCP connections like SOCKS v4/5 proxy. Proxifier can work with HTTP proxy servers that do not support HTTPS on arbitrary ports. Due to the technical limitation of this protocol it is only possible to process HTTP connections with such proxy servers. This means that you must configure the <a href="https://www.proxifier.com/docs/win-v3/rules.htm">Proxification Rules</a> accordingly.</p>
+</blockquote>
+<p>基本上的意思就是呢，广义的 HTTP server 是可以处理 HTTPS 连接的。但是大多数 HTTP proxy servers 只能处理 HTTP request。如果它能处理任意端口的 HTTPS 连接，那么它也能被称作 HTTPS proxy server。换句话说，HTTPS proxy server 其实也就是 HTTP proxy server 的一种。</p>
+<p>所以呢：</p>
+<blockquote>
+<p>After that you will be able to <a href="https://www.proxifier.com/docs/win-v3/proxy.htm">add HTTP proxy server</a> just like any other type of proxies. Once HTTP proxy server is added, make sure that you properly set the <a href="https://www.proxifier.com/docs/win-v3/rules.htm">Proxification Rules</a>. If you want to process HTTPS connections through this proxy also, you should add this proxy separately as HTTPS.</p>
+</blockquote>
+<p>也就是说当要使用一个 proxy server 来同时处理 http 与 https 的连接时，应该把它们当作单独的 server 添加，如下：</p>
+<figure>
+<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_553B645525E322D632E92E15E151778490F248AC9CEE526810CE6D8C11AAAF4E_1552886198873_image.png" />
+</figure>
+<p>同时，forwarding rules 也要添加两条：</p>
+<figure>
+<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_553B645525E322D632E92E15E151778490F248AC9CEE526810CE6D8C11AAAF4E_1552886251879_image.png" />
+</figure>
+<h2 id="使用-charles-的同时使用-httphttps-proxy-server">使用 Charles 的同时使用 http/https proxy server</h2>
+<p>有时我们不希望设置一个全局的代理，而是希望针对某些 host:port 才使用代理。但是很多网站检测 ip 的功能可能放了在别的 host，所以 rule 里面要 match 好几个 host。这时，使用 charles 来监听访问一个网站时的 traffic 就特别方便，能轻易看到这个 request 会访问哪些 IP，然后可以逐个尝试把这些 IP 添加到 rule 里。但是 charles 本身就是一个（本地）代理。如何使用 Charles 时并且设置 external proxy server 呢？</p>
+<p>这里比较复杂，要同时设置几个地方。首先，简单起见本地的 proxy server 直接设为 SOCKS:</p>
+<figure>
+<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_553B645525E322D632E92E15E151778490F248AC9CEE526810CE6D8C11AAAF4E_1552886348454_image.png" />
+</figure>
+<p>其次，要支持 SSL 连接，必须设置 SSL proxy，简单起见，假设对于任意 host 任意端口都启用设置：</p>
+<figure>
+<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_553B645525E322D632E92E15E151778490F248AC9CEE526810CE6D8C11AAAF4E_1552886410475_image.png" />
+</figure>
+<p>但是比较现代的浏览器会检测到 charles 发过来的根证书并不是要访问的网站的根证书，所以一般会提示并且出错，这是因为 (<a href="https://www.charlesproxy.com/documentation/proxying/ssl-proxying/">via</a>)：</p>
+<blockquote>
+<p>Charles can be used as a man-in-the-middle HTTPS proxy, enabling you to view in plain text the communication between web browser and SSL web server. Charles does this by becoming a man-in-the-middle. <strong>Instead of your browser seeing the server’s certificate, Charles dynamically generates a certificate for the server and signs it with its own root certificate</strong> (the Charles CA Certificate). <strong>Charles receives the server’s certificate, while your browser receives Charles’s certificate</strong>. Therefore you will see a security warning, indicating that the root authority is not trusted. If you add the Charles CA Certificate to your trusted certificates you will no longer see any warnings – see below for how to do this. Charles still communicates via SSL to the web server. The communication is SSL (encrypted) from web browser to Charles and also SSL (encrypted) from Charles to the web server.</p>
+</blockquote>
+<blockquote>
+<p>Charles uses its own Root SSL certificate for SSL requests through Charles to hosts enabled for SSL Proxying. The Root certificate is generated automatically for each Charles installation. Because Charles has signed the Root certificate itself, it won’t be trusted by your browsers or applications. In order to use the SSL Proxying feature in Charles you therefore need to add the Root certificate for your copy of Charles to the trust-store on your OS, and perhaps in your browser. Use the options in the SSL submenu in the Help menu in Charles to help install the Root certificate. You can install the certificate on the current OS, or on remote devices or browsers. To install the certificate in Mozilla Firefox, first configure Firefox to use Charles as its proxy then browse to chls.pro/ssl.</p>
+</blockquote>
+<p>参见<a href="https://www.charlesproxy.com/documentation/proxying/ssl-proxying/">这里</a>设置添加信任 Charles 的根证书。</p>
+<p>最后，我们要设置对应的 HTTP 以及 HTTPS server，原理类似 proxifier：</p>
+<figure>
+<img src="https://d2mxuefqeaa7sj.cloudfront.net/s_553B645525E322D632E92E15E151778490F248AC9CEE526810CE6D8C11AAAF4E_1552886712011_image.png" />
+</figure>
+<p>PS. 这位博主有一系列非常好的介绍文章，并且使用 nodejs 实现了 <a href="https://imququ.com/post/web-proxy.html">HTTP</a> 与 <a href="https://imququ.com/post/web-proxy-2.html">HTTPS</a> 代理。强烈推荐。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[自建代理访问中国音乐服务]]></title>
@@ -1140,34 +1191,6 @@ rollOverOutlineColor : "#000000"
 </ul>
 <p>In general, my first impression for the watch is good. Might need some more time wearing it to see if , what do you think?</p>
 <p>[Update] After several days of wear, I have to say that I really like the style. I also observed that the watch accuracy is excellent: only 2~3 seconds slow.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[精英主义与投票考试]]></title>
-    <link href="http://blog.ivansiu.com/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/"/>
-    <updated>2014-10-01T20:29:30-07:00</updated>
-    <id>http://blog.ivansiu.com/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi</id>
-    <content type="html"><![CDATA[<h2 id="题记">题记</h2>
-<p>有感于最近香港要求普选的民运，心中大概有点想法。</p>
-<!-- more -->
-<p>考虑到自己对政治的认识与时间的限制，为了防止与 别人无谓的争辩， 不想把这些想法发到社交网络上，毕竟，这只是个人的想法，或者更严格来说， 是一种理念。因为很多主义与思想，都没有绝对的对错，我们只能做到根据自己的人生观与思想来 做出取舍。而偏偏这个世界上又很多人喜欢跟别人 argue，一定要说服别人为止——我根本没有这个时间 与精力去辩论。另外，这也同时印证了我为什么是 pro-精英主义的，我深知自己对这些事物的认识 不够，所以自觉需要更严谨的学习才有资本与别人争论。我相信多年以后，自己的看法一定又会 有所改变。彼时回首看这些文章，一定会觉得自己幼稚。不过无论怎么说，还是记录下自己的想法。</p>
-<h2 id="精英主义与民粹主义">精英主义与民粹主义</h2>
-<p>我对这件事情的看法很复杂——我对于民运人士的诉求部分支持又带有保留。争取投票权与心中的理想 当然是一种很好的东西，这点我是支持的。但是普选是否就意味着民主？更大的两个问题是，</p>
-<ol type="1">
-<li><p>普选就能保证选出来的人代表民意吗？ 这就相当于是多数人的暴政。对于这点，已经有很多论述。 这不是我的主要主题，在此不述。</p></li>
-<li><p>如何保证选民投票的质量？ 很显然很多人限于知识水平，也许只能看到对自己最直接的利弊影响， 而并无法理解哪位候选人的纲领政策对社会，对国家，对世界的更深层次影响，反过来说，这些影响 也许反而会给自己带来并不那么直接的有害效益。 同时，没有自己独立思考过的选民，往往对候选人的印象仅仅来源于道听途说以及政治宣传，甚至 金钱操作，因此这些投票是受到影响的。而『知道自己在做什么』的人实在太少了，这一点在我 求学生涯中越来越明显越来越深刻。我见过太多例子，并不是表面直觉看起来那么简单，经过 深层分析抽丝剥茧后，才发觉真相往往是非常 counter-intuitive 的。对于知识水平完全不在 一个层面的人的 bold move，很多时候只能说 『too simple, sometimes naive』。</p></li>
-</ol>
-<p>所以，这些选票，我认为必须是有权重的。</p>
-<p>第二点体现了我 pro-精英主义的最重要原因。想对地，支持普选的更偏向于民粹主义。 两者都有他们的 pros and cons。这两篇文章介绍得很详细：</p>
-<ul>
-<li><a href="http://www.zhihu.com/question/21669219">民粹主义和民粹政治是什么？</a></li>
-<li><a href="http://www.zhihu.com/question/21053772">精英主义的最大问题在哪里？</a></li>
-</ul>
-<h2 id="投票考试">投票考试</h2>
-<p>就投票权这一点来说，这两种主义就相当于两个极端：一个是认为选票控制在精英手里，一个是认为 人人有选票。我希望选票最终是要受到限制的，但是这个限制在公平与效益最大化的前提下做到最小。</p>
-<p>一个可能的解决方案，就是进行 voter’s test。就好像高考一样，诚然每个人都应该享有教育权， 但是在现实资源的限制下，我们必须用考试这种<em>相对公平</em>的方法来保证我们的资源要用在对的人 身上，对于参考者来说，也算是进行了投入，付出了机会成本，并且能认识到这个权利是要争取回来的。 同时，这个考试，也保证了投票者具有基本的知识修养。另外打一个比方，就是人人都可以享有路权（投票权）， 但是要真正在马路上开车行驶（行使投票权），就必须对他人负责，通过考试来证明自己有资格使用这条路 并且不会影响他人的生命安全（投票时做出理性选择）。这里有篇<a href="http://chit-philosophy.blogspot.com/2012/08/blog-post_20.html">文章</a>与我观点类似。</p>
-<p>这不是一个新的 idea，事实上，美国以前为了限制黑人投票，的确也实行过类似的考试。但那并不是说 这个制度就行不通，只是当时它被 abuse 了。这个考试必须是公平的，比如我们不设任何年龄与学历限制。这篇<a href="http://uspolitics.about.com/od/Voting/a/Should-Voters-Have-To-Pass-A-Test.htm">文章</a>介绍了一些背景，里面提到了一些支持 voter’s test 的<a href="http://www.latimes.com/opinion/opinion-la/la-oe-goldberg31jul31-column.html">人</a>。当然，我再次认识到这只是自己的主观认识，而且没有经过大量的背景阅读，所以很可能 这个制度会有更深层的问题。日后我会继续就这个 topic 展开讨论。</p>
 ]]></content>
   </entry>
   
