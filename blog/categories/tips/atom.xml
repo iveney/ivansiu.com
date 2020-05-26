@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tips | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/tips/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2019-09-07T15:43:57-07:00</updated>
+  <updated>2020-05-25T22:52:40-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -12,6 +12,147 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[推荐一个好用的理财网站 Personal Capital]]></title>
+    <link href="http://blog.ivansiu.com/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital/"/>
+    <updated>2020-05-25T22:49:45-07:00</updated>
+    <id>http://blog.ivansiu.com/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital</id>
+    <content type="html"><![CDATA[从小家里就给我灌输记账的习惯，一直没有养成，因为懒…… 直到来了美国之后，这个问题神奇地被解决了——因为信用卡普及光并且使用方便，基本上 eliminate 了我使用现金的需求（大多数都是去中国餐馆）。结合理财软件 mint，所有的消费一目了然。可惜自从 mint 被 intuit 收购之后，一直处于维护状态，很多功能停滞不前，很多时候也连不上银行。最近半年开始试用 [Personal Capital](https://share.personalcapital.com/x/ua1RUS)，发觉非常好用。它更像是一个财富管理软件而不是记账软件。随着资产的积累，我发觉我不再经常 review 我的消费，更多的是管理我的资产，包括各个银行帐号，401k，IRA，brokerage，车贷房贷等。此篇就来介绍一下它以及自己的使用心得。
+
+<!-- more -->
+
+*如果你想直接开始试用，推荐使用我的*[*推广连接*](https://share.personalcapital.com/x/ua1RUS)*进行注册，这样双方都能得到 $20 的奖励，也算是对我这篇介绍的一点支持 🙂*
+
+## Personal Capital 可以做些什么
+
+大体来说，[Personal Capital](https://share.personalcapital.com/x/ua1RUS) （以下简称 [PC](https://share.personalcapital.com/x/ua1RUS)）有三个主要功能。一是财富管理，简单来说跟 mint 很像，就是可以让你 link 你所有的银行、投资账户，然后可以让你清晰地看到个人的 net worth 是多少，包括资产与负债；另外一个功能是，当它有了你这么多资产信息后，它为进行分析并且给你理财建议，甚至可以提供免费的真人咨询。最后，它自己也提供投资业务，这里基本上就是跟 roboadvisor 很接近了，比如托管 1million 的资产，expense 是 0.87% 这样子（当然具体我没用没有了解过）。这篇文章主要介绍的是前两个功能。下面来具体说说。
+
+
+## Dashboard / 主界面
+![（source)](https://i0.wp.com/mymoneywizard.com/wp-content/uploads/2018/04/personal-capital-dashboard.gif?ssl=1)
+
+
+登录后，映入眼帘的是你的帐号结余，以及一些 time series 等。其实我主要看的是左边，也就是帐号结余。我最大的收获就是当我把所有的资产负债加进去后，我大概知道我个人的资产、负债，净值 (net worth) 是多少。 用 mint 也能做到，但是不知道为什么它把这个放在所有帐号之后…… 而 [Personal capital](https://share.personalcapital.com/x/ua1RUS) 左上角就是，很醒目。
+
+值得注意的是对于每个账户，你能看到一个 time series，这里反应了你那个帐号的资产（负债）数目。用了一段时间后，积累了足够数据后，看着自己的净值噌蹭地往上涨还蛮有成就感的……
+
+另外，mint 连接银行帐号总是有这种那种问题，而 personal capital 整个过程都很 smooth，也很智能地给我分类成现金、投资、credit等。很明显 mint 这么多年来从没改变过，用户体验一直很一般，白白地失去（或迟早失去）了自己江湖老大的地位。至少我作为一个大概8年的老用户，didn’t look back。
+
+
+## Budgeting / 预算分析，cashflow / 现金流
+
+这个功能 mint 相对来说强大点，可以设置不同的预算目标，我之前也用了一段时间，可以看大概每个月开销。[Personal Capital](https://share.personalcapital.com/x/ua1RUS) 只提供了最基本的一个 goal，所以用得不是特别多。
+
+
+![](https://paper-attachments.dropbox.com/s_13E260A5EAA0EA2D5E0C0577C35954B894CC4B66212FF7143E62F512FBDD5D19_1568960953614_image.png)
+
+
+对于现金流，对于单一收入的职工家庭来说似乎意义也不大（哎）。
+
+![](https://paper-attachments.dropbox.com/s_13E260A5EAA0EA2D5E0C0577C35954B894CC4B66212FF7143E62F512FBDD5D19_1568961008864_image.png)
+
+
+
+## Portfolio analysis 投资组合分析
+
+好了，上面这些基本上就是跟 mint 重合很大的“记账”功能了。如果只是使用它们，可能的确不会感觉区别特别大。但是当你有多个账户，特别是投资账户后，它的投资分析功能便显得特别强大了。
+
+Portfolio Holdings会算出你所有资产组合的增值率，并且跟不同的 index 相比：
+
+![](https://paper-attachments.dropbox.com/s_13E260A5EAA0EA2D5E0C0577C35954B894CC4B66212FF7143E62F512FBDD5D19_1568961371801_image.png)
+
+
+这个功能特别有意思，因为我的确有很多不同的投资账户，比如股票账户，401k，IRA，甚至是不同银行的 CD 等，涵盖了 schwab, fidelity, Vanguard, wealthfront, Ally 等。它们每一个都只能看到自己的盈利而没有一个 big picture。当你把所有帐号 aggregate 到 personal capital 后，自己的 portfolio performance 如何一目了然（题外话，过去一年 US bond 都涨疯了）。
+
+另外一个有意思的 view 是 Allocation。这里可以看到自己的资产都放在了什么地方。
+
+![(source)](https://paper-attachments.dropbox.com/s_13E260A5EAA0EA2D5E0C0577C35954B894CC4B66212FF7143E62F512FBDD5D19_1568961778286_image.png)
+
+
+这里面可以一直点进去细分，看到具体是哪些账户的钱放了在里面。
+
+
+## Investment Checkup / 投资检查
+
+这个功能应该是对于没有阅读过太多投资知识的人来说非常强大的功能。基本上符合 Vanguard 的 [lazy portfolio](https://www.bogleheads.org/wiki/Lazy_portfolios) theory，也就是被动投资的始祖，Vanguard 创始人 John Bogle 大力提倡的投资理论。
+
+
+![](https://paper-attachments.dropbox.com/s_13E260A5EAA0EA2D5E0C0577C35954B894CC4B66212FF7143E62F512FBDD5D19_1568962507560_image.png)
+
+
+首先，[Personal capital](https://share.personalcapital.com/x/ua1RUS) 会根据你的年龄、risk tolerance 等为你生成一个 target allocation。然后，它会把你现在的资产配置进行一个比较，你就可以很直观地看到它们之间的 gap 在哪里。
+
+
+![](https://paper-attachments.dropbox.com/s_13E260A5EAA0EA2D5E0C0577C35954B894CC4B66212FF7143E62F512FBDD5D19_1568962663154_image.png)
+
+
+同时比较 1992 年至今的两种 allocation 的回报看起来是怎样的：
+
+![](https://paper-attachments.dropbox.com/s_13E260A5EAA0EA2D5E0C0577C35954B894CC4B66212FF7143E62F512FBDD5D19_1568962701892_image.png)
+
+
+[Efficient fronier](https://www.investopedia.com/terms/e/efficientfrontier.asp) 可以看到 risk & return 的比较，也就是高风险高回报。图中 X 点表示现在的分配，而绿点表示是推荐的分配。100% stock 对应的是黄点，可以看到回报很高风险也很高：
+
+![](https://paper-attachments.dropbox.com/s_13E260A5EAA0EA2D5E0C0577C35954B894CC4B66212FF7143E62F512FBDD5D19_1568962772265_image.png)
+
+
+当然，说了这么多都是希望你能用它们的付费服务…… 如果你有闲心打理自己帐号的话，不难做到。其实很多文章都会提到，难在执行。比如基金定投，如何坚定地在市场上涨、下跌时都能做到淡定并且执行是很重要的。
+
+[Personal Capital](https://share.personalcapital.com/x/ua1RUS) 有很详细的 [whitepaper](https://www.personalcapital.com/assets/whitepapers/Personal_Capital_Investment_Strategy.pdf) 来介绍它们的投资策略。
+
+
+## Planning / 理财计划
+
+[Personal Capital](https://share.personalcapital.com/x/ua1RUS) 的理财计划是我非常喜欢的功能之一！在它的 planning section，有以下四项，都提供了非常强大的功能：
+
+- Retirement planner
+- Savings planner
+- Retirement fee analyzer
+- Investment checkup （上面已经单独拿出来讲过）
+
+**Retirement Planner / 退休计划**
+很多理财软件以及网站都有教导你如何做退休的规划，而 [personal capital](https://share.personalcapital.com/x/ua1RUS) 把这一点做得非常细致。最让我称道的一点是，它支持多种 scenario （情景）。比如说，我可以设置不同的退休时间/去世时间，来看我的资产增值与消耗。我也可以模拟一个场景，比如我或者我配偶其中一个失业了，看起来会是怎样的。我觉得最符合大多数人现状的，可能是设置不抚养子女、抚养一个子女、两个子女等的情景。
+
+
+![设置不同的场景](https://paper-attachments.dropbox.com/s_13E260A5EAA0EA2D5E0C0577C35954B894CC4B66212FF7143E62F512FBDD5D19_1569223471340_image.png)
+
+
+我们来看看它的功能吧。根据你现有的资产以及消费，[PC](https://share.personalcapital.com/x/ua1RUS) 会根据一些假设来模拟你退休后的资产价值。大概的策略是，[PC](https://share.personalcapital.com/x/ua1RUS) 会根据你现有的现金流， X% 的资产增值 和 Y% 的方差来模拟 5000 次。这里面的 X 与 Y 会根据你现有的投资策略来大概算出。模拟完后，会显示出 median 以及 10th percentile 你的资产会剩余什么价值。
+
+这里方便的是，如果你使用 [PC](https://share.personalcapital.com/x/ua1RUS) 已经一年以上了，那么它还会根据你的收支给你一些预设的值（比如现金流等），省去了一些你自己做功课的时间。
+
+同时，你也可以很方便地加入自己的计算来设置一些收入、消费等事件。比如，假设你 67 岁退休，根据工资水平，可以得到不同程度的社会保险。再如下面的例子就是设置了退休后每年花多少钱，花多少钱抚养小孩，教育，度假等。
+
+![](https://paper-attachments.dropbox.com/s_13E260A5EAA0EA2D5E0C0577C35954B894CC4B66212FF7143E62F512FBDD5D19_1569224190994_image.png)
+
+
+**Savings Planner / 储蓄计划**
+这个功能基本上是结合退休计划一起使用的。它可以告诉你截至今天为止一共存了多少钱，跟退休计划里面的目标关联；它也可以告诉你以90%的成功率达到你的退休目标你需要存多少钱。
+
+
+## Personal capital 安全吗
+
+不得不承认这也许是很多人使用类似服务的一个很大的心理障碍，毕竟要跟各种金融机构、银行互联需要显式地登录、授权。
+
+类似 [PC](https://share.personalcapital.com/x/ua1RUS) 这种 financial aggregator，顾名思义，都会到你的各个银行抓取你的 transaction，才能获取你的财产信息。理论上如果银行开放类似于 api 的接口让这种第三方机构可以获得读权限（也就是能获取你的 transaction，而不能进行转账等操作），是比较安全的，毕竟你最大的损失也只是泄漏了你的信息而不是财产本身。不过，我暂时还没听说过有这种实践存在。所以，你不得不把你的帐号密码给 PC，而 PC 代你进行登录。跟你直接到银行网站登录是一个道理。
+
+那么问题来了，[PC](https://share.personalcapital.com/x/ua1RUS) 代你登录肯定是需要有你的密码明文的，这个没办法绕过去（again，除非银行有 API）。根据 [PC](https://share.personalcapital.com/x/ua1RUS) 官网[信息](https://www.personalcapital.com/financial-software/security)，它们自己并不存这个信息，而是通过一个第三方机构 Yodlee，来代为存取。所以这个安全信息相当于是 decouple 了，并且最主要的安全问题是在于 [Yodlee](https://en.wikipedia.org/wiki/Yodlee) 本身，因为理论上 [PC](https://share.personalcapital.com/x/ua1RUS) 自己是完全没办法 access 到这些密码的——除非在用户连接账户时那一步就被截取了密码。包括 mint 在内的服务也是使用了 Yodlee。至于它有多安全，完全能展开再写一大段。网上不少参考文章都有介绍，大家可以去参考以决定是否完全信任这些服务。比如这篇[文章](https://www.creditdonkey.com/personal-capital-safe.html)谈到，"Yodlee has no security breaches to date.”
+
+
+> Benefit from our partnership with Yodlee, a financial technology industry veteran, to facilitate aggregation of your accounts. With over a decade of experience connecting with financial institutions, Yodlee provides an added layer of safety between your data and anyone who would want to access your account information. Your bank and brokerage credentials are only stored at Yodlee, not in Personal Capital's database.
+
+当然没有 security breach 不代表将来不会出现，而日常生活中正常的网站登录也伴随有一定的风险（比如电脑被装了恶意软件收集密码之类的）。所以对于一般人，做好功课了解 PC 的工作原理，做一个 informed decision，可能也就足够好了。
+
+
+## 结语
+
+结合我将近 10 年使用 mint 的经验，以及将近一年使用 [PC](https://share.personalcapital.com/x/ua1RUS) 的经验，我认为 [PC](https://share.personalcapital.com/x/ua1RUS) 还是非常值得一用的。它的 mobile app 做得也不错，而且它本身提供类似 wealthfront, betterment 的投资服务，说明是有自己的资金来源；比起半死不活的mint应该是更有前景。
+
+如果你读完我的文章觉得有兴趣尝试，不妨使用我的[推广连接](https://share.personalcapital.com/x/ua1RUS)进行注册，这样你我都能得到 $20 的奖励，也算是对我这篇介绍的一点支持 🙂
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Write Blog Post With Dropbox Paper]]></title>
@@ -54,7 +195,7 @@ After clicking ‘Download’, a md file will be downloaded. In my case, I use O
 
 ![](http://res.cloudinary.com/maomao/image/upload/v1501651001/platepass-scam.jpg)
 
-兩個月前，我因爲[車子被 flying debris 刮傷 hood]({% post_url 2017-04-30-making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object %})，而拿去了修車店修理。同時保險公司也 cover 我租車的費用。於是，在 Hertz 租了一輛小車。
+兩個月前，我因爲[車子被 flying debris 刮傷 hood](/blog/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object/)，而拿去了修車店修理。同時保險公司也 cover 我租車的費用。於是，在 Hertz 租了一輛小車。
 
 由於我上班下班都會經過 Dumbarton bridge，所以單程會被收取 \$5 費用。由於我自己有 fastrak，所以都是過橋時拿出來使用。但是有一次過橋忘記了。當時想着，也許跟之前一樣，會寄賬單到家，所以也沒多想。直到今天看到賬單，才大吃一驚：你收取我原價 \$5 的過路費，我認了。但是由於我只是一次沒有交，而收取我整個 rental period 的 service charge，每天 \$4.95，封頂 \$24.75。這多收的服務費，都已經是我的過路費的5倍了。這未免太坑了點？？
 
@@ -76,7 +217,7 @@ After clicking ‘Download’, a md file will be downloaded. In my case, I use O
   <entry>
     <title type="html"><![CDATA[OS X: Reveal File in Console]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console/"/>
-    <updated>2014-05-01T17:58:20-07:00</updated>
+    <updated>2014-05-01T19:58:20-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-reveal-file-in-console</id>
     <content type="html"><![CDATA[![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/2014-05-01-os-x-reveal-file-in-console.png)
 
@@ -86,17 +227,25 @@ the terminal. The following script helps you with that:
 
 <!-- more -->
 
-``` applescript reveal
-#!/usr/bin/osascript
-on run args
-	set fullpath to do shell script "realpath " & (quoted form of first item of args)
-	set theFile to POSIX file fullpath
-	tell application "Finder"
-		reveal theFile
-		activate
-	end tell
-end
-```
+<figure class='code'><figcaption><span>reveal</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="c">#!/usr/bin/osascript</span>
+</span><span class='line'><span class="k">on</span> <span class="nb">run</span> <span class="nv">args</span>
+</span><span class='line'>	<span class="k">set</span> <span class="nv">fullpath</span> <span class="k">to</span> <span class="nb">do shell script</span> <span class="s2">&quot;realpath &quot;</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nb">quoted form</span> <span class="k">of</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">of</span> <span class="nv">args</span><span class="p">)</span>
+</span><span class='line'>	<span class="k">set</span> <span class="nv">theFile</span> <span class="k">to</span> <span class="nv">POSIX</span> <span class="nv">file</span> <span class="nv">fullpath</span>
+</span><span class='line'>	<span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
+</span><span class='line'>		<span class="nv">reveal</span> <span class="nv">theFile</span>
+</span><span class='line'>		<span class="nb">activate</span>
+</span><span class='line'>	<span class="k">end</span> <span class="k">tell</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Note:
 
@@ -104,35 +253,44 @@ Note:
 `~/bin`. Also remember to `chmod +x`.
 2. The above requires another script `realpath`, which returns the
 fullpath of a file. You can find it
-[here]({% post_url 2014-05-01-os-x-get-full-path-of-file-using-realpath %}).
+[here](/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/).
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[OS X: Get Full Path of File Using Realpath]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath/"/>
-    <updated>2014-05-01T16:25:56-07:00</updated>
+    <updated>2014-05-01T18:25:56-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/01/os-x-get-full-path-of-file-using-realpath</id>
     <content type="html"><![CDATA[``` bash Demonstrate of realpath
 ➜  /Applications  realpath iBooks.app
 /Applications/iBooks.app
 ➜  /Applications
-```
-
-`realpath` is a command line utility that is 
-included in most UNIX distributions but not Mac OS X.
-Thanks to [Stuart Campbell](https://github.com/harto),
-a minimal implementation is provided 
-[here](https://github.com/harto/realpath-osx), and my 
-[fork](https://github.com/iveney/realpath-osx).
-
-<!-- more -->
-
-If you use `homebrew`, you can tap my 
-[repo](https://github.com/iveney/homebrew-mocha), and install it using
-homebrew.
-
-``` bash
+<figure class='code'><figcaption><span>reveal</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="err">`</span><span class="nv">realpath</span><span class="err">`</span> <span class="ow">is</span> <span class="nv">a</span> <span class="nv">command</span> <span class="nv">line</span> <span class="nv">utility</span> <span class="nb">that</span> <span class="ow">is</span>
+</span><span class='line'><span class="nv">included</span> <span class="k">in</span> <span class="nv">most</span> <span class="nv">UNIX</span> <span class="nv">distributions</span> <span class="nb">but</span> <span class="ow">not</span> <span class="nv">Mac</span> <span class="nv">OS</span> <span class="nv">X</span><span class="p">.</span>
+</span><span class='line'><span class="nv">Thanks</span> <span class="k">to</span> <span class="err">[</span><span class="nv">Stuart</span> <span class="nv">Campbell</span><span class="err">]</span><span class="p">(</span><span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">harto</span><span class="p">),</span>
+</span><span class='line'><span class="nv">a</span> <span class="nv">minimal</span> <span class="nv">implementation</span> <span class="ow">is</span> <span class="nv">provided</span>
+</span><span class='line'><span class="err">[</span><span class="nv">here</span><span class="err">]</span><span class="p">(</span><span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">harto</span><span class="o">/</span><span class="nv">realpath</span><span class="o">-</span><span class="nv">osx</span><span class="p">),</span> <span class="ow">and</span> <span class="k">my</span>
+</span><span class='line'><span class="err">[</span><span class="nv">fork</span><span class="err">]</span><span class="p">(</span><span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">iveney</span><span class="o">/</span><span class="nv">realpath</span><span class="o">-</span><span class="nv">osx</span><span class="p">).</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="p">!</span><span class="c">-- more --&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">If</span> <span class="nv">you</span> <span class="nv">use</span> <span class="err">`</span><span class="nv">homebrew</span><span class="err">`</span><span class="p">,</span> <span class="nv">you</span> <span class="nv">can</span> <span class="nv">tap</span> <span class="k">my</span>
+</span><span class='line'><span class="err">[</span><span class="nv">repo</span><span class="err">]</span><span class="p">(</span><span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">iveney</span><span class="o">/</span><span class="nv">homebrew</span><span class="o">-</span><span class="nv">mocha</span><span class="p">),</span> <span class="ow">and</span> <span class="nv">install</span> <span class="k">it</span> <span class="nv">using</span>
+</span><span class='line'><span class="nv">homebrew</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure> bash
 brew tap iveney/mocha
 brew install realpath
 ```
@@ -140,39 +298,6 @@ brew install realpath
 Viola! Now you can get the full path of file in console. A nice thing
 I often use is to chain it with `pbcopy` to copy the full path to 
 the OS X clipboard.
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Send Ctrl-a in Tmux After Rebinding to It]]></title>
-    <link href="http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/"/>
-    <updated>2014-05-01T15:14:46-07:00</updated>
-    <id>http://blog.ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it</id>
-    <content type="html"><![CDATA[![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png)
-
-While `tmux` provides much better functionality than `screen`,
-most of us that work with tmux have been using `screen` for a long time,
-and it is more comfortable for us to use `ctrl-a` than the default `ctrl-b`,
-which is finger-strechy. Thus the first thing I will do after installing `tmux`
-is to rebind the prefix to `ctrl-a`. That gives us the most handy way of
-swapping last two windows by typing `ctrl-a ctrl-a`.
-
-<!-- more -->
-
-However, this comes for a price. That is, in a shell environment that
-is integrated with `readline`, `ctrl-a` is used to jump the begining of line.
-Now that it is mapped as prefix, we can no longer do that.
-
-Surprisingly, the solution is pretty simple. Just use `ctrl-a a` to
-send the prefix itself, and use `ctrl-a ctrl-a` to go to the last window.
-Specifically, add these two lines in `~/.tmux.conf`:
-
-``` bash ~/.tmux.conf 
-bind a send-prefix
-bind-key C-a last-window
-```
-
-[via](http://stackoverflow.com/questions/11557076/if-i-set-key-bind-of-c-b-to-c-a-in-tmux-how-can-i-move-the-cursor-to-the-beginni#comment15297769_11561128).
 ]]></content>
   </entry>
   

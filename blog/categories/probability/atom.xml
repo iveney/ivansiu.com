@@ -4,7 +4,7 @@
   <title><![CDATA[Category: probability | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/probability/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2019-09-07T15:43:57-07:00</updated>
+  <updated>2020-05-25T22:52:40-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Notes on Maximum Likelihood, Maximum a Posteriori and Naive Bayes]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood/"/>
-    <updated>2014-09-24T13:41:44-07:00</updated>
+    <updated>2014-09-24T15:41:44-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/09/24/notes-on-maximum-likelihood</id>
     <content type="html"><![CDATA[Let $\data$ be a set of data generated from some distribution parameterized by
 $\theta$. We want to *estimate* the unknown parameter $\theta$. What we can do?

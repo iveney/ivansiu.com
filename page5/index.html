@@ -102,6 +102,10 @@ Some of my posts are written in Chinese. </p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital/">推荐一个好用的理财网站 Personal Capital</a>
+        </li>
+      
+        <li>
           <a href="/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/">Http 与 Https 代理区别 / Proxifier 与 Charles 使用心得小结</a>
         </li>
       
@@ -115,10 +119,6 @@ Some of my posts are written in Chinese. </p>
       
         <li>
           <a href="/blog/2018/01/20/write-blog-post-with-dropbox-paper/">Write Blog Post With Dropbox Paper</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2018/01/18/backdoor-roth-ira-and-mega-backdoor-roth-ira/">Backdoor Roth IRA and Mega Backdoor Roth IRA</a>
         </li>
       
     </ul>
@@ -164,6 +164,83 @@ Some of my posts are written in Chinese. </p>
   <div class="container">
     <div class="row" id="post-container">
     
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    <h1 class="entry-title">
+
+
+
+<a href="/blog/2013/10/07/graph-matching-augmenting-path/">Graph Matching: Augmenting Path</a>
+
+
+</h1>
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang "Ivan" Xiao</span></span>
+  
+
+ -
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-07T18:47:00-07:00" pubdate data-updated="true"></time> -
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/algorithm/'>algorithm</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="introduction">Introduction</h2>
+<p>Let <span class="math inline">\(G=(V, E)\)</span> be an undirected graph. Matching in <span class="math inline">\(G\)</span> is a subset of edges <span class="math inline">\(M \subseteq E\)</span> such that at most one edge is incident to each vertex in <span class="math inline">\(V\)</span>.</p>
+<p>A vertex is <em>matched</em> is it is incident to some edge in <span class="math inline">\(M\)</span>, otherwise it is called <em>free</em> or <em>exposed</em>.</p>
+<h2 id="augmenting-paths">Augmenting Paths</h2>
+<ul>
+<li>Alternating path: a path in which the edges belong alternatively to the matching and not to the matching</li>
+<li>Augmenting path: an alternating path that starts from and ends on exposed vertices</li>
+</ul>
+<p>Clearly, an augmenting path can be ‘flipped’ to increase the matching size <strong>by one</strong>, i.e., just make free vertex matched and make matched vertex free in this path.</p>
+<p><strong>Berge’s Theorem</strong>: The matching M is maximum <strong>iff</strong> there is no augmenting path w.r.t. <span class="math inline">\(M\)</span>. I personally think the proof is easy but quite powerful.</p>
+<p>Thus, we can immediately use the theorem to design an algorithm: find augmenting path iteratively until no more can be found. The problem is how we can find the augmenting path.</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/10/07/graph-matching-augmenting-path/">Read on &rarr;</a>
+    </footer>
+  
+
+
+</div>
+
+      </article>
     
     
       <article class="span4">
@@ -550,6 +627,10 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital/">推荐一个好用的理财网站 Personal Capital</a>
+        </li>
+      
+        <li>
           <a href="/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/">Http 与 Https 代理区别 / Proxifier 与 Charles 使用心得小结</a>
         </li>
       
@@ -563,10 +644,6 @@ posted in
       
         <li>
           <a href="/blog/2018/01/20/write-blog-post-with-dropbox-paper/">Write Blog Post With Dropbox Paper</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2018/01/18/backdoor-roth-ira-and-mega-backdoor-roth-ira/">Backdoor Roth IRA and Mega Backdoor Roth IRA</a>
         </li>
       
     </ul>
@@ -622,7 +699,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Ivan's Blog</a>
-  - Copyright &copy; 2019 - Zigang "Ivan" Xiao
+  - Copyright &copy; 2020 - Zigang "Ivan" Xiao
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>

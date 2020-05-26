@@ -4,7 +4,7 @@
   <title><![CDATA[Category: signal processing | Ivan's Blog]]></title>
   <link href="http://blog.ivansiu.com/blog/categories/signal-processing/atom.xml" rel="self"/>
   <link href="http://blog.ivansiu.com/"/>
-  <updated>2019-09-07T15:43:57-07:00</updated>
+  <updated>2020-05-25T22:52:40-07:00</updated>
   <id>http://blog.ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Sparse Image Reconstruction via L1-minimization]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/"/>
-    <updated>2014-05-19T13:12:36-07:00</updated>
+    <updated>2014-05-19T15:12:36-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization</id>
     <content type="html"><![CDATA[---
 nocite: 
@@ -208,15 +208,15 @@ For interested readers, the following references will be helpful.
 [camera_mag_hist]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/camera_mag_hist.png
 [code]: https://github.com/iveney/l1min/blob/master/image_recovery_l1.m
 
-[L2 vs L1]: {% post_url 2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization %}
-[Sparse Signal 1D]: {% post_url 2014-05-18-sparse-signal-reconstruction-via-l1-minimization %}
+[L2 vs L1]: /blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/
+[Sparse Signal 1D]: /blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Sparse Signal Reconstruction via L1-minimization]]></title>
     <link href="http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/"/>
-    <updated>2014-05-18T20:13:08-07:00</updated>
+    <updated>2014-05-18T22:13:08-05:00</updated>
     <id>http://blog.ivansiu.com/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization</id>
     <content type="html"><![CDATA[[![Sparse Signal Reconstruction Results]][Sparse Signal Reconstruction Results]
 
@@ -229,9 +229,9 @@ and the most famous one is [Fourier Transform].
 For simplicity, let's assume that we have a signal that
 is a superposition of some sinusoids. For example, the following:
 
-``` matlab
-.5*sin(3*x).*cos(.1*x)+sin(1.3*x).*sin(x)-.7*sin(.5*x).*cos(2.3*x).*cos(x);
-```
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="p">.</span><span class="mi">5</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(.</span><span class="mi">1</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="nb">sin</span><span class="p">(</span><span class="mf">1.3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="p">.</span><span class="mi">7</span><span class="o">*</span><span class="nb">sin</span><span class="p">(.</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="mf">2.3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 With *discrete consine transform* (DCT), we can easily find the coefficients of
 corresponding sinusoid components. The above example's coefficients (in
@@ -249,26 +249,43 @@ further reduce the number of samples required. [^Nsamples]
 The following code snippet demonstrates how this works. We generate
 the original signal in time domain and then perform a DCT to obtain the coefficients.
 
-``` matlab
-% sparse signal recovery using L1
-
-rng(0);
-N = 256; R = 3; C = 2;
-
-% some superposition of sinoisoids, feel free to change and experiment
-f = @(x) .5*sin(3*x).*cos(.1*x)+sin(1.3*x).*sin(x)-.7*sin(.5*x).*cos(2.3*x).*cos(x);
-x = linspace(-10*pi, 10*pi, N);
-y = f(x);
-
-subplot(R,C,1);
-coef = dct(y)';
-stem(coef);
-xlim([0 N]); title('Original signal in frequency domain');
-
-subplot(R,C,2);
-plot(x,y);
-xlim([min(x) max(x)]); title('Original signal in time domain');
-```
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% sparse signal recovery using L1</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rng</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'><span class="n">N</span> <span class="p">=</span> <span class="mi">256</span><span class="p">;</span> <span class="n">R</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">C</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% some superposition of sinoisoids, feel free to change and experiment</span>
+</span><span class='line'><span class="n">f</span> <span class="p">=</span> <span class="p">@(</span><span class="n">x</span><span class="p">)</span> <span class="p">.</span><span class="mi">5</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(.</span><span class="mi">1</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="nb">sin</span><span class="p">(</span><span class="mf">1.3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="p">.</span><span class="mi">7</span><span class="o">*</span><span class="nb">sin</span><span class="p">(.</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="mf">2.3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span><span class='line'><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">10</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+</span><span class='line'><span class="n">y</span> <span class="p">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="n">coef</span> <span class="p">=</span> <span class="n">dct</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="n">stem</span><span class="p">(</span><span class="n">coef</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Original signal in frequency domain&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Original signal in time domain&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 Let's assume that we have a device that can sample from the frequency domain.
 To do this, we create a *random measurement matrix* to obtain the samples.
@@ -276,34 +293,50 @@ We use 80 samples here. Note that we normalize the measurement matrix
 to have orthonormal basis, i.e., the norm of each row is 1, and the dot product
 of different row is 0.
 
-``` matlab
-% measurement matrix
-K=80;
-A=randn(K, N);
-A=orth(A')';
-
-% observations
-b=A*coef;
-```
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% measurement matrix</span>
+</span><span class='line'><span class="n">K</span><span class="p">=</span><span class="mi">80</span><span class="p">;</span>
+</span><span class='line'><span class="n">A</span><span class="p">=</span><span class="nb">randn</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+</span><span class='line'><span class="n">A</span><span class="p">=</span><span class="n">orth</span><span class="p">(</span><span class="n">A</span><span class="o">&#39;</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% observations</span>
+</span><span class='line'><span class="n">b</span><span class="p">=</span><span class="n">A</span><span class="o">*</span><span class="n">coef</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 We first try a least-square approach, which boils down to inverse the matrix
 and obtain $\hat{x}=A^{-1} b$. Note that as A is not square, we are
 using its *pseudo-inverse* here. Furthermore, as A is othornormal, its
 transpose is the same as pseudo-inverse.
 
-```
-% min-energy observations
-c0 = A'*b; % A' = pinv(A) here since A is a full-rank orthonormal matrix
-subplot(R,C,3);
-stem(c0);
-xlim([0 N]); title('Minimum energy recovery - coef');
-
-subplot(R,C,4);
-y0 = idct(c0, N);
-plot(1:N, y0,'r', 1:N, y, 'b');
-xlim([0 N]); title('Minimum energy recovery - signal');
-legend('Recovered', 'Original');
-```
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% min-energy observations</span>
+</span><span class='line'><span class="n">c0</span> <span class="p">=</span> <span class="n">A</span><span class="o">&#39;*</span><span class="n">b</span><span class="p">;</span> <span class="c">% A&#39; = pinv(A) here since A is a full-rank orthonormal matrix</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+</span><span class='line'><span class="n">stem</span><span class="p">(</span><span class="n">c0</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Minimum energy recovery - coef&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+</span><span class='line'><span class="n">y0</span> <span class="p">=</span> <span class="n">idct</span><span class="p">(</span><span class="n">c0</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Minimum energy recovery - signal&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Recovered&#39;</span><span class="p">,</span> <span class="s">&#39;Original&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 As we can see, there are lots of non-zeros in the coefficients, and
 the recovered signal is very different from the original signal.
@@ -312,22 +345,35 @@ Finally, we use L1-minimization for reconstruction. I used `lasso`
 to perform a L1-regualarized minimization. Another package that performs various
 L1-minimization is [l1-magic].
 
-```
-% L1-minimization
-[c1, fitinfo] = lasso(A, b, 'Lambda', 0.01);
-% If use L1-magic
-% addpath /path/to/l1magic/Optimization
-% [c1] = l1eq_pd(c0, A, [], b, 1e-4);
-subplot(R,C,5);
-stem(c1);
-xlim([0 N]); title('L1 recovery - coef');
-
-subplot(R,C,6);
-y1 = idct(c1, N);
-plot(1:N, y1, 'r', 1:N, y, 'b');
-xlim([0 N]); title('L1 recovery - signal');
-legend('Recovered', 'Original');
-```
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% L1-minimization</span>
+</span><span class='line'><span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">fitinfo</span><span class="p">]</span> <span class="p">=</span> <span class="n">lasso</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s">&#39;Lambda&#39;</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">);</span>
+</span><span class='line'><span class="c">% If use L1-magic</span>
+</span><span class='line'><span class="c">% addpath /path/to/l1magic/Optimization</span>
+</span><span class='line'><span class="c">% [c1] = l1eq_pd(c0, A, [], b, 1e-4);</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+</span><span class='line'><span class="n">stem</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;L1 recovery - coef&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
+</span><span class='line'><span class="n">y1</span> <span class="p">=</span> <span class="n">idct</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;L1 recovery - signal&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Recovered&#39;</span><span class="p">,</span> <span class="s">&#39;Original&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 The above shows that L1-minimization successfully recovered the original signal.
 A complete code snippet can be found [here][gist].
@@ -337,7 +383,7 @@ A complete code snippet can be found [here][gist].
 [Nyquist–Shannon sampling theorem]: http://en.wikipedia.org/wiki/Nyquist–Shannon_sampling_theorem
 [l1-magic]: http://users.ece.gatech.edu/~justin/l1magic/
 [gist]: https://gist.github.com/842145ae48381a5a8dca
-[previous post]: {% post_url 2014-05-14-a-comparison-of-least-square-l2-regularization-and-l1-regularization %}
+[previous post]: /blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/
 
 [^Nsamples]: In order to recover f perfectly, we need at least $B \log (N)$ samples [(source)](http://users.ece.gatech.edu/~justin/l1magic/downloads/papers/CandesRombergTao_revisedNov2005.pdf).
 ]]></content>
