@@ -167,12 +167,14 @@ End while</code></pre>
 <p>To handle, this, Edmonds-Karp algorithm simply replaces the DFS as BFS, which finds a shortest each time (use unit length on edges in the residual graph). The major points are:</p>
 <ul>
 <li>The length shortest path is guaranteed to monotonically increase at each iteration. This can be proven by contradiction.</li>
-<li>The number of iterations are <span class="math inline">\(O(|V||E|)\)</span>.</li>
+<li>The number of iterations are <span class="math inline">\(O(|V||E|)\)</span>.
+<ul>
 <li>Each augmenting path (shortest path) can saturate one edge, and this edge will disappear from the residual graph. We call this edge ‘critical’.<br />
 </li>
 <li>An edge <span class="math inline">\((u, v)\)</span> becomes critical to the time when it next becomes critical, the distance to <span class="math inline">\(u\)</span> from the source increases by at least 2.</li>
 <li>Thus, the total number of critical edges during execution is <span class="math inline">\(O(|V||E|)\)</span>.</li>
 <li>Each augmenting path contains at least one critical edge, thus <span class="math inline">\(O(|V||E|)\)</span>.</li>
+</ul></li>
 <li>The running time is thus <span class="math inline">\(O(|V||E|^2)\)</span> since each iteration we run a BFS which costs <span class="math inline">\(O(|E|)\)</span>. This can be improved to <span class="math inline">\(O(|V|^2|E|)\)</span> with more efficient data structure (Dinic).</li>
 </ul>
 </div>
@@ -254,6 +256,14 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2021/01/14/zai-wan-qu-gong-zuo-yi-nian-da-gai-neng-zan-xia-lai-duo-shao-qian/">在湾区工作一年大概能攒下来多少钱?</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2021/01/12/the-white-coat-investor-du-shu-bi-ji/">The White Coat Investor 读书笔记</a>
+        </li>
+      
+        <li>
           <a href="/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital/">推荐一个好用的理财网站 Personal Capital</a>
         </li>
       
@@ -263,14 +273,6 @@ posted in
       
         <li>
           <a href="/blog/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu/">自建代理访问中国音乐服务</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2018/05/01/2018nian-zai-fremontmai-fang-shi-fou-shi-ji-he-gua-zhi-wo-jian/">2018年在Fremont买房是否时机合适之我见</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2018/01/20/write-blog-post-with-dropbox-paper/">Write Blog Post With Dropbox Paper</a>
         </li>
       
     </ul>
@@ -326,7 +328,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Ivan's Blog</a>
-  - Copyright &copy; 2020 - Zigang "Ivan" Xiao
+  - Copyright &copy; 2021 - Zigang "Ivan" Xiao
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>

@@ -158,9 +158,7 @@ https://github.com/imathis/octopress/issues/599
 </ul>
 <h2 id="申请云服务器-vps">申请云服务器 VPS</h2>
 <p>使用腾讯云以及阿里云等都可以。似乎阿里云稍微便宜一点，因为我配置的 VPS 完全就是为了这个而服务，所以我申请的是最低级的一档，并且按照网络流量付费带宽（非固定带宽）。那么一个月大概是 24.1 元 + 流量：</p>
-<figure>
-<img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565467714331_image.png" />
-</figure>
+<p><img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565467714331_image.png" /></p>
 <p>欢迎使用我的<a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=3pew8zom">购买链接</a>进行注册。也欢迎留言让我知道哪里有更便宜的虚拟主机。</p>
 <h2 id="登录-vps-以及配置-unblockneteasemusic">登录 VPS 以及配置 UnblockNeteaseMusic</h2>
 <p>如何配置 VPS 以及登录这里就略过不谈了，应该在云服务器处都有教程。一般来说登录后要先安装一些必要的软件，比如 git, nodejs 等。</p>
@@ -170,9 +168,7 @@ https://github.com/imathis/octopress/issues/599
 <pre><code>node app.js -p 8000:8043</code></pre>
 <p>其中 <port1>:<port2> 里面，port1 是提供给客户端的端口，port2 用于内部转发，应该随便一个都可以。</p>
 <p>注意默认状态下阿里云的 8000 端口是关闭的，需要在阿里云的安全组里自行设置。这是一个例子：</p>
-<figure>
-<img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565468147793_image.png" />
-</figure>
+<p><img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565468147793_image.png" /></p>
 <p>Bonus：我一般在后台使用 mosh + tmux 对远程机器进行操控，免去每次登录。有兴趣的可以搜索如何配置。经观察，这似乎并不占用带宽并引起流量消费。</p>
 <h2 id="配置客户端">配置客户端</h2>
 <p><strong>iOS</strong></p>
@@ -189,17 +185,11 @@ https://github.com/imathis/octopress/issues/599
 <pre><code>https://www.dropbox.com/s/abcdefg/proxy.pac?dl=0</code></pre>
 <p>记得要把 dl=0 改成 dl=1，否则会定向到 dropbox 文件的下载页面，而不是文件本身。</p>
 <p><strong>Mac</strong> Mac 的设置参考了<a href="https://www.sheyilin.com/2019/06/unblockneteasemusic/">这篇文章</a>。这里使用了 proxifier 这个软件。设置很简单，只需要设置对应的服务器，以及规则即可。</p>
-<figure>
-<img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565473436155_image.png" />
-</figure>
-<figure>
-<img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565473455528_image.png" />
-</figure>
+<p><img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565473436155_image.png" /></p>
+<p><img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565473455528_image.png" /></p>
 <h2 id="测试">测试</h2>
 <p>使用网易云音乐，查看一些平时看不到的灰色的歌曲，如果代理设置成功，可以看到服务器的输出，类似如下：</p>
-<figure>
-<img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565473520675_image.png" />
-</figure>
+<p><img src="https://paper-attachments.dropbox.com/s_7A8C2C27C9746D5858735CD166097A4ADE48E37C9CDF7AF99B4EC4DDE045D922_1565473520675_image.png" /></p>
 <h2 id="参考文献">参考文献</h2>
 <p>[1] https://www.sheyilin.com/2019/06/unblockneteasemusic/</p>
 </div>
@@ -274,6 +264,14 @@ https://github.com/imathis/octopress/issues/599
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2021/01/14/zai-wan-qu-gong-zuo-yi-nian-da-gai-neng-zan-xia-lai-duo-shao-qian/">在湾区工作一年大概能攒下来多少钱?</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2021/01/12/the-white-coat-investor-du-shu-bi-ji/">The White Coat Investor 读书笔记</a>
+        </li>
+      
+        <li>
           <a href="/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital/">推荐一个好用的理财网站 Personal Capital</a>
         </li>
       
@@ -283,14 +281,6 @@ https://github.com/imathis/octopress/issues/599
       
         <li>
           <a href="/blog/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu/">自建代理访问中国音乐服务</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2018/05/01/2018nian-zai-fremontmai-fang-shi-fou-shi-ji-he-gua-zhi-wo-jian/">2018年在Fremont买房是否时机合适之我见</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2018/01/20/write-blog-post-with-dropbox-paper/">Write Blog Post With Dropbox Paper</a>
         </li>
       
     </ul>
@@ -346,7 +336,7 @@ https://github.com/imathis/octopress/issues/599
   <div class="container">
     <p class="pull-left">
   <a href="/">Ivan's Blog</a>
-  - Copyright &copy; 2020 - Zigang "Ivan" Xiao
+  - Copyright &copy; 2021 - Zigang "Ivan" Xiao
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>

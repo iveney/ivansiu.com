@@ -154,7 +154,7 @@ posted in
 
 
   <div class="entry-content"><figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/sublime-marked.png" alt="Writing in Sublime Text and previewing in Marked" /><figcaption>Writing in Sublime Text and previewing in Marked</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/sublime-marked.png" alt="" /><figcaption>Writing in Sublime Text and previewing in Marked</figcaption>
 </figure>
 <p>After blogging with <a href="http://octopress.org">Octopress</a> for a while, I have already gained some insights on it, and my publishing flow has been smoother. I think it is right time to share my flow as a reference.</p>
 <!-- more -->
@@ -162,9 +162,7 @@ posted in
 <p>The following sections outlines the flow. The last section contains assorted tips and tricks. For the basic configuration of Octopress, please refer to the official <a href="http://octopress.org">website</a>. I also recommend installing <a href="http://www.alfredapp.com">Alfred.app</a>.</p>
 <h3 id="creating-a-post-alfred-workflow-blog-publish">Creating a post: alfred workflow (blog publish)</h3>
 <p><a href="https://github.com/temikus">Artem Yakimenko</a> created an awesome <a href="http://www.alfredforum.com/topic/2289-octopress-publisher/">alfred workflow</a> for publishing and generating octopress websites. Use <code>blog publish [title]</code> to create a new post:</p>
-<figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/blog-publish.png" />
-</figure>
+<p><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/blog-publish.png" /></p>
 <p>It then opens the post in your specified text editor with template.</p>
 <h3 id="editing-sublime-text.app-marked.app-marked-app-menu-st-plugin">Editing: Sublime Text.app + Marked.app + Marked App Menu (ST Plugin)</h3>
 <p>I use <a href="http://www.sublimetext.com">Sublime Text (ST)</a> as my text editor, because it provides VIM keybinding and there is a huge repository of plugins. While editing, I use [Marked] to instantly render the markdown file and view the result. In fact, the title image shows my editing and previewing in action.</p>
@@ -172,9 +170,7 @@ posted in
 <h3 id="previewing-pow-rake-watch-pow-alfred-workflow">Previewing: pow + rake watch + pow alfred workflow</h3>
 <p>To preview the generate website, simply install <a href="http://pow.cx">pow</a> and execute <code>rake watch</code> under octopress directory to monitor the change. Octopress official website provides <a href="http://octopress.org/docs/blogging/">some explanation</a>. After installation, you can view your website locally at <a href="http://octopress.dev" class="uri">http://octopress.dev</a>.</p>
 <p>You should also install the <a href="http://tombeynon.github.io/alfred-pow/">pow alfred workflow</a>, which can help you open pow website in a breeze.</p>
-<figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/pow.png" />
-</figure>
+<p><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/pow.png" /></p>
 <h3 id="math-rendering-mathjax">Math Rendering: MathJax</h3>
 <p>Since I am an EECS student, I write a lot of <a href="/blog/categories/optimization">Optimization</a>, <a href="/blog/categories/machine-learning">Machine Learning</a> and <a href="/blog/categories/computer-vision">Computer Vision</a> stuff, which relies heavily on mathematics. Thus, writing math formulas is a must for me. <a href="http://mathjax.org">MathJax</a> is a javascript library for rendering math by writing LaTeX math. To do this, one needs to configure the site and link to the library. Put these two lines into <code>&lt;octopress&gt;/source/_includes/custom/head.html</code>:</p>
 <div class="bogus-wrapper">
@@ -270,9 +266,7 @@ posted in
 </ol>
 <h3 id="image-hosting-dropbox-public-folder">Image hosting: Dropbox public folder</h3>
 <p>I host my images in Dropbox Public folder, since you can simply copy the public link and paste it to the post source, for example:</p>
-<figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/dropbox-image.png" />
-</figure>
+<p><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/dropbox-image.png" /></p>
 <h3 id="image-editing-skitch-omnigraffle">Image editing: Skitch + OmniGraffle</h3>
 <p>The previous image is done by a timed capture from <a href="http://skitch.com">skitch</a>. For advanced vector graphics, I use <a href="http://www.omnigroup.com/omnigraffle">OmniGraffle</a>.</p>
 <h3 id="markdown-converter-pandoc">Markdown converter: pandoc</h3>
@@ -318,13 +312,9 @@ posted in
 <p>which tells Octopress to use pandoc, and pass the option <code>smart</code>, <code>mathjax</code> and use the <em>style file</em> <code>ieee.csl</code> to format the <em>biliography</em> <code>blog.bib</code>. For example, <code>refer to [@xiao2013optimally]</code> generates <em>refer to <span class="citation" data-cites="xiao2013optimally">[[1]]</span></em> (scroll down to see the <a href="#references">References</a> section).</p>
 <h3 id="pandocs-markdown-reference-dash.app-and-dash-alfred-workflow">Pandoc’s Markdown Reference: Dash.app and Dash alfred workflow</h3>
 <p><a href="http://kapeli.com/dash">Dash.app</a> is an API Documentation Browser and Code Snippet Manager. It provides an convinient alfred workflow that searches the documents:</p>
-<figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/alfred-dash.png" />
-</figure>
+<p><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/alfred-dash.png" /></p>
 <p>opens</p>
-<figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/Dash.png" />
-</figure>
+<p><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/octopress-flow/Dash.png" /></p>
 <h3 id="tips-and-tricks">Tips and tricks</h3>
 <p>Continuously growing…</p>
 <ul>
@@ -333,8 +323,8 @@ posted in
 <h2 id="conclusion">Conclusion</h2>
 <p>In conclusion, Octopress is a revolutionary blogging framework. It provides a robust static site building framework (jekyll, bootstrap, scss, etc.) and allows complete control over the source, which is perfect for users that have basic coding and source control skills. In fact, it gives me a similar feeling of getting touch with a Mac. That is, compared to Windows, which is too close and does not provide built-in programming-friendly environment (Console, UNIX stuff, etc.), and compared to Linux, which is very open but too many variations and too many customizations needed, it combines their advantages by presenting a user- friendly interface and provides all sorts of underlying UNIX tools. I am very satisfied about this and my intention to write posts have revived. However, some sort of basic configuration is still needed. In particular, I would say Mathjax rendering and better image support definitely need to be integrated in the next release.</p>
 <p><em>What’s your thought? Do you have any neat tricks publishing with <a href="http://octopress.org">Octopress</a>? Please leave your comments.</em></p>
-<h2 id="references" class="unnumbered">References</h2>
-<div id="refs" class="references">
+<h2 class="unnumbered" id="references">References</h2>
+<div id="refs" class="references" role="doc-bibliography">
 <div id="ref-xiao2013optimally">
 <p>[1] Z. Xiao, Y. Du, H. Tian, and M. D. Wong, “Optimally minimizing overlay violation in self-aligned double patterning decomposition for row-based standard cell layout in polynomial time,” in <em>Computer-aided design (iccad), 2013 ieee/acm international conference on</em>, 2013, pp. 32–39.</p>
 </div>
@@ -418,6 +408,14 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2021/01/14/zai-wan-qu-gong-zuo-yi-nian-da-gai-neng-zan-xia-lai-duo-shao-qian/">在湾区工作一年大概能攒下来多少钱?</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2021/01/12/the-white-coat-investor-du-shu-bi-ji/">The White Coat Investor 读书笔记</a>
+        </li>
+      
+        <li>
           <a href="/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital/">推荐一个好用的理财网站 Personal Capital</a>
         </li>
       
@@ -427,14 +425,6 @@ posted in
       
         <li>
           <a href="/blog/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu/">自建代理访问中国音乐服务</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2018/05/01/2018nian-zai-fremontmai-fang-shi-fou-shi-ji-he-gua-zhi-wo-jian/">2018年在Fremont买房是否时机合适之我见</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2018/01/20/write-blog-post-with-dropbox-paper/">Write Blog Post With Dropbox Paper</a>
         </li>
       
     </ul>
@@ -490,7 +480,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Ivan's Blog</a>
-  - Copyright &copy; 2020 - Zigang "Ivan" Xiao
+  - Copyright &copy; 2021 - Zigang "Ivan" Xiao
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>

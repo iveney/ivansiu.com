@@ -182,7 +182,7 @@ posted in
 </div>
 <p>With <em>discrete consine transform</em> (DCT), we can easily find the coefficients of corresponding sinusoid components. The above example’s coefficients (in frequency domain) and signal in time domain are shown in the post figure.</p>
 <p>Now, let’s assume we do not know the signal and want to reconstruct it by sampling. Theorectically, the number of samples required is at least two times the signal frequency, according to the famous <a href="http://en.wikipedia.org/wiki/Nyquist–Shannon_sampling_theorem">Nyquist–Shannon sampling theorem</a>.</p>
-<p>However, this assume zero-knowledge about the signal. If we know some structure of the signal, e.g., the DCT coefficients are sparse in our case, we can further reduce the number of samples required.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>However, this assume zero-knowledge about the signal. If we know some structure of the signal, e.g., the DCT coefficients are sparse in our case, we can further reduce the number of samples required.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>The following code snippet demonstrates how this works. We generate the original signal in time domain and then perform a DCT to obtain the coefficients.</p>
 <div class="bogus-wrapper">
 <notextile>
@@ -373,10 +373,10 @@ posted in
 </notextile>
 </div>
 <p>The above shows that L1-minimization successfully recovered the original signal. A complete code snippet can be found <a href="https://gist.github.com/842145ae48381a5a8dca">here</a>.</p>
-<section class="footnotes">
+<section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>In order to recover f perfectly, we need at least <span class="math inline">\(B \log (N)\)</span> samples <a href="http://users.ece.gatech.edu/~justin/l1magic/downloads/papers/CandesRombergTao_revisedNov2005.pdf">(source)</a>.<a href="#fnref1">↩</a></p></li>
+<li id="fn1" role="doc-endnote"><p>In order to recover f perfectly, we need at least <span class="math inline">\(B \log (N)\)</span> samples <a href="http://users.ece.gatech.edu/~justin/l1magic/downloads/papers/CandesRombergTao_revisedNov2005.pdf">(source)</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 </div>
@@ -458,6 +458,14 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2021/01/14/zai-wan-qu-gong-zuo-yi-nian-da-gai-neng-zan-xia-lai-duo-shao-qian/">在湾区工作一年大概能攒下来多少钱?</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2021/01/12/the-white-coat-investor-du-shu-bi-ji/">The White Coat Investor 读书笔记</a>
+        </li>
+      
+        <li>
           <a href="/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital/">推荐一个好用的理财网站 Personal Capital</a>
         </li>
       
@@ -467,14 +475,6 @@ posted in
       
         <li>
           <a href="/blog/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu/">自建代理访问中国音乐服务</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2018/05/01/2018nian-zai-fremontmai-fang-shi-fou-shi-ji-he-gua-zhi-wo-jian/">2018年在Fremont买房是否时机合适之我见</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2018/01/20/write-blog-post-with-dropbox-paper/">Write Blog Post With Dropbox Paper</a>
         </li>
       
     </ul>
@@ -530,7 +530,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Ivan's Blog</a>
-  - Copyright &copy; 2020 - Zigang "Ivan" Xiao
+  - Copyright &copy; 2021 - Zigang "Ivan" Xiao
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>

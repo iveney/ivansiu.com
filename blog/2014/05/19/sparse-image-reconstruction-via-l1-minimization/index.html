@@ -13,10 +13,12 @@
   
     
   
-  <meta name="description" content="Original
+  <meta name="description" content="\
+\
+\ Original
 Minimum Energy Reconstruction
 Sparse Reconstruction Introduction
-This is a follow up of the L1-minimization series. The previous two posts &hellip;">
+This is a follow up of the L1-minimization series. The previous two &hellip;">
   
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -31,10 +33,12 @@ This is a follow up of the L1-minimization series. The previous two posts &helli
   <meta name="og:type" content="website" />
   <meta name="og:site_name" content="Ivan's Blog" />
   <meta name="og:title" content="Sparse Image Reconstruction via L1-minimization" />
-  <meta name="og:description" content="Original
+  <meta name="og:description" content="\
+\
+\ Original
 Minimum Energy Reconstruction
 Sparse Reconstruction Introduction
-This is a follow up of the L1-minimization series. The previous two posts &hellip;" />
+This is a follow up of the L1-minimization series. The previous two &hellip;" />
   <meta name="og:url" content="http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/"/>
   <meta name="url" content="http://blog.ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/">
   
@@ -162,9 +166,9 @@ posted in
   <div class="entry-content"><table>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_orig.png" alt="phantom_orig" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_backproj.png" alt="phantom_backproj" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_tv.png" alt="phantom_tv" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_orig.png" alt="phantom_orig" />\</td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_backproj.png" alt="phantom_backproj" />\</td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_tv.png" alt="phantom_tv" />\</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Original</td>
@@ -196,9 +200,9 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
 <table>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gx.png" alt="phantom_gx" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gy.png" alt="phantom_gy" /></td>
-<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gI.png" alt="phantom_gI" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gx.png" alt="phantom_gx" />\</td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gy.png" alt="phantom_gy" />\</td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gI.png" alt="phantom_gI" />\</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><code>Gx(I)</code></td>
@@ -281,7 +285,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
 </table>
 <p>As we can see, the results are not as good. In fact, the non-zero ratio of its gradient is 0.9928, which is not sparse at all. However, if we plot the histogram of gradients, we will find that most of the gradient magnitudes are small:</p>
 <figure>
-<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/camera_mag_hist.png" alt="Gradient Histogram" /><figcaption>Gradient Histogram</figcaption>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/camera_mag_hist.png" alt="" /><figcaption>Gradient Histogram</figcaption>
 </figure>
 <p>In particular, most of them are smaller than 200, which means the number of ‘changes’ that are larger than 200 is small. In fact, the ratio of gradient &gt; 200 is only <em>0.0964</em>! Thus, there are two possible ways to discard these information and get a ‘compressed’ image that is sparse in gradients:</p>
 <ol type="1">
@@ -291,7 +295,7 @@ I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
 <p><em>I’ll leave these conjectures for furture implementation. For those intereted, please try them yourself and let me know your results. If you have any thoughts, do not hesitate to leave a comment.</em></p>
 <h2 id="references">References</h2>
 <p>For interested readers, the following references will be helpful.</p>
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography">
 <div id="ref-candes2006robust">
 <p>[1] E. J. Candès, J. Romberg, and T. Tao, “Robust uncertainty principles: Exact signal reconstruction from highly incomplete frequency information,” <em>Information Theory, IEEE Transactions on</em>, vol. 52, no. 2, pp. 489–509, 2006.</p>
 </div>
@@ -384,6 +388,14 @@ posted in
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2021/01/14/zai-wan-qu-gong-zuo-yi-nian-da-gai-neng-zan-xia-lai-duo-shao-qian/">在湾区工作一年大概能攒下来多少钱?</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2021/01/12/the-white-coat-investor-du-shu-bi-ji/">The White Coat Investor 读书笔记</a>
+        </li>
+      
+        <li>
           <a href="/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital/">推荐一个好用的理财网站 Personal Capital</a>
         </li>
       
@@ -393,14 +405,6 @@ posted in
       
         <li>
           <a href="/blog/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu/">自建代理访问中国音乐服务</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2018/05/01/2018nian-zai-fremontmai-fang-shi-fou-shi-ji-he-gua-zhi-wo-jian/">2018年在Fremont买房是否时机合适之我见</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2018/01/20/write-blog-post-with-dropbox-paper/">Write Blog Post With Dropbox Paper</a>
         </li>
       
     </ul>
@@ -456,7 +460,7 @@ posted in
   <div class="container">
     <p class="pull-left">
   <a href="/">Ivan's Blog</a>
-  - Copyright &copy; 2020 - Zigang "Ivan" Xiao
+  - Copyright &copy; 2021 - Zigang "Ivan" Xiao
 </p>
 <p class="pull-right">
   <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>
