@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tmux | Ivan's Blog]]></title>
+  <link href="http://ivansiu.com/blog/categories/tmux/atom.xml" rel="self"/>
+  <link href="http://ivansiu.com/"/>
+  <updated>2021-01-25T20:08:13-08:00</updated>
+  <id>http://ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Send Ctrl-a in Tmux After Rebinding to It]]></title>
+    <link href="http://ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it/"/>
+    <updated>2014-05-01T17:14:46-05:00</updated>
+    <id>http://ivansiu.com/blog/2014/05/01/send-ctrl-a-in-tmux-after-rebinding-to-it</id>
+    <content type="html"><![CDATA[![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/2014-05-01-send-ctrl-a-in-tmux-after-rebinding-to-it.png)
+
+While `tmux` provides much better functionality than `screen`,
+most of us that work with tmux have been using `screen` for a long time,
+and it is more comfortable for us to use `ctrl-a` than the default `ctrl-b`,
+which is finger-strechy. Thus the first thing I will do after installing `tmux`
+is to rebind the prefix to `ctrl-a`. That gives us the most handy way of
+swapping last two windows by typing `ctrl-a ctrl-a`.
+
+<!-- more -->
+
+However, this comes for a price. That is, in a shell environment that
+is integrated with `readline`, `ctrl-a` is used to jump the begining of line.
+Now that it is mapped as prefix, we can no longer do that.
+
+Surprisingly, the solution is pretty simple. Just use `ctrl-a a` to
+send the prefix itself, and use `ctrl-a ctrl-a` to go to the last window.
+Specifically, add these two lines in `~/.tmux.conf`:
+
+<figure class='code'><figcaption><span>~/.tmux.conf </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">bind </span>a send-prefix
+</span><span class='line'><span class="nb">bind</span>-key C-a last-window
+</span></code></pre></td></tr></table></div></figure>
+
+[via](http://stackoverflow.com/questions/11557076/if-i-set-key-bind-of-c-b-to-c-a-in-tmux-how-can-i-move-the-cursor-to-the-beginni#comment15297769_11561128).
+]]></content>
+  </entry>
+  
+</feed>

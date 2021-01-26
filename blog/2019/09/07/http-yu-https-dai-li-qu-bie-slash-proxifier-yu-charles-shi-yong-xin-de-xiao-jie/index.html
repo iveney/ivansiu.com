@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Http 与 Https 代理区别 / Proxifier 与 Charles 使用心得小结 - Ivan's Blog</title>
+  <meta name="author" content="Zigang "Ivan" Xiao">
+  <link rel="author" href="humans.txt">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  
+    
+  
+  <meta name="description" content=" HTTP Proxy 与 HTTPS Proxy 的区别很容易混淆。本文通过使用 Proxifier 与 Charles 实战作为一个笔记备忘。 ">
+  
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ivansiu.com/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/">
+  <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ivan's Blog" type="application/atom+xml">
+  <meta name="og:type" content="website" />
+  <meta name="og:site_name" content="Ivan's Blog" />
+  <meta name="og:title" content="Http 与 Https 代理区别 / Proxifier 与 Charles 使用心得小结" />
+  <meta name="og:description" content=" HTTP Proxy 与 HTTPS Proxy 的区别很容易混淆。本文通过使用 Proxifier 与 Charles 实战作为一个笔记备忘。 " />
+  <meta name="og:url" content="http://ivansiu.com/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/"/>
+  <meta name="url" content="http://ivansiu.com/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/">
+  
+  <meta name="subject" content=""/>
+  <meta name="category" content=""/>
+  
+  <meta name="distribution" content="global">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- MathJax -->
+<!-- see:
+
+http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/
+http://drz.ac/2013/01/03/blogging-with-math/
+http://drz.ac/javascripts/MathJaxLocal.js
+http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress
+http://docs.mathjax.org/en/latest/configuration.html
+
+-->
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/javascript" src="/javascripts/MathJaxLocal.js"></script>
+
+<!-- Facebook OpenGraph -->
+<meta property="og:image" content="http://ivansiu.com/favicon.png">
+
+<!-- Fav icon
+see:
+https://github.com/imathis/octopress/issues/599
+-->
+
+
+
+  
+
+  
+<link href="/favicon.ico" rel="icon">
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="/">Ivan's Blog</a>
+    <ul class="nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/archives">Archives</a></li>
+    </ul>
+        <ul class="nav">
+      <li><a href="/blog/categories">Categories</a></li>
+      <li><a href="/blog/linklogs">Linklogs</a></li>
+    </ul>
+
+    <ul class="nav" data-subscription="rss">
+      <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+      
+    </ul>
+      
+    <form class="navbar-form" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:ivansiu.com" />
+        <input class="span2" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+      
+  </div>
+</div>
+</nav>
+  <div class="wrapper_single">
+    <div class="container">
+      <article class="span8 offset2" role="article">
+        <div class="article-format">
+
+  <header>
+    <h1 class="entry-title">
+
+
+<a href="/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/">Http 与 Https 代理区别 / Proxifier 与 Charles 使用心得小结</a>
+
+</h1>
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang "Ivan" Xiao</span></span>
+  
+
+ -
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2019-09-07T15:41:54-07:00" pubdate data-updated="true"></time> -
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>HTTP Proxy 与 HTTPS Proxy 的区别很容易混淆。本文通过使用 Proxifier 与 Charles 实战作为一个笔记备忘。</p>
+<!--more-->
+<h2 id="http-proxy-与-https-proxy-的区别">HTTP Proxy 与 HTTPS Proxy 的区别</h2>
+<p>如何使用 proxifier 处理以 https 开头的 url，也就是 SSL 连接？这种连接一般是访问 443 端口，而普通 http 连接使用的是 80 端口。<a href="https://www.proxifier.com/docs/win-v3/http-proxy.htm">摘自</a> Proxifier 官网:</p>
+<blockquote>
+<p>It is a common misconception to confuse HTTP proxy and HTTPS proxy. HTTP proxy servers can process HTTP connections (port 80). They can also support HTTPS connections (SSL) but usually such connections are only allowed on port 443 (the standard port for HTTPS). For example this is the default configuration for Squid and Microsoft ISA proxy servers. If an HTTP proxy allows HTTPS connections on arbitrary ports, it can be called HTTPS proxy server (also called CONNECT or SSL proxy). In this case it can be used for generic TCP connections like SOCKS v4/5 proxy. Proxifier can work with HTTP proxy servers that do not support HTTPS on arbitrary ports. Due to the technical limitation of this protocol it is only possible to process HTTP connections with such proxy servers. This means that you must configure the <a href="https://www.proxifier.com/docs/win-v3/rules.htm">Proxification Rules</a> accordingly.</p>
+</blockquote>
+<p>基本上的意思就是呢，广义的 HTTP server 是可以处理 HTTPS 连接的。但是大多数 HTTP proxy servers 只能处理 HTTP request。如果它能处理任意端口的 HTTPS 连接，那么它也能被称作 HTTPS proxy server。换句话说，HTTPS proxy server 其实也就是 HTTP proxy server 的一种。</p>
+<p>所以呢：</p>
+<blockquote>
+<p>After that you will be able to <a href="https://www.proxifier.com/docs/win-v3/proxy.htm">add HTTP proxy server</a> just like any other type of proxies. Once HTTP proxy server is added, make sure that you properly set the <a href="https://www.proxifier.com/docs/win-v3/rules.htm">Proxification Rules</a>. If you want to process HTTPS connections through this proxy also, you should add this proxy separately as HTTPS.</p>
+</blockquote>
+<p>也就是说当要使用一个 proxy server 来同时处理 http 与 https 的连接时，应该把它们当作单独的 server 添加，如下：</p>
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_553B645525E322D632E92E15E151778490F248AC9CEE526810CE6D8C11AAAF4E_1552886198873_image.png" /></p>
+<p>同时，forwarding rules 也要添加两条：</p>
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_553B645525E322D632E92E15E151778490F248AC9CEE526810CE6D8C11AAAF4E_1552886251879_image.png" /></p>
+<h2 id="使用-charles-的同时使用-httphttps-proxy-server">使用 Charles 的同时使用 http/https proxy server</h2>
+<p>有时我们不希望设置一个全局的代理，而是希望针对某些 host:port 才使用代理。但是很多网站检测 ip 的功能可能放了在别的 host，所以 rule 里面要 match 好几个 host。这时，使用 charles 来监听访问一个网站时的 traffic 就特别方便，能轻易看到这个 request 会访问哪些 IP，然后可以逐个尝试把这些 IP 添加到 rule 里。但是 charles 本身就是一个（本地）代理。如何使用 Charles 时并且设置 external proxy server 呢？</p>
+<p>这里比较复杂，要同时设置几个地方。首先，简单起见本地的 proxy server 直接设为 SOCKS:</p>
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_553B645525E322D632E92E15E151778490F248AC9CEE526810CE6D8C11AAAF4E_1552886348454_image.png" /></p>
+<p>其次，要支持 SSL 连接，必须设置 SSL proxy，简单起见，假设对于任意 host 任意端口都启用设置：</p>
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_553B645525E322D632E92E15E151778490F248AC9CEE526810CE6D8C11AAAF4E_1552886410475_image.png" /></p>
+<p>但是比较现代的浏览器会检测到 charles 发过来的根证书并不是要访问的网站的根证书，所以一般会提示并且出错，这是因为 (<a href="https://www.charlesproxy.com/documentation/proxying/ssl-proxying/">via</a>)：</p>
+<blockquote>
+<p>Charles can be used as a man-in-the-middle HTTPS proxy, enabling you to view in plain text the communication between web browser and SSL web server. Charles does this by becoming a man-in-the-middle. <strong>Instead of your browser seeing the server’s certificate, Charles dynamically generates a certificate for the server and signs it with its own root certificate</strong> (the Charles CA Certificate). <strong>Charles receives the server’s certificate, while your browser receives Charles’s certificate</strong>. Therefore you will see a security warning, indicating that the root authority is not trusted. If you add the Charles CA Certificate to your trusted certificates you will no longer see any warnings – see below for how to do this. Charles still communicates via SSL to the web server. The communication is SSL (encrypted) from web browser to Charles and also SSL (encrypted) from Charles to the web server.</p>
+</blockquote>
+<blockquote>
+<p>Charles uses its own Root SSL certificate for SSL requests through Charles to hosts enabled for SSL Proxying. The Root certificate is generated automatically for each Charles installation. Because Charles has signed the Root certificate itself, it won’t be trusted by your browsers or applications. In order to use the SSL Proxying feature in Charles you therefore need to add the Root certificate for your copy of Charles to the trust-store on your OS, and perhaps in your browser. Use the options in the SSL submenu in the Help menu in Charles to help install the Root certificate. You can install the certificate on the current OS, or on remote devices or browsers. To install the certificate in Mozilla Firefox, first configure Firefox to use Charles as its proxy then browse to chls.pro/ssl.</p>
+</blockquote>
+<p>参见<a href="https://www.charlesproxy.com/documentation/proxying/ssl-proxying/">这里</a>设置添加信任 Charles 的根证书。</p>
+<p>最后，我们要设置对应的 HTTP 以及 HTTPS server，原理类似 proxifier：</p>
+<p><img src="https://d2mxuefqeaa7sj.cloudfront.net/s_553B645525E322D632E92E15E151778490F248AC9CEE526810CE6D8C11AAAF4E_1552886712011_image.png" /></p>
+<p>PS. 这位博主有一系列非常好的介绍文章，并且使用 nodejs 实现了 <a href="https://imququ.com/post/web-proxy.html">HTTP</a> 与 <a href="https://imququ.com/post/web-proxy-2.html">HTTPS</a> 代理。强烈推荐。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang "Ivan" Xiao</span></span>
+  
+
+ -
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2019-09-07T15:41:54-07:00" pubdate data-updated="true"></time> -
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ivansiu.com/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/" data-via="iveney" data-counturl="http://ivansiu.com/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-layout="button_count" data-send="true" data-width="450" data-show-faces="false" style="vertical-align: top;"></div>
+  
+</div>
+
+    
+    
+      <a class="pull-left" href="/blog/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu/" title="Previous Post: 自建代理访问中国音乐服务">&laquo; 自建代理访问中国音乐服务</a>
+    
+    
+      <a class="pull-right" href="/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital/" title="Next Post: 推荐一个好用的理财网站 Personal Capital">推荐一个好用的理财网站 Personal Capital &raquo;</a>
+    
+  </footer>
+
+</div>
+
+        
+          <div class="article-format">
+            <h1>Comments</h1>
+            <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+          </div>
+        
+      </article>
+    </div>
+  </div>
+  <div id="footer-widgets">
+  <div class="container">
+    <div class="row">
+<!--
+  <div class="span3">
+    <h2>recent posts</h2>
+    <ul class="recent_posts">
+      
+        <li>
+          <a href="/blog/2021/01/25/migration-notice/">Migration Notice</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2021/01/14/zai-wan-qu-gong-zuo-yi-nian-da-gai-neng-zan-xia-lai-duo-shao-qian/">在湾区工作一年大概能攒下来多少钱?</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2021/01/12/the-white-coat-investor-du-shu-bi-ji/">The White Coat Investor 读书笔记</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital/">推荐一个好用的理财网站 Personal Capital</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/">Http 与 Https 代理区别 / Proxifier 与 Charles 使用心得小结</a>
+        </li>
+      
+    </ul>
+    <h2><a href="/blog/archives">archives</a></h2>
+  </div>
+  <div class="span3">
+    
+
+  </div>
+  <div class="span4">
+    <h2>twitter</h2>
+<a class="twitter-timeline" href="https://twitter.com/iveney" data-widget-id="390943167203127296">Tweets by @iveney</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  </div>
+  <div class="span2">
+    <h3 class="widget">found on</h3>
+
+<a href="https://github.com/iveney/" rel="tooltip" title="Github"><img class="social_icon" title="Github" alt="github icon" src="/images/glyphicons_381_github.png"></a>
+
+
+
+<a href="http://stackoverflow.com/users/577704/" rel="tooltip" title="Stack Overflow"><img class="social_icon" title="Stack Overflow" alt="stack overflow icon" src="/images/glyphicons_400_stack_overflow.png"></a>
+
+
+
+<a href="http://www.linkedin.com/in/zgxiao" rel="tooltip" title="Linkedin"><img class="social_icon" title="Linkedin" alt="Linkedin icon" src="/images/glyphicons_377_linked_in.png"></a>
+
+
+
+<a href="http://twitter.com/iveney" rel="tooltip" title="Twitter"><img class="social_icon" title="Twitter" alt="Twitter icon" src="/images/glyphicons_391_twitter_t.png"></a>
+
+
+
+
+
+
+
+
+
+
+
+<a href="http://ivansiu.com" rel="tooltip" title="About"><img class="social_icon" title="About" alt="About icon" src="/images/glyphicons_003_user.png"></a>
+
+
+  </div>
+-->
+</div>
+
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-left">
+  <a href="/">Ivan's Blog</a>
+  - Copyright &copy; 2021 - Zigang "Ivan" Xiao
+</p>
+<p class="pull-right">
+  <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>
+  
+    <span>Designed by <a href="http://www.AdrianArtiles.com">Adrian Artiles</a>.</span>
+  
+</p>
+
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script>window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.7.2.min.js" type="text/javascript"><\/script>')</script>
+<script src="/javascripts/libs/bootstrap.min.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.tweet.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.instagram.js" type="text/javascript"></script>
+<script src="/javascripts/libs/jquery.masonry.min.js" type="text/javascript"></script>
+<script src="/javascripts/custom.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'iveney';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ivansiu.com/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/';
+        var disqus_url = 'http://ivansiu.com/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=327649807245065";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>

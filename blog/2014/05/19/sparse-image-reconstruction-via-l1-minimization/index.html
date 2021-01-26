@@ -1,0 +1,529 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Sparse Image Reconstruction via L1-minimization - Ivan's Blog</title>
+  <meta name="author" content="Zigang "Ivan" Xiao">
+  <link rel="author" href="humans.txt">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  
+    
+  
+  <meta name="description" content="\
+\
+\ Original
+Minimum Energy Reconstruction
+Sparse Reconstruction Introduction
+This is a follow up of the L1-minimization series. The previous two &hellip;">
+  
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/">
+  <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Ivan's Blog" type="application/atom+xml">
+  <meta name="og:type" content="website" />
+  <meta name="og:site_name" content="Ivan's Blog" />
+  <meta name="og:title" content="Sparse Image Reconstruction via L1-minimization" />
+  <meta name="og:description" content="\
+\
+\ Original
+Minimum Energy Reconstruction
+Sparse Reconstruction Introduction
+This is a follow up of the L1-minimization series. The previous two &hellip;" />
+  <meta name="og:url" content="http://ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/"/>
+  <meta name="url" content="http://ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/">
+  
+  <meta name="subject" content="machine learningsignal processing"/>
+  <meta name="category" content="machine learningsignal processing"/>
+  
+  <meta name="distribution" content="global">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- MathJax -->
+<!-- see:
+
+http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/
+http://drz.ac/2013/01/03/blogging-with-math/
+http://drz.ac/javascripts/MathJaxLocal.js
+http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress
+http://docs.mathjax.org/en/latest/configuration.html
+
+-->
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/javascript" src="/javascripts/MathJaxLocal.js"></script>
+
+<!-- Facebook OpenGraph -->
+<meta property="og:image" content="http://ivansiu.com/favicon.png">
+
+<!-- Fav icon
+see:
+https://github.com/imathis/octopress/issues/599
+-->
+
+
+
+  
+
+  
+<link href="/favicon.ico" rel="icon">
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="/">Ivan's Blog</a>
+    <ul class="nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/archives">Archives</a></li>
+    </ul>
+        <ul class="nav">
+      <li><a href="/blog/categories">Categories</a></li>
+      <li><a href="/blog/linklogs">Linklogs</a></li>
+    </ul>
+
+    <ul class="nav" data-subscription="rss">
+      <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+      
+    </ul>
+      
+    <form class="navbar-form" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:ivansiu.com" />
+        <input class="span2" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+      
+  </div>
+</div>
+</nav>
+  <div class="wrapper_single">
+    <div class="container">
+      <article class="span8 offset2" role="article">
+        <div class="article-format">
+
+  <header>
+    <h1 class="entry-title">
+
+
+<a href="/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/">Sparse Image Reconstruction via L1-minimization</a>
+
+</h1>
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang "Ivan" Xiao</span></span>
+  
+
+ -
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-19T15:12:36-05:00" pubdate data-updated="true"></time> -
+        
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/machine-learning/'>machine learning</a>, <a class='category' href='/blog/categories/signal-processing/'>signal processing</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_orig.png" alt="phantom_orig" />\</td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_backproj.png" alt="phantom_backproj" />\</td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_tv.png" alt="phantom_tv" />\</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Original</td>
+<td style="text-align: center;">Minimum Energy Reconstruction</td>
+<td style="text-align: center;">Sparse Reconstruction</td>
+</tr>
+</tbody>
+</table>
+<h2 id="introduction">Introduction</h2>
+<p>This is a follow up of the L1-minimization series. The previous two posts are:</p>
+<ol type="1">
+<li><a href="/blog/2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization/">A Comparison of Least Square, L2-regularization and L1-regularization</a></li>
+<li><a href="/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">Sparse Signal Reconstruction via L1-minimization</a> <!-- more --></li>
+</ol>
+<p>We have explored using L1-minimization technique to <a href="/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/">recover a sparse signal</a>. The example shows a 1D example. This post demonsrates on a 2D example, where the image is viewed as a signal. This makes sense as we can perform 2D Fourier Transform in the image, where the basis are a combination of <em>horizontal</em> and <em>vertical</em> waves. For a complete introduction to FFT on images, refer to <a href="http://www.cs.unm.edu/~brayer/vision/fourier.html">this tutorial</a>. Notice that similar to 1D signal, we do not measure the image directly in time domain, but we do it in the frequency domain. Concretely, say <span class="math inline">\(x\)</span> is the 2D image collapsed to 1D, and <span class="math inline">\(A \in \reals^{k\times n}\)</span> is the measurement matrix, <span class="math inline">\(b\)</span> is the observation, we then have <span class="math inline">\(Ax=b\)</span>. Usually we will require <span class="math inline">\(k = n\)</span> to obtain an exact solution for <span class="math inline">\(x\)</span> given <span class="math inline">\(A\)</span> and <span class="math inline">\(b\)</span>. Now, if we use FFT and obtain the frequency coefficients as <span class="math inline">\(\hat{x}\)</span>, we can also perform similar measurements <span class="math inline">\(\hat{A} \hat{x} = \hat{b}\)</span>, and the requirement <span class="math inline">\(k = n\)</span> is the same. In other words, the required samples (the information) is <em>the same</em>. By using the inverse fourier transform, we can convert <span class="math inline">\(\hat{x}\)</span> back to <span class="math inline">\(x\)</span>. The only difference is that the measurement <span class="math inline">\(\hat{A}\)</span> is taken in frequency (Fourier) domain. As we can see later, we can utilize sparse information to reduce <span class="math inline">\(k\)</span>.</p>
+<h2 id="image-gradients-and-total-variation">Image Gradients and Total Variation</h2>
+<p>We first introduct the concept of image gradients. For any 2D real image <code>I</code>, if we think about each row as a signal, we can then view the ‘difference’ between adjacent pixels as (horizontal) gradient <code>Gx(I)</code>, this makes sense since a sharpe change denotes an edge. Similary, we can define the vertical gradient <code>Gy(I)</code> for columns. Thus, we have</p>
+<p><span class="math display">\[Gx(I) = \begin{cases}
+I_{i+1, j} - I_{ij} &amp; i &lt; n \\\\ 0 &amp; i = n
+\end{cases}
+\qquad
+Gy(I) = \begin{cases}
+I_{i, j+1} - I_{ij} &amp; j &lt; n \\\\ 0 &amp; j = n
+\end{cases}\]</span></p>
+<p>where the image size is <span class="math inline">\(n\times n\)</span>.</p>
+<p>Collectively, the image gradient <code>G(I)</code> is defined as the magnitude (2-norm) of both components:</p>
+<p><span class="math display">\[G(I)_{ij} = \sqrt{(Gx(I)_{ij})^2 + (Gy(I)_{ij})^2}\]</span></p>
+<p>The following shows <code>Gx</code>, <code>Gy</code> and <code>G</code> of the phantom image:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gx.png" alt="phantom_gx" />\</td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gy.png" alt="phantom_gy" />\</td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gI.png" alt="phantom_gI" />\</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>Gx(I)</code></td>
+<td style="text-align: center;"><code>Gy(I)</code></td>
+<td style="text-align: center;"><code>G(I)</code></td>
+</tr>
+</tbody>
+</table>
+<p>The <em>total variation</em> <code>TV(I)</code> of an image is just the sum of this discrete gradient at every point.</p>
+<p><span class="math display">\[TV(I)= \norm{G(I)}_1 = \sum_{i,j} G(I)_{ij}\]</span></p>
+<p>We notice that <span class="math inline">\(TV(I)\)</span> is just the <em>L1-norm</em> of <span class="math inline">\(G(I)\)</span>, which leads us to the following: if we have an image that is sparse in its image gradients, we can exploit that and use our L1-minimization trick.</p>
+<h2 id="sparse-gradient-image-reconstruction">Sparse Gradient Image Reconstruction</h2>
+<p>The ratio of non-zero elements in <code>Gx</code>, <code>Gy</code> and <code>G</code> of the phantom image is <code>0.0711</code>, <code>0.0634</code> and <code>0.0769</code>, respectively. These ratios are really small - and we consider the gradient as <em>sparse</em>.</p>
+<p>Let <span class="math inline">\(F: \reals^{n\times n} \to \complex^{n\times n}\)</span> be the FFT operator, and <span class="math inline">\(F I\)</span> be the Fourier transform taken on image I. Define a set <span class="math inline">\(\Omega\)</span> as the <span class="math inline">\(k\)</span> two-dimensional frequencies chosen according to some sampling pattern from the <span class="math inline">\(n \times n\)</span>. We further define <span class="math inline">\(F_\Omega I: \reals^{n \times n} \to \complex^k\)</span> as the <span class="math inline">\(k\)</span> observation taken from the fourier transform of image I. We can then solve the following optimization problem to recover <span class="math inline">\(I\)</span>:</p>
+<p><span class="math display">\[\min_I \norm{F_\Omega I - b}^2_2\]</span></p>
+<p>where <span class="math inline">\(F_\Omega\)</span> can be view as the measurement matrix, <span class="math inline">\(b\)</span> is the observation, and we want to find <span class="math inline">\(I\)</span> such that the <em>reconstruction cost</em> (energy) is minimized.</p>
+<p>However, the above does not quite work. As we can see in the following images, the <em>L2-minimization</em> does a poor job, either for a random measurement or a radial measurement <span class="citation" data-cites="candes2006robust">[[1]]</span> in Fourier domain.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/measurement_random.png" alt="M rand" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_rand_bp.png" alt="phantom rand bp" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_rand_tv.png" alt="phantom rand tv" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Random measurement</td>
+<td style="text-align: center;">L2-minimization</td>
+<td style="text-align: center;">L1-minimization</td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/measurement_radial.png" alt="M radial" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_backproj.png" alt="phantom_backproj" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_tv.png" alt="phantom_tv" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Radial measurement</td>
+<td style="text-align: center;">L2-minimization</td>
+<td style="text-align: center;">L1-minimization</td>
+</tr>
+</tbody>
+</table>
+<p>To utilize the sparse information, we add a L1-regularization term to the above objective function, which yields the following:</p>
+<p><span class="math display">\[(TV_1) \quad \min_I \norm{F_\Omega I - b}^2_2 + \lambda TV(I)\]</span></p>
+<p>Without surprise, optimizing the above gives us a <em>perfect</em> reconstruction of the original image. It is shown that if there exists a piecewise constant I with sufficiently few edges (i.e., <span class="math inline">\(G(I)_{ij}\)</span> is nonzero for only a small number of indices i, j), then <span class="math inline">\((TV_1)\)</span> will recover I exactly.</p>
+<p>A heavily commented code example is available in my <a href="https://github.com/iveney/l1min/blob/master/image_recovery_l1.m">github repository</a>. Leave a comment if you have any question.</p>
+<h2 id="probing-further">Probing Further</h2>
+<p>Now, take a look at another example <code>cameraman</code>, which has the following gradients (intensity rescaled using matlab’s <code>imagesc</code>.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman.png" alt="cameraman" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_grad.png" alt="cameraman_grad" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Cameraman</td>
+<td style="text-align: center;">Gradient</td>
+</tr>
+</tbody>
+</table>
+<p>The following shows the reconstructions (left two are using random measurements, right two are using radial measurements).</p>
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_rand_bp.png" alt="cameraman_rand_bp" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_rand_tv.png" alt="cameraman_rand_tv" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_bp.png" alt="cameraman_bp" /></td>
+<td style="text-align: center;"><img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_tv.png" alt="cameraman_tv" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Rand (L2)</td>
+<td style="text-align: center;">Rand (L1)</td>
+<td style="text-align: center;">Radial (L2)</td>
+<td style="text-align: center;">Radial (L1)</td>
+</tr>
+</tbody>
+</table>
+<p>As we can see, the results are not as good. In fact, the non-zero ratio of its gradient is 0.9928, which is not sparse at all. However, if we plot the histogram of gradients, we will find that most of the gradient magnitudes are small:</p>
+<figure>
+<img src="https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/camera_mag_hist.png" alt="" /><figcaption>Gradient Histogram</figcaption>
+</figure>
+<p>In particular, most of them are smaller than 200, which means the number of ‘changes’ that are larger than 200 is small. In fact, the ratio of gradient &gt; 200 is only <em>0.0964</em>! Thus, there are two possible ways to discard these information and get a ‘compressed’ image that is sparse in gradients:</p>
+<ol type="1">
+<li>Use mean-shift algorithm to segment the regions such that they have the same color intensities. K-means or quantization should achieve a similar result, though might not as good as mean-shift.</li>
+<li>Use image filtering to smooth the image, which can effectively average colors and discard high frequency information.</li>
+</ol>
+<p><em>I’ll leave these conjectures for furture implementation. For those intereted, please try them yourself and let me know your results. If you have any thoughts, do not hesitate to leave a comment.</em></p>
+<h2 id="references">References</h2>
+<p>For interested readers, the following references will be helpful.</p>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-candes2006robust">
+<p>[1] E. J. Candès, J. Romberg, and T. Tao, “Robust uncertainty principles: Exact signal reconstruction from highly incomplete frequency information,” <em>Information Theory, IEEE Transactions on</em>, vol. 52, no. 2, pp. 489–509, 2006.</p>
+</div>
+<div id="ref-candes2005l1">
+<p>[2] E. Candes and J. Romberg, “L1-magic: Recovery of sparse signals via convex programming,” vol. 4, 2005.</p>
+</div>
+<div id="ref-hesthavensparse">
+<p>[3] J. S. Hesthaven, K. Chowdhary, E. Walsh, and others, “Sparse gradient image reconstruction from incomplete fourier measurements and prior edge information,” <em>IEEE TRANSACTIONS ON IMAGE PROCESSING</em>, 2012.</p>
+</div>
+<div id="ref-pant2013new">
+<p>[4] J. K. Pant, W.-S. Lu, and A. Antoniou, “A new algorithm for compressive sensing based on total-variation norm,” in <em>Circuits and systems (iscas), 2013 ieee international symposium on</em>, 2013, pp. 1352–1355.</p>
+</div>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zigang "Ivan" Xiao</span></span>
+  
+
+ -
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-19T15:12:36-05:00" pubdate data-updated="true"></time> -
+      
+
+posted in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/machine-learning/'>machine learning</a>, <a class='category' href='/blog/categories/signal-processing/'>signal processing</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/" data-via="iveney" data-counturl="http://ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-layout="button_count" data-send="true" data-width="450" data-show-faces="false" style="vertical-align: top;"></div>
+  
+</div>
+
+    
+    
+      <a class="pull-left" href="/blog/2014/05/18/sparse-signal-reconstruction-via-l1-minimization/" title="Previous Post: Sparse Signal Reconstruction via L1-minimization">&laquo; Sparse Signal Reconstruction via L1-minimization</a>
+    
+    
+      <a class="pull-right" href="/blog/2014/05/22/my-octopress-blogging-flow/" title="Next Post: My Octopress Blogging Flow">My Octopress Blogging Flow &raquo;</a>
+    
+  </footer>
+
+</div>
+
+        
+          <div class="article-format">
+            <h1>Comments</h1>
+            <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+          </div>
+        
+      </article>
+    </div>
+  </div>
+  <div id="footer-widgets">
+  <div class="container">
+    <div class="row">
+<!--
+  <div class="span3">
+    <h2>recent posts</h2>
+    <ul class="recent_posts">
+      
+        <li>
+          <a href="/blog/2021/01/25/migration-notice/">Migration Notice</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2021/01/14/zai-wan-qu-gong-zuo-yi-nian-da-gai-neng-zan-xia-lai-duo-shao-qian/">在湾区工作一年大概能攒下来多少钱?</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2021/01/12/the-white-coat-investor-du-shu-bi-ji/">The White Coat Investor 读书笔记</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital/">推荐一个好用的理财网站 Personal Capital</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/">Http 与 Https 代理区别 / Proxifier 与 Charles 使用心得小结</a>
+        </li>
+      
+    </ul>
+    <h2><a href="/blog/archives">archives</a></h2>
+  </div>
+  <div class="span3">
+    
+
+  </div>
+  <div class="span4">
+    <h2>twitter</h2>
+<a class="twitter-timeline" href="https://twitter.com/iveney" data-widget-id="390943167203127296">Tweets by @iveney</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+  </div>
+  <div class="span2">
+    <h3 class="widget">found on</h3>
+
+<a href="https://github.com/iveney/" rel="tooltip" title="Github"><img class="social_icon" title="Github" alt="github icon" src="/images/glyphicons_381_github.png"></a>
+
+
+
+<a href="http://stackoverflow.com/users/577704/" rel="tooltip" title="Stack Overflow"><img class="social_icon" title="Stack Overflow" alt="stack overflow icon" src="/images/glyphicons_400_stack_overflow.png"></a>
+
+
+
+<a href="http://www.linkedin.com/in/zgxiao" rel="tooltip" title="Linkedin"><img class="social_icon" title="Linkedin" alt="Linkedin icon" src="/images/glyphicons_377_linked_in.png"></a>
+
+
+
+<a href="http://twitter.com/iveney" rel="tooltip" title="Twitter"><img class="social_icon" title="Twitter" alt="Twitter icon" src="/images/glyphicons_391_twitter_t.png"></a>
+
+
+
+
+
+
+
+
+
+
+
+<a href="http://ivansiu.com" rel="tooltip" title="About"><img class="social_icon" title="About" alt="About icon" src="/images/glyphicons_003_user.png"></a>
+
+
+  </div>
+-->
+</div>
+
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-left">
+  <a href="/">Ivan's Blog</a>
+  - Copyright &copy; 2021 - Zigang "Ivan" Xiao
+</p>
+<p class="pull-right">
+  <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>
+  
+    <span>Designed by <a href="http://www.AdrianArtiles.com">Adrian Artiles</a>.</span>
+  
+</p>
+
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script>window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.7.2.min.js" type="text/javascript"><\/script>')</script>
+<script src="/javascripts/libs/bootstrap.min.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.tweet.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.instagram.js" type="text/javascript"></script>
+<script src="/javascripts/libs/jquery.masonry.min.js" type="text/javascript"></script>
+<script src="/javascripts/custom.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'iveney';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/';
+        var disqus_url = 'http://ivansiu.com/blog/2014/05/19/sparse-image-reconstruction-via-l1-minimization/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=327649807245065";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>

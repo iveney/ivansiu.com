@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: proxy | Ivan's Blog]]></title>
+  <link href="http://ivansiu.com/blog/categories/proxy/atom.xml" rel="self"/>
+  <link href="http://ivansiu.com/"/>
+  <updated>2021-01-25T20:08:13-08:00</updated>
+  <id>http://ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Notes on SSH Port Forwarding]]></title>
+    <link href="http://ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding/"/>
+    <updated>2013-05-09T21:43:00-07:00</updated>
+    <id>http://ivansiu.com/blog/2013/05/09/notes-on-ssh-port-forwarding</id>
+    <content type="html"><![CDATA[### SSH Local Port Forwarding
+
+Use `ssh -L` to bind a local port to a remote port
+
+### Dynamic Port Forwarding
+Use `ssh -D` to dynamically bind a local port for forwarding. A SOCKS5 will be created. Example:
+
+    ssh -D 1080 user@remote-server.com
+        
+This binds to remote-server.com and uses local port 1080 for forwarding.
+
+Optionally use -C for data compression.
+
+The above command will log into the remote-server.com, use `-f` to put ssh to background, and use `-N` to not to execute a command. i.e.,
+
+    ssh -f -N -D 1080 user@remote-server.com
+
+<!-- more -->
+
+### Usage Example
+
+If the tool/app supports socks natively, use localhost:1080 in its setting. Example (curl)
+
+    curl --socks5 localhost http://icanhazip.com
+        
+If set up correctly, the IP returned will be the machine that is forwarding (remote-server.com)
+
+If not, use some socksify tool, for example, use dsocks in OSX:
+
+    dsocks.sh ssh another-server.com
+        
+You can see where you logon using `who | grep <user-name>`.
+
+### A Real World Scenario
+
+Scenario: I want to connect to VNC server at peabody::5903, however, peabody only accepts connection from CSL LAN, while my Macbook is in IllinoisNet (wireless).
+
+Solution: use my office computer 'orange' as a proxy. Use local port forwarding:
+
+    ssh -L 5903:peabody:5903 orange
+
+This means, forward localhost:5903 via orange to peabody:5903
+So if I connect to the vnvserver at: 
+
+    localhost :1 # port is 5901
+
+I am forwarded to 
+
+    peabody :3 # port is 5903
+
+### More On Port Forwarding
+
+https://help.ubuntu.com/community/SSH/OpenSSH/PortForwarding
+]]></content>
+  </entry>
+  
+</feed>
