@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: algorithm | Ivan's Blog]]></title>
+  <link href="http://ivansiu.com/categories/algorithm/atom.xml" rel="self"/>
+  <link href="http://ivansiu.com/"/>
+  <updated>2021-01-25T20:21:44-08:00</updated>
+  <id>http://ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Graph Matching: Hopcroft-Karp Algorithm]]></title>
+    <link href="http://ivansiu.com/2013/10/08/graph-matching-hopcroft-karp-algorithm"/>
+    <updated>2013-10-08T15:59:00-07:00</updated>
+    <id>http://ivansiu.com/2013/10/08/graph-matching-hopcroft-karp-algorithm</id>
+    <content type="html"><![CDATA[## Overview
+
+Hopcroft-Karp algorithm also utilizes the augmenting path. The difference
+between the [simple augmenting path algorithm](/2013/10/07/graph-matching-augmenting-path) is, instead of searching
+augmenting path one by one, it looks for many paths in the same time. The paths found at each iteration are in fact **vertex disjoint path**.
+By doing so, the number of iterations can be cut down, since there cannot be too many disjoing paths.
+
+The major observation is that the length of augementing path grows at each step. Thus, if we keep finding a set of vertex disjoint augmenting paths,
+the algorithm is guaranteed to stop eventually and faster than finding the path one by one.
+
+<!-- more -->
+
+## Finding Maximal Set of Vertex Disjoint Paths
+
+Let $G=(U \cup V, E)$ be the bipartite graph and $G_M$ be the directed graph w.r.t to matching $M$.
+The **layered graph** is contructed out of $G_M$, where the distance at a vertex $v$ is defined as the length of shortest path from some vertices in $U$.
+
+This can done by simply running a modified BFS on $G_M$: we start by enqueing all the free vertices $U'$ in $U$ and label them as 0 (distance), 
+propagate and label until one or more free vertices in $V$ are reached. Let the label (distance) be $k$, and denote this graph as $L$.
+
+We can then run a modified DFS on $L$, starting from any of the vertices in $U'$. Whenever we reach a free vertices in $V$, we delete the path $p$
+from $L$, and repeat. It can be proven that all the paths found are shortest vertex disjoint paths of length $k$. This set of paths are the maximal set
+we are looking for.
+
+## Algorithm Outline
+
+- MAXIMAL-SET-OF-PATHS($G=(U \cup V, E), M$)
+    - $P \gets \varnothing$
+    - $L \gets $ Run modified BFS on $G_M$
+    - $U' \gets $ free vertices in $U$
+    - for $u \in U'$
+        - $p \gets $ PARTIAL-DFS($G, v, T$)
+        - if $p \neq \varnothing $ 
+            - $P = P \cup p$
+            - Remove $p$ from $L$
+    - return $P$
+
+---
+
+- HOPCROFT-KARP($G$)
+    - $M \gets \varnothing$
+    - repeat
+        - $P \gets $ MAXIMAL-SET-OF-PATHS($G, M$)
+        - if $P \neq \varnothing$
+            - $M \gets M \oplus P$
+    - until $P = \varnothing$
+    - return $M$
+
+## Analysis
+It can be shown that the loop will be executed at most $O(\sqrt{|V|})$ times, and running the DFS and BFS requires $O(|E|)$ time.
+Thus the overall run time is $O(\sqrt{|V|} |E|)$.
+
+## Reference
+- [Wikipedia article](https://en.wikipedia.org/wiki/Hopcroft-Karp)
+- [Lecture note from Sapienza University of Rome](http://www.dis.uniroma1.it/~sankowski/lecture2.pdf)
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Graph Matching: Augmenting Path]]></title>
+    <link href="http://ivansiu.com/2013/10/07/graph-matching-augmenting-path"/>
+    <updated>2013-10-07T18:47:00-07:00</updated>
+    <id>http://ivansiu.com/2013/10/07/graph-matching-augmenting-path</id>
+    <content type="html"><![CDATA[## Introduction
+
+Let $G=(V, E)$ be an undirected graph. Matching in $G$ is a subset of edges $M \subseteq E$ such that at most one edge is incident to each vertex in $V$.
+
+A vertex is *matched* is it is incident to some edge in $M$, otherwise it is called *free* or *exposed*.
+
+## Augmenting Paths
+
+- Alternating path: a path in which the edges belong alternatively to the matching and not to the matching
+- Augmenting path: an alternating path that starts from and ends on exposed vertices
+
+Clearly, an augmenting path can be 'flipped' to increase the matching size **by one**, i.e., just make free vertex matched and make matched vertex free in this path.
+
+**Berge's Theorem**:  The matching M is maximum **iff** there is no augmenting path w.r.t. $M$. I personally think the proof is easy but quite powerful.
+
+Thus, we can immediately use the theorem to design an algorithm: find augmenting path iteratively until no more can be found. The problem is how we can find the augmenting path.
+
+<!-- more -->
+
+## Algorithm for bipartite graph
+
+FIND-AUGMENTING-PATH($G=(V_1 \cup V_2, E), M$)
+
+- $V'_1$ = a set of free vertices in $V_1$
+- $V'_2$ = a set of free vertices in $V_2$
+- Construct the directed graph $G_M = (V_1 \cup V_2, E_M)$
+    * $E_M$ is a set of directed edges such that it includes all arcs from $V_1$ to $V_2$, and all matching arcs from $V_2$ to $V_1$
+    * i.e., $E_M = \\{(v_1, v_2) : v_1, v_2 \in E \setminus M, v_1 \in V_1, v_2 \in V_2\\} \cup \\{(v_2, v_1) : v_1, v_2 \in M, v_1 \in V_1, v_2 \in V_2\\}$
+- Find a simple path $p$ from $V'\_1$ to $V'\_2$ in $G_M$
+
+Note that the above graph $G\_M$ is similar to the residual network in network flow. Apparently, $p$ starts from a free vertex in $V'\_1$ and ends at another free vertex in $V'\_2$, thus it is an augmenting path.
+
+## Complexity
+
+The maximum size of matching is upper bounded by $|V|/2$, and each step, the matching size is incremented by one. Thus, the number of augmenting path found will be at most $O(|V|)$. At each step, it takes $O(|E|)$ to find a path. Thus the overall running time is $O(|V||E|)$.
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Network Flow: Push-relabel Algorithm]]></title>
+    <link href="http://ivansiu.com/2013/10/07/network-flow-push-relabel-algorithm"/>
+    <updated>2013-10-07T18:08:00-07:00</updated>
+    <id>http://ivansiu.com/2013/10/07/network-flow-push-relabel-algorithm</id>
+    <content type="html"><![CDATA[According to CLRS: Many of the asymptotically fastest maximum-flow algorithms are push-relabel algorithms, and the fastest actual implementations of maximum-flow algorithms are based on the push-relabel method. Push-relabel methods also efficiently solve other flow problems, such as the minimum-cost flow problem.
+
+This algorithm has a very different flavor. The overall idea is to generate a 'preflow' that may not satisfy the flow properties, and keep 'pushing') and 'elevating' (relabelling) the vertices until we cannot do that. We then remove the 'excess' from the preflow and obtain a valid flow, which is also a max flow. In particular, the in-flow may be larger than out-flow at a vertex. The amount of overflow is called 'excess'. 
+
+<!-- more -->
+
+The intuition behind is this: think of the vertices as platforms that have different height, where initially $S$ has $|V|$ height and all other vertices have 0 heights. The flow can only be pushed from higher vertices to lower vertices. Whenever we do not have any flow to push, we find some vertex  that has unsaturated out edge to its neighbor vertices to 'relabel', i.e., elevating its height such that we can continue to 'push'. Thus, there are two operations 'push' and 'relabel' (and thus the name):
+
+    push: sending excess from u to v
+    relabel: increase the height of u to min({v: neighbor of u})+1
+
+The algorithm is as follows:
+
+    Initialize s.h = |V|, u.h = 0 for u != s. // u.h is the height of vertex u
+    For all (s, u), push c(s, u). // saturate all outgoing edges from s.
+    While there is vertex that can be pushed or relabel
+      do push or relabel
+    End while
+    return F.
+
+The naive implementation has runtime $O(|V|^2 |E|)$, and can be improved to $O(|V|^3)$.
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Network Flow: Ford-Fulkerson Method]]></title>
+    <link href="http://ivansiu.com/2013/10/03/network-flow-ford-fulkerson-method"/>
+    <updated>2013-10-03T18:13:00-07:00</updated>
+    <id>http://ivansiu.com/2013/10/03/network-flow-ford-fulkerson-method</id>
+    <content type="html"><![CDATA[Basic method (framework) is Ford-Fulkerson. It's called a "method" because it's
+general, there can be different implementation that yield different complexity.
+It looks like this:
+
+    Let F be an empty flow
+    While there is augmenting path P from s to t
+        Augment F with P
+    End while
+
+The problem is how we find the augmenting path efficiently. A naive
+implementation is to use DFS to randomly pick a $s-t$ path and augment it.
+However, it has two problems:
+
+<!-- more -->
+
+1. The algorithm may not terminate, this happens when the capacity is
+   irrational number (we can always scale rational to integer). When the
+   capacity is irrational, the flow may fluctuate and never converge. 
+2. Even when the capacity is integer, the algorithm may be too slow. The
+   runtime depends on the size of flow $|F|$, which means if $|F|$ is large, it
+   takes a long time to stop. To see this, note that DFS takes $|E|$ time, in the
+   worst case, $F$ may grow by 1 at each iteration (since capacity is integer).
+   Thus, the complexity is $O(|E||F|)$. 
+
+To handle, this, Edmonds-Karp algorithm simply replaces the DFS as BFS, which
+finds a shortest each time (use unit length on edges in the residual graph).
+The major points are:
+
+- The length shortest path is guaranteed to monotonically increase at each
+iteration. This can be proven by contradiction. 
+- The number of iterations are $O(|V||E|)$. 
+  - Each augmenting path (shortest path) can saturate one edge, and this edge
+    will disappear from the residual graph. We call this edge 'critical'.  
+  - An edge $(u, v)$ becomes critical to the time when it next becomes
+    critical, the distance to $u$ from the source increases by at least 2.
+  - Thus, the total number of critical edges during execution is $O(|V||E|)$.
+  - Each augmenting path contains at least one critical edge, thus $O(|V||E|)$. 
+- The running time is thus $O(|V||E|^2)$ since each iteration we run a BFS
+  which costs $O(|E|)$. This can be improved to $O(|V|^2|E|)$ with more
+  efficient data structure (Dinic).
+]]></content>
+  </entry>
+  
+</feed>

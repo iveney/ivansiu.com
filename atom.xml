@@ -4,7 +4,7 @@
   <title><![CDATA[Ivan's Blog]]></title>
   <link href="http://ivansiu.com/atom.xml" rel="self"/>
   <link href="http://ivansiu.com/"/>
-  <updated>2021-01-25T20:17:00-08:00</updated>
+  <updated>2021-01-25T20:21:44-08:00</updated>
   <id>http://ivansiu.com/</id>
   <author>
     <name><![CDATA[Zigang "Ivan" Xiao]]></name>
@@ -15,18 +15,18 @@
   
   <entry>
     <title type="html"><![CDATA[Migration Notice]]></title>
-    <link href="http://ivansiu.com/blog/2021/01/25/migration-notice/"/>
+    <link href="http://ivansiu.com/2021/01/25/migration-notice"/>
     <updated>2021-01-25T19:59:33-08:00</updated>
-    <id>http://ivansiu.com/blog/2021/01/25/migration-notice</id>
+    <id>http://ivansiu.com/2021/01/25/migration-notice</id>
     <content type="html"><![CDATA[<p>This site is migrated to a new place, <a href="ivanxiao.com">ivanxiao.com</a>! New posts will only appear there. See <a href="https://www.ivanxiao.com/2021/01/20/goodbye-octopress-hello-jekyll">details</a>.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[在湾区工作一年大概能攒下来多少钱?]]></title>
-    <link href="http://ivansiu.com/blog/2021/01/14/zai-wan-qu-gong-zuo-yi-nian-da-gai-neng-zan-xia-lai-duo-shao-qian/"/>
+    <link href="http://ivansiu.com/2021/01/14/zai-wan-qu-gong-zuo-yi-nian-da-gai-neng-zan-xia-lai-duo-shao-qian"/>
     <updated>2021-01-14T16:43:47-08:00</updated>
-    <id>http://ivansiu.com/blog/2021/01/14/zai-wan-qu-gong-zuo-yi-nian-da-gai-neng-zan-xia-lai-duo-shao-qian</id>
+    <id>http://ivansiu.com/2021/01/14/zai-wan-qu-gong-zuo-yi-nian-da-gai-neng-zan-xia-lai-duo-shao-qian</id>
     <content type="html"><![CDATA[<p>本文首发于知乎，作为《在湾区工作一年大概能攒下来多少钱？》的<a href="https://www.zhihu.com/question/299239760/answer/623372070">回答</a>。里面的意见仅代表本人，我不是 CPA 也不是律师，里面的建议不能作为任何报税、投资的客观指导。</p>
 <!-- more -->
 <p>从税的角度来说说吧。工作后每年都被报税震惊，于是前一段时间大概 plot 了一下看看在加州生活的有效税率 (effective tax rate, ETR) 究竟是多少。</p>
@@ -93,9 +93,9 @@
   
   <entry>
     <title type="html"><![CDATA[The White Coat Investor 读书笔记]]></title>
-    <link href="http://ivansiu.com/blog/2021/01/12/the-white-coat-investor-du-shu-bi-ji/"/>
+    <link href="http://ivansiu.com/2021/01/12/the-white-coat-investor-du-shu-bi-ji"/>
     <updated>2021-01-12T11:31:54-08:00</updated>
-    <id>http://ivansiu.com/blog/2021/01/12/the-white-coat-investor-du-shu-bi-ji</id>
+    <id>http://ivansiu.com/2021/01/12/the-white-coat-investor-du-shu-bi-ji</id>
     <content type="html"><![CDATA[<p>最近开始阅读 <a href="https://amzn.to/3i99lDa">The White Coat Investor</a>。 之前在网上搜投资理财时已经知道这个作者，并且大致看过他的<a href="https://www.whitecoatinvestor.com/">网站</a>，印象不错。最近准备在 Books 上看一些书，刚好给我推荐了这本。总的来说，这本书算是一本投资理财的入门书，里面提到的东西基本上我都零散地学习过。如今能系统地学习，索性写下一些笔记来加深理解。</p>
 <figure>
 <img src="https://www.whitecoatinvestor.com/wp-content/uploads/2016/03/White-Coat-Investor-238.jpeg" alt="" /><figcaption>Best Financial Books for Doctors | White Coat Investor</figcaption>
@@ -173,9 +173,9 @@
   
   <entry>
     <title type="html"><![CDATA[推荐一个好用的理财网站 Personal Capital]]></title>
-    <link href="http://ivansiu.com/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital/"/>
+    <link href="http://ivansiu.com/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital"/>
     <updated>2020-05-25T22:49:45-07:00</updated>
-    <id>http://ivansiu.com/blog/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital</id>
+    <id>http://ivansiu.com/2020/05/25/tui-jian-yi-ge-hao-yong-de-li-cai-wang-zhan-personal-capital</id>
     <content type="html"><![CDATA[<p>从小家里就给我灌输记账的习惯，一直没有养成，因为懒…… 直到来了美国之后，这个问题神奇地被解决了——因为信用卡普及光并且使用方便，基本上 eliminate 了我使用现金的需求（大多数都是去中国餐馆）。结合理财软件 mint，所有的消费一目了然。可惜自从 mint 被 intuit 收购之后，一直处于维护状态，很多功能停滞不前，很多时候也连不上银行。最近半年开始试用 <a href="https://share.personalcapital.com/x/ua1RUS">Personal Capital</a>，发觉非常好用。它更像是一个财富管理软件而不是记账软件。随着资产的积累，我发觉我不再经常 review 我的消费，更多的是管理我的资产，包括各个银行帐号，401k，IRA，brokerage，车贷房贷等。此篇就来介绍一下它以及自己的使用心得。</p>
 <!-- more -->
 <p><em>如果你想直接开始试用，推荐使用我的</em><a href="https://share.personalcapital.com/x/ua1RUS"><em>推广连接</em></a><em>进行注册，这样双方都能得到 $20 的奖励，也算是对我这篇介绍的一点支持 🙂</em></p>
@@ -247,9 +247,9 @@
   
   <entry>
     <title type="html"><![CDATA[Http 与 Https 代理区别 / Proxifier 与 Charles 使用心得小结]]></title>
-    <link href="http://ivansiu.com/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie/"/>
+    <link href="http://ivansiu.com/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie"/>
     <updated>2019-09-07T15:41:54-07:00</updated>
-    <id>http://ivansiu.com/blog/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie</id>
+    <id>http://ivansiu.com/2019/09/07/http-yu-https-dai-li-qu-bie-slash-proxifier-yu-charles-shi-yong-xin-de-xiao-jie</id>
     <content type="html"><![CDATA[<p>HTTP Proxy 与 HTTPS Proxy 的区别很容易混淆。本文通过使用 Proxifier 与 Charles 实战作为一个笔记备忘。</p>
 <!--more-->
 <h2 id="http-proxy-与-https-proxy-的区别">HTTP Proxy 与 HTTPS Proxy 的区别</h2>
@@ -288,9 +288,9 @@
   
   <entry>
     <title type="html"><![CDATA[自建代理访问中国音乐服务]]></title>
-    <link href="http://ivansiu.com/blog/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu/"/>
+    <link href="http://ivansiu.com/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu"/>
     <updated>2019-08-10T14:46:18-07:00</updated>
-    <id>http://ivansiu.com/blog/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu</id>
+    <id>http://ivansiu.com/2019/08/10/zi-jian-dai-li-fang-wen-zhong-guo-yin-le-fu-wu</id>
     <content type="html"><![CDATA[<p>由于版权原因，在外国访问中国音乐服务即使付费会员也可能没法听到音乐。同时，中国音乐服务版权现状复杂，使得音乐版权分布在不同的服务之间，使得用户没办法在一个平台上听到所有喜欢的歌曲，体验很差。本文介绍一个项目的配置来解除一些限制。</p>
 <!--more-->
 <h2 id="工作原理">工作原理</h2>
@@ -342,9 +342,9 @@
   
   <entry>
     <title type="html"><![CDATA[2018年在Fremont买房是否时机合适之我见]]></title>
-    <link href="http://ivansiu.com/blog/2018/05/01/2018nian-zai-fremontmai-fang-shi-fou-shi-ji-he-gua-zhi-wo-jian/"/>
+    <link href="http://ivansiu.com/2018/05/01/2018nian-zai-fremontmai-fang-shi-fou-shi-ji-he-gua-zhi-wo-jian"/>
     <updated>2018-05-01T23:25:08-07:00</updated>
-    <id>http://ivansiu.com/blog/2018/05/01/2018nian-zai-fremontmai-fang-shi-fou-shi-ji-he-gua-zhi-wo-jian</id>
+    <id>http://ivansiu.com/2018/05/01/2018nian-zai-fremontmai-fang-shi-fou-shi-ji-he-gua-zhi-wo-jian</id>
     <content type="html"><![CDATA[<p>本文<a href="https://www.zhihu.com/question/265838953/answer/301250174">首发于知乎</a>，作为《2018年在Fremont买房是否时机合适，与在湾区桥对面买房有何优劣？》的回答。手动搬运回博客。仅代表本人拙见，仅供参考。</p>
 <!-- more -->
 <p>刚好最近在看，过来分享一下心得。</p>
@@ -397,9 +397,9 @@
   
   <entry>
     <title type="html"><![CDATA[Write Blog Post With Dropbox Paper]]></title>
-    <link href="http://ivansiu.com/blog/2018/01/20/write-blog-post-with-dropbox-paper/"/>
+    <link href="http://ivansiu.com/2018/01/20/write-blog-post-with-dropbox-paper"/>
     <updated>2018-01-20T19:20:35-08:00</updated>
-    <id>http://ivansiu.com/blog/2018/01/20/write-blog-post-with-dropbox-paper</id>
+    <id>http://ivansiu.com/2018/01/20/write-blog-post-with-dropbox-paper</id>
     <content type="html"><![CDATA[<p>My new workflow is using Dropbox Paper so that I can easily write in WYSIWYG style (rich text), and easily export as Markdown. Very convenient.</p>
 <!-- more -->
 <p>My previous blogpost was written using this method. Steps as below.</p>
@@ -415,9 +415,9 @@
   
   <entry>
     <title type="html"><![CDATA[Backdoor Roth IRA and Mega Backdoor Roth IRA]]></title>
-    <link href="http://ivansiu.com/blog/2018/01/18/backdoor-roth-ira-and-mega-backdoor-roth-ira/"/>
+    <link href="http://ivansiu.com/2018/01/18/backdoor-roth-ira-and-mega-backdoor-roth-ira"/>
     <updated>2018-01-18T23:08:40-08:00</updated>
-    <id>http://ivansiu.com/blog/2018/01/18/backdoor-roth-ira-and-mega-backdoor-roth-ira</id>
+    <id>http://ivansiu.com/2018/01/18/backdoor-roth-ira-and-mega-backdoor-roth-ira</id>
     <content type="html"><![CDATA[<p>A while ago I came across “<a href="https://thecollegeinvestor.com/17561/understanding-the-mega-backdoor-roth-ira/">Mega Backdoor Roth IRA</a>”, which is a good way to place fund with tax-efficiency. I read a few documents and found that even though there are lots of good materials on it in English, not quite so in Chinese. So I want to write down my notes and share the knowledge here.</p>
 <p><img src="http://res.cloudinary.com/maomao/image/upload/c_fit,h_400/v1516349055/megabackdoor_roth.png" /></p>
 <!-- more -->
@@ -463,9 +463,9 @@
   
   <entry>
     <title type="html"><![CDATA[States and Countries I've Visited]]></title>
-    <link href="http://ivansiu.com/blog/2017/11/25/states-and-countries-ive-visited/"/>
+    <link href="http://ivansiu.com/2017/11/25/states-and-countries-ive-visited"/>
     <updated>2017-11-25T20:40:47-08:00</updated>
-    <id>http://ivansiu.com/blog/2017/11/25/states-and-countries-ive-visited</id>
+    <id>http://ivansiu.com/2017/11/25/states-and-countries-ive-visited</id>
     <content type="html"><![CDATA[<p>Keep track of the places I’ve been too :)</p>
 <!-- more -->
 <p><a href="http://www.amcharts.com/visited_states/#US-AK,US-AZ,US-CA,US-CO,US-DC,US-FL,US-HI,US-IA,US-IL,US-IN,US-KS,US-MA,US-MO,US-MT,US-NE,US-NM,US-NV,US-NY,US-OH,US-OK,US-OR,US-PA,US-TX,US-UT,US-WA,US-WI,US-WY">States I’ve visited</a></p>
@@ -668,19 +668,19 @@ rollOverOutlineColor : "#000000"
   
   <entry>
     <title type="html"><![CDATA[Recommendation System Review]]></title>
-    <link href="http://ivansiu.com/blog/2017/09/04/recommendation-system-review/"/>
+    <link href="http://ivansiu.com/2017/09/04/recommendation-system-review"/>
     <updated>2017-09-04T15:25:06-07:00</updated>
-    <id>http://ivansiu.com/blog/2017/09/04/recommendation-system-review</id>
+    <id>http://ivansiu.com/2017/09/04/recommendation-system-review</id>
     <content type="html"><![CDATA[<p>A pretty good review for recsys. Goes over content-based and collaborative filtering (item-based and model-based) approach.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[爲 Blog 增加 Linklog 功能]]></title>
-    <link href="http://ivansiu.com/blog/2017/09/03/wei-blog-zeng-jia-linklog-gong-neng/"/>
+    <link href="http://ivansiu.com/2017/09/03/wei-blog-zeng-jia-linklog-gong-neng"/>
     <updated>2017-09-03T12:42:03-07:00</updated>
-    <id>http://ivansiu.com/blog/2017/09/03/wei-blog-zeng-jia-linklog-gong-neng</id>
-    <content type="html"><![CDATA[<p>最近<a href="http://ivansiu.com/blog/2017/08/28/rime-zeng-qiang-bao/">更新了一下鼠鬚管的配置</a>，本來是希望寫一篇 <a href="http://octopress.org/docs/blogging/linklog/">linklog</a> 作爲推薦的。但是發現竟然不支持！！！而官方文檔明明有提到這個功能的……</p>
+    <id>http://ivansiu.com/2017/09/03/wei-blog-zeng-jia-linklog-gong-neng</id>
+    <content type="html"><![CDATA[<p>最近<a href="http://ivansiu.com/2017/08/28/rime-zeng-qiang-bao">更新了一下鼠鬚管的配置</a>，本來是希望寫一篇 <a href="http://octopress.org/docs/blogging/linklog/">linklog</a> 作爲推薦的。但是發現竟然不支持！！！而官方文檔明明有提到這個功能的……</p>
 <!-- more -->
 <p>簡單來說，octopress 的作者自暴自棄，停止了它的開發。所謂穩定版其實還停留在很早之前的版本，而之後的 2.x, 3.x 版本，也停滯了，包括 linklog 這個功能。</p>
 <p>所以，只能暫時手動把 link 提供在此了：http://tieba.baidu.com/p/4125987751/。這個鏈接提供了網友自製的鼠鬚管詞庫，用上後準確率提高了很多。</p>
@@ -707,9 +707,9 @@ rollOverOutlineColor : "#000000"
   
   <entry>
     <title type="html"><![CDATA[Rime 增強包]]></title>
-    <link href="http://ivansiu.com/blog/2017/08/28/rime-zeng-qiang-bao/"/>
+    <link href="http://ivansiu.com/2017/08/28/rime-zeng-qiang-bao"/>
     <updated>2017-08-28T23:34:29-07:00</updated>
-    <id>http://ivansiu.com/blog/2017/08/28/rime-zeng-qiang-bao</id>
+    <id>http://ivansiu.com/2017/08/28/rime-zeng-qiang-bao</id>
     <content type="html"><![CDATA[<p>鼠鬚管是我在 Mac 上使用了很久的中文輸入法，非常好用。</p>
 <!-- more -->
 <p>使用了大概一年後，主要的 complain 是字庫稍微小了點，上網搜了一下，發覺已經有人準備好詞庫了，值得推薦。</p>
@@ -718,9 +718,9 @@ rollOverOutlineColor : "#000000"
   
   <entry>
     <title type="html"><![CDATA[夏威夷遊記（四） 吃吃喝喝]]></title>
-    <link href="http://ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he/"/>
+    <link href="http://ivansiu.com/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he"/>
     <updated>2017-08-06T17:27:49-07:00</updated>
-    <id>http://ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he</id>
+    <id>http://ivansiu.com/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he</id>
     <content type="html"><![CDATA[<p>網上很多（華人的）遊記都提到一個問題，就是夏威夷的餐廳比較少。但根據我們的10天經歷，卻並不這麼覺得。</p>
 <p><img src="http://res.cloudinary.com/maomao/image/upload/v1502065880/blog/hawaii/hawaii-cover.jpg" /></p>
 <!-- more -->
@@ -746,19 +746,19 @@ rollOverOutlineColor : "#000000"
 <p>至此，夏威夷遊記系列暫告一段落。下一次估計就是去大島觀看火山國家公園了。</p>
 <h2 id="夏威夷遊記系列">夏威夷遊記系列</h2>
 <ul>
-<li><a href="http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao/">夏威夷遊記（一） 瓦胡島</a></li>
-<li><a href="http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao/">夏威夷遊記（二） 茂宜島 Road to Hana, Ahihi-Kinau, Lahaina</a></li>
-<li><a href="http://ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling/">夏威夷遊記（三） 茂宜島 Molokini Snorkelling</a></li>
-<li><a href="http://ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he/">夏威夷遊記（四） 吃吃喝喝</a></li>
+<li><a href="http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao">夏威夷遊記（一） 瓦胡島</a></li>
+<li><a href="http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao">夏威夷遊記（二） 茂宜島 Road to Hana, Ahihi-Kinau, Lahaina</a></li>
+<li><a href="http://ivansiu.com/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling">夏威夷遊記（三） 茂宜島 Molokini Snorkelling</a></li>
+<li><a href="http://ivansiu.com/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he">夏威夷遊記（四） 吃吃喝喝</a></li>
 </ul>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[夏威夷遊記（三） 茂宜島 Molokini Snorkelling]]></title>
-    <link href="http://ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling/"/>
+    <link href="http://ivansiu.com/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling"/>
     <updated>2017-08-06T10:51:44-07:00</updated>
-    <id>http://ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling</id>
+    <id>http://ivansiu.com/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling</id>
     <content type="html"><![CDATA[<p>此文爲夏威夷茂宜島遊記的下部分。</p>
 <figure>
 <img src="http://res.cloudinary.com/maomao/image/upload/v1502002964/blog/hawaii/above_the_cloud.jpg" alt="" /><figcaption>Haleakala 上的雲海</figcaption>
@@ -823,20 +823,20 @@ rollOverOutlineColor : "#000000"
 <p>至此，我們的夏威夷行程告一段落。這裏距離三藩要飛近5個小時，但是已經基本算是距離美國大陸最近的地方。也難怪不少人都稱這裏是加州人民的後花園。夏威夷主要的島嶼還有 Kauai 以及 Hawaii (big island)，留待下一次再相遇。</p>
 <h2 id="夏威夷遊記系列">夏威夷遊記系列</h2>
 <ul>
-<li><a href="http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao/">夏威夷遊記（一） 瓦胡島</a></li>
-<li><a href="http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao/">夏威夷遊記（二） 茂宜島 Road to Hana, Ahihi-Kinau, Lahaina</a></li>
-<li><a href="http://ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling/">夏威夷遊記（三） 茂宜島 Molokini Snorkelling</a></li>
-<li><a href="http://ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he/">夏威夷遊記（四） 吃吃喝喝</a></li>
+<li><a href="http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao">夏威夷遊記（一） 瓦胡島</a></li>
+<li><a href="http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao">夏威夷遊記（二） 茂宜島 Road to Hana, Ahihi-Kinau, Lahaina</a></li>
+<li><a href="http://ivansiu.com/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling">夏威夷遊記（三） 茂宜島 Molokini Snorkelling</a></li>
+<li><a href="http://ivansiu.com/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he">夏威夷遊記（四） 吃吃喝喝</a></li>
 </ul>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[夏威夷遊記（二） 茂宜島 Road to Hana, Ahihi-Kinau, Lahaina]]></title>
-    <link href="http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao/"/>
+    <link href="http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao"/>
     <updated>2017-08-05T18:42:31-07:00</updated>
-    <id>http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao</id>
-    <content type="html"><![CDATA[<p>茂宜島：陽光沙灘與海，雲海聖山與樹，城市人羣與浮潛，茂宜島 has it all! 瓦胡島的行程參見<a href="http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao/">上篇</a>。</p>
+    <id>http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao</id>
+    <content type="html"><![CDATA[<p>茂宜島：陽光沙灘與海，雲海聖山與樹，城市人羣與浮潛，茂宜島 has it all! 瓦胡島的行程參見<a href="http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao">上篇</a>。</p>
 <figure>
 <img src="http://res.cloudinary.com/maomao/image/upload/v1501985551/blog/hawaii/OGG.jpg" alt="" /><figcaption>OGG 機場</figcaption>
 </figure>
@@ -904,22 +904,22 @@ rollOverOutlineColor : "#000000"
 <img src="http://res.cloudinary.com/maomao/image/upload/v1501985551/blog/hawaii/banyan_tree_wide_angle.jpg" alt="" /><figcaption>網上找的一張圖片，注意這裏面所有的“樹”都是同一棵。你們感受一下……</figcaption>
 </figure>
 <hr />
-<p>茂宜島接下來的兩天的遊記(浮潛 + Haleakala)見<a href="http://ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling/">此篇</a>。</p>
+<p>茂宜島接下來的兩天的遊記(浮潛 + Haleakala)見<a href="http://ivansiu.com/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling">此篇</a>。</p>
 <h2 id="夏威夷遊記系列">夏威夷遊記系列</h2>
 <ul>
-<li><a href="http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao/">夏威夷遊記（一） 瓦胡島</a></li>
-<li><a href="http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao/">夏威夷遊記（二） 茂宜島 Road to Hana, Ahihi-Kinau, Lahaina</a></li>
-<li><a href="http://ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling/">夏威夷遊記（三） 茂宜島 Molokini Snorkelling</a></li>
-<li><a href="http://ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he/">夏威夷遊記（四） 吃吃喝喝</a></li>
+<li><a href="http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao">夏威夷遊記（一） 瓦胡島</a></li>
+<li><a href="http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao">夏威夷遊記（二） 茂宜島 Road to Hana, Ahihi-Kinau, Lahaina</a></li>
+<li><a href="http://ivansiu.com/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling">夏威夷遊記（三） 茂宜島 Molokini Snorkelling</a></li>
+<li><a href="http://ivansiu.com/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he">夏威夷遊記（四） 吃吃喝喝</a></li>
 </ul>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[夏威夷遊記（一） 瓦胡島]]></title>
-    <link href="http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao/"/>
+    <link href="http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao"/>
     <updated>2017-08-05T17:41:30-07:00</updated>
-    <id>http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao</id>
+    <id>http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao</id>
     <content type="html"><![CDATA[<p>借着 CVPR 2017 的機會，終於去了一趟嚮往已久的夏威夷。主要是參觀了瓦胡（oahu）島以及茂宜（maui）島。非常喜歡，嚴格來說是我第一次去“度假”。美好的自然風光非常愜意。趁在在飛機上有時間，可以寫一些流水帳。</p>
 <figure>
 <img src="http://res.cloudinary.com/maomao/image/upload/v1501979231/blog/hawaii/IMG_7169.jpg" alt="" /><figcaption>Oahu 一景</figcaption>
@@ -984,27 +984,27 @@ rollOverOutlineColor : "#000000"
 </figure>
 <h3 id="第3天">第3天</h3>
 <p>這天我們乘坐了 Island Air 的小飛機前往 Maui。有趣的是，這班飛機在 HNL 里是被認爲『commuter』，是在 commuter terminal 里登機的，對於通勤的島民來說簡直是打飛的上班。行程非常短，只飛了大概30分鐘就到達茂宜。來之前並不清楚茂宜這個島，來了後，才發覺自己太喜歡它了！</p>
-<p>茂宜行程，寫在了<a href="http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao/">下一篇</a>。</p>
+<p>茂宜行程，寫在了<a href="http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao">下一篇</a>。</p>
 <h2 id="夏威夷遊記系列">夏威夷遊記系列</h2>
 <ul>
-<li><a href="http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao/">夏威夷遊記（一） 瓦胡島</a></li>
-<li><a href="http://ivansiu.com/blog/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao/">夏威夷遊記（二） 茂宜島 Road to Hana, Ahihi-Kinau, Lahaina</a></li>
-<li><a href="http://ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling/">夏威夷遊記（三） 茂宜島 Molokini Snorkelling</a></li>
-<li><a href="http://ivansiu.com/blog/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he/">夏威夷遊記（四） 吃吃喝喝</a></li>
+<li><a href="http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-yi-wa-hu-dao">夏威夷遊記（一） 瓦胡島</a></li>
+<li><a href="http://ivansiu.com/2017/08/05/xia-wei-yi-you-ji-(er-)-mao-yi-dao">夏威夷遊記（二） 茂宜島 Road to Hana, Ahihi-Kinau, Lahaina</a></li>
+<li><a href="http://ivansiu.com/2017/08/06/xia-wei-yi-you-ji-(san-)-mao-yi-dao-molokini-snorkelling">夏威夷遊記（三） 茂宜島 Molokini Snorkelling</a></li>
+<li><a href="http://ivansiu.com/2017/08/06/xia-wei-yi-you-ji-(si-)-chi-chi-he-he">夏威夷遊記（四） 吃吃喝喝</a></li>
 </ul>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[美國租車陷阱：Toll Charges]]></title>
-    <link href="http://ivansiu.com/blog/2017/08/01/zu-che-xian-jing-:toll-charges/"/>
+    <link href="http://ivansiu.com/2017/08/01/zu-che-xian-jing-:toll-charges"/>
     <updated>2017-08-01T22:14:24-07:00</updated>
-    <id>http://ivansiu.com/blog/2017/08/01/zu-che-xian-jing-:toll-charges</id>
+    <id>http://ivansiu.com/2017/08/01/zu-che-xian-jing-:toll-charges</id>
     <content type="html"><![CDATA[<p>今天收到了一張大概兩個月前的 bill，說我欠款 $30 美金……</p>
 <p>（如果你看到這篇文章，並且知道最新進展，請務必留言讓我知道。）</p>
 <!-- more -->
 <p><img src="http://res.cloudinary.com/maomao/image/upload/v1501651001/platepass-scam.jpg" /></p>
-<p>兩個月前，我因爲<a href="http://ivansiu.com/blog/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object/">車子被 flying debris 刮傷 hood</a>，而拿去了修車店修理。同時保險公司也 cover 我租車的費用。於是，在 Hertz 租了一輛小車。</p>
+<p>兩個月前，我因爲<a href="http://ivansiu.com/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object">車子被 flying debris 刮傷 hood</a>，而拿去了修車店修理。同時保險公司也 cover 我租車的費用。於是，在 Hertz 租了一輛小車。</p>
 <p>由於我上班下班都會經過 Dumbarton bridge，所以單程會被收取 $5 費用。由於我自己有 fastrak，所以都是過橋時拿出來使用。但是有一次過橋忘記了。當時想着，也許跟之前一樣，會寄賬單到家，所以也沒多想。直到今天看到賬單，才大吃一驚：你收取我原價 $5 的過路費，我認了。但是由於我只是一次沒有交，而收取我整個 rental period 的 service charge，每天 $4.95，封頂 $24.75。這多收的服務費，都已經是我的過路費的5倍了。這未免太坑了點？？</p>
 <p>仔細想想，這家名爲 PlatePass 的公司，實在是太陰險毒辣了。賬單在我結束租車後近兩個月後才寄出，此時早已經過了保險 claim 完成的日子。這間狠毒的公司，說白了就是躺着就把錢給賺了。</p>
 <p>仔細上網搜搜，我不是第一個人。網上早已經有<a href="https://www.consumeraffairs.com/travel/platepass-com.html">N多的抱怨</a>。不少的<a href="http://www.courant.com/consumer/bottom-line/hc-bottom-line-hertz-platepass-20150514-column.html">文章</a>也<a href="https://thepointsguy.com/guide/avoid-rental-car-toll-charges/">披露</a>了這些公司無賴的行徑。可惜的是，我並沒有看到操作性太強的 argue 方法。只能吃一塹，長一智，以後一定要廣而告之，揭發這些無恥商家的醜惡行徑。文章裏面給出的建議是：</p>
@@ -1021,9 +1021,9 @@ rollOverOutlineColor : "#000000"
   
   <entry>
     <title type="html"><![CDATA[Making an Comprehensive Insurance Claim After Got Hit by Road Debris (Flying Object)]]></title>
-    <link href="http://ivansiu.com/blog/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object/"/>
+    <link href="http://ivansiu.com/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object"/>
     <updated>2017-04-30T13:30:04-07:00</updated>
-    <id>http://ivansiu.com/blog/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object</id>
+    <id>http://ivansiu.com/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object</id>
     <content type="html"><![CDATA[<p>Just a normal day of going to work. Bang! I got hit by a flying object … :(</p>
 <!-- more -->
 <h2 id="how-it-happened">How it happened</h2>
@@ -1049,9 +1049,9 @@ rollOverOutlineColor : "#000000"
   
   <entry>
     <title type="html"><![CDATA[Migrating From Dropbox Public Folder]]></title>
-    <link href="http://ivansiu.com/blog/2017/04/03/migrating-from-dropbox-public-folder/"/>
+    <link href="http://ivansiu.com/2017/04/03/migrating-from-dropbox-public-folder"/>
     <updated>2017-04-03T02:22:32-07:00</updated>
-    <id>http://ivansiu.com/blog/2017/04/03/migrating-from-dropbox-public-folder</id>
+    <id>http://ivansiu.com/2017/04/03/migrating-from-dropbox-public-folder</id>
     <content type="html"><![CDATA[<p>Dropbox recently removed its public folder feature, which was used to host my blog’s images. I have to figure out a solution to host and fix the paths to these images…</p>
 <!-- more -->
 <p>Dropbox <a href="https://www.dropbox.com/help/16">announced</a> that <em>As of March 15, 2017 the Public folder in your Dropbox account has been converted into a standard folder.</em> Sad, all my previous links are hosted on Dropbox, and they all become invalid URLs.</p>

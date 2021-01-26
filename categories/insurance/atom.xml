@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: insurance | Ivan's Blog]]></title>
+  <link href="http://ivansiu.com/categories/insurance/atom.xml" rel="self"/>
+  <link href="http://ivansiu.com/"/>
+  <updated>2021-01-25T20:21:44-08:00</updated>
+  <id>http://ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Making an Comprehensive Insurance Claim After Got Hit by Road Debris (Flying Object)]]></title>
+    <link href="http://ivansiu.com/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object"/>
+    <updated>2017-04-30T13:30:04-07:00</updated>
+    <id>http://ivansiu.com/2017/04/30/making-an-comprehensive-insurance-claim-after-got-hit-by-road-debris-flying-object</id>
+    <content type="html"><![CDATA[Just a normal day of going to work. Bang! I got hit by a flying object ... :(
+
+<!-- more -->
+
+
+## How it happened
+This video best explains it:
+
+<video  preload='metadata' controls ><source src='http://res.cloudinary.com/maomao/video/upload/v1493584125/blog/flying_debris.mp4' type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'></video>
+
+
+## Getting a quote
+While I am pretty sure that this should be a comprehensive claim, I wanted to avoid it if this can be repaired under a few hundred dollars.
+The common saying is that comprehensive claim will not increase your premimum, but there is also saying in the web that said if you *claim three times in a three year period*, it might. I went ahead to get quote from two shops, and turned out that it is way more than I expected: they range from \\$1800 to \\$2200!.
+
+First, let's take a look at my damanges:
+
+![](https://res.cloudinary.com/maomao/image/upload/w_400/v1493586583/scratch1.jpg)
+![](https://res.cloudinary.com/maomao/image/upload/w_400/v1493585253/scratch2.jpg)
+![](https://res.cloudinary.com/maomao/image/upload/w_400/v1493585253/scratch3.jpg)
+
+The scratches are all over, and the most severe one, as shown in the first image, is that my base layer seems to be damaged.
+
+![](https://res.cloudinary.com/maomao/image/upload/v1493585408/car_paint_layers.png)
+
+Depending on different level of damage on the layers, including base, prime, base (paint) and clear coat layer, this is the hardest one so it actually takes quite a lot money to fix. For a simple clear coat damage, it is easy enough to DIY, and I've found some awesome tutorials online, including [this](http://guidetodetailing.com/damage-repair/how-to-repair-paint-chips-deep-scratches/) and [this](http://www.carpaintrepairinfo.com/repair-deep-car-scratches-50/). There are also a bunch of videos online.
+
+Unfortunately my problem is way over that, and I guess I do have to make a claim. I do need to pay \\$500 deductible, so the insurance will actually pay \\$2k-ish minus deductible. The good thing is that while my car is being fixed, I still got a ride from Hertz, paid by my insurance company.
+
+## Making a claim
+Making a claim is easy. Just called the number and make the case. A case number will be created and an insurance adjuster will be assigned. After discussing with the adjuster, I can take the car to the body shop and an appraiser will come and do an inspection.
+
+## Getting the paint repaired
+
+
+## Conclusion
+My overall experience with comprehensive insurance has been very good. I have claimed it a few times to repair not-at-fault damages, and in fact it already paid off my insurance premimums paid these years... However, I do have to pay deductible per-case basis, which is non-trivial also (except glass claim). Getting a zero-deductible claim will increase the premium a lot, so it seems 500 deductible is the norm.
+]]></content>
+  </entry>
+  
+</feed>

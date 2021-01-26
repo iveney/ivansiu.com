@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mac | Ivan's Blog]]></title>
+  <link href="http://ivansiu.com/categories/mac/atom.xml" rel="self"/>
+  <link href="http://ivansiu.com/"/>
+  <updated>2021-01-25T20:21:44-08:00</updated>
+  <id>http://ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fix Mid 2009 MBP RAM Not Recognized Issue]]></title>
+    <link href="http://ivansiu.com/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue"/>
+    <updated>2014-05-28T21:30:56-07:00</updated>
+    <id>http://ivansiu.com/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue</id>
+    <content type="html"><![CDATA[![Possible cause of unrecoganized RAM](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/mbp09-ram-theory.png)
+
+A few days ago, I encountered an issue which seems to be common among mid-2009
+MBPs: one of the RAM (in slot 1) is not recognized anymore. Or, sometimes
+it is recognized, but after sleep and wake up, the computer freezes and
+impossible to recover but force power off.
+
+<!-- more -->
+
+It turns out this is a common issue in this model. See the discussion in
+this [thread](https://discussions.apple.com/message/25788934?ac_cid=tw123456#25788934) and this [thread](https://discussions.apple.com/thread/4263981?start=30&tstart=0). In the following, I am going to
+present my temporary fix for this problem. 
+For those of you that still want to stick to the old MBP, the fix shall last for
+a while. But I do recomend you backup all the files and prepare to migrate some
+day soon.
+
+As I suggested in [my reply](https://discussions.apple.com/message/24868689#24868689), this may due to
+a RAM slot degradation. My guess is, the RAM slot cannot align the RAM to a
+correct contact positions any more. Precisely, see the post image above. Notice
+that the two clips on the left and right are used to hold the rams in a
+horizontal position, otherwise they will bend upwards. I took a close look at
+those clips and found that the plastic wore out and cannot hold them as
+original. I don't have great ways to fix them, so I just cropped some papers and
+insert them between the RAMs and the back edges on the body, hoping they can
+help tucking the RAMs.
+
+As I am fixing it, I accidentally broke the left holder. So I have to customized
+a plastic holder and stuck it with the logic board to hold the inner ram (slot 1).
+
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/cracked-holder.jpg)
+
+To verify my theory, I then taped a padding at the corresponding RAM position in the back cover:
+
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/padding.jpg)
+
+And they look like the following before I close:
+
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/padding-ram.jpg)
+
+Note that you have to screw it real tight to create the pressure such that
+the RAM is aligned. That said, there will be a 'bump' at that position, 
+and will easily cause scratch. So I use an apple sticker to cover my ass:
+
+![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/sticker.jpg)
+
+This method worked for me, well, at 99% of the time. Sometimes after sleep, the
+MBP still won't wake up. I notice that this usually due to running  the MBP for
+a long time, and it's hot inside. Nevertheless, this is the best solution I can
+come up with by now. *If you have any other cheap solution that does not require
+replacing the logic board, please let me know in the comments.*
+
+Finally, Zach Clawson created a [dedicated page](https://people.cam.cornell.edu/~zc227/extras/mid2009mbp_RAM.html) for this issue, which 
+lists lots of reference and provides explanation to it. Make sure you check it
+out if you have encountered similar issue.
+
+----
+
+There are other common issues for this model, and they can be easily fixed. See
+my following posts:
+
+- [Fix frayed Magsafe cable](/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself)
+- [Replace faulty SATA cable](/2014/05/28/replacing-sata-cable-in-mid-2009-mbp)
+
+*If you have similar experience, do not hesitate to let me know. If you find my
+instruction helpful, leave a comment and share it!*
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Replacing SATA Cable in Mid 2009 MBP]]></title>
+    <link href="http://ivansiu.com/2014/05/28/replacing-sata-cable-in-mid-2009-mbp"/>
+    <updated>2014-05-28T00:15:08-07:00</updated>
+    <id>http://ivansiu.com/2014/05/28/replacing-sata-cable-in-mid-2009-mbp</id>
+    <content type="html"><![CDATA[![Replacing MBP cable](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/fix-mbp/sata-cable.jpg)
+
+Recently, my mid 2009 MBP (Model A1278) fails to recognize the hard drive. My
+first bet was  another disk failure on me, but it was not the case. I took down
+the hard drive and put it to a mobile hard drive case and it can be read
+smoothly.
+
+<!-- more -->
+
+It turns out that it is due to the SATA cable fault, which is 
+a notorious problem for mid 2009 MBP model. See
+the threads and discussions 
+[here](http://forums.macrumors.com/showthread.php?t=1031577),
+[here](http://www.ifixit.com/Answers/View/36360/Internal+hard+drive+disk+not+recognized),
+[here](http://www.ifixit.com/Answers/View/43072/Hard+Drive+not+recognized+by+system+during+boot+or+install)
+and [here](https://discussions.apple.com/message/25454809#25454809).
+
+Luckily, the solution is simple, just go ahead and purchase 
+a [replacement cable][cable ifixit] and replace it. iFixit has a very detailed
+[illustrated document] on the procedures.
+However, Amazon has a [cheaper option](cable amazon), and it works fine for me. I didn't test
+the infra-red though, since I never and not plan to use it.
+
+There are other common issues for this model, and they can be easily fixed. See
+my following posts:
+
+- [Fix frayed Magsafe cable](/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself)
+- [Fix unrecognized RAM](/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue)
+
+*If you have similar experience, do not hesitate to let me know. If you find my
+instruction helpful, leave a comment and share it!*
+
+[cable ifixit]: http://www.ifixit.com/MacBook-Parts/MacBook-Pro-13-Inch-Unibody-Hard-Drive-Cable/IF163-013#productDescription
+[illustrated document]: http://www.ifixit.com/Guide/MacBook+Pro+13-Inch+Unibody+Mid+2009+Hard+Drive+Cable+Replacement/1340
+[cable amazon]: http://www.amazon.com/gp/product/B004VSZCL4/ref=oh_details_o02_s00_i00?ie=UTF8&psc=1
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Saving $80 by Fixing MagSafe by Yourself]]></title>
+    <link href="http://ivansiu.com/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself"/>
+    <updated>2013-11-08T22:06:00-08:00</updated>
+    <id>http://ivansiu.com/2013/11/08/saving-80-dollars-by-fixing-magsafe-by-yourself</id>
+    <content type="html"><![CDATA[After four years of use, the wire on my MagSafe finally fray out. After searching a bit, I found that a new one costs $80!!
+My old memories came back: almost all accessories by Apple are rip-offs. See how low the ratings are:
+
+![][ratings]
+
+I know that this can be easily fixed if you know a little soldering and have courage: the adapter is working perfectly fine, it is just the wires.
+I decided to DIY. There are several pretty good articles on how to [open the MagSafe][open] and how to [solder it][solder].
+
+<!-- more -->
+
+The following are my workflows. The first step is to open it. You can see there are two wires, in fact in my case only the black wire is broken.
+I don't even need to solder.
+
+-------------- -------------
+ ![][wires1]    ![][wires2]
+-------------- -------------
+
+Okay, go ahead and twist them. Use insulating tapes to wrap them tight.
+
+![][insulating]
+
+Finally, reassemble it and use more tapes, since the outside layer is cut out. More importantly, strong taping help to protect another fray.
+
+![][taping]
+
+It looks a bit odd though, since the Apple product is supposed to be WHITE.
+Here's how I fix it. I don't have good tools available, so I just use whatever
+I have. I recalled that I have some Google stickers, and I just cut the white
+pieces out.
+
+![][stickers]
+
+After more taping, it looks like better now. Maybe I should consider wrapping better things outside later.
+
+![][wrap]
+
+Hooray! Now it is working again! In fact, I am amazed that this piece of gadget has been working for four years, daily. It is still working just fine :)
+
+There are other common issues for this model, and they can be easily fixed. See
+my following posts:
+
+- [Replace faulty SATA cable](/2014/05/28/replacing-sata-cable-in-mid-2009-mbp)
+- [Fix unrecognized RAM](/2014/05/28/fix-mid-2009-mbp-ram-not-recognized-issue)
+
+*If you have similar experience, do not hesitate to let me know. If you find my
+instruction helpful, leave a comment and share it!*
+
+[open]: http://www.instructables.com/id/How-to-open-and-replace-the-MagSafe-cord-on-an-App/?ALLSTEPS
+[solder]: http://www.instructables.com/id/MacBook-Mag-Safe-Charger-Budget-Repair-Disas/
+[ratings]: https://lh3.googleusercontent.com/-HbwCGT5IRfg/Un22iAWR3FI/AAAAAAAA6S8/kb8A295sneA/s800/Apple%252085W%2520MagSafe%2520Power%2520Adapter%2520%2528for%252015-%2520and%252017-inch%2520MacBook%2520Pro%2529%2520-%2520Apple%2520Store%2520%2528U.S.%2529.png
+[wires1]: https://lh4.googleusercontent.com/-3YuxG4NzMls/Un23QYqlRvI/AAAAAAAA6TI/OHnqW_Mz3_M/s600/IMG_5533.jpg
+[wires2]: https://lh6.googleusercontent.com/-4Vwfhl0a7U0/Un23UWD3pII/AAAAAAAA6TY/32jW30GJiHo/s600/IMG_5534.jpg
+[insulating]: https://lh4.googleusercontent.com/-rInGpQS3MPA/Un23Utgk5pI/AAAAAAAA6Tc/XbpbDy2m4yo/s600/IMG_5535.jpg
+[taping]: https://lh4.googleusercontent.com/-GNyM8TlkwIA/Un23ZUE9GBI/AAAAAAAA6Tk/VUI9YF7zK_Y/s600/IMG_5536.jpg
+[stickers]: https://lh5.googleusercontent.com/-0-qhNqp4ClA/Un23fZLy24I/AAAAAAAA6T4/7MTAsUReDLw/s600/IMG_5537.JPG
+[wrap]: https://lh3.googleusercontent.com/-Ok8Zop2yeFY/Un23fsZ_1VI/AAAAAAAA6UU/njomi434w70/s600/IMG_5538.jpg
+]]></content>
+  </entry>
+  
+</feed>

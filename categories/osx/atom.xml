@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: osx | Ivan's Blog]]></title>
+  <link href="http://ivansiu.com/categories/osx/atom.xml" rel="self"/>
+  <link href="http://ivansiu.com/"/>
+  <updated>2021-01-25T20:21:44-08:00</updated>
+  <id>http://ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OS X: Reveal File in Console]]></title>
+    <link href="http://ivansiu.com/2014/05/01/os-x-reveal-file-in-console"/>
+    <updated>2014-05-01T19:58:20-05:00</updated>
+    <id>http://ivansiu.com/2014/05/01/os-x-reveal-file-in-console</id>
+    <content type="html"><![CDATA[![](https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/2014-05-01-os-x-reveal-file-in-console.png)
+
+One of the neat things you can do in OS X is to reveal a file in Finder.app from
+some other applications. Turns out lots of the time, we also want to do that in
+the terminal. The following script helps you with that:
+
+<!-- more -->
+
+<figure class='code'><figcaption><span>reveal</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="c">#!/usr/bin/osascript</span>
+</span><span class='line'><span class="k">on</span> <span class="nb">run</span> <span class="nv">args</span>
+</span><span class='line'>	<span class="k">set</span> <span class="nv">fullpath</span> <span class="k">to</span> <span class="nb">do shell script</span> <span class="s2">&quot;realpath &quot;</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nb">quoted form</span> <span class="k">of</span> <span class="nb">first</span> <span class="nb">item</span> <span class="k">of</span> <span class="nv">args</span><span class="p">)</span>
+</span><span class='line'>	<span class="k">set</span> <span class="nv">theFile</span> <span class="k">to</span> <span class="nv">POSIX</span> <span class="nv">file</span> <span class="nv">fullpath</span>
+</span><span class='line'>	<span class="k">tell</span> <span class="nb">application</span> <span class="s2">&quot;Finder&quot;</span>
+</span><span class='line'>		<span class="nv">reveal</span> <span class="nv">theFile</span>
+</span><span class='line'>		<span class="nb">activate</span>
+</span><span class='line'>	<span class="k">end</span> <span class="k">tell</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Note:
+
+1. You should put this into a directory in your search path. I recommend in
+`~/bin`. Also remember to `chmod +x`.
+2. The above requires another script `realpath`, which returns the
+fullpath of a file. You can find it
+[here](/2014/05/01/os-x-get-full-path-of-file-using-realpath).
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OS X: Get Full Path of File Using Realpath]]></title>
+    <link href="http://ivansiu.com/2014/05/01/os-x-get-full-path-of-file-using-realpath"/>
+    <updated>2014-05-01T18:25:56-05:00</updated>
+    <id>http://ivansiu.com/2014/05/01/os-x-get-full-path-of-file-using-realpath</id>
+    <content type="html"><![CDATA[``` bash Demonstrate of realpath
+➜  /Applications  realpath iBooks.app
+/Applications/iBooks.app
+➜  /Applications
+<figure class='code'><figcaption><span>reveal</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="err">`</span><span class="nv">realpath</span><span class="err">`</span> <span class="ow">is</span> <span class="nv">a</span> <span class="nv">command</span> <span class="nv">line</span> <span class="nv">utility</span> <span class="nb">that</span> <span class="ow">is</span>
+</span><span class='line'><span class="nv">included</span> <span class="k">in</span> <span class="nv">most</span> <span class="nv">UNIX</span> <span class="nv">distributions</span> <span class="nb">but</span> <span class="ow">not</span> <span class="nv">Mac</span> <span class="nv">OS</span> <span class="nv">X</span><span class="p">.</span>
+</span><span class='line'><span class="nv">Thanks</span> <span class="k">to</span> <span class="err">[</span><span class="nv">Stuart</span> <span class="nv">Campbell</span><span class="err">]</span><span class="p">(</span><span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">harto</span><span class="p">),</span>
+</span><span class='line'><span class="nv">a</span> <span class="nv">minimal</span> <span class="nv">implementation</span> <span class="ow">is</span> <span class="nv">provided</span>
+</span><span class='line'><span class="err">[</span><span class="nv">here</span><span class="err">]</span><span class="p">(</span><span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">harto</span><span class="o">/</span><span class="nv">realpath</span><span class="o">-</span><span class="nv">osx</span><span class="p">),</span> <span class="ow">and</span> <span class="k">my</span>
+</span><span class='line'><span class="err">[</span><span class="nv">fork</span><span class="err">]</span><span class="p">(</span><span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">iveney</span><span class="o">/</span><span class="nv">realpath</span><span class="o">-</span><span class="nv">osx</span><span class="p">).</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="p">!</span><span class="c">-- more --&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">If</span> <span class="nv">you</span> <span class="nv">use</span> <span class="err">`</span><span class="nv">homebrew</span><span class="err">`</span><span class="p">,</span> <span class="nv">you</span> <span class="nv">can</span> <span class="nv">tap</span> <span class="k">my</span>
+</span><span class='line'><span class="err">[</span><span class="nv">repo</span><span class="err">]</span><span class="p">(</span><span class="nv">https</span><span class="p">:</span><span class="o">//</span><span class="nv">github</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="nv">iveney</span><span class="o">/</span><span class="nv">homebrew</span><span class="o">-</span><span class="nv">mocha</span><span class="p">),</span> <span class="ow">and</span> <span class="nv">install</span> <span class="k">it</span> <span class="nv">using</span>
+</span><span class='line'><span class="nv">homebrew</span><span class="p">.</span>
+</span></code></pre></td></tr></table></div></figure> bash
+brew tap iveney/mocha
+brew install realpath
+<figure class='code'><figcaption><span>reveal</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='applescript'><span class='line'><span class="nv">Viola</span><span class="p">!</span> <span class="nv">Now</span> <span class="nv">you</span> <span class="nv">can</span> <span class="k">get</span> <span class="nb">the</span> <span class="nv">full</span> <span class="na">path</span> <span class="k">of</span> <span class="nv">file</span> <span class="k">in</span> <span class="nv">console</span><span class="p">.</span> <span class="nv">A</span> <span class="nv">nice</span> <span class="nv">thing</span>
+</span><span class='line'><span class="nv">I</span> <span class="nv">often</span> <span class="nv">use</span> <span class="ow">is</span> <span class="k">to</span> <span class="nv">chain</span> <span class="k">it</span> <span class="nv">with</span> <span class="err">`</span><span class="nv">pbcopy</span><span class="err">`</span> <span class="k">to</span> <span class="nb">copy</span> <span class="nb">the</span> <span class="nv">full</span> <span class="nb">path to</span>
+</span><span class='line'><span class="nb">the</span> <span class="nv">OS</span> <span class="nv">X</span> <span class="nv">clipboard</span><span class="p">.</span>
+</span><span class='line'><span class="err">]]</span><span class="o">&gt;&lt;/</span><span class="na">content</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;/</span><span class="nv">entry</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nv">entry</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="na">title</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="o">&gt;&lt;</span><span class="p">!</span><span class="err">[</span><span class="nv">CDATA</span><span class="err">[</span><span class="nv">Fix</span> <span class="p">(</span><span class="nv">Ugly</span><span class="p">)</span> <span class="nv">Safari</span> <span class="mf">7.0</span> <span class="nv">Not</span> <span class="nv">Using</span> <span class="nv">Local</span> <span class="nv">Pac</span> <span class="nv">File</span><span class="err">]]</span><span class="o">&gt;&lt;/</span><span class="na">title</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="nv">link</span> <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;http://ivansiu.com/2013/12/05/fix-ugly-safari-7-dot-0-not-using-local-pac-file&quot;</span><span class="o">/&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="nv">updated</span><span class="o">&gt;</span><span class="mi">2013</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">05</span><span class="err">T</span><span class="mi">02</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">43</span><span class="o">-</span><span class="mi">06</span><span class="p">:</span><span class="mi">00</span><span class="o">&lt;/</span><span class="nv">updated</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="na">id</span><span class="o">&gt;</span><span class="nv">http</span><span class="p">:</span><span class="o">//</span><span class="nv">ivansiu</span><span class="p">.</span><span class="nv">com</span><span class="o">/</span><span class="mi">2013</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="nv">fix</span><span class="o">-</span><span class="nv">ugly</span><span class="o">-</span><span class="nv">safari</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="nv">dot</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="ow">not</span><span class="o">-</span><span class="nv">using</span><span class="o">-</span><span class="k">local</span><span class="o">-</span><span class="nv">pac</span><span class="o">-</span><span class="nv">file</span><span class="o">&lt;/</span><span class="na">id</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="na">content</span> <span class="nv">type</span><span class="o">=</span><span class="s2">&quot;html&quot;</span><span class="o">&gt;&lt;</span><span class="p">!</span><span class="err">[</span><span class="nv">CDATA</span><span class="err">[</span><span class="nv">I</span> <span class="nv">found</span> <span class="nb">that</span> <span class="nv">Safari</span> <span class="k">in</span> <span class="nv">Mavericks</span> <span class="ow">is not</span> <span class="nv">using</span> <span class="k">local</span> <span class="err">`</span><span class="nv">proxy</span><span class="p">.</span><span class="nv">pac</span><span class="err">`</span> <span class="nb">at</span> <span class="nv">all</span><span class="p">.</span>
+</span><span class='line'><span class="nv">Turns</span> <span class="nv">out</span> <span class="nv">because</span> <span class="k">of</span> <span class="nv">sandboxing</span><span class="p">,</span> <span class="k">it</span> <span class="nv">will</span> <span class="ow">not</span> <span class="nv">allow</span> <span class="nv">reading</span> <span class="nv">file</span> <span class="k">from</span> <span class="k">local</span><span class="p">.</span>
+</span><span class='line'><span class="nv">A</span> <span class="nv">traditional</span> <span class="nv">solution</span> <span class="ow">is</span> <span class="k">to</span> <span class="nv">turn</span> <span class="nb">on</span> <span class="o">**</span><span class="nv">Web</span> <span class="nv">Sharing</span><span class="o">**</span><span class="p">,</span> <span class="ow">and</span> <span class="nv">thus</span> <span class="nv">use</span> <span class="nv">HTTP</span> <span class="k">to</span> <span class="nb">read</span> <span class="nb">the</span> <span class="nv">pac</span> <span class="nv">file</span> <span class="nv">such</span> <span class="k">as</span> <span class="err">`</span><span class="nv">http</span><span class="p">:</span><span class="o">//</span><span class="nv">localhost</span><span class="o">/</span><span class="nv">proxy</span><span class="p">.</span><span class="nv">pac</span><span class="err">`</span><span class="p">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">However</span><span class="p">,</span> <span class="nv">this</span> <span class="nv">cannot</span> <span class="nv">be</span> <span class="nv">done</span> <span class="nb">that</span> <span class="nv">simple</span><span class="p">,</span> <span class="nb">since</span> <span class="nv">Apple</span> <span class="nv">removed</span> <span class="nv">Web</span> <span class="nv">Sharing</span> <span class="k">from</span> <span class="nv">normal</span> <span class="no">version</span> <span class="k">of</span> <span class="nv">Mavericks</span><span class="p">.</span> <span class="nv">To</span> <span class="nv">turn</span> <span class="nb">on</span> <span class="nb">the</span> <span class="nv">web</span> <span class="nv">service</span> <span class="p">(</span><span class="nv">Apache</span><span class="p">),</span> <span class="nv">do</span> <span class="nv">this</span><span class="p">:</span>
+</span></code></pre></td></tr></table></div></figure>
+sudo apachectl start
+```
+
+Also, place the pac file under `/Library/WebServer/Documents`, which is the default Document Root of Apache.
+
+Tom Fischer proposed [another way](https://discussions.apple.com/thread/3202499?start=30&tstart=0) to get around, however I don't think it a good idea to mess around the system files.
+]]></content>
+  </entry>
+  
+</feed>

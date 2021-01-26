@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: signal processing | Ivan's Blog]]></title>
+  <link href="http://ivansiu.com/categories/signal-processing/atom.xml" rel="self"/>
+  <link href="http://ivansiu.com/"/>
+  <updated>2021-01-25T20:21:44-08:00</updated>
+  <id>http://ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Sparse Image Reconstruction via L1-minimization]]></title>
+    <link href="http://ivansiu.com/2014/05/19/sparse-image-reconstruction-via-l1-minimization"/>
+    <updated>2014-05-19T15:12:36-05:00</updated>
+    <id>http://ivansiu.com/2014/05/19/sparse-image-reconstruction-via-l1-minimization</id>
+    <content type="html"><![CDATA[---
+nocite: 
+  '@candes2005l1, @hesthavensparse, @pant2013new, @candes2006robust'
+---
+
+
+--------------------  -------------------------------  -------------------------
+  ![phantom_orig]\      ![phantom_backproj]\              ![phantom_tv]\ 
+    Original           Minimum Energy Reconstruction     Sparse Reconstruction
+--------------------  -------------------------------  -------------------------
+
+## Introduction
+
+This is a follow up of the L1-minimization series. The previous two posts are:
+
+1. [A Comparison of Least Square, L2-regularization and L1-regularization][L2 vs L1]
+2. [Sparse Signal Reconstruction via L1-minimization][Sparse Signal 1D]
+<!-- more -->
+
+We have explored using L1-minimization technique to 
+[recover a sparse signal][Sparse Signal 1D]. 
+The example shows a 1D example. This post demonsrates  on a 2D example, where
+the image is viewed as a signal. This makes sense as we can perform 2D Fourier
+Transform in the image, where the basis are a combination of *horizontal* and
+*vertical* waves. For a complete introduction to FFT on images, refer to 
+[this tutorial][FFT 2D]. Notice that similar to 1D signal, we do not measure
+the image directly in time domain, but we do it in the frequency domain.
+Concretely, say $x$ is the 2D image collapsed to 1D, and $A \in \reals^{k\times n}$ 
+is the measurement matrix, $b$ is the observation, we then have $Ax=b$. 
+Usually we will require $k = n$ to obtain an exact solution for $x$ given $A$ 
+and $b$. Now, if we use FFT and obtain the frequency coefficients as $\hat{x}$,
+we can also perform similar measurements $\hat{A} \hat{x} = \hat{b}$,
+and the requirement $k = n$ is the same. In other words, the required samples 
+(the information) is *the same*. By using the inverse fourier transform,
+we can convert $\hat{x}$ back to $x$. The only difference is that the measurement
+$\hat{A}$ is taken in frequency (Fourier) domain. As we can see later, we can
+utilize sparse information to reduce $k$.
+
+## Image Gradients and Total Variation
+
+We first introduct the concept of image gradients. For any 2D real image `I`, if
+we think about each row as a signal, we can then view the 'difference' between
+adjacent pixels as (horizontal) gradient `Gx(I)`, this makes sense since a
+sharpe change denotes an edge. Similary, we can define the vertical gradient
+`Gy(I)` for columns. Thus, we have
+
+$$Gx(I) = \begin{cases}
+I_{i+1, j} - I_{ij} & i < n \\\\ 0 & i = n
+\end{cases}
+\qquad
+Gy(I) = \begin{cases}
+I_{i, j+1} - I_{ij} & j < n \\\\ 0 & j = n
+\end{cases}$$
+
+where the image size is $n\times n$.
+
+Collectively, the image gradient `G(I)` is defined as the
+magnitude (2-norm) of both components:
+
+$$G(I)_{ij} = \sqrt{(Gx(I)_{ij})^2 + (Gy(I)_{ij})^2}$$
+
+The following shows `Gx`, `Gy` and `G` of the phantom image:
+
+-----------------  -----------------  -----------------
+  ![phantom_gx]\     ![phantom_gy]\     ![phantom_gI]\ 
+    `Gx(I)`             `Gy(I)`             `G(I)`
+-----------------  -----------------  -----------------
+
+The *total variation* `TV(I)` of an image is just the sum of 
+this discrete gradient at every point.
+
+$$TV(I)= \norm{G(I)}_1 = \sum_{i,j} G(I)_{ij}$$
+
+We notice that $TV(I)$ is just the *L1-norm* of $G(I)$,
+which leads us to the following: if we have an image that is sparse in
+its image gradients, we can exploit that and use our L1-minimization trick.
+
+## Sparse Gradient Image Reconstruction
+
+The ratio of non-zero elements in `Gx`, `Gy` and `G` of the phantom image
+is `0.0711`, `0.0634` and `0.0769`, respectively. These ratios are really 
+small - and we consider the gradient as *sparse*.
+
+Let $F: \reals^{n\times n} \to \complex^{n\times n}$ be the FFT operator, 
+and $F I$ be the Fourier transform taken on image I.
+Define a set $\Omega$ as the $k$ two-dimensional frequencies chosen
+according to some sampling pattern from the $n \times n$.
+We further define $F_\Omega I: \reals^{n \times n} \to \complex^k$ as the 
+$k$ observation taken from the fourier transform of image I.
+We can then solve the following optimization problem to recover $I$:
+
+$$\min_I \norm{F_\Omega I - b}^2_2$$
+
+where $F_\Omega$ can be view as the measurement matrix, $b$ is the observation,
+and we want to find $I$ such that the *reconstruction cost* (energy) is
+minimized.  
+
+However, the above does not quite work. As we can see in the following images,
+the *L2-minimization* does a poor job, either for a random measurement or
+a radial measurement [@candes2006robust] in Fourier domain.
+
+--------------------  ---------------------  --------------------
+  ![M rand]            ![phantom rand bp]     ![phantom rand tv]
+ Random measurement     L2-minimization        L1-minimization
+--------------------  ---------------------  --------------------
+
+--------------------  ---------------------  --------------------
+  ![M radial]          ![phantom_backproj]     ![phantom_tv]
+ Radial measurement     L2-minimization       L1-minimization
+--------------------  ---------------------  --------------------
+
+
+To utilize the sparse information, we add a L1-regularization term 
+to the above objective function, which yields the following:
+
+$$(TV_1) \quad \min_I \norm{F_\Omega I - b}^2_2 + \lambda TV(I)$$
+
+Without surprise, optimizing the above gives us a *perfect* reconstruction
+of the original image. 
+It is shown that if there exists a piecewise constant I with sufficiently 
+few edges (i.e., $G(I)_{ij}$ is nonzero for only a small number of indices i, j), 
+then $(TV_1)$ will recover I exactly.
+
+A heavily commented code example is available in my [github repository][code].
+Leave a comment if you have any question.
+
+## Probing Further
+
+Now, take a look at another example `cameraman`, which has the following
+gradients (intensity rescaled using matlab's `imagesc`.
+
+------------------  --------------------
+  ![cameraman]       ![cameraman_grad]
+    Cameraman             Gradient
+------------------  --------------------
+
+The following shows the reconstructions (left two are using random measurements,
+right two are using radial measurements).
+
+----------------------  ----------------------  -----------------  -----------------
+ ![cameraman_rand_bp]    ![cameraman_rand_tv]    ![cameraman_bp]    ![cameraman_tv]
+      Rand (L2)             Rand (L1)              Radial (L2)        Radial (L1)
+----------------------  ----------------------  -----------------  -----------------
+
+As we can see, the results are not as good. In fact, the non-zero ratio of its
+gradient is 0.9928, which is not sparse at all. However, if we plot the histogram
+of gradients, we will find that most of the gradient magnitudes are small:
+
+![Gradient Histogram][camera_mag_hist]
+
+In particular, most of them are smaller than 200, which means the number of
+'changes' that are larger than 200 is small. In fact, the ratio of
+gradient > 200 is only *0.0964*! Thus, there are two possible ways to 
+discard these information and get a 'compressed' image that is
+sparse in gradients:
+
+1. Use mean-shift algorithm to segment the regions such that they have the
+same color intensities. K-means or quantization should achieve a similar 
+result, though might not as good as mean-shift.
+2. Use image filtering to smooth the image, which can effectively average colors
+and discard high frequency information.
+
+*I'll leave these conjectures for furture implementation. For those
+intereted, please try them yourself and let me know your results.
+If you have any thoughts, do not hesitate to leave a comment.*
+
+## References
+
+For interested readers, the following references will be helpful.
+
+[FFT 2D]: http://www.cs.unm.edu/~brayer/vision/fourier.html
+[phantom_orig]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_orig.png
+[phantom_backproj]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_backproj.png
+[phantom_tv]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_tv.png
+[phantom_gx]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gx.png
+[phantom_gy]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gy.png
+[phantom_gI]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_gI.png
+[M rand]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/measurement_random.png
+[M radial]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/measurement_radial.png
+[phantom rand bp]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_rand_bp.png
+[phantom rand tv]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/phantom_rand_tv.png
+[cameraman]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman.png
+[cameraman_grad]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_grad.png
+[cameraman_bp]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_bp.png
+[cameraman_tv]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_tv.png
+[cameraman_rand_bp]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_rand_bp.png
+[cameraman_rand_tv]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/cameraman_rand_tv.png
+[camera_mag_hist]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/camera_mag_hist.png
+[code]: https://github.com/iveney/l1min/blob/master/image_recovery_l1.m
+
+[L2 vs L1]: /2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization
+[Sparse Signal 1D]: /2014/05/18/sparse-signal-reconstruction-via-l1-minimization
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sparse Signal Reconstruction via L1-minimization]]></title>
+    <link href="http://ivansiu.com/2014/05/18/sparse-signal-reconstruction-via-l1-minimization"/>
+    <updated>2014-05-18T22:13:08-05:00</updated>
+    <id>http://ivansiu.com/2014/05/18/sparse-signal-reconstruction-via-l1-minimization</id>
+    <content type="html"><![CDATA[[![Sparse Signal Reconstruction Results]][Sparse Signal Reconstruction Results]
+
+This is a follow-up of the [previous post] on applications of L1 minimization.
+
+<!-- more -->
+
+As we know, any signal can be decomposed into a linear combination of basis,
+and the most famous one is [Fourier Transform]. 
+For simplicity, let's assume that we have a signal that
+is a superposition of some sinusoids. For example, the following:
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="p">.</span><span class="mi">5</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(.</span><span class="mi">1</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="nb">sin</span><span class="p">(</span><span class="mf">1.3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="p">.</span><span class="mi">7</span><span class="o">*</span><span class="nb">sin</span><span class="p">(.</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="mf">2.3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+With *discrete consine transform* (DCT), we can easily find the coefficients of
+corresponding sinusoid components. The above example's coefficients (in
+frequency domain) and signal in time domain are shown in the post figure.
+
+Now, let's assume we do not know the signal and want to reconstruct it
+by sampling. Theorectically, the number of samples required is at least
+two times the signal frequency, according to the famous
+[Nyquist–Shannon sampling theorem].
+
+However, this assume zero-knowledge about the signal. If we know some structure
+of the signal, e.g., the DCT coefficients are sparse in our case, we can 
+further reduce the number of samples required. [^Nsamples]
+
+The following code snippet demonstrates how this works. We generate
+the original signal in time domain and then perform a DCT to obtain the coefficients.
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% sparse signal recovery using L1</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rng</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span><span class='line'><span class="n">N</span> <span class="p">=</span> <span class="mi">256</span><span class="p">;</span> <span class="n">R</span> <span class="p">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">C</span> <span class="p">=</span> <span class="mi">2</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% some superposition of sinoisoids, feel free to change and experiment</span>
+</span><span class='line'><span class="n">f</span> <span class="p">=</span> <span class="p">@(</span><span class="n">x</span><span class="p">)</span> <span class="p">.</span><span class="mi">5</span><span class="o">*</span><span class="nb">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(.</span><span class="mi">1</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="nb">sin</span><span class="p">(</span><span class="mf">1.3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="p">.</span><span class="mi">7</span><span class="o">*</span><span class="nb">sin</span><span class="p">(.</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="mf">2.3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.*</span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span><span class='line'><span class="n">x</span> <span class="p">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">10</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+</span><span class='line'><span class="n">y</span> <span class="p">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="n">coef</span> <span class="p">=</span> <span class="n">dct</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="n">stem</span><span class="p">(</span><span class="n">coef</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Original signal in frequency domain&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Original signal in time domain&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+Let's assume that we have a device that can sample from the frequency domain.
+To do this, we create a *random measurement matrix* to obtain the samples.
+We use 80 samples here. Note that we normalize the measurement matrix
+to have orthonormal basis, i.e., the norm of each row is 1, and the dot product
+of different row is 0.
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% measurement matrix</span>
+</span><span class='line'><span class="n">K</span><span class="p">=</span><span class="mi">80</span><span class="p">;</span>
+</span><span class='line'><span class="n">A</span><span class="p">=</span><span class="nb">randn</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+</span><span class='line'><span class="n">A</span><span class="p">=</span><span class="n">orth</span><span class="p">(</span><span class="n">A</span><span class="o">&#39;</span><span class="p">)</span><span class="o">&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">% observations</span>
+</span><span class='line'><span class="n">b</span><span class="p">=</span><span class="n">A</span><span class="o">*</span><span class="n">coef</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+We first try a least-square approach, which boils down to inverse the matrix
+and obtain $\hat{x}=A^{-1} b$. Note that as A is not square, we are
+using its *pseudo-inverse* here. Furthermore, as A is othornormal, its
+transpose is the same as pseudo-inverse.
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% min-energy observations</span>
+</span><span class='line'><span class="n">c0</span> <span class="p">=</span> <span class="n">A</span><span class="o">&#39;*</span><span class="n">b</span><span class="p">;</span> <span class="c">% A&#39; = pinv(A) here since A is a full-rank orthonormal matrix</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+</span><span class='line'><span class="n">stem</span><span class="p">(</span><span class="n">c0</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Minimum energy recovery - coef&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+</span><span class='line'><span class="n">y0</span> <span class="p">=</span> <span class="n">idct</span><span class="p">(</span><span class="n">c0</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span><span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;Minimum energy recovery - signal&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Recovered&#39;</span><span class="p">,</span> <span class="s">&#39;Original&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+As we can see, there are lots of non-zeros in the coefficients, and
+the recovered signal is very different from the original signal.
+
+Finally, we use L1-minimization for reconstruction. I used `lasso` 
+to perform a L1-regualarized minimization. Another package that performs various
+L1-minimization is [l1-magic].
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="c">% L1-minimization</span>
+</span><span class='line'><span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">fitinfo</span><span class="p">]</span> <span class="p">=</span> <span class="n">lasso</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s">&#39;Lambda&#39;</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">);</span>
+</span><span class='line'><span class="c">% If use L1-magic</span>
+</span><span class='line'><span class="c">% addpath /path/to/l1magic/Optimization</span>
+</span><span class='line'><span class="c">% [c1] = l1eq_pd(c0, A, [], b, 1e-4);</span>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+</span><span class='line'><span class="n">stem</span><span class="p">(</span><span class="n">c1</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;L1 recovery - coef&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">subplot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="mi">6</span><span class="p">);</span>
+</span><span class='line'><span class="n">y1</span> <span class="p">=</span> <span class="n">idct</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span>
+</span><span class='line'><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span> <span class="n">N</span><span class="p">]);</span> <span class="n">title</span><span class="p">(</span><span class="s">&#39;L1 recovery - signal&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="n">legend</span><span class="p">(</span><span class="s">&#39;Recovered&#39;</span><span class="p">,</span> <span class="s">&#39;Original&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+The above shows that L1-minimization successfully recovered the original signal.
+A complete code snippet can be found [here][gist].
+
+[Sparse Signal Reconstruction Results]: https://res.cloudinary.com/maomao/image/upload/v1491291930/blog/l1/sparse_signal_reconstruction.png
+[Fourier Transform]: http://en.wikipedia.org/wiki/Fourier_transform
+[Nyquist–Shannon sampling theorem]: http://en.wikipedia.org/wiki/Nyquist–Shannon_sampling_theorem
+[l1-magic]: http://users.ece.gatech.edu/~justin/l1magic/
+[gist]: https://gist.github.com/842145ae48381a5a8dca
+[previous post]: /2014/05/14/a-comparison-of-least-square-l2-regularization-and-l1-regularization
+
+[^Nsamples]: In order to recover f perfectly, we need at least $B \log (N)$ samples [(source)](http://users.ece.gatech.edu/~justin/l1magic/downloads/papers/CandesRombergTao_revisedNov2005.pdf).
+]]></content>
+  </entry>
+  
+</feed>

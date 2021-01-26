@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: iphone | Ivan's Blog]]></title>
+  <link href="http://ivansiu.com/categories/iphone/atom.xml" rel="self"/>
+  <link href="http://ivansiu.com/"/>
+  <updated>2021-01-25T20:21:44-08:00</updated>
+  <id>http://ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Batch Remove Photos in iPhone, Batch Convert Videos and Upload Back]]></title>
+    <link href="http://ivansiu.com/2014/01/29/batch-remove-photos-in-iphone"/>
+    <updated>2014-01-29T20:16:21-06:00</updated>
+    <id>http://ivansiu.com/2014/01/29/batch-remove-photos-in-iphone</id>
+    <content type="html"><![CDATA[One of the problems that drives iOS user crazy is the user-unfriendly manipulation/syncing of photos in iOS. There are just no easy way to remove photos in batch (though you can delete the entire camera roll in the settings).
+
+<!-- more -->
+
+There are several ways to manipulate it, but really not enough:
+
+1. use iPhoto/Aperture to import and delete. However, the photos must be imported first, I cannot just delete it. Ever since there is iCloud, importing becomes not that important.
+2. use iTunes to Sync. Same as above, ever since iCloud, no reason to sync again.
+3. the only way to use built-in tools to manipulate the camera roll is to use Image Capture utility. That way, one can select and delete photos. However, it still does not have custom filtering of photos and does not support albums.
+
+The workflow I adopted is a two-step approach: mark those I want to keep in the iPhone, delete all stuff using the 3rd method, then upload back.
+
+If you have some videos that occupy lots of space, you can convert them to lower quality. To do this, HandBrake is the excellent tool, which is open-sourced. However, it does not support batch change. Luckily, [HandBrakeBatch](http://www.osomac.com/apps/osx/handbrake-batch/) by [OSOMAC](http://www.osomac.com) can achieve this.
+
+To upload things back, [SimpleTransfer](http://rambax.com/simpletransfer.html) can help, especially for videos, which cannot be put back into camera roll easily (I have no idea why apple restricts this). The lite version is free, but you can only upload one item at a time, and there are also some restrictions.
+]]></content>
+  </entry>
+  
+</feed>

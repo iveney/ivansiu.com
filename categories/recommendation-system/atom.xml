@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: recommendation system | Ivan's Blog]]></title>
+  <link href="http://ivansiu.com/categories/recommendation-system/atom.xml" rel="self"/>
+  <link href="http://ivansiu.com/"/>
+  <updated>2021-01-25T20:21:44-08:00</updated>
+  <id>http://ivansiu.com/</id>
+  <author>
+    <name><![CDATA[Zigang "Ivan" Xiao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Recommendation System Review]]></title>
+    <link href="http://ivansiu.com/2017/09/04/recommendation-system-review"/>
+    <updated>2017-09-04T15:25:06-07:00</updated>
+    <id>http://ivansiu.com/2017/09/04/recommendation-system-review</id>
+    <content type="html"><![CDATA[A pretty good review for recsys. Goes over content-based and collaborative filtering (item-based and model-based) approach.
+]]></content>
+  </entry>
+  
+</feed>
