@@ -9,12 +9,6 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: install packages
-        run: |
-          sudo apt-get update -y -qq
-          sudo apt-get install -y libgsl0-dev libmagick++-dev
-          which gsl-config
-
       - uses: actions/checkout@v2
 
       # Use GitHub Actions' cache to cache dependencies on servers
@@ -26,7 +20,7 @@ jobs:
             ${{ runner.os }}-gems-
 
       # Use GitHub Deploy Action to build and deploy to Github
-      - uses: jeffreytse/jekyll-deploy-action@v0.1.4
+      - uses: jeffreytse/jekyll-deploy-action@v0.2.0
         with:
           provider: 'github'
           token: ${{ secrets.GH_TOKEN }} # It's your Personal Access Token(PAT)
